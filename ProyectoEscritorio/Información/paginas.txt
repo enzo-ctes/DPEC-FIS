@@ -1,0 +1,25 @@
+https://msdn.microsoft.com/es-ar/library/ms172516(v=vs.90).aspx
+https://msdn.microsoft.com/es-es/library/bb278115.aspx
+https://sourceforge.net/p/gong-shell/discussion/689322/
+
+https://www.youtube.com/watch?v=tKDh2SABRRE
+https://msdn.microsoft.com/es-es/library/ms171645(v=vs.110).aspx
+http://leandroascierto.com/foro/index.php?topic=705.0
+
+http://foro.elhacker.net/net/c_explorador_de_carpetas-t182703.0.html
+https://msdn.microsoft.com/es-ar/library/cahdzfxw.aspx
+https://msdn.microsoft.com/es-es/library/ms171645(v=vs.110).aspx
+https://escarbandocodigo.wordpress.com/2009/11/24/mostrar-informacion-de-los-discos-directorios-y-archivos-en-un-treeview/
+https://blogs.msdn.microsoft.com/esmsdn/2014/12/02/ubicando-nuestros-ficheros-en-el-dispositivo/
+http://stackoverflow.com/questions/31729255/cant-open-package-appxmanifest-in-visual-studio-2015
+https://msdn.microsoft.com/es-ar/library/windows/apps/br229563.aspx
+https://msdn.microsoft.com/es-es/library/windows/apps/mt574275.aspx
+https://norfipc.com/comandos/ejecutar-batch-comandos-ocultos.html
+
+https://support.microsoft.com/es-es/kb/307256
+
+
+https://msdn.microsoft.com/es-es/library/bb546002(v=vs.90).aspx (para crear agentes de dispositivos con visual 2008)
+
+"deteccion de dispositivos con c# y visual
+https://tempuzfugit.wordpress.com/2007/06/05/deteccion-de-insercion-de-disco/#comment-633

@@ -1,0 +1,1 @@
+echo osbsurubi | gpg --passphrase-fd 0 -o C:\Users\Enzo\Documents\Visual Studio 2015\Projects\MACRO INTELL - Software\Datos DPEC\Compartido con SAP\D_201604_00000000_201-249_20170106_164912.btx C:\Users\Enzo\Documents\Visual Studio 2015\Projects\MACRO INTELL - Software\Datos DPEC\Compartido con SAP\D_201604_00000000_201-249_20170106_164912.btx.gpg

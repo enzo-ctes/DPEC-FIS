@@ -1,0 +1,37 @@
+----------------------------------------------------------23-10-2017----------------------------------------------------------
+
+Se implemento el formato de la linea Conceptos Facturados segun la siguiente condición
+
+// Devolucion de Conceptos Facturados
+// 
+// Campo CodigoConcepto:
+// 	si < 100 -->  NO DEVOLVER
+// 	
+// 	si está entre 100 y 10.000 DEVUELVE: 
+//                                          CodigoDpec = Dato de tabla
+//                    			    CodigoConcepto = ""   (vacio)
+//   
+//      si > 10.000        	   DEVUELVE: 
+//  					    CodigoDpec = ""       (vacio)
+//   					    CodigoConcepto = Dato de tabla
+// 
+// ANTES DE DEVOLVER VERIFICAR
+// 
+// 	Si CodigoGrupo = 0      			DEVOLVER
+// 	Si CodigoGrupo > 0 Y Agrupador Contiene "SI"	DEVOLVER
+// 							
+
+
+     **********----  Formato de linea de Conceptos Facturados   ----************
+
+Encabezado|ConexionID|Periodo|CodigoConcepto|CodigoDpec|CodigoEscalon|ImportePA|ImportePB
+    HCF   | 00000000 |000000 |     0000     |  aaaaaaa |     00      |  00.00  |   00.00
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------24-10-2017----------------------------------------------------------
+
+Se agrego al panel de rutas procesadas para cargar las rutas de cada procesamiento, este solo se podia ver cuando se pasaba el mouse sobre las 
+rutas procesada, ahora se agrego para verlo a simple vista
+
+----------------------------------------------------------------------------------------------------------------------------------------------

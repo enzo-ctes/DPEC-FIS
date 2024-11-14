@@ -1,0 +1,75 @@
+2019.06.12 Version para carga de colectoras Android, en desarrollo...
+.
+.
+.
+---2019.11.13 (Version para colectoras ZEBRA)
+*Ultima modificación realizada en la pantalla exportación se agrego el check "Upload por ruta" el cual si esta tildado
+generará un archivo LEC... FAC... LOG.. por ruta exportada en caso que se seleccione mas de una ruta y en cada archivo 
+de exportación va informado el numero de ruta. en caso de que no se encuentre tldado "Upload por ruta" generar un solo
+archivo LEC.. FAC... LOG.. con la/s ruta/s seleccionadas para su exportación y en el cual no se informa el numero de ruta
+que se exta exportando, en su lugar va la nomenclatura "0000" que indica que hay mas de una ruta cargada el registro LEC...
+FAC.. LOG..
+* Se corrigio el metodo de actualización de la contraseña que los lecturistas cambian en la colectora, asi cuando se descarga
+la ruta y si se cambio la contraseña, actualiza a la base sqlite local para que en las proximas cargas a partir de esa ultima
+modificacion de contraseña ya este actualizado con el nuevo pass.
+---2019.11.26
+*Esta en proceso de ser agregado un pequeño panel donde se informa cada vez que se realiza una importación a la derecha del menu
+principal en el Form1Inicio, este será visible cada vez que se finaliza cada importación realizada por el operario o rutista,
+quedando registrado en la tabla LogImportación el detalle de cada ruta importada en cada registro. con los siguientes campos.
+IdLogImportacion: un autoincremental que se incrementara con cada registro insertado.
+Periodo: Periodo al que pertenece la ruta informada dentro del archivo.
+Porcion: Compuesto por Numero de localidad, Remesa y Ruta.
+CantUsuarios: Numero total de usuarios que contiene la Ruta.
+CantImportados: Numero Total que se pudieron importar o registrar en el sistema de Macro Intell (Base de datos MySQL)
+CantApartados: Numero Total que se NO se importaron o registraron en el sistema de Macro Intell porque no cumplieron con la cantidad de campos de cada linea.
+DetalleApartados: Contiene en el caso de que se hayan apartado alguno por incumplir la cantidad de campos que tengan que venir, el Numero de ConexionID separando mas de 1 por ;
+Operario: Usuario loegado en el sistema de Carga y Descarga, normalmente es el DNI de cada Operario asignado como Rutista.
+FechaImportacion: Fecha que se realizo la Importación.
+HoraImportacion: Hora, minuto y Segundo que finalizo la Importacion.
+---2019.11.27
+*Esta en proceso de ser agregado la opcion de cambiar la fecha de lectura efectiva para la creacion del archivo Upload, pero 
+se cambiará en el proceso de creacion, modificandose unicamente en el archivo generado, manteniendose en la base la fecha
+original tomada y registrandose además dentro del campo ProximoVencimiento dentro de la tabla Conexiones, la fecha modificada
+y el operador o rutista quien realizo el cambio. De esta forma quedara las dos fechas, la real y la modificada en cambio de que
+se realice dicho cambio.
+---2019.12.04
+*Se agrego la opcion de cambio de fecha de lectura efectiva antes de generar el archivo upload (configurar para ver opcion desde archivo ini)
+*Se corrigio el proceso de donde se deja los archivos exportados al momento de generar el upload si las localidades que exportaban 
+no eran las principales del centro de interfaz, las dejaba en la principal y no en la que le correspondia, eso se soluciono y si una localidad depende de un centro de interfaz
+ahora al generar la exportación lo deja en la carpeta con el codigo de localidad a la que pertenece esa ruta exportada.
+*A partir de esta version, al actualizar los centors de interfaz, se deberan cargar los lecturistas en la base general que van a hacer uso para que al momento
+de generar la carga tome desde la base Mysql General y no de manera local los lecturistas.
+
+---2020.01.02
+*Se corrigio la parte de la seleccion de ruta para procesar la carga, ya que tardaba mucho en cada seleccion, ahora ese pequeño tiempo de selección se agrego
+al momento en que se presiona el botón de procesra carga, para que el usuario no tenga que esperar mucho tiempo en cada seleccion de ruta.
+*Se agrego en la exportación la creacion del archivo GPS que contiene la ubicacion de todos los medidores que fueron leidos
+con el formato de nombre de archivo "GPS_RLLLRRR_AAAAMMDDHHmmSS.btx" y la estructura interna "ConexionID|NumeroMedidor|Latitud|Longitud|Fecha|Hora"
+*Cambie la fuente en el TreeView del Panel de Cargas de Colectoras en el que el nodo que contiene la info de la ruta esta en negrita para asi diferenciar 
+las lineas o nodos de las particioones que se deben seleccionar para procesar las rutas. 
+*Todavia no se habilita la parte de informar al terminar la importacion...en proceso de terminar.
+
+---2020.01.21
+*Al archivo GPS que se genera con cada exportacion se agrego el dato Domicilio y Ruta para tener una mayor precision del punto que registra cada lectura.
+*Se optimizo la consulta que carga el listview de Rutas exportadas al cargar la pantalla de Exportacion cuando se ingresa desde el inicio, ya que la consulta que armaba las rutas exportadas demoraba bastante.
+*Se Cambio el dato Nº_Instalacion por Usuario(titularID) que se muestra en el informe Errores. (A pedido de prefacturado)
+*Se agrego el boton Altas desde la pantalla exportación para tener un acceso mas directo a los resumenes de ALTAS, ConexionesDirectas y Ordenativos de cada ruta que se esta solicitando el informe.
+*Se agrego dentro del informe "TODOS" de cada ruta solicitada, las Altas asociadas a la ruta que puedan existir, para tener un informe mas completo.   
+*Todavia no se habilita la parte de informar al terminar la importacion...en proceso de terminar.
+
+---2020.01.30
+*Se agrego el informe de las imporaciones realizadas, el mismo cada ruta importada es almacenada en la tabla LogImportacion, el cual contendra, 
+los datos necesarios para saber si se importo la totalidad de la ruta, cuantos se apartaron y aquellos apartados contiene como detalle
+el numero de instalacion para identificar los usuarios apartados.
+*Se corrigio consumo de memoria al ralizar la importación, ya que con cada ruta importada el consumo aumentaba exponecialmente sin liberar memoria, lo cual
+relentizaba el programa en su uso si no se cerraba y volvía a abrir.
+.
+.
+.
+---2021-12-23: 
+Se agrego el respaldo de los archivos al momento de descargar la colectora, actualmente se hacia de manera local unicamente
+quedando solo en la pc que realizo la descarga. Ahora se agrega una copia en el servidor de archivos (NAS 10.1.3.125) en el directorio 
+\\10.1.3.125\sap\DescargasColectoras\201...202..203\\DP202106_MICZ-4102_D00423.211216_1329\, el anteultimo directorio depende de la 
+localidad a la que pertenece la ruta, y el directorio donde se alojan los archivos lleva el dato del periodo, colectora, numero de descarga(actualemnte no se controla),
+dia, hora, minuto y segundo de la descarga realizada.
+

@@ -1,0 +1,325 @@
+gagDatos.btx
+
+Archivo con definición de archivo-tablas para datos de colectoras.
+Los renglones antes de una sección no son tenidos en cuenta, se consideran comentarios.
+Todo lo que está después de un ';' (punto y coma) es comentario.
+La primera sección 'Varios' es para datos auxiliares, y tiene la misma forma 
+que un archivo ini.
+Los nombres de las tablas están entre corchetes,
+abajo cada renglón representa la definición de un campo con formato
+nombre_campo | tipo_campo | tamaño_campo ; comentarios
+Tamaño podría no ser necesario, según el tipo, pero debe estar
+Renglones en blanco se ignoran.
+Dentro de la definición de campo, renglón que no cumple con el formato se ignora.
+
+
+
+[Varios]
+Separador Campos = |  ; Carácter usado para separar campo en los archivos de datos.
+;Archivo donde se almacena cada tabla
+Altas = Altas.btx
+Comprobantes = Comprobantes.btx
+ConceptosDatos = ConceptosDatos.btx
+ConceptosFacturados = ConceptosFacturados.btx
+ConceptosFijos = ConceptosFijos.btx
+ConceptosTarifas = ConceptosTarifas.btx
+CondicionIVA = CondicionIVA.btx
+Conexiones = Conexiones.btx
+General = General.btx
+Lecturistas = Lecturistas.btx
+Localidades = Localidades.btx
+Medidores = Medidores.btx
+Novedades = Novedades.btx
+NovedadesConex = NovedadesConex.btx
+Personas = Personas.btx
+TextosVarios = TextosVarios.btx
+
+
+[Personas]
+;Nombre                  |Tipo          |Formato     ;Descripción
+personaID                |Entero        |           ;Código identificador de la persona dentro de los marchivos DPEC.
+Periodo                  |Entero        |           ;Año y periodo, en formato AAAAPP (ej.: 201503)
+Apellido                 |Texto         |50         ;Si es persona jurídica aca se coloca la Razón Social
+Nombre                   |Texto         |50         ;Si es persona jurídica, este campo queda men blanco
+DocTipo                  |Texto         |10         ;DNI, LE, LC, CUIT, CUIL, PASAPORTE, etc
+DocNro                   |Texto         |15         ; formato: PP-NN…N-V
+                                                    ; donde: PP: prefijo de cuit o cuil (opcional)
+                                                    ; NN…N: numero de identificación (DNI, LE, … etc) obligatorio
+                                                    ; V: Dígito verificador (obligatorio si está PP, caso contrario no va)"
+CondIVA                  |Entero        |           ;Codigo de condición frente al iva, debe ser un código que existe en la tablas de IVAS
+Domicilio                |Texto         |50         ;Domicilio de la persona, concatenado: Calle, número, piso, dpto, manzana, etc (No incluye barrio ni localidad)
+Barrio                   |Texto         |50         ;Nombre del barrio del domicilio de la persona
+CodigoPostal             |Texto         |10         ;Código postal del domicilio de la persona
+                                                    
+                                                    
+[Conexiones]                                        
+;Nombre                  |Tipo          |Formato     ;Descripción
+conexionID               |Entero        |           ;Identifica una conexión en un lugar físico determinado con un medidor. En DPEC se denomina Contrato.
+Periodo                  |Entero        |           ;Año y periodo, en formato AAAAPP (ej.: 201503)
+usuarioID                |Entero        |           ;Identifica una persona física o jurídica, dentro de la tabla ""Personas"" que es el USUARIO del servicio prestado."
+tituIarID                |Entero        |           ;Identifica una persona física o jurídica, dentro de la tabla ""Personas"" que es el TITULAR del servicio prestado."
+propietarioID            |Entero        |           ;Identifica una persona física o jurídica, dentro de la tabla ""Personas"" que es el TITULAR del INMUEBLE, donde se presta el servicio."
+DomicSumin               |Texto         |50         ;Domicilio donde se presta el servicio, concatenado: Calle, número, piso, dpto, manzana, etc (No incluye barrio ni localidad)
+BarrioSumin              |Texto         |50         ;Nombre del barrio donde se presta el suministro.
+CodPostalSumin           |Texto         |10         ;Codigo postal del lugar donde se presta el suministro. A partir de este valor se obtiene, por tabla, la localidad.
+CuentaDebito             |Texto         |30         ;CBU para débito automático, si corresponde.
+ImpresionCOD             |Entero        |           ;Código de impresión, dato que indica como proceder ante la impresión, suministrado por DPEC, según tabla
+ImpresionOBS             |Entero        |           ;Código devuelto, indica como se procedió con la impresión, si no se imprimió, la causa. Según tabla.
+ImpresionCANT            |Entero        |           ;Cantidad de comprobantes impresos:
+                                                    ; 0: No se imprimió
+                                                    ; 1: se hizo una impresión normal
+                                                    ; 2: falló la primera impresión, se repitio una vez…"
+Operario                 |Entero        |           ;Legajo del lecturista
+Lote                     |Entero        |           ;Número de lote de facturación, o lote de datos transferidos.
+Zona                     |Entero        |           ;Zona a la que corresponde la ruta
+Ruta                     |Entero        |           ;Número de ruta de lectura
+Secuencia                |Entero        |           ;Número que se utiliza para determinar el orden de lectura, ordenados de menor a mayor en la ruta cargada.
+Remesa                   |Entero        |           ;Remesa de lectura, representa una de las 8 msemanas en que se divide el bimestre de lectura
+Categoria                |Texto         |20         ;Categoria o código de tarifa, que se debe corresponder con un código de tarifa de la tabla ConceptosTarifas
+SubCategoria             |Texto         |20         ;Si fuera necesario, complementa a Categoría
+ConsumoPromedio          |Entero        |           ;Valor contra el que debe contrastarse el consumo para establecer los fuera de rango
+ConsumoResidual          |Entero        |           ;Si hubo cambio de medidor, este valor se suma al consumo calculado. También se usa en caso de conexión directa autorizada
+ConsumoFacturado         |Entero        |           ;consumo total facturado, se suma el obtenido del medidor mas el residual.
+ConsumoTipo              |Entero        |           ;Código que identifica el tipo de consumo. A confirmar este dato
+OrdenTomado              |Entero        |           ;Viene en 0, se incrementa con cada lectura, se imprima o no. Permite establecer el órden en que se tomaron las lecturas.
+CESPnumero               |Texto         |20         ;Código CESP otorgado por AFIP
+CESPvencimiento          |Fecha         |dd/MM/yyyy ;Vencimeinto del CESP
+FacturaLetra             |Texto         |1          ;"Letra de la factura: ""A"" o ""B"""
+PuntoVenta               |Entero        |           ;Número de punto de venta (4 dígitos) exclusivo para cada terminal.
+FacturaNro1              |Entero        |           ;Número de factura de la primera cuota (8 dígitos)
+DocumPago1               |Entero        |           ;Número de documento de pago para cuota 1. Solo se usa en código de barras de cuota 1.
+Vencimiento1             |Fecha         |dd/MM/yyyy ;Fecha del venciminto de la primera cuota DD/MM/AAAA
+Importe1                 |DECIMAL       |#0.00      ;Valor del importe de la primera cuota. (2 decimales?)
+FacturaNro2              |Entero        |           ;Número de factura de la segunda cuota (8 dígitos)
+DocumPago2               |Entero        |           ;Número de documento de pago para cuota 2. Solo se usa en código de barras de cuota 2.
+Vencimiento2             |Fecha         |dd/MM/yyyy ;Fecha del venciminto de la segunda cuota DD/MM/AAAA
+Importe2                 |DECIMAL       |#0.00      ;Valor del importe de la segunda cuota. (2 decimales?)
+VencimientoProx          |Fecha         |dd/MM/yyyy ;Fecha aproximada del próximo vencimiento. DD/MM/AAAA
+HistoPeriodo01           |Entero        |           ;Periodo al que corresponde este historial, formato AAPP
+HistoConsumo01           |Entero        |           ;Consumo del periodo al que correspopnde el historial
+HistoPeriodo02           |Entero        |           ;
+HistoConsumo02           |Entero        |           ;
+HistoPeriodo03           |Entero        |           ;
+HistoConsumo03           |Entero        |           ;
+HistoPeriodo04           |Entero        |           ;
+HistoConsumo04           |Entero        |           ;
+HistoPeriodo05           |Entero        |           ;
+HistoConsumo05           |Entero        |           ;
+HistoPeriodo06           |Entero        |           ;
+HistoConsumo06           |Entero        |           ;
+HistoPeriodo07           |Entero        |           ;
+HistoConsumo07           |Entero        |           ;
+HistoPeriodo08           |Entero        |           ;
+HistoConsumo08           |Entero        |           ;
+HistoPeriodo09           |Entero        |           ;
+HistoConsumo09           |Entero        |           ;
+HistoPeriodo10           |Entero        |           ;
+HistoConsumo10           |Entero        |           ;
+HistoPeriodo11           |Entero        |           ;
+HistoConsumo11           |Entero        |           ;
+HistoPeriodo12           |Entero        |           ;
+HistoConsumo12           |Entero        |           ;
+                                                    
+                                                    
+[ConceptosDatos = ConceptosFijos]                   
+;Nombre                  |Tipo          |Formato     ;Descripción
+conexionID               |Entero        |           ;Número identificacdor de la conexión, en DPEC se conoce como "Contrato""
+Periodo                  |Entero        |           ;Año y periodo, en formato AAAAPP (ej.: 201503)
+CodigoConcepto           |Entero        |           ;Número que identifica a cada concepto en particular
+CodigoEscalon            |Entero        |           ;Código del escalón del concepto facturado
+CodigoAux                |Entero        |           ;Código auxiliar para caso de facturarse mas de un concepto con igual código ¿?
+CodigoGrupo              |Entero        |           ;Es el código de un concepto con el cual este concepto se agrupa en un único renglon al facturar
+TextoEscalon             |Texto         |50         ;texto impreso en la factura para el concepto
+TextoUnidades            |Texto         |10         ;texto que debe aparecer despues de las unidades facturadas, ej: KWh.
+CalcularBase             |Entero        |           ;Código de subtotal que será la base que se usa para el cálculo, Ver códigos de subtotales
+CalcularDesde            |DECIMAL       |#0.0000    ;CantidadFacturada = CalcularHasta - CalcularDesde
+CalcularHasta            |DECIMAL       |#0.0000    ;Estos campos determinan los límites del rango a facturar.
+AplicarBase              |Entero        |           ;Código de subtotal que será la base usada para determinar un rango que inidca cuando un escalón se factura, Ver códigos de subtotales
+AplicarDesde             |DECIMAL       |#0.0000    ;Facturar si y solo si (AplicarDesde < Valor de AplicaBase =< AplicarHasta)
+AplicarHasta             |DECIMAL       |#0.0000    ;ES decir que se factura este escalón solo si el valor que tiene el subtotal indicado como AplicarBase, está dentro del rango (Desde:Hasta)
+Subtotales               |Texto         |50         ;Subtotales a los que se debe sumar el concepto. Listado de códigos de subtotales separados por comas.
+CantMinima               |DECIMAL       |#0.0000    ;Si debe facturarse una cantidad mínima, se aplica este calor cuando la Cantidad a facturar es menor a este valor.
+CantMaxima               |DECIMAL       |#0.0000    ;Cantidad máxima a facturar. Si no hay máximo se puede poner (-1) o un número muy grande.
+ImprimeSiCero            |si/no         |           ;Normalmente los conceptos NO se imprimen si su importe es cero, esto permite imprimirlo igual.
+ImprimeSubtotal          |si/no         |           ;Si es necesario imprimir previamente el subtotal poner ""si"". Se imprimirá el total facturado hasta el momento."
+CuotaUno                 |Entero        |           ;Indica el porcentaje sque se cobra en la primera cuota, el saldo irá a la segunda. Valores enteros entre 0 y 100"
+Cantidad                 |DECIMAL       |#0.0000    ;Si la cantidad es un valor informado se ingresa la cantidad aquí, y debe ser CalcularBase=0,
+                                                    ;Si CalcularBase > 0, no se usa este valor y se usa el valor del Subtotal indicado por CalcularBase.
+Unitario                 |DECIMAL       |#0.0000    ;Importe = Cantidad x Unitario . Si fuera un porcentaje, caso IVA será coeficiente, es decir 21% debe pasar 0,21
+                                                    
+                                                    
+[ConceptosFacturados]                               
+;Nombre                  |Tipo          |Formato     ;Descripción
+conexionID               |Entero        |           ;Número identificacdor de la conexión, en DPEC se conoce como "Contrato"
+Periodo                  |Entero        |           ;Año y periodo, en formato AAAAPP (ej.: 201503)
+CodigoConcepto           |Entero        |           ;Número que identifica a cada concepto en particular
+CodigoEscalon            |Entero        |           ;Código del escalón del concepto facturado
+CodigoAux                |Entero        |           ;Código auxiliar para caso de facturarse mas de un concepto con igual código ¿?
+CodigoGrupo              |Entero        |           ;Es el código de un concepto con el cual este concepto se agrupa en un único renglon al facturar
+TextoDescripcion         |Texto         |50         ;texto impreso en la factura para el concepto
+Cantidad                 |DECIMAL       |#0.0000    ;Cantidad facturada
+Unitario                 |DECIMAL       |#0.0000    ;Precio unitario del concepto facturado
+Importe                  |DECIMAL       |#0.0000    ;Importe facturado (debe coincidir que: Importe = Cantidad x Unitario)
+Agrupador                |si/no         |           ;Si este concepto es el agrupador de un grupo facturados en un solo renglón
+                                                    
+                                                    
+[General]                                           
+validaLecturaBaja        |entero        |           ;
+validaLecturaAlta        |entero        |           ;
+validaImpresionBaja      |entero        |           ;
+validaImpresionAlta      |entero        |           ;
+validaImpresionConfirma  |entero        |           ;
+nroLote                  |entero        |           ;
+nroSecuencia             |entero        |           ;
+puntoVenta               |entero        |           ;
+facturaA                 |largo         |           ;
+facturaB                 |largo         |           ;
+facturaX                 |largo         |           ;
+fechaCarga               |Fecha         |dd/MM/yyyy ; OJO con este formato posiblemente sea "yyyy/MM/dd"
+horaCarga                |Hora          |HH:mm      ;
+periodoFacturacion       |entero        |           ;
+resolucionTarifa         |Texto         |10         ;
+codigoLecturista         |Texto         |10         ;
+flgSubTotGravados        |Texto         |4          ; Esto creo que no se usa
+codigoEquipo             |entero        |           ;
+localidadEmision         |entero        |           ;
+                                                    
+                                                    
+[Medidores]                                         
+;Nombre                  |Tipo          |Formato     ;Descripción
+ConexionID               |Entero        |           ;Número identificacdor de la conexión, en DPEC se conoce como "Contrato"
+Periodo                  |Entero        |           ;Año y periodo, en formato AAAAPP (ej.: 201503)
+Orden                    |Entero        |           ;Cuando la conexión tiene mas de un medidor.
+Modelo                   |Texto         |20         ;Modelo del medidor.
+Numero                   |Texto         |20         ;
+Multiplicador            |Entero        |           ;Factor multiplicador, debe ser mayor o igual a 1.
+Digitos                  |Entero        |           ;Cantidad de dígitos del medidor
+AnteriorFecha            |Fecha         |dd/MM/yyyy ;DD/MM/AAAA fecha de lectura anterior
+AnteriorEstado           |Entero        |4          ;Estado del medidor en su lectura anterior
+ActualFecha              |Fecha         |dd/MM/yyyy ;DD/MM/AAAA fecha de la lectura actual
+ActualHora               |Hora          |HH:mm      ;HH:mm Hora de tomna de estado actual
+ActualEstado             |Entero        |           ;Estado del medidor en esta lectura, valor leido por lecturista
+TipoLectura              |Entero        |           ;Código para identificar el tipo de lectura, según tabla
+                                                    
+
+[Novedades]
+codigoNov                |Entero        |           ;Código de novedad
+DetalleNov               |Texto         |50         ;Descripción de la novedad que se muestra en pantalla
+
+                                                  
+[NovedadesConex]                                    
+;Nombre                  |Tipo          |Formato     ;Descripción
+conexionID               |Entero        |           ;Identifica una conexión en un lugar físico dterminado con un medidor. En DPEC se denomina Contrato.
+Periodo                  |Entero        |           ;Año y periodo, en formato AAAAPP (ej.: 201503)
+Orden                    |Entero        |           ;Orden en que es cargada la nbovedad para cada conexión.
+Codigo                   |Entero        |           ;Código de la novedad ingresada, según tabla
+Observ                   |Texto         |255        ;stringque puede ser ingresado por el lecturista
+                                                    
+                                                    
+[Comprobantes]                                      
+;Nombre                  |Tipo          |Formato     ;Descripción
+PuntoVenta               |Entero        |           ;
+Factura-A                |Entero        |           ;Último número de factura tipo ""A"" impreso para este punto de venta"
+Factura-B                |Entero        |           ;Último número de factura tipo ""B"" impreso para este punto de venta"
+                                                    
+                                                    
+[TextosVarios]                                      
+;Nombre                  |Tipo          |Formato     ;Descripción
+conexionID               |Entero        |           ;
+Periodo                  |Entero        |           ;Año y periodo, en formato AAAAPP (ej.: 201503)
+Renglon                  |Entero        |           ;Número de orden de renglon a imprimir
+string                   |Texto         |50         ;stringa imprimirse
+                                                    
+                                                    
+[Excepciones]                                       
+;Nombre                  |Tipo          |Formato     ;Descripción
+conexionID               |Entero        |           ;
+Periodo                  |Entero        |           ;Año y periodo, en formato AAAAPP (ej.: 201503)
+Excepciones              |Texto         |100        ;Listado de conceptos que no deben facturarse a esta conexión. Se presentan los Codigos de conceptos separados por comas."
+                                                    
+                                                    
+[ConceptosTarifa]                                   
+;Nombre                  |Tipo          |Formato     ; Descripción                                                                                                                                                                                                          |
+CodigoTarifa             |Entero        |           ; Número que identifica la tarifa a aplicarse, corresponde al campo ""Categoria"" de Conexiones"
+CodigoConcepto           |Entero        |           ; Número que identifica cada concepto, util solo en caso de excepciones
+CodigoEscalon            |Entero        |           ; Número que identifica distintos escalones, ya sea por distintos rangos, u otras condiciones de aplicación.
+CodigoGrupo              |Entero        |           ; Número que identifica distintos escalones que deben agruparse en un único renglón.
+TextoTarifa              |Texto         |30         ; stringprincipal para la tarifa. Es redundante ya que se repite en cada escalón para una misma tarifa. Se imprime en el cuadro ""Tarifa"""
+TextoSub                 |Texto         |30         ; Algunas categorias tienen el mismo ;Nombrede tarifa pero con diferencias (caso: PPEQ. DEM. RESIDENCIAL tiene: General. Ex Combatinete, Empleado DPEC) No est  definido aún si se va a usar esta información al imprimir.
+TextoEscalon             |Texto         |30         ; stringque debe imprimirse en el renglón para este escalon. (Puede ser necesario completar con datos de consumo como por ej: 234 KWh x 0,59)
+TextoUnidades            |Texto         |10         ; stringque debe aparecer despues de las unidades facturadas, ej: KWh.
+CalcularBase             |Entero        |           ; Código de subtotal que ser  la base que se usa para el c lculo, Ver códigos de subtotales
+CalcularDesde            |DECIMAL       |#0.0000    ; Límite inferior del rango a facturar. (Ver detalles de Cantidad a facturar)
+CalcularHasta            |DECIMAL       |#0.0000    ; Límite superior del rango a facturar. (Ver detalles de Cantidad a facturar) (= 0: significa que NO hay límite superior)
+AplicarBase              |Entero        |           ; Código de subtotal que ser  la base usada para determinar un rango que inidca cuando un escalón se factura, Ver códigos de subtotales
+AplicarDesde             |DECIMAL       |#0.0000    ; Facturar si y solo si (AplicarDesde < Valor de AplicaBase =< AplicarHasta)
+AplicarHasta             |DECIMAL       |#0.0000    ; ES decir que se factura este escalón solo si el valor que tiene el subtotal indicado como AplicarBase, est  dentro del rango (Desde:Hasta)(= 0: significa que NO hay límite superior)"
+Subtotales               |Texto         |50         ; Subtotales a los que se debe sumar el concepto. Listado de códigos de subtotales separados por comas.
+CantMinima               |DECIMAL       |#0.0000    ; Si debe facturarse una cantidad mínima, se aplica este calor cuando la Cantidad a facturar es menor a este valor. (por ahora DPEC no lo usa)
+CantMaxima               |DECIMAL       |#0.0000    ; Cantidad m xima a facturar. Si no hay m ximo se puede poner (-1) o un número muy grande. (por ahora DPEC no lo usa)
+ImprimeSiCero            |si/no         |           ; Normalmente los conceptos NO se imprimen si su importe es cero, esto permite imprimirlo igual.
+ImprimeSubtotal          |si/no         |           ; Si es necesario imprimir previamente el subtotal poner ""si"", Se imprimir  el total facturado hasta el momento, entes del renglon de este concepto"
+CuotaUno                 |Entero        |           ; Indica el porcentaje sque se cobra en la primera cuota, el saldo ir  a la segunda. Valores enteros entre 0 y 100"
+Unitario                 |DECIMAL       |#0.000000  ; Precio unitario. TotalFacturado = Unitario x Cantidad
+                                                    
+                                                    
+[CondicionIVA]                                      
+;Nombre                  |Tipo          |Formato     ; Descripción
+Codigo                   |Entero        |           ; Un código que identifica el tipo de condición frente al IVA
+Condicion                |Texto         |50         ; Descripcion del la condición
+AlicuotaIVA1             |DECIMAL       |#0.000000  ; Porcentaje, como un coeficiente de la alicuota a aplicar (21% = 0,21)
+AlicuotaIVA2             |DECIMAL       |#0.000000  ; Porcentaje, como un coeficiente de la alicuota a aplicar (21% = 0,21), caso no categorizado que se agrega 13,5%
+RetencionIVA             |DECIMAL       |#0.000000  ; Porcentaje, como un coeficiente de la alicuota a aplicar (3% = 0,03)
+RetencionDGR             |DECIMAL       |#0.000000  ; Porcentaje, como un coeficiente de la alicuota a aplicar (1,8% = 0,018)
+                                                    
+                                                    
+[NovedadesTabla]                                    
+;Nombre                  |Tipo          |Formato     ; Descripción
+codigoNov                |Entero        |           ; Un código que identifica la novedad
+DetalleNov               |Texto         |50         ; Descripción de la novedad, aparece en la tabla para que el lecturista selecciione.
+                                                    
+                                                    
+[Lecturistas]                                       
+;Nombre                  |Tipo          |Formato     ; Descripción
+Codigo                   |Entero        |           ; Código Lecturista
+Legajo                   |Texto         |20         ; Número de legajo del lecturista o DNI
+Apellido                 |Texto         |20         
+Nombre                   |Texto         |20         
+                                                    
+                                                    
+[Localidades]                                       
+;Nombre                  |Tipo          |Formato     ; Descripción
+CodigoPostal             |Texto         |10         ; Código Postal
+CodigoInt                |Entero        |           ; Número con el que se identifica la localidad dentro de DPEC- Puede estar vacío
+Localidad                |Texto         |30         ; Nombrede la localidad
+Provincia                |Texto         |20         ; Nombrede la provincia
+                                                    
+                                                    
+[Vencimientos]                                      
+;Nombre                  |Tipo          |Formato     ; Descripción
+Periodo                  |Entero        |           ; Periodo en formato AAAAPP
+Remesa                   |Entero        |           ; remesa 1 a 8
+Vencimiento1             |Fecha         |dd/MM/yyyy ; DD/MM/AAAA vencimiento de la primera cuota
+Vencimiento2             |Fecha         |dd/MM/yyyy ; DD/MM/AAAA vencimiento de la segunda cuota
+                                                    
+                                                    
+[Alumbrado]                                         
+;Nombre                  |Tipo          |Formato     ; Descripción
+CodigoConcepto           |Entero        |           ; Código del concepto para alumbrado (Podria ser el mismo para todos, en ese caso se elimina el campo)
+CodigoTarifa             |Entero        |           ; Codigo dde tarifa o categoría al que se aplica este escalón de alumbrado
+AplicarDesde             |DECIMAL       |#0.0000    ; Valor del consumno a partir del cual se factura este escalon
+AplicarHasta             |DECIMAL       |#0.0000    ; Valor del consumo hasta el cual se factura este escalon
+Valor                    |DECIMAL       |#0.0000    ; Valor a facturar. (se factura si: AplicarDesde < Consumo =< AplicarHasta)
+
+
+[Altas]
+Periodo                  |Entero        |           ;
+Fecha                    |Fecha         |dd/MM/yyyy ;
+Hora                     |Hora          |HH:mm      ;
+TipoMedidor              |Texto         |           ;
+NumeroMedidor            |Texto         |           ;
+Activa                   |Texto         |           ; A/R: Activa o reactiva
+Estado                   |Entero        |           ;
+Domicilio                |Texto         |           ;                                   
+
+

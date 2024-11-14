@@ -1,0 +1,1208 @@
+ARCHIVOS LOG -  DPEC FIS-GAG
+2015-12-19:14:26.57 - Abriendo base de datos. Usuario: gagraff
+2015-12-19:14:27.00 - Conexión establecida normalmente!! Base: DatosDPEC. Usuari
+o: gagraff
+2015-12-19:14:27.00 - Cargando datos Generales
+2015-12-19 (14:36:34) Abriendo base de datos. Usuario: gagraff
+2015-12-19 (14:36:42) Error al abrir base de datos: DatosDPEC Usuario: gagraff
+2015-12-19 (14:37:05) Abriendo base de datos. Usuario: gagraff
+2015-12-19 (14:37:06) Conexión establecida normalmente!! Base: DatosDPEC. Usuario:
+     gagraff
+2015-12-19 (14:37:06) Cargando datos Generales
+2015-12-19 (14:38:33) Abriendo base de datos. Usuario: gagraff
+2015-12-19 (14:38:35) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-19 (14:38:35) Cargando datos Generales
+2015-12-19 (14:42:10) Abriendo base de datos. Usuario: gagraff
+2015-12-19 (14:42:21) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-19 (14:42:21) Cargando datos Generales
+2015-12-19 (14:42:25) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2015-12-19 (14:42:25) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2015-12-19 (14:42:37) Abriendo base de datos. Usuario: gagraff
+2015-12-19 (14:42:39) Error al abrir base de datos: DatosDPEC Usuario: gagraff
+2015-12-19 (14:42:41) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2015-12-19 (14:42:41) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2015-12-19 (14:44:31) Abriendo base de datos. Usuario: gagraff
+2015-12-19 (14:44:32) Conexión establecida normalmente!! Base:Conexión
+     establecida normalmente!! Base:Conexión establecida normalmente!!
+     Base:Conexión establecida normalmente!! Base:Conexión establecida
+     normalmente!! Base:Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-19 (14:44:32) Cargando datos Generales
+2015-12-19 (14:44:35) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2015-12-19 (14:44:35) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2015-12-20 (19:59:36) Abriendo base de datos. Usuario: gagraff
+2015-12-20 (19:59:45) Error al abrir base de datos: DatosDPEC; Usuario: gagraff
+2015-12-20 (19:59:56) Abriendo base de datos. Usuario: gagraff
+2015-12-20 (19:59:57) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-20 (19:59:57) Cargando datos Generales
+2015-12-20 (20:00:25) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2015-12-20 (20:00:25) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2015-12-20 (20:03:48) Abriendo base de datos. Usuario: gag
+2015-12-20 (20:03:48) Authentication to host 'localhost' for user 'gag' using
+     method 'mysql_native_password' failed with message: Access denied for user
+     'gag'@'localhost' (using password: NO)
+2015-12-20 (20:03:50) Error al abrir base de datos: DatosDPEC; Usuario: gag
+2015-12-20 (20:04:02) Abriendo base de datos. Usuario: gagraff
+2015-12-20 (20:04:02) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-20 (20:04:02) Cargando datos Generales
+2015-12-20 (20:04:10) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2015-12-20 (20:04:10) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2015-12-20 (20:05:34) Abriendo base de datos. Usuario: jjgjg
+2015-12-20 (20:05:34) Authentication to host 'localhost' for user 'jjgjg' using
+     method 'mysql_native_password' failed with message: Access denied for user
+     'jjgjg'@'localhost' (using password: NO)
+2015-12-20 (20:05:35) Error al abrir base de datos: DatosDPEC; Usuario: jjgjg
+2015-12-20 (20:05:41) Abriendo base de datos. Usuario: gagrfa
+2015-12-20 (20:05:41) Authentication to host 'localhost' for user 'gagrfa' using
+     method 'mysql_native_password' failed with message: Access denied for user
+     'gagrfa'@'localhost' (using password: NO)
+2015-12-20 (20:05:41) Error al abrir base de datos: DatosDPEC; Usuario: gagrfa
+2015-12-20 (20:05:46) Abriendo base de datos. Usuario: gagrfa
+2015-12-20 (20:05:46) Authentication to host 'localhost' for user 'gagrfa' using
+     method 'mysql_native_password' failed with message: Access denied for user
+     'gagrfa'@'localhost' (using password: YES)
+2015-12-20 (20:05:48) Error al abrir base de datos: DatosDPEC; Usuario: gagrfa
+2015-12-20 (20:05:55) Abriendo base de datos. Usuario: gagraff
+2015-12-20 (20:05:55) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-20 (20:05:55) Cargando datos Generales
+2015-12-20 (20:06:04) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2015-12-20 (20:06:04) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2015-12-20 (20:17:54) Abriendo base de datos. Usuario: kk
+2015-12-20 (20:17:54) Authentication to host 'localhost' for user 'kk' using
+     method 'mysql_native_password' failed with message: Access denied for user
+     'kk'@'localhost' (using password: NO)
+2015-12-20 (20:17:56) Error al abrir base de datos: DatosDPEC; Usuario: kk
+2015-12-20 (20:18:07) Abriendo base de datos. Usuario: gagraff
+2015-12-20 (20:18:07) Authentication to host 'localhost' for user 'gagraff'
+     using method 'mysql_native_password' failed with message: Access denied for
+     user 'gagraff'@'localhost' (using password: YES)
+2015-12-20 (20:18:08) Error al abrir base de datos: DatosDPEC; Usuario: gagraff
+2015-12-20 (20:18:14) Abriendo base de datos. Usuario: gagraff
+2015-12-20 (20:18:14) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-20 (20:18:14) Cargando datos Generales
+2015-12-20 (20:18:24) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2015-12-20 (20:18:24) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2015-12-20 (20:18:30) Abriendo base de datos. Usuario: dghy
+2015-12-20 (20:18:30) Authentication to host 'localhost' for user 'dghy' using
+     method 'mysql_native_password' failed with message: Access denied for user
+     'dghy'@'localhost' (using password: NO)
+2015-12-20 (20:18:30) Error al abrir base de datos: DatosDPEC; Usuario: dghy
+2015-12-20 (20:18:31) Abriendo base de datos. Usuario: dghy
+2015-12-20 (20:18:31) Authentication to host 'localhost' for user 'dghy' using
+     method 'mysql_native_password' failed with message: Access denied for user
+     'dghy'@'localhost' (using password: NO)
+2015-12-20 (20:18:32) Error al abrir base de datos: DatosDPEC; Usuario: dghy
+2015-12-20 (20:18:33) Abriendo base de datos. Usuario: dghy
+2015-12-20 (20:18:33) Authentication to host 'localhost' for user 'dghy' using
+     method 'mysql_native_password' failed with message: Access denied for user
+     'dghy'@'localhost' (using password: NO)
+2015-12-20 (20:18:33) Error al abrir base de datos: DatosDPEC; Usuario: dghy
+2015-12-20 (20:18:34) Abriendo base de datos. Usuario: dghy
+2015-12-20 (20:18:34) Authentication to host 'localhost' for user 'dghy' using
+     method 'mysql_native_password' failed with message: Access denied for user
+     'dghy'@'localhost' (using password: NO)
+2015-12-20 (20:18:34) Error al abrir base de datos: DatosDPEC; Usuario: dghy
+2015-12-20 (20:18:35) Abriendo base de datos. Usuario: dghy
+2015-12-20 (20:18:35) Authentication to host 'localhost' for user 'dghy' using
+     method 'mysql_native_password' failed with message: Access denied for user
+     'dghy'@'localhost' (using password: NO)
+2015-12-20 (20:18:36) Error al abrir base de datos: DatosDPEC; Usuario: dghy
+2015-12-20 (20:18:36) Abriendo base de datos. Usuario: dghy
+2015-12-20 (20:18:36) Authentication to host 'localhost' for user 'dghy' using
+     method 'mysql_native_password' failed with message: Access denied for user
+     'dghy'@'localhost' (using password: NO)
+2015-12-20 (20:18:37) Error al abrir base de datos: DatosDPEC; Usuario: dghy
+2015-12-20 (20:18:38) Abriendo base de datos. Usuario: dghy
+2015-12-20 (20:18:38) Authentication to host 'localhost' for user 'dghy' using
+     method 'mysql_native_password' failed with message: Access denied for user
+     'dghy'@'localhost' (using password: NO)
+2015-12-20 (20:18:38) Error al abrir base de datos: DatosDPEC; Usuario: dghy
+2015-12-20 (20:18:39) Abriendo base de datos. Usuario: dghy
+2015-12-20 (20:18:39) Authentication to host 'localhost' for user 'dghy' using
+     method 'mysql_native_password' failed with message: Access denied for user
+     'dghy'@'localhost' (using password: NO)
+2015-12-20 (20:18:39) Error al abrir base de datos: DatosDPEC; Usuario: dghy
+2015-12-20 (20:18:47) Abriendo base de datos. Usuario: gagraff
+2015-12-20 (20:18:47) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-20 (20:18:47) Cargando datos Generales
+2015-12-20 (20:20:27) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2015-12-20 (20:20:27) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2015-12-22 (16:45:20) Cerrando base de datos:  - Usuario: 
+2015-12-22 (16:45:20) Error al cerrar base de datos:  - Usuario: 
+2015-12-23 (15:35:32) Cerrando base de datos:  - Usuario: 
+2015-12-23 (15:35:32) Error al cerrar base de datos:  - Usuario: 
+2015-12-23 (23:23:29) Cerrando base de datos:  - Usuario: 
+2015-12-23 (23:23:29) Error al cerrar base de datos:  - Usuario: 
+2015-12-23 (23:27:48) Abriendo base de datos. Usuario: gagraff
+2015-12-23 (23:27:51) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-23 (23:27:51) Cargando datos Generales
+2015-12-23 (23:28:00) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2015-12-23 (23:28:00) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2015-12-23 (23:28:41) Cerrando base de datos:  - Usuario: 
+2015-12-23 (23:28:41) Error al cerrar base de datos:  - Usuario: 
+2015-12-23 (23:29:03) Cerrando base de datos:  - Usuario: 
+2015-12-23 (23:29:04) Error al cerrar base de datos:  - Usuario: 
+2015-12-25 (20:27:21) Cerrando base de datos:  - Usuario: 
+2015-12-25 (20:27:22) Error al cerrar base de datos:  - Usuario: 
+2015-12-25 (20:35:08) Abriendo base de datos. Usuario: gagraff
+2015-12-25 (20:35:08) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-25 (20:35:08) Cargando datos Generales
+2015-12-25 (20:35:22) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2015-12-25 (20:35:22) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2015-12-25 (20:43:07) Abriendo base de datos. Usuario: gagraff
+2015-12-25 (20:43:07) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-25 (20:43:07) Cargando datos Generales
+2015-12-25 (20:43:16) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2015-12-25 (20:43:16) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2015-12-25 (20:43:53) Abriendo base de datos. Usuario: gagraff
+2015-12-25 (20:43:53) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-25 (20:43:53) Cargando datos Generales
+2015-12-25 (20:44:00) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2015-12-25 (20:44:00) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2015-12-25 (21:20:36) Abriendo base de datos. Usuario: gagraff
+2015-12-25 (21:20:37) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-25 (21:20:37) Cargando datos Generales
+2015-12-25 (21:22:28) Abriendo base de datos. Usuario: gagraff
+2015-12-25 (21:22:29) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-25 (21:22:29) Cargando datos Generales
+2015-12-25 (21:24:00) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2015-12-25 (21:24:00) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2015-12-25 (21:28:22) Abriendo base de datos. Usuario: gagraff
+2015-12-25 (21:28:23) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-25 (21:28:23) Cargando datos Generales
+2015-12-25 (21:29:02) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2015-12-25 (21:29:02) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2015-12-25 (21:30:13) Abriendo base de datos. Usuario: garaff
+2015-12-25 (21:30:14) Authentication to host 'localhost' for user 'garaff' using
+     method 'mysql_native_password' failed with message: Access denied for user
+     'garaff'@'localhost' (using password: NO)
+2015-12-25 (21:30:15) Error al abrir base de datos: DatosDPEC; Usuario: garaff
+2015-12-25 (21:30:35) Abriendo base de datos. Usuario: garaff
+2015-12-25 (21:30:36) Authentication to host 'localhost' for user 'garaff' using
+     method 'mysql_native_password' failed with message: Access denied for user
+     'garaff'@'localhost' (using password: YES)
+2015-12-25 (21:30:37) Error al abrir base de datos: DatosDPEC; Usuario: garaff
+2015-12-25 (21:30:47) Abriendo base de datos. Usuario: gagraff
+2015-12-25 (21:30:48) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-25 (21:30:48) Cargando datos Generales
+2015-12-25 (21:31:58) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2015-12-25 (21:31:58) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2015-12-25 (21:37:12) Abriendo base de datos. Usuario: gagraff
+2015-12-25 (21:37:13) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-25 (21:37:13) Cargando datos Generales
+2015-12-25 (21:39:48) Abriendo base de datos. Usuario: gagraff
+2015-12-25 (21:39:48) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-25 (21:39:48) Cargando datos Generales
+2015-12-25 (21:40:11) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2015-12-25 (21:40:11) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2015-12-25 (21:41:16) Abriendo base de datos. Usuario: gagraff
+2015-12-25 (21:41:17) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-25 (21:41:17) Cargando datos Generales
+2015-12-25 (21:44:56) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2015-12-25 (21:44:56) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2015-12-27 (18:25:12) Abriendo base de datos. Usuario: gagraff
+2015-12-27 (18:25:13) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-27 (18:25:13) Cargando datos Generales
+2015-12-27 (18:27:51) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2015-12-27 (18:27:51) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2015-12-27 (18:29:48) Abriendo base de datos. Usuario: gagraff2003
+2015-12-27 (18:29:49) Authentication to host 'localhost' for user 'gagraff2003'
+     using method 'mysql_native_password' failed with message: Access denied for
+     user 'gagraff2003'@'localhost' (using password: NO)
+2015-12-27 (18:29:50) Error al abrir base de datos: DatosDPEC; Usuario:
+     gagraff2003
+2015-12-27 (18:29:56) Abriendo base de datos. Usuario: gagraff
+2015-12-27 (18:29:56) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-27 (18:29:56) Cargando datos Generales
+2015-12-27 (18:31:28) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2015-12-27 (18:31:28) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2015-12-27 (18:32:16) Abriendo base de datos. Usuario: gagraff
+2015-12-27 (18:32:16) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-27 (18:32:16) Cargando datos Generales
+2015-12-27 (18:38:41) Abriendo base de datos. Usuario: gagraff
+2015-12-27 (18:38:42) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-27 (18:38:42) Cargando datos Generales
+2015-12-28 (16:05:28) Abriendo base de datos. Usuario: gagraff
+2015-12-28 (16:05:29) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-28 (16:05:29) Cargando datos Generales
+2015-12-28 (16:07:22) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2015-12-28 (16:07:22) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2015-12-28 (16:28:47) Abriendo base de datos. Usuario: gagraff
+2015-12-28 (16:28:48) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-28 (16:28:48) Cargando datos Generales
+2015-12-28 (16:29:02) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2015-12-28 (16:29:02) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2015-12-28 (16:32:08) Abriendo base de datos. Usuario: gagraff
+2015-12-28 (16:32:08) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-28 (16:32:08) Cargando datos Generales
+2015-12-28 (16:32:27) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2015-12-28 (16:32:27) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2015-12-28 (17:40:36) Abriendo base de datos. Usuario: GAGRAFF
+2015-12-28 (17:40:36) Authentication to host 'localhost' for user 'GAGRAFF'
+     using method 'mysql_native_password' failed with message: Access denied for
+     user 'GAGRAFF'@'localhost' (using password: YES)
+2015-12-28 (17:40:42) Error al abrir base de datos: DatosDPEC; Usuario: GAGRAFF
+2015-12-28 (17:40:49) Abriendo base de datos. Usuario: GAGRAFF
+2015-12-28 (17:40:49) Authentication to host 'localhost' for user 'GAGRAFF'
+     using method 'mysql_native_password' failed with message: Access denied for
+     user 'GAGRAFF'@'localhost' (using password: YES)
+2015-12-28 (17:40:51) Error al abrir base de datos: DatosDPEC; Usuario: GAGRAFF
+2015-12-28 (17:41:01) Abriendo base de datos. Usuario: gagraff
+2015-12-28 (17:41:01) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-28 (17:41:01) Cargando datos Generales
+2015-12-29 (13:19:08) Abriendo base de datos. Usuario: gagraff
+2015-12-29 (13:19:09) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-29 (13:19:09) Cargando datos Generales
+2015-12-29 (13:33:16) Abriendo base de datos. Usuario: gagraff
+2015-12-29 (13:33:17) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-29 (13:33:17) Cargando datos Generales
+2015-12-29 (13:36:02) Abriendo base de datos. Usuario: gagraff
+2015-12-29 (13:36:02) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-29 (13:36:02) Cargando datos Generales
+2015-12-29 (13:37:17) Abriendo base de datos. Usuario: gagraff
+2015-12-29 (13:37:18) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-29 (13:37:18) Cargando datos Generales
+2015-12-29 (14:13:29) Abriendo base de datos. Usuario: gagraff
+2015-12-29 (14:13:29) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-29 (14:13:29) Cargando datos Generales
+2015-12-29 (14:17:17) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2015-12-29 (14:17:17) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2015-12-30 (19:52:40) Abriendo base de datos. Usuario: gagraff
+2015-12-30 (19:52:41) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2015-12-30 (19:52:41) Cargando datos Generales
+2015-12-30 (19:53:48) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2015-12-30 (19:53:48) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-03 (16:00:56) Abriendo base de datos. Usuario: gagraff
+2016-01-03 (16:00:57) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-03 (16:00:57) Cargando datos Generales
+2016-01-03 (16:04:14) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-03 (16:04:14) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-03 (22:41:38) Abriendo base de datos. Usuario: gagraff
+2016-01-03 (22:41:38) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-03 (22:41:38) Cargando datos Generales
+2016-01-03 (23:05:56) Abriendo base de datos. Usuario: gagraff
+2016-01-03 (23:05:57) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-03 (23:05:57) Cargando datos Generales
+2016-01-03 (23:32:50) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-03 (23:32:50) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-03 (23:48:56) Abriendo base de datos. Usuario: gagraff
+2016-01-03 (23:48:57) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-03 (23:48:57) Cargando datos Generales
+2016-01-03 (23:59:39) Abriendo base de datos. Usuario: gagraff
+2016-01-03 (23:59:39) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-03 (23:59:39) Cargando datos Generales
+2016-01-04 (00:00:55) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-04 (00:00:55) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-04 (00:04:11) Abriendo base de datos. Usuario: gagraff
+2016-01-04 (00:04:12) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-04 (00:04:12) Cargando datos Generales
+2016-01-04 (00:04:21) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-04 (00:04:21) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-04 (00:36:53) Abriendo base de datos. Usuario: gagraff
+2016-01-04 (00:36:53) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-04 (00:36:53) Cargando datos Generales
+2016-01-04 (00:37:19) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-04 (00:37:19) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-04 (00:53:40) Abriendo base de datos. Usuario: gagraff
+2016-01-04 (00:53:41) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-04 (00:53:41) Cargando datos Generales
+2016-01-04 (01:18:32) Abriendo base de datos. Usuario: gagraff
+2016-01-04 (01:18:33) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-04 (01:18:33) Cargando datos Generales
+2016-01-04 (10:39:42) Abriendo base de datos. Usuario: gagraff
+2016-01-04 (10:39:43) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-04 (10:39:43) Cargando datos Generales
+2016-01-04 (10:40:01) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-04 (10:40:01) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-04 (11:56:25) Abriendo base de datos. Usuario: gagraff
+2016-01-04 (11:56:26) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-04 (11:56:26) Cargando datos Generales
+2016-01-04 (11:58:13) Abriendo base de datos. Usuario: gagraff
+2016-01-04 (11:58:14) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-04 (11:58:14) Cargando datos Generales
+2016-01-04 (14:24:49) Abriendo base de datos. Usuario: gagraff
+2016-01-04 (14:24:51) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-04 (14:24:51) Cargando datos Generales
+2016-01-04 (14:31:41) Abriendo base de datos. Usuario: gagraff
+2016-01-04 (14:31:45) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-04 (14:31:45) Cargando datos Generales
+2016-01-04 (15:20:16) Abriendo base de datos. Usuario: gagraff
+2016-01-04 (15:20:17) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-04 (15:20:17) Cargando datos Generales
+2016-01-04 (16:50:40) Abriendo base de datos. Usuario: gagraff
+2016-01-04 (16:50:42) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-04 (16:50:42) Cargando datos Generales
+2016-01-05 (22:46:25) Abriendo base de datos. Usuario: gagraff
+2016-01-05 (22:46:27) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-05 (22:46:27) Cargando datos Generales
+2016-01-05 (22:51:38) Abriendo base de datos. Usuario: gagraff
+2016-01-05 (22:51:38) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-05 (22:51:38) Cargando datos Generales
+2016-01-05 (22:52:14) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-05 (22:52:14) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-05 (22:55:31) Abriendo base de datos. Usuario: gagraff
+2016-01-05 (22:55:31) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-05 (22:55:31) Cargando datos Generales
+2016-01-05 (22:56:37) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-05 (22:56:37) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-05 (22:59:24) Abriendo base de datos. Usuario: gagraff
+2016-01-05 (22:59:24) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-05 (22:59:24) Cargando datos Generales
+2016-01-05 (23:01:44) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-05 (23:01:44) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-05 (23:03:43) Abriendo base de datos. Usuario: gagraff
+2016-01-05 (23:03:43) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-05 (23:03:43) Cargando datos Generales
+2016-01-05 (23:06:47) Abriendo base de datos. Usuario: gagraff
+2016-01-05 (23:06:47) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-05 (23:06:47) Cargando datos Generales
+2016-01-05 (23:08:47) Abriendo base de datos. Usuario: gagraff
+2016-01-05 (23:08:47) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-05 (23:08:47) Cargando datos Generales
+2016-01-05 (23:09:18) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-05 (23:09:18) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-05 (23:25:01) Abriendo base de datos. Usuario: gagraff
+2016-01-05 (23:25:01) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-05 (23:25:01) Cargando datos Generales
+2016-01-06 (00:18:43) Abriendo base de datos. Usuario: gagraff
+2016-01-06 (00:18:44) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-06 (00:18:44) Cargando datos Generales
+2016-01-06 (00:28:22) Abriendo base de datos. Usuario: gagraff
+2016-01-06 (00:28:22) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-06 (00:28:22) Cargando datos Generales
+2016-01-06 (00:33:06) Abriendo base de datos. Usuario: gagraff
+2016-01-06 (00:33:06) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-06 (00:33:06) Cargando datos Generales
+2016-01-06 (00:43:10) Abriendo base de datos. Usuario: gagraff
+2016-01-06 (00:43:10) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-06 (00:43:10) Cargando datos Generales
+2016-01-06 (00:45:47) Abriendo base de datos. Usuario: gagraff
+2016-01-06 (00:45:47) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-06 (00:45:47) Cargando datos Generales
+2016-01-06 (00:54:31) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-06 (00:54:31) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-14 (09:22:49) Abriendo base de datos. Usuario: gagraff
+2016-01-14 (09:22:50) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-14 (09:22:50) Cargando datos Generales
+2016-01-14 (17:17:20) Abriendo base de datos. Usuario: gagraff
+2016-01-14 (17:17:21) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-14 (17:17:21) Cargando datos Generales
+2016-01-14 (17:19:06) Abriendo base de datos. Usuario: gagraff
+2016-01-14 (17:19:06) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-14 (17:19:06) Cargando datos Generales
+2016-01-14 (17:21:11) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-14 (17:21:11) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-14 (17:27:34) Abriendo base de datos. Usuario: gagraff
+2016-01-14 (17:27:34) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-14 (17:27:34) Cargando datos Generales
+2016-01-14 (17:44:29) Abriendo base de datos. Usuario: gagraff
+2016-01-14 (17:44:29) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-14 (17:44:29) Cargando datos Generales
+2016-01-14 (17:46:22) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-14 (17:46:22) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-14 (17:49:05) Abriendo base de datos. Usuario: gagraff
+2016-01-14 (17:49:05) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-14 (17:49:05) Cargando datos Generales
+2016-01-14 (17:49:36) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-14 (17:49:36) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-14 (17:55:29) Abriendo base de datos. Usuario: gagraff
+2016-01-14 (17:55:29) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-14 (17:55:29) Cargando datos Generales
+2016-01-14 (17:56:27) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-14 (17:56:27) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-14 (17:57:14) Abriendo base de datos. Usuario: gagraff
+2016-01-14 (17:57:14) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-14 (17:57:14) Cargando datos Generales
+2016-01-14 (17:58:16) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-14 (17:58:16) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-15 (16:36:16) Abriendo base de datos. Usuario: gagraff
+2016-01-15 (16:36:17) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-15 (16:36:17) Cargando datos Generales
+2016-01-15 (16:53:04) Abriendo base de datos. Usuario: gagraff
+2016-01-15 (16:53:04) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-15 (16:53:04) Cargando datos Generales
+2016-01-15 (16:55:04) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-15 (16:55:04) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-15 (16:55:39) Abriendo base de datos. Usuario: gagraff
+2016-01-15 (16:55:40) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-15 (16:55:40) Cargando datos Generales
+2016-01-15 (16:56:19) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-15 (16:56:19) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-15 (21:38:39) Abriendo base de datos. Usuario: gagraff
+2016-01-15 (21:38:39) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-15 (21:38:39) Cargando datos Generales
+2016-01-15 (21:39:08) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-15 (21:39:08) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-15 (22:22:01) Abriendo base de datos. Usuario: gagraff
+2016-01-15 (22:22:04) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-15 (22:22:04) Cargando datos Generales
+2016-01-17 (16:40:03) Cerrando base de datos:  - Usuario: 
+2016-01-17 (16:40:05) Error al cerrar base de datos:  - Usuario: 
+2016-01-17 (17:01:39) Cerrando base de datos:  - Usuario: 
+2016-01-17 (17:01:39) Error al cerrar base de datos:  - Usuario: 
+2016-01-17 (17:21:01) Abriendo base de datos. Usuario: gagraff
+2016-01-17 (17:21:02) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-17 (17:21:02) Cargando datos Generales
+2016-01-17 (17:26:36) Abriendo base de datos. Usuario: gagraff
+2016-01-17 (17:26:36) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-17 (17:26:36) Cargando datos Generales
+2016-01-17 (17:29:45) Abriendo base de datos. Usuario: gagraff
+2016-01-17 (17:29:46) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-17 (17:29:46) Cargando datos Generales
+2016-01-17 (17:34:13) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-17 (17:34:13) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-17 (18:20:28) Abriendo base de datos. Usuario: gagraff
+2016-01-17 (18:20:32) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-17 (18:20:32) Cargando datos Generales
+2016-01-17 (19:01:59) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-17 (19:01:59) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-17 (19:14:14) Abriendo base de datos. Usuario: gagraff
+2016-01-17 (19:14:16) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-17 (19:14:16) Cargando datos Generales
+2016-01-17 (19:14:26) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-17 (19:14:26) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-17 (19:16:52) Abriendo base de datos. Usuario: gagraff
+2016-01-17 (19:16:53) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-17 (19:16:53) Cargando datos Generales
+2016-01-17 (19:17:01) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-17 (19:17:01) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-17 (19:52:04) Abriendo base de datos. Usuario: gagraff
+2016-01-17 (19:52:05) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-17 (19:52:05) Cargando datos Generales
+2016-01-17 (19:52:48) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-17 (19:52:48) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-17 (19:53:02) Abriendo base de datos. Usuario: gagraff
+2016-01-17 (19:53:03) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-17 (19:53:03) Cargando datos Generales
+2016-01-17 (19:53:06) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-17 (19:53:06) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-17 (19:55:41) Abriendo base de datos. Usuario: gagraff
+2016-01-17 (19:55:42) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-17 (19:55:42) Cargando datos Generales
+2016-01-17 (19:59:18) Abriendo base de datos. Usuario: gagraff
+2016-01-17 (19:59:19) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-17 (19:59:19) Cargando datos Generales
+2016-01-17 (20:00:36) Abriendo base de datos. Usuario: gagraff
+2016-01-17 (20:00:37) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-17 (20:00:37) Cargando datos Generales
+2016-01-17 (20:02:26) Abriendo base de datos. Usuario: gagraff
+2016-01-17 (20:02:27) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-17 (20:02:27) Cargando datos Generales
+2016-01-17 (20:04:49) Abriendo base de datos. Usuario: gagraff
+2016-01-17 (20:04:50) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-17 (20:04:50) Cargando datos Generales
+2016-01-17 (20:05:49) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-17 (20:05:49) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-17 (20:12:41) Abriendo base de datos. Usuario: gagraff
+2016-01-17 (20:12:42) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-17 (20:12:42) Cargando datos Generales
+2016-01-17 (20:13:53) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-17 (20:13:53) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-17 (20:16:11) Abriendo base de datos. Usuario: gagraff
+2016-01-17 (20:16:12) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-17 (20:16:12) Cargando datos Generales
+2016-01-17 (20:17:00) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-17 (20:17:00) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-17 (20:18:51) Abriendo base de datos. Usuario: GAGRAFF
+2016-01-17 (20:18:52) Authentication to host 'localhost' for user 'GAGRAFF'
+     using method 'mysql_native_password' failed with message: Access denied for
+     user 'GAGRAFF'@'localhost' (using password: YES)
+2016-01-17 (20:18:53) Error al abrir base de datos: DatosDPEC; Usuario: GAGRAFF
+2016-01-17 (20:19:04) Abriendo base de datos. Usuario: gagraff
+2016-01-17 (20:19:05) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-17 (20:19:05) Cargando datos Generales
+2016-01-17 (20:24:43) Abriendo base de datos. Usuario: gagraff
+2016-01-17 (20:24:44) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-17 (20:24:44) Cargando datos Generales
+2016-01-17 (20:29:22) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-17 (20:29:22) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-22 (09:13:56) Abriendo base de datos. Usuario: gagraff
+2016-01-22 (09:13:58) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-22 (09:13:58) Cargando datos Generales
+2016-01-22 (09:14:48) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-22 (09:14:48) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-22 (09:15:27) Abriendo base de datos. Usuario: gagraff
+2016-01-22 (09:15:27) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-22 (09:15:27) Cargando datos Generales
+2016-01-22 (09:16:12) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-22 (09:16:12) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-31 (22:10:02) Abriendo base de datos. Usuario: gagraff
+2016-01-31 (22:10:06) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-31 (22:10:06) Cargando datos Generales
+2016-01-31 (22:11:23) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-31 (22:11:23) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-31 (22:13:06) Abriendo base de datos. Usuario: gagraff
+2016-01-31 (22:13:07) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-31 (22:13:07) Cargando datos Generales
+2016-01-31 (22:14:02) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-31 (22:14:02) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-31 (22:17:26) Abriendo base de datos. Usuario: gagraff
+2016-01-31 (22:17:26) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-31 (22:17:26) Cargando datos Generales
+2016-01-31 (22:17:37) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-31 (22:17:37) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-31 (22:20:08) Abriendo base de datos. Usuario: gagraff
+2016-01-31 (22:20:08) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-31 (22:20:08) Cargando datos Generales
+2016-01-31 (22:21:51) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-31 (22:21:51) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-31 (22:25:16) Abriendo base de datos. Usuario: gagraff
+2016-01-31 (22:25:17) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-31 (22:25:17) Cargando datos Generales
+2016-01-31 (22:31:32) Abriendo base de datos. Usuario: gagraff
+2016-01-31 (22:31:33) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-31 (22:31:33) Cargando datos Generales
+2016-01-31 (22:32:31) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-31 (22:32:31) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-31 (22:35:19) Abriendo base de datos. Usuario: gagraff
+2016-01-31 (22:35:19) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-31 (22:35:19) Cargando datos Generales
+2016-01-31 (22:35:47) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-01-31 (22:35:47) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-01-31 (23:52:04) Abriendo base de datos. Usuario: gagraff
+2016-01-31 (23:52:05) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-01-31 (23:52:05) Cargando datos Generales
+2016-02-01 (00:26:03) Abriendo base de datos. Usuario: gagraff
+2016-02-01 (00:26:04) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-01 (00:26:04) Cargando datos Generales
+2016-02-01 (00:55:17) Abriendo base de datos. Usuario: gagraff
+2016-02-01 (00:55:18) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-01 (00:55:18) Cargando datos Generales
+2016-02-01 (01:59:23) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-01 (01:59:23) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-01 (12:28:43) Abriendo base de datos. Usuario: gagraff
+2016-02-01 (12:28:43) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-01 (12:28:43) Cargando datos Generales
+2016-02-01 (12:34:57) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-01 (12:34:57) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-01 (20:29:40) Abriendo base de datos. Usuario: gagraff
+2016-02-01 (20:29:40) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-01 (20:29:40) Cargando datos Generales
+2016-02-01 (20:51:46) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-01 (20:51:46) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-01 (23:07:13) Cerrando base de datos:  - Usuario: 
+2016-02-01 (23:07:14) Error al cerrar base de datos:  - Usuario: 
+2016-02-01 (23:07:33) Abriendo base de datos. Usuario: gagraff
+2016-02-01 (23:07:34) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-01 (23:07:34) Cargando datos Generales
+2016-02-01 (23:09:50) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-01 (23:09:50) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-01 (23:14:38) Abriendo base de datos. Usuario: gagraff
+2016-02-01 (23:14:38) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-01 (23:14:38) Cargando datos Generales
+2016-02-01 (23:16:29) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-01 (23:16:29) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-01 (23:18:31) Abriendo base de datos. Usuario: gagraff
+2016-02-01 (23:18:31) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-01 (23:18:31) Cargando datos Generales
+2016-02-01 (23:22:18) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-01 (23:22:18) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-01 (23:29:08) Abriendo base de datos. Usuario: gagraff
+2016-02-01 (23:29:08) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-01 (23:29:08) Cargando datos Generales
+2016-02-01 (23:43:59) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-01 (23:43:59) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-01 (23:47:46) Abriendo base de datos. Usuario: gagraff
+2016-02-01 (23:47:46) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-01 (23:47:46) Cargando datos Generales
+2016-02-01 (23:58:29) Abriendo base de datos. Usuario: gagraff
+2016-02-01 (23:58:30) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-01 (23:58:30) Cargando datos Generales
+2016-02-02 (00:01:37) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-02 (00:01:37) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-02 (00:06:02) Abriendo base de datos. Usuario: gagraff
+2016-02-02 (00:06:02) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-02 (00:06:02) Cargando datos Generales
+2016-02-02 (00:08:11) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-02 (00:08:11) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-02 (00:19:21) Abriendo base de datos. Usuario: gagraff
+2016-02-02 (00:19:21) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-02 (00:19:21) Cargando datos Generales
+2016-02-02 (00:48:39) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-02 (00:48:39) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-02 (21:49:12) Abriendo base de datos. Usuario: gagraff
+2016-02-02 (21:49:13) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-02 (21:49:13) Cargando datos Generales
+2016-02-02 (22:00:09) Abriendo base de datos. Usuario: gagraff
+2016-02-02 (22:00:09) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-02 (22:00:09) Cargando datos Generales
+2016-02-02 (22:05:33) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-02 (22:05:33) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-04 (14:05:55) Cerrando base de datos:  - Usuario: 
+2016-02-04 (14:05:55) Error al cerrar base de datos:  - Usuario: 
+2016-02-04 (14:57:20) Abriendo base de datos. Usuario: gagraff
+2016-02-04 (14:57:20) Authentication to host 'localhost' for user 'gagraff'
+     using method 'mysql_native_password' failed with message: Access denied for
+     user 'gagraff'@'localhost' (using password: YES)
+2016-02-04 (14:57:22) Error al abrir base de datos: DatosDPEC; Usuario: gagraff
+2016-02-04 (14:57:28) Abriendo base de datos. Usuario: gagraff
+2016-02-04 (14:57:28) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-04 (14:57:28) Cargando datos Generales
+2016-02-04 (15:44:42) Abriendo base de datos. Usuario: gagraff
+2016-02-04 (15:44:42) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-04 (15:44:42) Cargando datos Generales
+2016-02-04 (15:50:36) Abriendo base de datos. Usuario: gagraff
+2016-02-04 (15:50:37) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-04 (15:50:37) Cargando datos Generales
+2016-02-04 (15:51:48) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-04 (15:51:48) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-05 (18:11:26) Abriendo base de datos. Usuario: gagraff
+2016-02-05 (18:11:26) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-05 (18:11:26) Cargando datos Generales
+2016-02-05 (18:12:00) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-05 (18:12:00) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-05 (18:18:07) Abriendo base de datos. Usuario: gagraff
+2016-02-05 (18:18:08) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-05 (18:18:08) Cargando datos Generales
+2016-02-05 (18:18:43) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-05 (18:18:43) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-05 (18:19:54) Abriendo base de datos. Usuario: gagraff
+2016-02-05 (18:19:55) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-05 (18:19:55) Cargando datos Generales
+2016-02-05 (18:22:44) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-05 (18:22:44) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-05 (19:55:03) Abriendo base de datos. Usuario: gagraff
+2016-02-05 (19:55:06) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-05 (19:55:06) Cargando datos Generales
+2016-02-05 (19:56:58) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-05 (19:56:58) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-05 (20:28:51) Abriendo base de datos. Usuario: gagraff
+2016-02-05 (20:28:52) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-05 (20:28:52) Cargando datos Generales
+2016-02-05 (20:29:47) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-05 (20:29:47) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-05 (20:32:00) Abriendo base de datos. Usuario: gagraff
+2016-02-05 (20:32:00) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-05 (20:32:00) Cargando datos Generales
+2016-02-05 (20:32:38) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-05 (20:32:38) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-08 (14:18:16) Abriendo base de datos. Usuario: gagraff
+2016-02-08 (14:18:24) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-08 (14:18:24) Cargando datos Generales
+2016-02-08 (14:45:50) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-08 (14:45:50) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-08 (14:48:25) Abriendo base de datos. Usuario: gagraff
+2016-02-08 (14:48:26) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-08 (14:48:26) Cargando datos Generales
+2016-02-08 (15:40:19) Abriendo base de datos. Usuario: gagraff
+2016-02-08 (15:40:19) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-08 (15:40:19) Cargando datos Generales
+2016-02-08 (15:41:49) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-08 (15:41:49) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-08 (16:06:05) Abriendo base de datos. Usuario: gagraff
+2016-02-08 (16:06:06) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-08 (16:06:06) Cargando datos Generales
+2016-02-08 (16:57:02) Abriendo base de datos. Usuario: gagraff
+2016-02-08 (16:57:03) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-08 (16:57:03) Cargando datos Generales
+2016-02-08 (18:27:57) Abriendo base de datos. Usuario: gagraff
+2016-02-08 (18:27:57) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-08 (18:27:57) Cargando datos Generales
+2016-02-08 (19:00:15) Abriendo base de datos. Usuario: gagraff
+2016-02-08 (19:00:15) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-08 (19:00:15) Cargando datos Generales
+2016-02-08 (23:36:55) Abriendo base de datos. Usuario: gagraff
+2016-02-08 (23:36:55) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-08 (23:36:55) Cargando datos Generales
+2016-02-09 (00:07:53) Abriendo base de datos. Usuario: gagraff
+2016-02-09 (00:07:54) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-09 (00:07:54) Cargando datos Generales
+2016-02-09 (00:19:50) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-09 (00:19:50) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-09 (00:36:18) Abriendo base de datos. Usuario: gagraff
+2016-02-09 (00:36:18) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-09 (00:36:18) Cargando datos Generales
+2016-02-09 (00:49:09) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-09 (00:49:09) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-09 (01:26:15) Abriendo base de datos. Usuario: gagraff
+2016-02-09 (01:26:15) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-09 (01:26:15) Cargando datos Generales
+2016-02-09 (01:41:39) Abriendo base de datos. Usuario: gagraff
+2016-02-09 (01:41:39) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-09 (01:41:39) Cargando datos Generales
+2016-02-09 (01:41:50) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-09 (01:41:50) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-09 (01:45:01) Abriendo base de datos. Usuario: gagraff
+2016-02-09 (01:45:01) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-09 (01:45:01) Cargando datos Generales
+2016-02-09 (01:47:19) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-09 (01:47:19) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-09 (01:50:06) Abriendo base de datos. Usuario: gagraff
+2016-02-09 (01:50:07) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-09 (01:50:07) Cargando datos Generales
+2016-02-09 (01:51:30) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-09 (01:51:30) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-09 (01:58:23) Abriendo base de datos. Usuario: gagraff
+2016-02-09 (01:58:23) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-09 (01:58:23) Cargando datos Generales
+2016-02-09 (02:12:00) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-09 (02:12:00) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-09 (12:46:14) Abriendo base de datos. Usuario: gagraff
+2016-02-09 (12:46:15) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-09 (12:46:15) Cargando datos Generales
+2016-02-09 (13:24:23) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-09 (13:24:23) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-09 (13:36:44) Abriendo base de datos. Usuario: gagraff
+2016-02-09 (13:36:44) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-09 (13:36:44) Cargando datos Generales
+2016-02-09 (13:40:32) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-09 (13:40:32) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-09 (17:25:08) Abriendo base de datos. Usuario: gagraff
+2016-02-09 (17:25:08) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-09 (17:25:08) Cargando datos Generales
+2016-02-09 (17:26:41) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-09 (17:26:41) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-09 (17:32:07) Abriendo base de datos. Usuario: gagraff
+2016-02-09 (17:32:07) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-09 (17:32:07) Cargando datos Generales
+2016-02-09 (17:33:52) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-09 (17:33:52) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-13 (00:09:56) Abriendo base de datos. Usuario: gagraff
+2016-02-13 (00:09:57) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-13 (00:09:57) Cargando datos Generales
+2016-02-13 (00:10:09) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-13 (00:10:09) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-13 (00:19:55) Abriendo base de datos. Usuario: gagraff
+2016-02-13 (00:19:56) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-13 (00:19:56) Cargando datos Generales
+2016-02-13 (00:20:02) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-13 (00:20:02) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-13 (15:42:51) Abriendo base de datos. Usuario: gagraff
+2016-02-13 (15:42:57) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-13 (15:42:57) Cargando datos Generales
+2016-02-13 (15:52:58) Abriendo base de datos. Usuario: gagraff
+2016-02-13 (15:52:58) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-13 (15:52:58) Cargando datos Generales
+2016-02-13 (15:53:53) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-13 (15:53:53) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-13 (16:01:45) Abriendo base de datos. Usuario: gagraff
+2016-02-13 (16:01:46) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-13 (16:01:46) Cargando datos Generales
+2016-02-13 (16:02:43) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-13 (16:02:43) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-14 (18:25:02) Abriendo base de datos. Usuario: gagraff
+2016-02-14 (18:25:03) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-14 (18:25:03) Cargando datos Generales
+2016-02-14 (19:33:47) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-14 (19:33:48) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-15 (14:08:34) Abriendo base de datos. Usuario: gagraff
+2016-02-15 (14:08:35) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-15 (14:08:35) Cargando datos Generales
+2016-02-15 (14:10:23) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-15 (14:10:23) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-15 (18:34:26) Abriendo base de datos. Usuario: gagraff
+2016-02-15 (18:34:27) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-15 (18:34:27) Cargando datos Generales
+2016-02-15 (18:43:27) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-15 (18:43:27) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-16 (00:39:50) Abriendo base de datos. Usuario: gagraff
+2016-02-16 (00:39:50) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-16 (00:39:50) Cargando datos Generales
+2016-02-16 (00:58:23) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-16 (00:58:23) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-17 (09:55:33) Abriendo base de datos. Usuario: gagraff
+2016-02-17 (09:55:34) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-17 (09:55:34) Cargando datos Generales
+2016-02-17 (09:58:18) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-17 (09:58:18) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-19 (00:12:51) Abriendo base de datos. Usuario: gagraff
+2016-02-19 (00:12:52) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-19 (00:12:52) Cargando datos Generales
+2016-02-19 (00:14:31) Abriendo base de datos. Usuario: gagraff
+2016-02-19 (00:14:32) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-19 (00:14:32) Cargando datos Generales
+2016-02-19 (00:15:43) Abriendo base de datos. Usuario: gagraff
+2016-02-19 (00:15:43) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-19 (00:15:43) Cargando datos Generales
+2016-02-19 (00:18:21) Abriendo base de datos. Usuario: gagraff
+2016-02-19 (00:18:22) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-19 (00:18:22) Cargando datos Generales
+2016-02-19 (00:32:48) Abriendo base de datos. Usuario: gagraff
+2016-02-19 (00:32:48) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-19 (00:32:48) Cargando datos Generales
+2016-02-19 (00:35:29) Abriendo base de datos. Usuario: gagraff
+2016-02-19 (00:35:30) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-19 (00:35:30) Cargando datos Generales
+2016-02-19 (00:36:32) Abriendo base de datos. Usuario: gagraff
+2016-02-19 (00:36:32) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-19 (00:36:32) Cargando datos Generales
+2016-02-19 (00:37:22) Abriendo base de datos. Usuario: gagraff
+2016-02-19 (00:37:23) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-19 (00:37:23) Cargando datos Generales
+2016-02-19 (00:54:36) Abriendo base de datos. Usuario: gagraff
+2016-02-19 (00:54:38) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-19 (00:54:38) Cargando datos Generales
+2016-02-19 (00:59:44) Abriendo base de datos. Usuario: gagraff
+2016-02-19 (00:59:45) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-19 (00:59:45) Cargando datos Generales
+2016-02-19 (01:00:44) Abriendo base de datos. Usuario: gagraff
+2016-02-19 (01:00:44) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-19 (01:00:44) Cargando datos Generales
+2016-02-19 (01:01:58) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-19 (01:01:58) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-19 (01:08:03) Abriendo base de datos. Usuario: gagraff
+2016-02-19 (01:08:04) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-19 (01:08:04) Cargando datos Generales
+2016-02-19 (01:11:02) Abriendo base de datos. Usuario: gagraff
+2016-02-19 (01:11:02) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-19 (01:11:02) Cargando datos Generales
+2016-02-19 (01:16:57) Abriendo base de datos. Usuario: gagraff
+2016-02-19 (01:16:58) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-19 (01:16:58) Cargando datos Generales
+2016-02-19 (01:20:24) Abriendo base de datos. Usuario: gagraff
+2016-02-19 (01:20:25) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-19 (01:20:25) Cargando datos Generales
+2016-02-19 (23:17:46) Abriendo base de datos. Usuario: gagraff
+2016-02-19 (23:17:47) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-19 (23:17:47) Cargando datos Generales
+2016-02-19 (23:19:44) Abriendo base de datos. Usuario: gagraff
+2016-02-19 (23:19:44) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-19 (23:19:44) Cargando datos Generales
+2016-02-19 (23:22:48) Abriendo base de datos. Usuario: gagraff
+2016-02-19 (23:22:49) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-19 (23:22:49) Cargando datos Generales
+2016-02-19 (23:24:12) Abriendo base de datos. Usuario: gagraff
+2016-02-19 (23:24:12) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-19 (23:24:12) Cargando datos Generales
+2016-02-19 (23:25:58) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-19 (23:25:58) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-19 (23:28:15) Abriendo base de datos. Usuario: gagraff
+2016-02-19 (23:28:16) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-19 (23:28:16) Cargando datos Generales
+2016-02-24 (00:30:48) Abriendo base de datos. Usuario: gagraff
+2016-02-24 (00:30:49) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-24 (00:30:49) Cargando datos Generales
+2016-02-24 (00:32:22) Abriendo base de datos. Usuario: gagraff
+2016-02-24 (00:32:22) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-24 (00:32:22) Cargando datos Generales
+2016-02-24 (00:34:14) Abriendo base de datos. Usuario: gagraff
+2016-02-24 (00:34:14) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-24 (00:34:14) Cargando datos Generales
+2016-02-24 (01:16:23) Abriendo base de datos. Usuario: gagraff
+2016-02-24 (01:16:23) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-24 (01:16:23) Cargando datos Generales
+2016-02-24 (09:55:32) Abriendo base de datos. Usuario: gagraff
+2016-02-24 (09:55:33) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-24 (09:55:33) Cargando datos Generales
+2016-02-24 (09:59:02) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-24 (09:59:02) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-24 (09:59:18) Abriendo base de datos. Usuario: gagraff
+2016-02-24 (09:59:18) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-24 (09:59:18) Cargando datos Generales
+2016-02-24 (10:00:33) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-24 (10:00:33) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-25 (13:56:58) Cerrando base de datos:  - Usuario: 
+2016-02-25 (13:56:58) Error al cerrar base de datos:  - Usuario: 
+2016-02-25 (13:57:51) Abriendo base de datos. Usuario: gagraff
+2016-02-25 (13:57:52) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-25 (13:57:52) Cargando datos Generales
+2016-02-25 (13:59:32) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-25 (13:59:32) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-25 (22:46:54) Abriendo base de datos. Usuario: gagraff
+2016-02-25 (22:46:55) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-25 (22:46:55) Cargando datos Generales
+2016-02-25 (22:47:36) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-25 (22:47:36) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-25 (22:53:25) Abriendo base de datos. Usuario: gagraff
+2016-02-25 (22:53:25) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-25 (22:53:25) Cargando datos Generales
+2016-02-25 (22:54:08) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-25 (22:54:08) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-25 (23:01:10) Abriendo base de datos. Usuario: gagraff
+2016-02-25 (23:01:10) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-25 (23:01:10) Cargando datos Generales
+2016-02-25 (23:02:04) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-25 (23:02:04) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-02-25 (23:05:37) Abriendo base de datos. Usuario: gagraff
+2016-02-25 (23:05:38) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-25 (23:05:38) Cargando datos Generales
+2016-02-26 (01:11:31) Cerrando base de datos:  - Usuario: 
+2016-02-26 (01:11:31) Error al cerrar base de datos:  - Usuario: 
+2016-02-26 (01:11:56) Abriendo base de datos. Usuario: gagraff
+2016-02-26 (01:11:56) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-26 (01:11:56) Cargando datos Generales
+2016-02-26 (01:23:25) Abriendo base de datos. Usuario: gagraff
+2016-02-26 (01:23:25) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-02-26 (01:23:25) Cargando datos Generales
+2016-02-26 (01:24:55) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-02-26 (01:24:55) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-03-16 (10:29:06) Abriendo base de datos. Usuario: gagraff
+2016-03-16 (10:29:06) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-03-16 (10:29:06) Cargando datos Generales
+2016-03-16 (10:38:32) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-03-16 (10:38:32) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-03-16 (10:38:47) Abriendo base de datos. Usuario: gagraff
+2016-03-16 (10:38:48) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-03-16 (10:38:48) Cargando datos Generales
+2016-03-16 (10:42:44) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-03-16 (10:42:44) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-03-16 (10:56:43) Abriendo base de datos. Usuario: gagraff
+2016-03-16 (10:56:43) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-03-16 (10:56:43) Cargando datos Generales
+2016-03-16 (10:59:40) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-03-16 (10:59:40) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-03-17 (15:42:22) Abriendo base de datos. Usuario: gagraff
+2016-03-17 (15:42:23) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-03-17 (15:42:23) Cargando datos Generales
+2016-03-17 (15:43:56) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-03-17 (15:43:56) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-03-17 (15:44:52) Abriendo base de datos. Usuario: gagraff
+2016-03-17 (15:44:52) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-03-17 (15:44:52) Cargando datos Generales
+2016-03-17 (15:50:16) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-03-17 (15:50:16) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-03-17 (16:01:11) Abriendo base de datos. Usuario: gagraff
+2016-03-17 (16:01:14) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-03-17 (16:01:14) Cargando datos Generales
+2016-03-17 (16:01:53) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-03-17 (16:01:53) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-03-17 (16:02:25) Abriendo base de datos. Usuario: gagraff
+2016-03-17 (16:02:25) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-03-17 (16:02:25) Cargando datos Generales
+2016-03-17 (16:04:05) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-03-17 (16:04:05) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-03-18 (13:52:59) Abriendo base de datos. Usuario: gagraff
+2016-03-18 (13:53:00) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-03-18 (13:53:00) Cargando datos Generales
+2016-03-18 (13:58:37) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-03-18 (13:58:37) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-03-18 (14:27:24) Abriendo base de datos. Usuario: gagraff
+2016-03-18 (14:27:24) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-03-18 (14:27:24) Cargando datos Generales
+2016-03-18 (14:31:54) Cerrando base de datos: DatosDPEC - Usuario: gagraff
+2016-03-18 (14:31:54) Base de datos: DatosDPEC  Cerrada! - Usuario: gagraff
+2016-04-25 (18:08:22) Abriendo base de datos. Usuario: gagraff
+2016-04-25 (18:08:23) Authentication to host 'localhost' for user 'gagraff'
+     using method 'mysql_native_password' failed with message: Access denied for
+     user 'gagraff'@'localhost' (using password: YES)
+2016-04-25 (18:08:25) Error al abrir base de datos: DatosDPEC; Usuario: gagraff
+2016-04-25 (18:08:30) Abriendo base de datos. Usuario: gagraff
+2016-04-25 (18:08:30) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: gagraff
+2016-04-25 (18:08:30) Cargando datos Generales
+2016-05-20 (09:10:12) Abriendo base de datos. Usuario: root
+2016-05-20 (17:26:58) Cerrando base de datos:  - Usuario: 
+2016-05-20 (17:26:58) Error al cerrar base de datos:  - Usuario: 
+2016-05-20 (17:27:06) Abriendo base de datos. Usuario: 
+2016-05-20 (17:27:06) Authentication to host 'localhost' for user '' using
+     method 'mysql_native_password' failed with message: Access denied for user
+     ''@'localhost' (using password: NO)
+2016-05-20 (17:27:07) Error al abrir base de datos: DatosDPEC; Usuario: 
+2016-05-20 (17:27:15) Cerrando base de datos: DatosDPEC - Usuario: 
+2016-05-20 (17:27:15) Base de datos: DatosDPEC  Cerrada! - Usuario: 
+2016-05-20 (17:28:30) Abriendo base de datos. Usuario: gagraff
+2016-05-20 (17:28:30) Authentication to host 'localhost' for user 'gagraff'
+     using method 'mysql_native_password' failed with message: Access denied for
+     user 'gagraff'@'localhost' (using password: YES)
+2016-05-20 (17:28:32) Error al abrir base de datos: DatosDPEC; Usuario: gagraff
+2016-05-20 (17:28:55) Abriendo base de datos. Usuario: macrointell
+2016-05-20 (17:28:55) Authentication to host 'localhost' for user 'macrointell'
+     using method 'mysql_native_password' failed with message: Access denied for
+     user 'macrointell'@'localhost' (using password: YES)
+2016-05-20 (17:28:57) Error al abrir base de datos: DatosDPEC; Usuario:
+     macrointell
+2016-05-20 (17:29:02) Cerrando base de datos: DatosDPEC - Usuario: macrointell
+2016-05-20 (17:29:02) Base de datos: DatosDPEC  Cerrada! - Usuario: macrointell
+2016-05-20 (17:30:17) Abriendo base de datos. Usuario: root
+2016-05-20 (17:30:17) Conexión establecida normalmente!! Base: DatosDPEC.
+     Usuario: root
+2016-05-20 (17:30:17) Cargando datos Generales
+2016-05-20 (17:30:29) Cerrando base de datos: DatosDPEC - Usuario: root
+2016-05-20 (17:30:29) Base de datos: DatosDPEC  Cerrada! - Usuario: root
+2016-05-20 (17:53:01) Cerrando base de datos:  - Usuario: 
+2016-05-20 (17:53:01) Error al cerrar base de datos:  - Usuario: 

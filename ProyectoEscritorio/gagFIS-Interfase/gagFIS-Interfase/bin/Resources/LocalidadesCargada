@@ -1,0 +1,80 @@
+--
+-- File generated with SQLiteStudio v3.1.1 on mié. Feb. 1 09:26:06 2017
+--
+-- Text encoding used: System
+--
+PRAGMA foreign_keys = off;
+BEGIN TRANSACTION;
+
+-- Table: Localidades
+DROP TABLE IF EXISTS Localidades;
+
+CREATE TABLE Localidades (
+    CodigoInt    INTEGER NOT NULL
+                         PRIMARY KEY,
+    CodigoPostal TEXT    NOT NULL,
+    Localidad    TEXT    NOT NULL,
+    Provincia    TEXT    NOT NULL
+);
+
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (0, '3500', 'RESISTENCIA', 'CHACO');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (201, '3400', 'CORRIENTES', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (202, '3450', 'GOYA', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (203, '3414', 'ITATI', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (204, '3231', 'YAPEYU', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (205, '3481', 'BERON DE ASTRADA', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (206, '3432', 'BELLA VISTA', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (207, '3234', 'BONPLAND', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (208, '3460', 'CURUZU CUATIA', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (209, '3423', 'CONCEPCION', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (210, '3474', 'CHAVARRÍA', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (211, '3196', 'ESQUINA', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (212, '3446', 'PEDRO R. FERNÁNDEZ', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (213, '3445', 'G. MARTINEZ', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (214, '3342', 'VIRASORO', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (215, '3407', 'CAÁ CATÍ', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (216, '3232', 'GUAVIRAVÍ', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (217, '3302', 'ITUZAINGÓ', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (218, '3480', 'ITÁ IBATÉ', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (219, '3346', 'LA CRUZ', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (220, '3443', 'LAVALLE', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (221, '3483', 'LORETO', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (222, '3476', 'MARIANO I. LOZA', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (223, '3427', 'MBURUCUYÁ', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (224, '3470', 'MERCEDES', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (225, '3220', 'MONTE CASEROS', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (226, '3226', 'MOCORETÁ', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (227, '3445', '9 DE JULIO', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (228, '3230', 'PASO DE LOS LIBRES', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (229, '3409', 'PASO DE LA PATRIA', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (230, '3461', 'PERUGORRÍA', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (231, '3448', 'SAN ROQUE', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (232, '3340', 'SANTO TOMÉ', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (233, '3485', 'SAN MIGUEL', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (234, '3306', 'SAN CARLOS', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (235, '3472', 'FELIPE YOFRE', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (236, '3344', 'ALVEAR', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (237, '3420', 'SALADAS', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (238, '3416', 'EL SOMBRERO', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (239, '3418', 'EMPEDRADO', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (240, '3412', 'SAN COSME', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (241, '3416', 'SAN LORENZO', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (242, '3401', 'SANTA ANA', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (243, '3440', 'SANTA LUCIA', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (244, '3358', 'LIEBIG', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (245, '3403', 'SAN LUIS DEL PALMAR', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (246, '3463', 'SAUCE', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (247, '3471', 'COLONIA CARLOS PELLEGRINI', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (248, '3421', 'SANTA ROSA', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (249, '3351', 'GARRUCHOS', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (250, '3405', 'PALMAR GRANDE', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (251, '3344', 'E. TORRENT', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (252, '3405', 'LOMAS DE VALLEJOS', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (253, '3194', 'GUAYQUIRARÓ', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (254, '3197', 'LIBERTADOR', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (256, '3416', 'RIACHUELO', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (257, '3401', 'SAN CAYETANO', 'CORRIENTES');
+INSERT INTO Localidades (CodigoInt, CodigoPostal, Localidad, Provincia) VALUES (258, '3421', 'TABAY-TATACUÁ', 'CORRIENTES');
+
+COMMIT TRANSACTION;
+PRAGMA foreign_keys = on;

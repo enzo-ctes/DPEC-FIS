@@ -1,0 +1,69 @@
+﻿
+
+            this.ConexionID = Convert.ToInt32(Registro["conexionID"]);
+            this.Instalacion = Convert.ToInt32(Registro["Instalacion"]);
+            this.CondIVA = Convert.ToInt32(Registro["CondIVA"]);
+            this.Periodo = Registro["Periodo"].ToString().Trim();
+            this.FechaCalP= Registro["FechaCalP"].ToString().Trim();
+            this.UsuarioID = Convert.ToInt32(Registro["usuarioID"]); 
+            this.TitularID = Convert.ToInt32(Registro["titularID"]);
+            this.PropietarioID = Convert.ToInt32(Registro["propietarioID"]);
+            //Domicilio suministro                                                                
+            this.DomicilioSuministro = Registro["DomicSumin"].ToString().Trim();
+            this.BarrioSuministro = Registro["BarrioSumin"].ToString().Trim();
+            this.CodigoPostalSuministro = Registro["CodPostalSumin"].ToString().Trim();
+            //-----                                                                                  
+            this.ImpresionCOD = Convert.ToInt32(Registro["ImpresionCOD"]);
+            this.ImpresionCANT = Convert.ToInt32(Registro["ImpresionCANT"]);
+            this.ImpresionOBS = Convert.ToInt32(Registro["ImpresionOBS"]);
+            this.Operario = Convert.ToInt32(Registro["Operario"]);
+            this.Lote = Convert.ToInt32(Registro["Lote"]);
+            this.OrdenTomado = Convert.ToInt32(Registro["OrdenTomado"]);
+            // Itinerario                                                                           
+            this.Zona = Convert.ToInt32(Registro["Zona"]);
+            this.Ruta = Convert.ToInt32(Registro["Ruta"]);
+            this.Secuencia = Convert.ToInt32(Registro["Secuencia"]);
+            this.Remesa = Convert.ToInt32(Registro["Remesa"]);
+            //----                                                                                  
+            this.Categoria = Registro["Categoria"].ToString().Trim();
+            this.CategoriaSub = Registro["SubCategoria"].ToString().Trim();
+            this.CodigoAlumbrado = Convert.ToInt32(Registro["CodigoAlumbrado"]);
+            this.TipoProrrateo = Registro["TipoProrrateo"].ToString().Trim();
+            this.CuentaDebito = Registro["CuentaDebito"].ToString().Trim();
+            //-Consumo                                                                              
+            this.ConsumoPromedio = Convert.ToInt32(Registro["ConsumoPromedio"]);
+            this.ConsumoResidual = Convert.ToInt32(Registro["ConsumoResidual"]);
+            this.ConsumoFacturado = Convert.ToInt32(Registro["ConsumoFacturado"]);
+            this.ConsumoTipo = Convert.ToInt32(Registro["ConsumoTipo"]);
+            this.PromedioDiario = Convert.ToDouble(Registro["PromedioDiario"]);
+            //CESP                        =                                                           
+            this.CESPnumero = Registro["CESPnumero"].ToString().Trim();
+            this.CESPvencimiento = Registro["CESPvencimiento"].ToString().Trim();
+            // Factura                                                                               
+            this.FacturaLetra = Registro["FacturaLetra"].ToString().ToUpper().Trim();
+            this.PuntoVenta = Convert.ToInt32(Registro["PuntoVenta"]);
+            this.FacturaNumero1 = Convert.ToInt32(Registro["FacturaNro1"]);
+            this.FacturaNumero2 = Convert.ToInt32(Registro["FacturaNro2"]);
+            // Primera cuota
+            this.Vencimiento1 = Registro["Vencimiento1"].ToString().Trim();
+            this.Importe1 = Convert.ToDouble(Registro["Importe1"]);
+            this.ImporteBasico1 = Convert.ToDouble(Registro["ImporteBasico1"]);
+            this.ImporteImpuesto1 = Convert.ToDouble(Registro["ImporteImpuesto1"]);
+            // Segunda cuota
+            this.Vencimiento2 = Registro["Vencimiento2"].ToString().Trim();
+            this.Importe2 = Convert.ToDouble(Registro["Importe2"]);
+            this.ImporteBasico2 = Convert.ToDouble(Registro["ImporteBasico2"]);
+            this.ImporteImpuesto2 = Convert.ToDouble(Registro["ImporteImpuesto2"]);
+
+            this.ProximoVencimiento = Registro["VencimientoProx"].ToString().Trim();
+            // Historial  
+            Historial = new Dictionary<int, clHisto>();                                                           
+            for (int i = 1; i < 13; i++) {                
+                clHisto histPC= new clHisto();
+                string s1;
+                s1 = "HistoPeriodo" + i.ToString("00");
+                histPC.Periodo = Registro[s1].ToString();
+                s1 = "HistoConsumo" + i.ToString("00");
+                histPC.Consumo = Registro[s1].ToString();
+                Historial.Add(i - 1, histPC);
+            }

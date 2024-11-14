@@ -1,0 +1,33 @@
+*******Usuarios de la NAS para acceso a archivos de datos********
+
+USER: admin
+PASS: Micc4001
+
+USER: usuariofis
+PASS: macro1718
+
+USER: usuariosap
+PASS: 1a2b3c4d5e6c
+
+USER: cgreatti
+PASS: macrointell2017
+PASS: Dpec2018
+
+USER:ggraf
+PASS:Barbarita2003
+
+
+
+******Usuarios en MySQL para uso del sistema GAGFIS_INTERFACE******
+
+USER:185	   "Usuario con privilegios de carga y descarga de colectoras
+PASS:torres        "como asi tambien visualizacion de informes"
+
+USER:operadmin     "usuario que va a tener los privilegios de importacion
+PASS:Dpec2015       y exportación, ubicado en Cede Central de Capital"
+
+USER:admin	   "Usuario administrador con todos los privilegios del sistema
+PASS:Micc4001	
+
+USER: 18908270      "Usuario para Torres de capital
+PASS: Dpec2019
