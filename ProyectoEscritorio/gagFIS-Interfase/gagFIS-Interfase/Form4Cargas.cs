@@ -1804,11 +1804,7 @@ namespace gagFIS_Interfase
                             "INNER JOIN Historial H ON C.ConexionID = H.ConexionID AND C.Periodo = H.Periodo " +                            
                             "Where ((C.Secuencia >= " + ArrayDesde[0] + " and C.Secuencia <= " + ArrayHasta[0] + ") and C.Ruta = " + ArrayRuta[0] +
                             " and (C.ImpresionOBS = 0 OR C.ImpresionOBS = 500) AND (C.Periodo = " + Periodo + " AND P.Periodo = " + Periodo +
-                            " AND M.Periodo = " + Periodo + " AND H.Periodo = " + Periodo + ")) ORDER BY C.Secuencia ASC";
-                    //"GROUP BY C.ConexionID, C.Periodo, C.Ruta " +
-                    //"HAVING C.Periodo = " + Periodo + " AND (C.ImpresionOBS = 0 OR C.ImpresionOBS = 500 " +
-                    //"OR C.ImpresionOBS = 800) AND C.Ruta = " + ArrayRuta[0] + 
-                    //" AND (C.Secuencia >= " + ArrayDesde[0] + " and C.Secuencia <= " + ArrayHasta[0] + ")";
+                            " AND M.Periodo = " + Periodo + " AND H.Periodo = " + Periodo + ")) ORDER BY C.Secuencia ASC";                
                 }                
                 Tabla = new DataTable();                
                 da = new MySqlDataAdapter(txSQL, DB.conexBD);
@@ -1856,28 +1852,11 @@ namespace gagFIS_Interfase
 
                 if (ArrayDesde.Count > 1)
                 {
-
                     txSQL = "SELECT DISTINCT C.*, M.* FROM Conexiones C INNER JOIN Medidores M USING (ConexionId, Periodo) " +
-                            "WHERE ( Ruta = "  + ArrayRuta[0] + iteracionGPS(PerAnterior.ToString()) + ") AND Periodo = " + PerAnterior + " ORDER BY C.Secuencia ASC";
-                    //txSQL = "select DISTINCT C.*, P.*, M.*, H.* " +
-                    //        "From Conexiones C " +
-                    //        "INNER JOIN Personas P ON C.titularID = P.personaID AND C.Periodo = P.Periodo " +
-                    //        "INNER JOIN Medidores M ON C.ConexionID = M.ConexionID AND C.Periodo = M.Periodo " +
-                    //        "INNER JOIN Historial H ON C.ConexionID = H.ConexionID AND C.Periodo = H.Periodo " +
-                    //        "Where (C.Secuencia >= " + ArrayDesde[0] + " and C.Secuencia <= " + ArrayHasta[0] + " and C.Ruta = " + ArrayRuta[0] +
-                    //        " and  (C.Periodo = " + PerAnterior + " AND P.Periodo = " + PerAnterior +
-                    //        " AND M.Periodo = " + PerAnterior + " AND H.Periodo = " + PerAnterior + ") " + iteracion(PerAnterior.ToString()) + ") ORDER BY C.Secuencia ASC";
+                            "WHERE ( Ruta = "  + ArrayRuta[0] + iteracionGPS(PerAnterior.ToString()) + ") AND Periodo = " + PerAnterior + " ORDER BY C.Secuencia ASC";               
                 }
                 else
-                {
-                    //txSQL = "select distinct C.*, P.*, M.*, H.* " +
-                    //        "From Conexiones C " +
-                    //        "INNER JOIN Personas P ON C.titularID = P.PersonaID AND C.Periodo = P.Periodo " +
-                    //        "INNER JOIN Medidores M ON C.ConexionID = M.ConexionID AND C.Periodo = M.Periodo " +
-                    //        "INNER JOIN Historial H ON C.ConexionID = H.ConexionID AND C.Periodo = H.Periodo " +
-                    //        "Where ((C.Secuencia >= " + ArrayDesde[0] + " and C.Secuencia <= " + ArrayHasta[0] + ") and C.Ruta = " + ArrayRuta[0] +
-                    //        " and (C.Periodo = " + PerAnterior + " AND P.Periodo = " + PerAnterior +
-                    //        " AND M.Periodo = " + PerAnterior + " AND H.Periodo = " + PerAnterior + ")) ORDER BY C.Secuencia ASC";
+                {                 
                     txSQL = "SELECT DISTINCT  C.ConexionID,  M.Latitud, M.Longitud " +
                        "FROM Conexiones C " +
                        "INNER JOIN Medidores M USING(ConexionID, Periodo) WHERE " +
@@ -1906,8 +1885,7 @@ namespace gagFIS_Interfase
                                 {
                                     row.Cells["Latitud"].Value = Convert.ToDecimal(TablaPerAnt.Rows[i]["Latitud"].ToString());
                                     row.Cells["Longitud"].Value = Convert.ToDecimal(TablaPerAnt.Rows[i]["Longitud"].ToString());
-                                }
-                                
+                                }                                
                             }
                         }
                     }
@@ -1934,10 +1912,8 @@ namespace gagFIS_Interfase
             string txSQL;
             string Periodo = "";
             Periodo = Vble.PeriodoFORM0;
-
             try
-            {
-                
+            {                
                 if (ArrayDesde.Count > 1)
                 {
                     txSQL = "select DISTINCT C.* " +
@@ -1969,11 +1945,8 @@ namespace gagFIS_Interfase
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
-
             }
-
             return Tabla;
-
         }
 
 
@@ -2059,6 +2032,7 @@ namespace gagFIS_Interfase
             //string txSQL;
             try
             {
+                #region Consulta Insert comentada
                 //txSQL = "select * From Conexiones Where ConexionID = " + codconex + " AND Periodo = " + Vble.PeriodoFORM0;
                 //Tabla = new DataTable();
                 //da = new MySqlDataAdapter(txSQL, DB.conexBD);
@@ -2067,65 +2041,63 @@ namespace gagFIS_Interfase
                 ////asignación a variables locales para manejar en el INSERT
                 //foreach (DataRow fi in Tabla.Rows)
                 //{
+                //////declaracióno de variables
+                ////int conexionid, periodo, usuarioid, titularid, propietarioid, impresionCod, impresionOBS, impresionCant,
+                ////    Operario, lote, zona, ruta, secuencia, remesa, ConsumoResidual, ConsumoFacturado, OrdenTomado,
+                ////     ConsumoControl;
+                ////string DomicSumin, Instalacion, BarrioSumin, CodPostalSumin, CuentaDebito,
+                ////     FechaCalP, Contrato, TarifaCod, TarifaText;
+                ////string VencimientoProx;
 
-                    //////declaracióno de variables
-                    ////int conexionid, periodo, usuarioid, titularid, propietarioid, impresionCod, impresionOBS, impresionCant,
-                    ////    Operario, lote, zona, ruta, secuencia, remesa, ConsumoResidual, ConsumoFacturado, OrdenTomado,
-                    ////     ConsumoControl;
-                    ////string DomicSumin, Instalacion, BarrioSumin, CodPostalSumin, CuentaDebito,
-                    ////     FechaCalP, Contrato, TarifaCod, TarifaText;
-                    ////string VencimientoProx;
+                ////Asignacion de variables
+                //conexionid = (int)fi["ConexionID"];
+                //periodo = (int)fi["Periodo"];
+                //FechaCalP = fi["FechaCalP"].ToString();
+                //Contrato = fi["Contrato"].ToString();
+                //Instalacion = fi["Instalacion"].ToString();
+                //usuarioid = (int)fi["usuarioID"];
+                //titularid = (int)fi["titularID"];
+                //propietarioid = (int)fi["propietarioID"];
+                //DomicSumin = fi["DomicSumin"].ToString();
+                //BarrioSumin = fi["LocalidadSumin"].ToString();
+                //CodPostalSumin = fi["CodPostalSumin"].ToString();
+                //CuentaDebito = fi["CuentaDebito"].ToString();
+                //impresionCod = (int)fi["ImpresionCOD"];
+                //impresionOBS = (int)fi["ImpresionOBS"];
+                //impresionCant = (int)fi["ImpresionCANT"];
+                //Operario = (int)fi["Operario"];
+                //lote = (int)fi["Lote"];
+                //zona = (int)fi["Zona"]; ruta = (int)fi["Ruta"];
+                //secuencia = (int)fi["Secuencia"];
+                //remesa = (int)fi["Remesa"];
+                //TarifaCod = fi["TarifaCod"].ToString();
+                //TarifaText = fi["TarifaTex"].ToString();
+                //ConsumoControl = (int)fi["ConsumoControl"];
+                //ConsumoResidual = (int)fi["ConsumoResidual"];
+                //ConsumoFacturado = (int)fi["ConsumoFacturado"];
+                //OrdenTomado = (int)fi["OrdenTomado"];
+                //VencimientoProx = fi["VencimientoProx"].ToString();
 
-                    ////Asignacion de variables
-                    //conexionid = (int)fi["ConexionID"];
-                    //periodo = (int)fi["Periodo"];
-                    //FechaCalP = fi["FechaCalP"].ToString();
-                    //Contrato = fi["Contrato"].ToString();
-                    //Instalacion = fi["Instalacion"].ToString();
-                    //usuarioid = (int)fi["usuarioID"];
-                    //titularid = (int)fi["titularID"];
-                    //propietarioid = (int)fi["propietarioID"];
-                    //DomicSumin = fi["DomicSumin"].ToString();
-                    //BarrioSumin = fi["LocalidadSumin"].ToString();
-                    //CodPostalSumin = fi["CodPostalSumin"].ToString();
-                    //CuentaDebito = fi["CuentaDebito"].ToString();
-                    //impresionCod = (int)fi["ImpresionCOD"];
-                    //impresionOBS = (int)fi["ImpresionOBS"];
-                    //impresionCant = (int)fi["ImpresionCANT"];
-                    //Operario = (int)fi["Operario"];
-                    //lote = (int)fi["Lote"];
-                    //zona = (int)fi["Zona"]; ruta = (int)fi["Ruta"];
-                    //secuencia = (int)fi["Secuencia"];
-                    //remesa = (int)fi["Remesa"];
-                    //TarifaCod = fi["TarifaCod"].ToString();
-                    //TarifaText = fi["TarifaTex"].ToString();
-                    //ConsumoControl = (int)fi["ConsumoControl"];
-                    //ConsumoResidual = (int)fi["ConsumoResidual"];
-                    //ConsumoFacturado = (int)fi["ConsumoFacturado"];
-                    //OrdenTomado = (int)fi["OrdenTomado"];
-                    //VencimientoProx = fi["VencimientoProx"].ToString();
+                //string insert;//Declaración de insert que contendra la consulta INSERT  
+                //insert = "INSERT INTO Conexiones ([conexionID], [Periodo], [FechaCalP], [Contrato], [Instalacion], [usuarioID], [titularID], [propietarioID], [DomicSumin], [LocalidadSumin]," +
+                //    " [CodPostalSumin], [CuentaDebito], [ImpresionCOD], [ImpresionOBS], [ImpresionCANT], [Operario]," +
+                //    " [Lote], [Zona], [Ruta], [Secuencia], [Remesa], [TarifaCod], [TarifaTex], [ConsumoControl], [ConsumoResidual],[ConsumoFacturado], [OrdenTomado]," +
+                //    " [VencimientoProx]) " +
+                //    "VALUES ('" + codconex + "', '" + periodo + "', '" + FechaCalP + "', '" + Contrato + "', '" + Instalacion + "', '" + usuarioid +
+                //    "', '" + titularid + "', '" + propietarioid + "', '" + DomicSumin + "', '" + BarrioSumin + "', '" + CodPostalSumin +
+                //    "', '" + CuentaDebito + "', '" + impresionCod + "', '" + impresionOBS + "', '" + impresionCant + "', '" + Operario +
+                //    "', '" + lote + "', '" + zona + "', '" + ruta + "', '" + secuencia + "', '" + remesa + "', '" + TarifaCod +
+                //    "', '" + TarifaText + "', " + ConsumoControl + ", " + ConsumoResidual + ", " + ConsumoFacturado +
+                //    ", " + OrdenTomado + ", '" + VencimientoProx + "')";
+                #endregion
 
-                    //string insert;//Declaración de insert que contendra la consulta INSERT  
-                    //insert = "INSERT INTO Conexiones ([conexionID], [Periodo], [FechaCalP], [Contrato], [Instalacion], [usuarioID], [titularID], [propietarioID], [DomicSumin], [LocalidadSumin]," +
-                    //    " [CodPostalSumin], [CuentaDebito], [ImpresionCOD], [ImpresionOBS], [ImpresionCANT], [Operario]," +
-                    //    " [Lote], [Zona], [Ruta], [Secuencia], [Remesa], [TarifaCod], [TarifaTex], [ConsumoControl], [ConsumoResidual],[ConsumoFacturado], [OrdenTomado]," +
-                    //    " [VencimientoProx]) " +
-                    //    "VALUES ('" + codconex + "', '" + periodo + "', '" + FechaCalP + "', '" + Contrato + "', '" + Instalacion + "', '" + usuarioid +
-                    //    "', '" + titularid + "', '" + propietarioid + "', '" + DomicSumin + "', '" + BarrioSumin + "', '" + CodPostalSumin +
-                    //    "', '" + CuentaDebito + "', '" + impresionCod + "', '" + impresionOBS + "', '" + impresionCant + "', '" + Operario +
-                    //    "', '" + lote + "', '" + zona + "', '" + ruta + "', '" + secuencia + "', '" + remesa + "', '" + TarifaCod +
-                    //    "', '" + TarifaText + "', " + ConsumoControl + ", " + ConsumoResidual + ", " + ConsumoFacturado +
-                    //    ", " + OrdenTomado + ", '" + VencimientoProx + "')";
-
-                    //preparamos la cadena pra insercion
-                    SQLiteCommand command = new SQLiteCommand(insert, DB.con);
+                //preparamos la cadena pra insercion
+                SQLiteCommand command = new SQLiteCommand(insert, DB.con);
                 //y la ejecutamos
                     command.CommandTimeout = 300;
                     command.ExecuteNonQuery();
                     //finalmente cerramos la conexion ya que solo debe servir para una sola orden
                     command.Dispose();
-
-
                 //}
                 //comandoSQL.Dispose();
                 //da.Dispose();
@@ -3092,33 +3064,29 @@ namespace gagFIS_Interfase
             //if (this.dataGridView1.RowCount > 0)//verifica que en el datagridview1 existan registros para recorrerlos y generar la carga de las tablas
             if (Vble.TablaConexSelec.Rows.Count > 0)
             {        
-               
 
                 Vble.TablaConexSelec.Reset();
                 Vble.TablaConexSelec = CargarRegistrosSecuenciaP();
 
-
-                Vble.CantRegistros = (Vble.TablaConexSelec.Rows.Count);
-                         
+                Vble.CantRegistros = (Vble.TablaConexSelec.Rows.Count);                         
 
                 int contador = 0;
-                string insertPersonas = "INSERT INTO Personas ([personaID], [Periodo], [Apellido], [Nombre], [DocTipo], [DocNro], [CondIVA]," +
+                string insertPersonas = "INSERT OR IGNORE INTO Personas ([personaID], [Periodo], [Apellido], [Nombre], [DocTipo], [DocNro], [CondIVA]," +
                        " [Domicilio], [Barrio], [CodigoPostal]) " +
                        "VALUES ";
 
-                string insertConexiones = "INSERT INTO Conexiones ([conexionID], [Periodo], [FechaCalP], [OrdenLectura]," +
-                       " [Contrato], [Instalacion], [usuarioID], [titularID], [propietarioID], [DomicSumin], [LocalidadSumin]," +
-                       " [CodPostalSumin], [CuentaDebito], [ImpresionCOD], [ImpresionOBS], [ImpresionCANT], [Operario]," +
-                       " [Lote], [Zona], [Ruta], [Secuencia], [Remesa], [TarifaCod], [TarifaTex], [ConsumoControl], [ConsumoResidual],[ConsumoFacturado], [OrdenTomado]," +
-                       " [VencimientoProx]) " +
+                string insertConexiones = "INSERT OR IGNORE INTO Conexiones (conexionID, Periodo, FechaCalP, OrdenLectura," +
+                       " Contrato, Instalacion, usuarioID, titularID, propietarioID, DomicSumin, LocalidadSumin," +
+                       " CodPostalSumin, CuentaDebito, ImpresionCOD, ImpresionOBS, ImpresionCANT, Operario," +
+                       " Lote, Zona, Ruta, Secuencia, Remesa, TarifaCod, TarifaTex, ConsumoControl, ConsumoResidual, ConsumoFacturado, OrdenTomado," +
+                       " VencimientoProx) " +
                        "VALUES ";
-
                
                 string insertMedidores = "INSERT INTO Medidores ([conexionID], [Periodo], [Orden], [Modelo], [Numero], [Multiplicador], [Digitos]," +
                     " [AnteriorFecha], [AnteriorEstado], [ActualFecha], [ActualHora], [ActualEstado], [LecturaControl], [TipoLectura], [Latitud], [Longitud])" +
                     "VALUES ";
 
-                string insertHistoria = "INSERT INTO Historial (ConexionID, Periodo, Periodo00," +
+                string insertHistoria = "INSERT OR IGNORE INTO Historial (ConexionID, Periodo, Periodo00," +
                         " Consumo00, Periodo01, Consumo01, Periodo02, Consumo02, Periodo03, Consumo03," +
                         " Periodo04, Consumo04, Periodo05, Consumo05, Periodo06, Consumo06, Periodo07," +
                         " Consumo07, Periodo08, Consumo08, Periodo09, Consumo09, Periodo10, Consumo10," +

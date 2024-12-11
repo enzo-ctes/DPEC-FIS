@@ -31,6 +31,7 @@ using System.Threading.Tasks;
 using System.IO.Compression;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using Google.Protobuf.WellKnownTypes;
 
 //using System.Devices;
 
@@ -480,6 +481,14 @@ namespace gagFIS_Interfase {
         /// <summary> En esta variable se indica si el campo ImpresionOBS se va a setear a 0 en caso de que el usuario que se esta importando 
         ///si ya existe con el mismo conexionID y Periodo tenga codigo de que se leyo pero no se imprimio por x motivo.
         /// </summary>
+        
+
+        ///
+        /// Variable que se va a utilizar para identificar cuando el arhivo a importar es un archivo que contiene usuarios Especiales o GU.
+        public static string TipoArchivo { get; set; }
+
+        public static String[] substringHMD { get; set; }
+
         public static int ActualizarDatosUsuario
         {
             get { return ActualizarDatosUsuario; }
@@ -874,6 +883,7 @@ namespace gagFIS_Interfase {
         /// </summary>
         public static bool ConexBloImp = false;
 
+        public static ArrayList ArrayRutasXLoc = new ArrayList();
         public static ArrayList ArrayZona = new ArrayList();
         public static ArrayList ArrayRutasImportadas = new ArrayList();
         public static ArrayList ArrayRemesas = new ArrayList();
@@ -1153,6 +1163,7 @@ namespace gagFIS_Interfase {
             ///registra en la variable idUsEsp los 4 digitos que identifica a Usuarios Especiales para verificar 
             ///cuando lee este tipo de archivo
             string idUsEsp = ArchivoImport.Substring(17, 4);
+            //Vble.TipoArchivo = ArchivoImport.Substring(17, 4);
 
             try
             {            
@@ -1218,6 +1229,51 @@ namespace gagFIS_Interfase {
                 MessageBox.Show(r.Message + " Error al leer el archivo que contiene informacion de localidades de la Interfaz.",
                                             "Error de Archivo Interfaz", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        /// <summary>
+        /// Consulta con iteracion para cargar la cantidad de conexiones que pertenecen a la secuencia seleccionada
+        /// </summary>
+        /// <returns></returns>
+        public static string iteracionZona()
+        {
+            string where = "";
+            try
+            {
+                for (int i = 0; i < Vble.ArrayZona.Count; i++)
+                {
+
+                    where += " OR C.Zona = " + Vble.ArrayZona[i];
+
+                }
+
+            }
+            catch (Exception r)
+            {
+                MessageBox.Show(r.Message + "Error Al realizar Iteración de Nodos Seleccionado", "Error de Consulta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return where;
+
+        }
+
+        public static string iteracionRuta()
+        {
+            string whereRuta = "";
+            try
+            {
+                for (int i = 0; i < Vble.ArrayRutasXLoc.Count; i++)
+                {
+
+                    whereRuta += " OR Ruta = " + Vble.ArrayRutasXLoc[i];
+
+                }
+
+            }
+            catch (Exception r)
+            {
+                MessageBox.Show(r.Message + "Error Al realizar Iteración de Nodos Seleccionado", "Error de Consulta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return whereRuta;
         }
 
 
@@ -3125,7 +3181,7 @@ namespace gagFIS_Interfase {
                 IWshRuntimeLibrary.IWshNetwork2 network = new IWshRuntimeLibrary.WshNetwork();
                 //String localname = @"P:";
                 //String remotename = @"\\10.1.3.125\UPLOAD";
-                Object updateprofile = Type.Missing;
+                Object updateprofile = System.Type.Missing;
                 Object username = Vble.DominioYUsuarioRed;
                 Object pass = Vble.ContraseñaRed;
                 //MessageBox.Show(Vble.DominioYUsuarioRed);
@@ -3159,7 +3215,7 @@ namespace gagFIS_Interfase {
             try
             {
                 IWshRuntimeLibrary.IWshNetwork2 network = new IWshRuntimeLibrary.WshNetwork();
-                Object updateprofile = Type.Missing;
+                Object updateprofile = System.Type.Missing;
                 //buscamos todas las unidades de red para desconectar y no quede abierto el acceso a cualquier usuario
                 DriveInfo[] drives;
                 drives = System.IO.DriveInfo.GetDrives();
@@ -3918,7 +3974,8 @@ namespace gagFIS_Interfase {
                     Inis.GetPrivateProfileString("Archivos", "Base PRD", "", stB, 250, Ctte.ArchivoIniName);
                     NombreBD = stB.ToString().Trim();
 
-                    connectionString = string.Format("Server={0};Database={1}; Uid={2}; Pwd={3}; Convert Zero Datetime=True; Connection Timeout=900; SslMode = none",
+                    //connectionString = string.Format("Server={0};Database={1}; Uid={2}; Pwd={3}; Convert Zero Datetime=True; Connection Timeout=900; SslMode = none",
+                    connectionString = string.Format("Server={0};Database={1}; Uid={2}; Pwd={3}; Convert Zero Datetime=True; Connection Timeout=900; SslMode = none;Pooling=true", //Agrego dos parametros para probar las desconexiones; Pooling = true; Reconnect = true
                                        ServidorBD, NombreBD, sDbUsu, sDbKey);
                     connectionStringAdmin = string.Format("Server={0};Database={1}; Uid=admin; Pwd=Micc4001; Convert Zero Datetime=True; Connection Timeout=900; SslMode = none",
                                        ServidorBD, NombreBD);
@@ -3930,7 +3987,8 @@ namespace gagFIS_Interfase {
                     Inis.GetPrivateProfileString("Archivos", "Base QAS", "", stB, 250, Ctte.ArchivoIniName);
                     NombreBD = stB.ToString().Trim();
 
-                    connectionString = string.Format("Server={0};Database={1}; Uid={2}; Pwd={3}; Convert Zero Datetime=True; Connection Timeout=900; SslMode = none",
+                    // connectionString = string.Format("Server={0};Database={1}; Uid={2}; Pwd={3}; Convert Zero Datetime=True; Connection Timeout=900; SslMode = none",
+                    connectionString = string.Format("Server={0};Database={1}; Uid={2}; Pwd={3}; Convert Zero Datetime=True; Connection Timeout=900; SslMode = none; Pooling=true",
                                     ServidorBD, NombreBD, sDbUsu, sDbKey);
                     conexBD.ConnectionString = connectionString;
                     conexBD.Open();
@@ -4197,7 +4255,7 @@ namespace gagFIS_Interfase {
 
         /// <summary>
         /// Método que realiza la consulta y muestra en una ventana secundaria las conexiones de la pre-descarga segun el estado ImpresionOBS
-        /// que se recibe como parametro.
+        /// que se recibe como parametro por Remesa
         /// </summary>
         /// <param name="RutaDatos"></param>
         /// <param name="LeyendaImpresion"></param>

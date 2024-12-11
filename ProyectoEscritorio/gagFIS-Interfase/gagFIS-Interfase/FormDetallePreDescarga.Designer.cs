@@ -30,19 +30,19 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDetallePreDescarga));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series19 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series20 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series21 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series22 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series23 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series24 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -51,6 +51,7 @@
             this.lblAvanceExportacion = new System.Windows.Forms.Label();
             this.panelSuperior = new System.Windows.Forms.Panel();
             this.CBTipoLect = new System.Windows.Forms.ComboBox();
+            this.iTalk_Label1 = new iTalk.iTalk_Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -76,11 +77,21 @@
             this.LabelPeriodo = new System.Windows.Forms.Label();
             this.BtnPDF = new System.Windows.Forms.Button();
             this.LabelLeyenda = new System.Windows.Forms.Label();
+            this.LblBuscar = new iTalk.iTalk_Label();
+            this.TextFiltro = new iTalk.iTalk_TextBox_Small();
             this.ButPrint = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.detalleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verOtrosMotivosImpresiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PanelHistorial = new iTalk.iTalk_Panel();
+            this.BtnAddPeriodo = new System.Windows.Forms.Button();
+            this.TextNewPeriodo = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.iTalk_Label3 = new iTalk.iTalk_Label();
+            this.TXTRutaHistorial = new System.Windows.Forms.TextBox();
+            this.cboPeriodoHistorial = new iTalk.iTalk_ComboBox();
+            this.iTalk_Label2 = new iTalk.iTalk_Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.MiLoadingInformes = new System.Windows.Forms.PictureBox();
             this.DGResumenExp = new System.Windows.Forms.DataGridView();
@@ -94,27 +105,6 @@
             this.PanelTotOrd = new System.Windows.Forms.Panel();
             this.lblTotalUsConOrd = new System.Windows.Forms.Label();
             this.lbOrdenativos = new System.Windows.Forms.Label();
-            this.LabCantidad = new System.Windows.Forms.Label();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.CMSDetalleInformes = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ItemDetalleZona = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.bgwExpExcel = new System.ComponentModel.BackgroundWorker();
-            this.BGWCargaTablas = new System.ComponentModel.BackgroundWorker();
-            this.BGWProcessing = new System.ComponentModel.BackgroundWorker();
-            this.LabCargandoInformes = new iTalk.iTalk_Label();
-            this.iTalk_Label1 = new iTalk.iTalk_Label();
-            this.LblBuscar = new iTalk.iTalk_Label();
-            this.TextFiltro = new iTalk.iTalk_TextBox_Small();
-            this.PanelHistorial = new iTalk.iTalk_Panel();
-            this.BtnAddPeriodo = new System.Windows.Forms.Button();
-            this.TextNewPeriodo = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.iTalk_Label3 = new iTalk.iTalk_Label();
-            this.TXTRutaHistorial = new System.Windows.Forms.TextBox();
-            this.cboPeriodoHistorial = new iTalk.iTalk_ComboBox();
-            this.iTalk_Label2 = new iTalk.iTalk_Label();
             this.GroupBoxResumenGral = new iTalk.iTalk_GroupBox();
             this.PanelChart = new System.Windows.Forms.Panel();
             this.TabCtrlGraficos = new System.Windows.Forms.TabControl();
@@ -142,7 +132,17 @@
             this.IndicacionNoImprimir = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TeleLectura = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.iTalk_Button_11 = new iTalk.iTalk_Button_1();
+            this.LabCantidad = new System.Windows.Forms.Label();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.CMSDetalleInformes = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ItemDetalleZona = new System.Windows.Forms.ToolStripMenuItem();
             this.ItemAltasZona = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.bgwExpExcel = new System.ComponentModel.BackgroundWorker();
+            this.BGWCargaTablas = new System.ComponentModel.BackgroundWorker();
+            this.BGWProcessing = new System.ComponentModel.BackgroundWorker();
+            this.LabCargandoInformes = new iTalk.iTalk_Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -157,6 +157,7 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAltas)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.PanelHistorial.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -165,8 +166,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGResumenExp)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.CMSDetalleInformes.SuspendLayout();
-            this.PanelHistorial.SuspendLayout();
             this.GroupBoxResumenGral.SuspendLayout();
             this.PanelChart.SuspendLayout();
             this.TabCtrlGraficos.SuspendLayout();
@@ -178,6 +177,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ChartPeriodos)).BeginInit();
             this.PLoadingResGral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PickBoxLoading)).BeginInit();
+            this.CMSDetalleInformes.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -312,6 +312,19 @@
             this.CBTipoLect.TabIndex = 46;
             this.CBTipoLect.Text = "TODOS";
             this.CBTipoLect.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // iTalk_Label1
+            // 
+            this.iTalk_Label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.iTalk_Label1.AutoSize = true;
+            this.iTalk_Label1.BackColor = System.Drawing.Color.Transparent;
+            this.iTalk_Label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iTalk_Label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.iTalk_Label1.Location = new System.Drawing.Point(92, 68);
+            this.iTalk_Label1.Name = "iTalk_Label1";
+            this.iTalk_Label1.Size = new System.Drawing.Size(83, 17);
+            this.iTalk_Label1.TabIndex = 45;
+            this.iTalk_Label1.Text = "Tipo Lectura:";
             // 
             // groupBox3
             // 
@@ -588,6 +601,37 @@
             this.LabelLeyenda.Text = "...";
             this.LabelLeyenda.Visible = false;
             // 
+            // LblBuscar
+            // 
+            this.LblBuscar.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.LblBuscar.AutoSize = true;
+            this.LblBuscar.BackColor = System.Drawing.Color.Transparent;
+            this.LblBuscar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.LblBuscar.Location = new System.Drawing.Point(341, 122);
+            this.LblBuscar.Name = "LblBuscar";
+            this.LblBuscar.Size = new System.Drawing.Size(43, 13);
+            this.LblBuscar.TabIndex = 6;
+            this.LblBuscar.Text = "Buscar:";
+            // 
+            // TextFiltro
+            // 
+            this.TextFiltro.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TextFiltro.BackColor = System.Drawing.Color.Transparent;
+            this.TextFiltro.Enabled = false;
+            this.TextFiltro.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.TextFiltro.ForeColor = System.Drawing.Color.DimGray;
+            this.TextFiltro.Location = new System.Drawing.Point(393, 116);
+            this.TextFiltro.MaxLength = 32767;
+            this.TextFiltro.Multiline = false;
+            this.TextFiltro.Name = "TextFiltro";
+            this.TextFiltro.ReadOnly = false;
+            this.TextFiltro.Size = new System.Drawing.Size(319, 28);
+            this.TextFiltro.TabIndex = 4;
+            this.TextFiltro.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextFiltro.UseSystemPasswordChar = false;
+            this.TextFiltro.TextChanged += new System.EventHandler(this.TextNºInstalacion_TextChanged);
+            // 
             // ButPrint
             // 
             this.ButPrint.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -637,6 +681,113 @@
             this.verOtrosMotivosImpresiónToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.verOtrosMotivosImpresiónToolStripMenuItem.Text = "Ver otros motivos";
             // 
+            // PanelHistorial
+            // 
+            this.PanelHistorial.BackColor = System.Drawing.Color.Transparent;
+            this.PanelHistorial.Controls.Add(this.BtnAddPeriodo);
+            this.PanelHistorial.Controls.Add(this.TextNewPeriodo);
+            this.PanelHistorial.Controls.Add(this.button2);
+            this.PanelHistorial.Controls.Add(this.iTalk_Label3);
+            this.PanelHistorial.Controls.Add(this.TXTRutaHistorial);
+            this.PanelHistorial.Controls.Add(this.cboPeriodoHistorial);
+            this.PanelHistorial.Controls.Add(this.iTalk_Label2);
+            this.PanelHistorial.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelHistorial.Location = new System.Drawing.Point(0, 0);
+            this.PanelHistorial.Name = "PanelHistorial";
+            this.PanelHistorial.Padding = new System.Windows.Forms.Padding(5);
+            this.PanelHistorial.Size = new System.Drawing.Size(36, 166);
+            this.PanelHistorial.TabIndex = 12;
+            this.PanelHistorial.Text = "iTalk_Panel1";
+            // 
+            // BtnAddPeriodo
+            // 
+            this.BtnAddPeriodo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BtnAddPeriodo.Location = new System.Drawing.Point(249, 56);
+            this.BtnAddPeriodo.Name = "BtnAddPeriodo";
+            this.BtnAddPeriodo.Size = new System.Drawing.Size(22, 22);
+            this.BtnAddPeriodo.TabIndex = 21;
+            this.BtnAddPeriodo.UseVisualStyleBackColor = true;
+            this.BtnAddPeriodo.Click += new System.EventHandler(this.BtnAddPeriodo_Click);
+            // 
+            // TextNewPeriodo
+            // 
+            this.TextNewPeriodo.BackColor = System.Drawing.SystemColors.Menu;
+            this.TextNewPeriodo.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextNewPeriodo.Location = new System.Drawing.Point(173, 53);
+            this.TextNewPeriodo.Multiline = true;
+            this.TextNewPeriodo.Name = "TextNewPeriodo";
+            this.TextNewPeriodo.Size = new System.Drawing.Size(65, 24);
+            this.TextNewPeriodo.TabIndex = 20;
+            this.TextNewPeriodo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextNewPeriodo_KeyDown);
+            // 
+            // button2
+            // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Location = new System.Drawing.Point(442, 126);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(27, 24);
+            this.button2.TabIndex = 9;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // iTalk_Label3
+            // 
+            this.iTalk_Label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.iTalk_Label3.AutoSize = true;
+            this.iTalk_Label3.BackColor = System.Drawing.Color.Transparent;
+            this.iTalk_Label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iTalk_Label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.iTalk_Label3.Location = new System.Drawing.Point(277, 131);
+            this.iTalk_Label3.Name = "iTalk_Label3";
+            this.iTalk_Label3.Size = new System.Drawing.Size(34, 13);
+            this.iTalk_Label3.TabIndex = 12;
+            this.iTalk_Label3.Text = "Ruta:";
+            // 
+            // TXTRutaHistorial
+            // 
+            this.TXTRutaHistorial.BackColor = System.Drawing.SystemColors.Menu;
+            this.TXTRutaHistorial.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TXTRutaHistorial.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.TXTRutaHistorial.Location = new System.Drawing.Point(317, 53);
+            this.TXTRutaHistorial.Multiline = true;
+            this.TXTRutaHistorial.Name = "TXTRutaHistorial";
+            this.TXTRutaHistorial.Size = new System.Drawing.Size(77, 26);
+            this.TXTRutaHistorial.TabIndex = 11;
+            this.TXTRutaHistorial.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TXTRutaHistorial.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TXTRutaHistorial_KeyDown);
+            // 
+            // cboPeriodoHistorial
+            // 
+            this.cboPeriodoHistorial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
+            this.cboPeriodoHistorial.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboPeriodoHistorial.DropDownHeight = 100;
+            this.cboPeriodoHistorial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPeriodoHistorial.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboPeriodoHistorial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.cboPeriodoHistorial.FormattingEnabled = true;
+            this.cboPeriodoHistorial.HoverSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.cboPeriodoHistorial.IntegralHeight = false;
+            this.cboPeriodoHistorial.ItemHeight = 20;
+            this.cboPeriodoHistorial.Location = new System.Drawing.Point(70, 53);
+            this.cboPeriodoHistorial.Name = "cboPeriodoHistorial";
+            this.cboPeriodoHistorial.Size = new System.Drawing.Size(93, 26);
+            this.cboPeriodoHistorial.StartIndex = 0;
+            this.cboPeriodoHistorial.TabIndex = 10;
+            // 
+            // iTalk_Label2
+            // 
+            this.iTalk_Label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.iTalk_Label2.AutoSize = true;
+            this.iTalk_Label2.BackColor = System.Drawing.Color.Transparent;
+            this.iTalk_Label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iTalk_Label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.iTalk_Label2.Location = new System.Drawing.Point(15, 75);
+            this.iTalk_Label2.Name = "iTalk_Label2";
+            this.iTalk_Label2.Size = new System.Drawing.Size(50, 13);
+            this.iTalk_Label2.TabIndex = 9;
+            this.iTalk_Label2.Text = "Periodo:";
+            // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -674,14 +825,14 @@
             this.DGResumenExp.AllowUserToDeleteRows = false;
             this.DGResumenExp.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGResumenExp.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGResumenExp.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGResumenExp.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DGResumenExp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGResumenExp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DGResumenExp.Location = new System.Drawing.Point(0, 0);
@@ -802,236 +953,6 @@
             this.lbOrdenativos.TabIndex = 4;
             this.lbOrdenativos.Text = "Usuarios con Ordenativos";
             // 
-            // LabCantidad
-            // 
-            this.LabCantidad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.LabCantidad.AutoSize = true;
-            this.LabCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabCantidad.Location = new System.Drawing.Point(1289, 26);
-            this.LabCantidad.Name = "LabCantidad";
-            this.LabCantidad.Size = new System.Drawing.Size(73, 16);
-            this.LabCantidad.TabIndex = 0;
-            this.LabCantidad.Text = "Cantidad:";
-            // 
-            // printDocument1
-            // 
-            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
-            // 
-            // printPreviewDialog1
-            // 
-            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
-            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
-            this.printPreviewDialog1.Document = this.printDocument1;
-            this.printPreviewDialog1.Enabled = true;
-            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
-            this.printPreviewDialog1.Name = "printPreviewDialog1";
-            this.printPreviewDialog1.Visible = false;
-            // 
-            // CMSDetalleInformes
-            // 
-            this.CMSDetalleInformes.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ItemDetalleZona,
-            this.ItemAltasZona});
-            this.CMSDetalleInformes.Name = "contextMenuStrip1";
-            this.CMSDetalleInformes.Size = new System.Drawing.Size(175, 48);
-            this.CMSDetalleInformes.Opening += new System.ComponentModel.CancelEventHandler(this.CMSDetalleInformes_Opening);
-            this.CMSDetalleInformes.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.contextMenuStrip1_ItemClicked);
-            // 
-            // ItemDetalleZona
-            // 
-            this.ItemDetalleZona.Name = "ItemDetalleZona";
-            this.ItemDetalleZona.Size = new System.Drawing.Size(174, 22);
-            this.ItemDetalleZona.Text = "Ver detalle de Zona";
-            // 
-            // toolTip1
-            // 
-            this.toolTip1.IsBalloon = true;
-            // 
-            // bgwExpExcel
-            // 
-            this.bgwExpExcel.WorkerReportsProgress = true;
-            this.bgwExpExcel.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwExpExcel_DoWork);
-            this.bgwExpExcel.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwExpExcel_ProgressChanged);
-            this.bgwExpExcel.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwExpExcel_RunWorkerCompleted);
-            // 
-            // BGWCargaTablas
-            // 
-            this.BGWCargaTablas.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BGWCargaTablas_DoWork);
-            this.BGWCargaTablas.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BGWCargaTablas_ProgressChanged);
-            this.BGWCargaTablas.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BGWCargaTablas_RunWorkerCompleted);
-            // 
-            // BGWProcessing
-            // 
-            this.BGWProcessing.WorkerSupportsCancellation = true;
-            this.BGWProcessing.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BGWProcessing_DoWork);
-            this.BGWProcessing.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BGWProcessing_ProgressChanged);
-            this.BGWProcessing.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BGWProcessing_RunWorkerCompleted);
-            // 
-            // LabCargandoInformes
-            // 
-            this.LabCargandoInformes.AutoSize = true;
-            this.LabCargandoInformes.BackColor = System.Drawing.Color.Transparent;
-            this.LabCargandoInformes.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabCargandoInformes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.LabCargandoInformes.Location = new System.Drawing.Point(389, 367);
-            this.LabCargandoInformes.Name = "LabCargandoInformes";
-            this.LabCargandoInformes.Size = new System.Drawing.Size(357, 30);
-            this.LabCargandoInformes.TabIndex = 5;
-            this.LabCargandoInformes.Text = "Obteniendo datos, por favor espere...";
-            this.LabCargandoInformes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // iTalk_Label1
-            // 
-            this.iTalk_Label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.iTalk_Label1.AutoSize = true;
-            this.iTalk_Label1.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_Label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iTalk_Label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.iTalk_Label1.Location = new System.Drawing.Point(92, 68);
-            this.iTalk_Label1.Name = "iTalk_Label1";
-            this.iTalk_Label1.Size = new System.Drawing.Size(83, 17);
-            this.iTalk_Label1.TabIndex = 45;
-            this.iTalk_Label1.Text = "Tipo Lectura:";
-            // 
-            // LblBuscar
-            // 
-            this.LblBuscar.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.LblBuscar.AutoSize = true;
-            this.LblBuscar.BackColor = System.Drawing.Color.Transparent;
-            this.LblBuscar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.LblBuscar.Location = new System.Drawing.Point(341, 122);
-            this.LblBuscar.Name = "LblBuscar";
-            this.LblBuscar.Size = new System.Drawing.Size(43, 13);
-            this.LblBuscar.TabIndex = 6;
-            this.LblBuscar.Text = "Buscar:";
-            // 
-            // TextFiltro
-            // 
-            this.TextFiltro.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.TextFiltro.BackColor = System.Drawing.Color.Transparent;
-            this.TextFiltro.Enabled = false;
-            this.TextFiltro.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.TextFiltro.ForeColor = System.Drawing.Color.DimGray;
-            this.TextFiltro.Location = new System.Drawing.Point(393, 116);
-            this.TextFiltro.MaxLength = 32767;
-            this.TextFiltro.Multiline = false;
-            this.TextFiltro.Name = "TextFiltro";
-            this.TextFiltro.ReadOnly = false;
-            this.TextFiltro.Size = new System.Drawing.Size(319, 28);
-            this.TextFiltro.TabIndex = 4;
-            this.TextFiltro.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
-            this.TextFiltro.UseSystemPasswordChar = false;
-            this.TextFiltro.TextChanged += new System.EventHandler(this.TextNºInstalacion_TextChanged);
-            // 
-            // PanelHistorial
-            // 
-            this.PanelHistorial.BackColor = System.Drawing.Color.Transparent;
-            this.PanelHistorial.Controls.Add(this.BtnAddPeriodo);
-            this.PanelHistorial.Controls.Add(this.TextNewPeriodo);
-            this.PanelHistorial.Controls.Add(this.button2);
-            this.PanelHistorial.Controls.Add(this.iTalk_Label3);
-            this.PanelHistorial.Controls.Add(this.TXTRutaHistorial);
-            this.PanelHistorial.Controls.Add(this.cboPeriodoHistorial);
-            this.PanelHistorial.Controls.Add(this.iTalk_Label2);
-            this.PanelHistorial.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelHistorial.Location = new System.Drawing.Point(0, 0);
-            this.PanelHistorial.Name = "PanelHistorial";
-            this.PanelHistorial.Padding = new System.Windows.Forms.Padding(5);
-            this.PanelHistorial.Size = new System.Drawing.Size(36, 166);
-            this.PanelHistorial.TabIndex = 12;
-            this.PanelHistorial.Text = "iTalk_Panel1";
-            // 
-            // BtnAddPeriodo
-            // 
-            this.BtnAddPeriodo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BtnAddPeriodo.Location = new System.Drawing.Point(249, 56);
-            this.BtnAddPeriodo.Name = "BtnAddPeriodo";
-            this.BtnAddPeriodo.Size = new System.Drawing.Size(22, 22);
-            this.BtnAddPeriodo.TabIndex = 21;
-            this.BtnAddPeriodo.UseVisualStyleBackColor = true;
-            this.BtnAddPeriodo.Click += new System.EventHandler(this.BtnAddPeriodo_Click);
-            // 
-            // TextNewPeriodo
-            // 
-            this.TextNewPeriodo.BackColor = System.Drawing.SystemColors.Menu;
-            this.TextNewPeriodo.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextNewPeriodo.Location = new System.Drawing.Point(173, 53);
-            this.TextNewPeriodo.Multiline = true;
-            this.TextNewPeriodo.Name = "TextNewPeriodo";
-            this.TextNewPeriodo.Size = new System.Drawing.Size(65, 24);
-            this.TextNewPeriodo.TabIndex = 20;
-            this.TextNewPeriodo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextNewPeriodo_KeyDown);
-            // 
-            // button2
-            // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Location = new System.Drawing.Point(442, 126);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(27, 24);
-            this.button2.TabIndex = 9;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
-            // iTalk_Label3
-            // 
-            this.iTalk_Label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.iTalk_Label3.AutoSize = true;
-            this.iTalk_Label3.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_Label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iTalk_Label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.iTalk_Label3.Location = new System.Drawing.Point(277, 131);
-            this.iTalk_Label3.Name = "iTalk_Label3";
-            this.iTalk_Label3.Size = new System.Drawing.Size(34, 13);
-            this.iTalk_Label3.TabIndex = 12;
-            this.iTalk_Label3.Text = "Ruta:";
-            // 
-            // TXTRutaHistorial
-            // 
-            this.TXTRutaHistorial.BackColor = System.Drawing.SystemColors.Menu;
-            this.TXTRutaHistorial.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TXTRutaHistorial.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.TXTRutaHistorial.Location = new System.Drawing.Point(317, 53);
-            this.TXTRutaHistorial.Multiline = true;
-            this.TXTRutaHistorial.Name = "TXTRutaHistorial";
-            this.TXTRutaHistorial.Size = new System.Drawing.Size(77, 26);
-            this.TXTRutaHistorial.TabIndex = 11;
-            this.TXTRutaHistorial.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TXTRutaHistorial.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TXTRutaHistorial_KeyDown);
-            // 
-            // cboPeriodoHistorial
-            // 
-            this.cboPeriodoHistorial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(246)))), ((int)(((byte)(246)))));
-            this.cboPeriodoHistorial.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cboPeriodoHistorial.DropDownHeight = 100;
-            this.cboPeriodoHistorial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboPeriodoHistorial.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cboPeriodoHistorial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.cboPeriodoHistorial.FormattingEnabled = true;
-            this.cboPeriodoHistorial.HoverSelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.cboPeriodoHistorial.IntegralHeight = false;
-            this.cboPeriodoHistorial.ItemHeight = 20;
-            this.cboPeriodoHistorial.Location = new System.Drawing.Point(70, 53);
-            this.cboPeriodoHistorial.Name = "cboPeriodoHistorial";
-            this.cboPeriodoHistorial.Size = new System.Drawing.Size(93, 26);
-            this.cboPeriodoHistorial.StartIndex = 0;
-            this.cboPeriodoHistorial.TabIndex = 10;
-            // 
-            // iTalk_Label2
-            // 
-            this.iTalk_Label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.iTalk_Label2.AutoSize = true;
-            this.iTalk_Label2.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_Label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iTalk_Label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.iTalk_Label2.Location = new System.Drawing.Point(15, 75);
-            this.iTalk_Label2.Name = "iTalk_Label2";
-            this.iTalk_Label2.Size = new System.Drawing.Size(50, 13);
-            this.iTalk_Label2.TabIndex = 9;
-            this.iTalk_Label2.Text = "Periodo:";
-            // 
             // GroupBoxResumenGral
             // 
             this.GroupBoxResumenGral.BackColor = System.Drawing.Color.Transparent;
@@ -1097,66 +1018,66 @@
             // ChartLeidos
             // 
             this.ChartLeidos.BackColor = System.Drawing.SystemColors.ControlLight;
-            chartArea10.AlignmentOrientation = ((System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations)((System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Vertical | System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal)));
-            chartArea10.Area3DStyle.IsClustered = true;
-            chartArea10.AxisX.IsLabelAutoFit = false;
-            chartArea10.AxisX.LabelStyle.Angle = 90;
-            chartArea10.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea10.AxisX.LogarithmBase = 5D;
-            chartArea10.AxisX.MajorGrid.LineColor = System.Drawing.Color.LightGray;
-            chartArea10.AxisX.ScrollBar.Size = 5D;
-            chartArea10.AxisX.Title = "Cod-Localidad";
-            chartArea10.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea10.AxisX2.IsInterlaced = true;
-            chartArea10.AxisX2.LabelStyle.Interval = 0D;
-            chartArea10.AxisX2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea10.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea10.AxisY.IsLabelAutoFit = false;
-            chartArea10.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea10.AxisY.MajorGrid.LineColor = System.Drawing.Color.LightGray;
-            chartArea10.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea10.AxisY2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea10.BackColor = System.Drawing.SystemColors.ControlLight;
-            chartArea10.CursorX.AutoScroll = false;
-            chartArea10.CursorX.IntervalOffset = 1D;
-            chartArea10.Name = "ChartArea1";
-            chartArea10.Position.Auto = false;
-            chartArea10.Position.Height = 94F;
-            chartArea10.Position.Width = 94F;
-            chartArea10.Position.Y = 3F;
-            this.ChartLeidos.ChartAreas.Add(chartArea10);
+            chartArea1.AlignmentOrientation = ((System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations)((System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Vertical | System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal)));
+            chartArea1.Area3DStyle.IsClustered = true;
+            chartArea1.AxisX.IsLabelAutoFit = false;
+            chartArea1.AxisX.LabelStyle.Angle = 90;
+            chartArea1.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisX.LogarithmBase = 5D;
+            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.LightGray;
+            chartArea1.AxisX.ScrollBar.Size = 5D;
+            chartArea1.AxisX.Title = "Cod-Localidad";
+            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisX2.IsInterlaced = true;
+            chartArea1.AxisX2.LabelStyle.Interval = 0D;
+            chartArea1.AxisX2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea1.AxisY.IsLabelAutoFit = false;
+            chartArea1.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.LightGray;
+            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisY2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.BackColor = System.Drawing.SystemColors.ControlLight;
+            chartArea1.CursorX.AutoScroll = false;
+            chartArea1.CursorX.IntervalOffset = 1D;
+            chartArea1.Name = "ChartArea1";
+            chartArea1.Position.Auto = false;
+            chartArea1.Position.Height = 94F;
+            chartArea1.Position.Width = 94F;
+            chartArea1.Position.Y = 3F;
+            this.ChartLeidos.ChartAreas.Add(chartArea1);
             this.ChartLeidos.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend10.BackColor = System.Drawing.SystemColors.ControlLight;
-            legend10.InterlacedRowsColor = System.Drawing.Color.Transparent;
-            legend10.LegendItemOrder = System.Windows.Forms.DataVisualization.Charting.LegendItemOrder.ReversedSeriesOrder;
-            legend10.Name = "Legend1";
-            legend10.Position.Auto = false;
-            legend10.Position.Height = 34.74576F;
-            legend10.Position.Width = 7.742639F;
-            legend10.Position.X = 89.25736F;
-            legend10.Position.Y = 3F;
-            this.ChartLeidos.Legends.Add(legend10);
+            legend1.BackColor = System.Drawing.SystemColors.ControlLight;
+            legend1.InterlacedRowsColor = System.Drawing.Color.Transparent;
+            legend1.LegendItemOrder = System.Windows.Forms.DataVisualization.Charting.LegendItemOrder.ReversedSeriesOrder;
+            legend1.Name = "Legend1";
+            legend1.Position.Auto = false;
+            legend1.Position.Height = 34.74576F;
+            legend1.Position.Width = 7.742639F;
+            legend1.Position.X = 89.25736F;
+            legend1.Position.Y = 3F;
+            this.ChartLeidos.Legends.Add(legend1);
             this.ChartLeidos.Location = new System.Drawing.Point(3, 3);
             this.ChartLeidos.Name = "ChartLeidos";
             this.ChartLeidos.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
-            series19.ChartArea = "ChartArea1";
-            series19.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series19.IsValueShownAsLabel = true;
-            series19.IsXValueIndexed = true;
-            series19.LabelAngle = 90;
-            series19.LabelBackColor = System.Drawing.Color.Transparent;
-            series19.Legend = "Legend1";
-            series19.Name = "Total";
-            series20.ChartArea = "ChartArea1";
-            series20.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series20.IsValueShownAsLabel = true;
-            series20.IsXValueIndexed = true;
-            series20.LabelAngle = 90;
-            series20.Legend = "Legend1";
-            series20.Name = "Leidos";
-            series20.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            this.ChartLeidos.Series.Add(series19);
-            this.ChartLeidos.Series.Add(series20);
+            series1.ChartArea = "ChartArea1";
+            series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series1.IsValueShownAsLabel = true;
+            series1.IsXValueIndexed = true;
+            series1.LabelAngle = 90;
+            series1.LabelBackColor = System.Drawing.Color.Transparent;
+            series1.Legend = "Legend1";
+            series1.Name = "Total";
+            series2.ChartArea = "ChartArea1";
+            series2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series2.IsValueShownAsLabel = true;
+            series2.IsXValueIndexed = true;
+            series2.LabelAngle = 90;
+            series2.Legend = "Legend1";
+            series2.Name = "Leidos";
+            series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            this.ChartLeidos.Series.Add(series1);
+            this.ChartLeidos.Series.Add(series2);
             this.ChartLeidos.Size = new System.Drawing.Size(864, 157);
             this.ChartLeidos.TabIndex = 1;
             this.ChartLeidos.Text = "chart2";
@@ -1175,73 +1096,73 @@
             // ChartImpresos
             // 
             this.ChartImpresos.BackColor = System.Drawing.SystemColors.ControlLight;
-            chartArea11.AlignmentOrientation = ((System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations)((System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Vertical | System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal)));
-            chartArea11.Area3DStyle.IsClustered = true;
-            chartArea11.AxisX.IsLabelAutoFit = false;
-            chartArea11.AxisX.LabelStyle.Angle = 90;
-            chartArea11.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea11.AxisX.LogarithmBase = 5D;
-            chartArea11.AxisX.MajorGrid.LineColor = System.Drawing.Color.LightGray;
-            chartArea11.AxisX.ScrollBar.Size = 5D;
-            chartArea11.AxisX.Title = "Cod-Localidad";
-            chartArea11.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea11.AxisX2.IsInterlaced = true;
-            chartArea11.AxisX2.LabelStyle.Interval = 0D;
-            chartArea11.AxisX2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea11.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea11.AxisY.IsLabelAutoFit = false;
-            chartArea11.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea11.AxisY.MajorGrid.LineColor = System.Drawing.Color.LightGray;
-            chartArea11.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea11.AxisY2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea11.BackColor = System.Drawing.SystemColors.ControlLight;
-            chartArea11.CursorX.AutoScroll = false;
-            chartArea11.CursorX.IntervalOffset = 1D;
-            chartArea11.Name = "ChartArea1";
-            chartArea11.Position.Auto = false;
-            chartArea11.Position.Height = 94F;
-            chartArea11.Position.Width = 94F;
-            chartArea11.Position.Y = 3F;
-            this.ChartImpresos.ChartAreas.Add(chartArea11);
+            chartArea2.AlignmentOrientation = ((System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations)((System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Vertical | System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal)));
+            chartArea2.Area3DStyle.IsClustered = true;
+            chartArea2.AxisX.IsLabelAutoFit = false;
+            chartArea2.AxisX.LabelStyle.Angle = 90;
+            chartArea2.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea2.AxisX.LogarithmBase = 5D;
+            chartArea2.AxisX.MajorGrid.LineColor = System.Drawing.Color.LightGray;
+            chartArea2.AxisX.ScrollBar.Size = 5D;
+            chartArea2.AxisX.Title = "Cod-Localidad";
+            chartArea2.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea2.AxisX2.IsInterlaced = true;
+            chartArea2.AxisX2.LabelStyle.Interval = 0D;
+            chartArea2.AxisX2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea2.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea2.AxisY.IsLabelAutoFit = false;
+            chartArea2.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.LightGray;
+            chartArea2.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea2.AxisY2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea2.BackColor = System.Drawing.SystemColors.ControlLight;
+            chartArea2.CursorX.AutoScroll = false;
+            chartArea2.CursorX.IntervalOffset = 1D;
+            chartArea2.Name = "ChartArea1";
+            chartArea2.Position.Auto = false;
+            chartArea2.Position.Height = 94F;
+            chartArea2.Position.Width = 94F;
+            chartArea2.Position.Y = 3F;
+            this.ChartImpresos.ChartAreas.Add(chartArea2);
             this.ChartImpresos.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend11.BackColor = System.Drawing.SystemColors.ControlLight;
-            legend11.InterlacedRowsColor = System.Drawing.Color.Transparent;
-            legend11.IsEquallySpacedItems = true;
-            legend11.LegendItemOrder = System.Windows.Forms.DataVisualization.Charting.LegendItemOrder.ReversedSeriesOrder;
-            legend11.Name = "Legend1";
-            legend11.Position.Auto = false;
-            legend11.Position.Height = 34.74576F;
-            legend11.Position.Width = 7.742639F;
-            legend11.Position.X = 89.25736F;
-            legend11.Position.Y = 3F;
-            this.ChartImpresos.Legends.Add(legend11);
+            legend2.BackColor = System.Drawing.SystemColors.ControlLight;
+            legend2.InterlacedRowsColor = System.Drawing.Color.Transparent;
+            legend2.IsEquallySpacedItems = true;
+            legend2.LegendItemOrder = System.Windows.Forms.DataVisualization.Charting.LegendItemOrder.ReversedSeriesOrder;
+            legend2.Name = "Legend1";
+            legend2.Position.Auto = false;
+            legend2.Position.Height = 34.74576F;
+            legend2.Position.Width = 7.742639F;
+            legend2.Position.X = 89.25736F;
+            legend2.Position.Y = 3F;
+            this.ChartImpresos.Legends.Add(legend2);
             this.ChartImpresos.Location = new System.Drawing.Point(3, 3);
             this.ChartImpresos.Name = "ChartImpresos";
             this.ChartImpresos.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series21.ChartArea = "ChartArea1";
-            series21.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series21.IsValueShownAsLabel = true;
-            series21.IsXValueIndexed = true;
-            series21.LabelAngle = 90;
-            series21.LabelBackColor = System.Drawing.Color.Transparent;
-            series21.Legend = "Legend1";
-            series21.Name = "Total";
-            series22.ChartArea = "ChartArea1";
-            series22.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series22.IsValueShownAsLabel = true;
-            series22.IsXValueIndexed = true;
-            series22.LabelAngle = 90;
-            series22.Legend = "Legend1";
-            series22.Name = "Impresos";
-            series22.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
-            series23.ChartArea = "ChartArea1";
-            series23.IsValueShownAsLabel = true;
-            series23.IsXValueIndexed = true;
-            series23.Legend = "Legend1";
-            series23.Name = "TeleLectura";
-            this.ChartImpresos.Series.Add(series21);
-            this.ChartImpresos.Series.Add(series22);
-            this.ChartImpresos.Series.Add(series23);
+            series3.ChartArea = "ChartArea1";
+            series3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series3.IsValueShownAsLabel = true;
+            series3.IsXValueIndexed = true;
+            series3.LabelAngle = 90;
+            series3.LabelBackColor = System.Drawing.Color.Transparent;
+            series3.Legend = "Legend1";
+            series3.Name = "Total";
+            series4.ChartArea = "ChartArea1";
+            series4.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series4.IsValueShownAsLabel = true;
+            series4.IsXValueIndexed = true;
+            series4.LabelAngle = 90;
+            series4.Legend = "Legend1";
+            series4.Name = "Impresos";
+            series4.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
+            series5.ChartArea = "ChartArea1";
+            series5.IsValueShownAsLabel = true;
+            series5.IsXValueIndexed = true;
+            series5.Legend = "Legend1";
+            series5.Name = "TeleLectura";
+            this.ChartImpresos.Series.Add(series3);
+            this.ChartImpresos.Series.Add(series4);
+            this.ChartImpresos.Series.Add(series5);
             this.ChartImpresos.Size = new System.Drawing.Size(864, 157);
             this.ChartImpresos.TabIndex = 0;
             this.ChartImpresos.Text = "chart1";
@@ -1260,60 +1181,60 @@
             // ChartPeriodos
             // 
             this.ChartPeriodos.BackColor = System.Drawing.SystemColors.ControlLight;
-            chartArea12.AlignmentOrientation = ((System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations)((System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Vertical | System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal)));
-            chartArea12.Area3DStyle.IsClustered = true;
-            chartArea12.AxisX.IsLabelAutoFit = false;
-            chartArea12.AxisX.LabelStyle.Angle = 90;
-            chartArea12.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea12.AxisX.LineWidth = 2;
-            chartArea12.AxisX.LogarithmBase = 5D;
-            chartArea12.AxisX.MajorGrid.LineColor = System.Drawing.Color.LightGray;
-            chartArea12.AxisX.ScrollBar.Size = 5D;
-            chartArea12.AxisX.Title = "Cod-Localidad";
-            chartArea12.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea12.AxisX2.IsInterlaced = true;
-            chartArea12.AxisX2.LabelStyle.Interval = 0D;
-            chartArea12.AxisX2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea12.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea12.AxisY.IsLabelAutoFit = false;
-            chartArea12.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea12.AxisY.MajorGrid.Enabled = false;
-            chartArea12.AxisY.MajorGrid.LineColor = System.Drawing.Color.LightGray;
-            chartArea12.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea12.AxisY2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea12.BackColor = System.Drawing.SystemColors.ControlLight;
-            chartArea12.CursorX.AutoScroll = false;
-            chartArea12.CursorX.IntervalOffset = 1D;
-            chartArea12.Name = "ChartArea1";
-            chartArea12.Position.Auto = false;
-            chartArea12.Position.Height = 94F;
-            chartArea12.Position.Width = 94F;
-            chartArea12.Position.Y = 3F;
-            this.ChartPeriodos.ChartAreas.Add(chartArea12);
+            chartArea3.AlignmentOrientation = ((System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations)((System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Vertical | System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal)));
+            chartArea3.Area3DStyle.IsClustered = true;
+            chartArea3.AxisX.IsLabelAutoFit = false;
+            chartArea3.AxisX.LabelStyle.Angle = 90;
+            chartArea3.AxisX.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea3.AxisX.LineWidth = 2;
+            chartArea3.AxisX.LogarithmBase = 5D;
+            chartArea3.AxisX.MajorGrid.LineColor = System.Drawing.Color.LightGray;
+            chartArea3.AxisX.ScrollBar.Size = 5D;
+            chartArea3.AxisX.Title = "Cod-Localidad";
+            chartArea3.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea3.AxisX2.IsInterlaced = true;
+            chartArea3.AxisX2.LabelStyle.Interval = 0D;
+            chartArea3.AxisX2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea3.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea3.AxisY.IsLabelAutoFit = false;
+            chartArea3.AxisY.LabelStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea3.AxisY.MajorGrid.Enabled = false;
+            chartArea3.AxisY.MajorGrid.LineColor = System.Drawing.Color.LightGray;
+            chartArea3.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea3.AxisY2.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea3.BackColor = System.Drawing.SystemColors.ControlLight;
+            chartArea3.CursorX.AutoScroll = false;
+            chartArea3.CursorX.IntervalOffset = 1D;
+            chartArea3.Name = "ChartArea1";
+            chartArea3.Position.Auto = false;
+            chartArea3.Position.Height = 94F;
+            chartArea3.Position.Width = 94F;
+            chartArea3.Position.Y = 3F;
+            this.ChartPeriodos.ChartAreas.Add(chartArea3);
             this.ChartPeriodos.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend12.BackColor = System.Drawing.SystemColors.ControlLight;
-            legend12.InterlacedRowsColor = System.Drawing.Color.Transparent;
-            legend12.LegendItemOrder = System.Windows.Forms.DataVisualization.Charting.LegendItemOrder.ReversedSeriesOrder;
-            legend12.Name = "Legend1";
-            legend12.Position.Auto = false;
-            legend12.Position.Height = 34.74576F;
-            legend12.Position.Width = 7.742639F;
-            legend12.Position.X = 89.25736F;
-            legend12.Position.Y = 3F;
-            this.ChartPeriodos.Legends.Add(legend12);
+            legend3.BackColor = System.Drawing.SystemColors.ControlLight;
+            legend3.InterlacedRowsColor = System.Drawing.Color.Transparent;
+            legend3.LegendItemOrder = System.Windows.Forms.DataVisualization.Charting.LegendItemOrder.ReversedSeriesOrder;
+            legend3.Name = "Legend1";
+            legend3.Position.Auto = false;
+            legend3.Position.Height = 34.74576F;
+            legend3.Position.Width = 7.742639F;
+            legend3.Position.X = 89.25736F;
+            legend3.Position.Y = 3F;
+            this.ChartPeriodos.Legends.Add(legend3);
             this.ChartPeriodos.Location = new System.Drawing.Point(3, 3);
             this.ChartPeriodos.Name = "ChartPeriodos";
             this.ChartPeriodos.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SemiTransparent;
-            series24.ChartArea = "ChartArea1";
-            series24.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series24.IsValueShownAsLabel = true;
-            series24.IsXValueIndexed = true;
-            series24.LabelAngle = 90;
-            series24.LabelBackColor = System.Drawing.Color.Transparent;
-            series24.Legend = "Legend1";
-            series24.Name = "Impresos";
-            this.ChartPeriodos.Series.Add(series24);
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series6.IsValueShownAsLabel = true;
+            series6.IsXValueIndexed = true;
+            series6.LabelAngle = 90;
+            series6.LabelBackColor = System.Drawing.Color.Transparent;
+            series6.Legend = "Legend1";
+            series6.Name = "Impresos";
+            this.ChartPeriodos.Series.Add(series6);
             this.ChartPeriodos.Size = new System.Drawing.Size(864, 157);
             this.ChartPeriodos.TabIndex = 2;
             this.ChartPeriodos.Text = "chart2";
@@ -1453,11 +1374,90 @@
             this.iTalk_Button_11.TextAlignment = System.Drawing.StringAlignment.Center;
             this.iTalk_Button_11.Click += new System.EventHandler(this.iTalk_Button_11_Click);
             // 
+            // LabCantidad
+            // 
+            this.LabCantidad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.LabCantidad.AutoSize = true;
+            this.LabCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabCantidad.Location = new System.Drawing.Point(1289, 26);
+            this.LabCantidad.Name = "LabCantidad";
+            this.LabCantidad.Size = new System.Drawing.Size(73, 16);
+            this.LabCantidad.TabIndex = 0;
+            this.LabCantidad.Text = "Cantidad:";
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Document = this.printDocument1;
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
+            // CMSDetalleInformes
+            // 
+            this.CMSDetalleInformes.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ItemDetalleZona,
+            this.ItemAltasZona});
+            this.CMSDetalleInformes.Name = "contextMenuStrip1";
+            this.CMSDetalleInformes.Size = new System.Drawing.Size(175, 48);
+            this.CMSDetalleInformes.Opening += new System.ComponentModel.CancelEventHandler(this.CMSDetalleInformes_Opening);
+            this.CMSDetalleInformes.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.contextMenuStrip1_ItemClicked);
+            // 
+            // ItemDetalleZona
+            // 
+            this.ItemDetalleZona.Name = "ItemDetalleZona";
+            this.ItemDetalleZona.Size = new System.Drawing.Size(174, 22);
+            this.ItemDetalleZona.Text = "Ver detalle de Zona";
+            // 
             // ItemAltasZona
             // 
             this.ItemAltasZona.Name = "ItemAltasZona";
             this.ItemAltasZona.Size = new System.Drawing.Size(174, 22);
             this.ItemAltasZona.Text = "Ver Altas de Zona";
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.IsBalloon = true;
+            // 
+            // bgwExpExcel
+            // 
+            this.bgwExpExcel.WorkerReportsProgress = true;
+            this.bgwExpExcel.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwExpExcel_DoWork);
+            this.bgwExpExcel.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwExpExcel_ProgressChanged);
+            this.bgwExpExcel.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwExpExcel_RunWorkerCompleted);
+            // 
+            // BGWCargaTablas
+            // 
+            this.BGWCargaTablas.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BGWCargaTablas_DoWork);
+            this.BGWCargaTablas.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BGWCargaTablas_ProgressChanged);
+            this.BGWCargaTablas.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BGWCargaTablas_RunWorkerCompleted);
+            // 
+            // BGWProcessing
+            // 
+            this.BGWProcessing.WorkerSupportsCancellation = true;
+            this.BGWProcessing.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BGWProcessing_DoWork);
+            this.BGWProcessing.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.BGWProcessing_ProgressChanged);
+            this.BGWProcessing.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BGWProcessing_RunWorkerCompleted);
+            // 
+            // LabCargandoInformes
+            // 
+            this.LabCargandoInformes.AutoSize = true;
+            this.LabCargandoInformes.BackColor = System.Drawing.Color.Transparent;
+            this.LabCargandoInformes.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabCargandoInformes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.LabCargandoInformes.Location = new System.Drawing.Point(389, 367);
+            this.LabCargandoInformes.Name = "LabCargandoInformes";
+            this.LabCargandoInformes.Size = new System.Drawing.Size(357, 30);
+            this.LabCargandoInformes.TabIndex = 5;
+            this.LabCargandoInformes.Text = "Obteniendo datos, por favor espere...";
+            this.LabCargandoInformes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormDetallePreDescarga
             // 
@@ -1492,6 +1492,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAltas)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.PanelHistorial.ResumeLayout(false);
+            this.PanelHistorial.PerformLayout();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
@@ -1503,9 +1505,6 @@
             this.statusStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.CMSDetalleInformes.ResumeLayout(false);
-            this.PanelHistorial.ResumeLayout(false);
-            this.PanelHistorial.PerformLayout();
             this.GroupBoxResumenGral.ResumeLayout(false);
             this.PanelChart.ResumeLayout(false);
             this.TabCtrlGraficos.ResumeLayout(false);
@@ -1517,6 +1516,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ChartPeriodos)).EndInit();
             this.PLoadingResGral.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PickBoxLoading)).EndInit();
+            this.CMSDetalleInformes.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

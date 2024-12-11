@@ -2121,15 +2121,10 @@ namespace gagFIS_Interfase
             int count = 0;
             bool bandera = false;
            
-
             if (IndicadorTipoInforme == "ResumenRemesa")
             {
-
-
                 this.DGResumenExp.DataSource = Vble.TablaLecturistas; 
-                this.LabCantidad.Text = "Cantidad: " + (this.DGResumenExp.RowCount).ToString();
-
-              
+                this.LabCantidad.Text = "Cantidad: " + (this.DGResumenExp.RowCount).ToString();             
             }
             else
             {
@@ -2140,28 +2135,44 @@ namespace gagFIS_Interfase
                     daCount.CommandTimeout = 300;
                     count = Convert.ToInt32(daCount.ExecuteScalar());
                     bandera = true;
-
                     datosAdapter.Fill(Tabla);
                     this.DGResumenExp.DataSource = Tabla;
                     this.LabCantidad.Text = "Cantidad: " + (this.DGResumenExp.RowCount).ToString() + " de " + count.ToString();
                 }
                 else
                 {
-                    string SelectCount = "select Count(*) From Conexiones WHERE Ruta = " + TextBoxRuta.Text + " AND Remesa = " + CBRemesa.Text + " AND Periodo = " + Vble.Periodo;
-                    MySqlCommand daCount = new MySqlCommand(SelectCount, DB.conexBD);
-                    daCount.CommandTimeout = 300;
-                    count = Convert.ToInt32(daCount.ExecuteScalar());
+
+                        if (DB.sDbUsu.ToUpper() == "SUPERVISOR")
+                        {
+                            string SelectCount = "select Count(*) From Conexiones WHERE Ruta = " + TextBoxRuta.Text + " AND Remesa = " + CBRemesa.Text + " AND Periodo = " + Vble.Periodo;
+                            MySqlCommand daCount = new MySqlCommand(SelectCount, DB.conexBD);
+                            daCount.CommandTimeout = 300;
+                            count = Convert.ToInt32(daCount.ExecuteScalar());                           
+
+                            //datosAdapter.Fill(Vble.TablaLecturistas);
+                            this.DGResumenExp.DataSource = Vble.TablaLecturistas;
+                            this.LabCantidad.Text = "Cantidad: " + (this.DGResumenExp.RowCount).ToString() + " de " + count.ToString();
+                            //daCount.Dispose();
+                            //datosAdapter.Dispose();
+                        }
+                        else
+                        {
+                            string SelectCount = "select Count(*) From Conexiones WHERE Ruta = " + TextBoxRuta.Text + " AND Remesa = " + CBRemesa.Text + " AND Periodo = " + Vble.Periodo;
+                            MySqlCommand daCount = new MySqlCommand(SelectCount, DB.conexBD);
+                            daCount.CommandTimeout = 300;
+                            count = Convert.ToInt32(daCount.ExecuteScalar());
+
+                            Tabla = new DataTable();
+
+                            datosAdapter.Fill(Tabla);
+                            this.DGResumenExp.DataSource = Tabla;
+                            this.LabCantidad.Text = "Cantidad: " + (this.DGResumenExp.RowCount).ToString() + " de " + count.ToString();
+                            //daCount.Dispose();
+                            //datosAdapter.Dispose();
+                        }
 
 
-                    Tabla = new DataTable();
-
-                    datosAdapter.Fill(Tabla);
-                    this.DGResumenExp.DataSource = Tabla;
-                    this.LabCantidad.Text = "Cantidad: " + (this.DGResumenExp.RowCount).ToString() + " de " + count.ToString();
-                    //daCount.Dispose();
-                    //datosAdapter.Dispose();
-
-                }
+                    }
             }
 
             if (DB.sDbUsu.ToUpper() == "SUPERVISOR" || DB.sDbUsu.ToUpper() == "AUDITORIA"){
@@ -2556,8 +2567,7 @@ namespace gagFIS_Interfase
             }
             else if (LabelLeyenda.Text == "Leidos NO impresos")
             {
-                listBoxOrd.Items.Add("                NO IMPRESOS POR IMPRESORA ");
-              
+                listBoxOrd.Items.Add("                NO IMPRESOS POR IMPRESORA ");              
 
                 ///Recorro los registros devueltos como NO Impresos para contar las cantidades por cada motivo de no impresion.
                 ///compara el campo Situación correspondiente a la columna Titulo de la tabla Errores y cada caso almacena en su variable
@@ -6166,24 +6176,17 @@ namespace gagFIS_Interfase
            
             excel.Range[excel.Cells[1, 1], excel.Cells[datos.GetLength(0), datos.GetLength(1)]].Value = datos;
             //excel.Visible = true;
-            Microsoft.Office.Interop.Excel.Worksheet hoja_trabajo1 = (Microsoft.Office.Interop.Excel.Worksheet)excel.ActiveSheet;
-            
-
-
-
+            Microsoft.Office.Interop.Excel.Worksheet hoja_trabajo1 = (Microsoft.Office.Interop.Excel.Worksheet)excel.ActiveSheet;       
 
             object misValue = System.Reflection.Missing.Value;
             object misValue2 = System.Reflection.Missing.Value;
             object misValue3 = System.Reflection.Missing.Value;
-
-
 
             //libros_trabajo.Worksheets.Add(hoja_trabajo1);
             
             string NombreArchivo = System.IO.Path.GetFileName(Vble.FileName);
             libros_trabajo.SaveAs(Vble.FileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
             //excel.GetSaveAsFilename(Vble.NombreArchivo, misValue, misValue, misValue, misValue);
-
            
             hoja_trabajo1.Activate();
             libros_trabajo.Close(true);

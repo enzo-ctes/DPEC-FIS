@@ -77,6 +77,8 @@
             this.BGWInfSuperv = new System.ComponentModel.BackgroundWorker();
             this.bgwLectXOp = new System.ComponentModel.BackgroundWorker();
             this.BGWInfAltas = new System.ComponentModel.BackgroundWorker();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripTotalRegistros = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -97,6 +99,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PBLLecDias)).BeginInit();
             this.iTalk_GroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PBLOprs)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -260,6 +263,7 @@
             // splitContainer2.Panel1
             // 
             this.splitContainer2.Panel1.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.splitContainer2.Panel1.Controls.Add(this.statusStrip1);
             this.splitContainer2.Panel1.Controls.Add(this.MiLoadingInformes);
             this.splitContainer2.Panel1.Controls.Add(this.dgResumen);
             // 
@@ -580,6 +584,24 @@
             // 
             this.BGWInfAltas.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BGWInfAltas_DoWork);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripTotalRegistros});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 208);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1383, 22);
+            this.statusStrip1.TabIndex = 9;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripTotalRegistros
+            // 
+            this.toolStripTotalRegistros.Name = "toolStripTotalRegistros";
+            this.toolStripTotalRegistros.Size = new System.Drawing.Size(86, 17);
+            this.toolStripTotalRegistros.Text = "Total Usuarios: ";
+            this.toolStripTotalRegistros.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            this.toolStripTotalRegistros.Visible = false;
+            // 
             // FormDetalleInformes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -602,6 +624,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
@@ -615,6 +638,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.PBLLecDias)).EndInit();
             this.iTalk_GroupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PBLOprs)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -670,5 +695,7 @@
         private iTalk.iTalk_ProgressBar PBExcelCircular;
         private System.Windows.Forms.Label lpbexcelCircular;
         private System.ComponentModel.BackgroundWorker BGWInfAltas;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripTotalRegistros;
     }
 }

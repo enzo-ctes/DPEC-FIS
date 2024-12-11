@@ -1944,8 +1944,8 @@ namespace gagFIS_Interfase
                 //SQLiteConnection BaseACargar = new SQLiteConnection("Data Source=" + RutaRecibir);
                 //BaseACargar.Open();
 
-                txSQL = "SELECT DISTINCT C.conexionID, C.OpBel, C.Contrato, C.TitularID, C.Periodo, C.ImpresionOBS, " +
-                "C.ImpresionCANT, C.Operario, C.Ruta, C.ConsumoFacturado, C.Zona, C.Remesa, C.OrdenTomado, C.VencimientoProx, M.ActualFecha, M.ActualHora, M.ActualEstado, M.Latitud, M.Longitud, " +
+                txSQL = "SELECT DISTINCT C.conexionID, C.OpBel, C.Contrato, C.titularID, C.Periodo, C.ImpresionOBS, " +
+                "C.ImpresionCANT, C.Operario, C.Ruta, REPLACE(C.ConsumoFacturado, '.', '') as ConsumoFacturado, C.Zona, C.Remesa, C.OrdenTomado, C.VencimientoProx, M.ActualFecha, M.ActualHora, M.ActualEstado, M.Latitud, M.Longitud, " +
                 " M.TipoLectura, M.EstadoCorreccion, M.EstadoFacturado, M.EstadoReactiva, M.EstadoInyectada " +
                 " FROM Conexiones C " +
                 "INNER JOIN Medidores M ON M.conexionID = C.conexionID";
@@ -1972,6 +1972,11 @@ namespace gagFIS_Interfase
                     }
                     //Vble.Operario = Convert.ToInt32(fi["Operario"]);
                     ConsumoFacturado = Convert.ToInt32(fi["ConsumoFacturado"]);
+                    //int titularID = Convert.ToInt32(fi["titularID"]);
+                    //if (titularID == 30250447)
+                    //{
+                    //    MessageBox.Show(Convert.ToInt32(fi["ConsumoFacturado"].ToString()) + " - Convertido: " +ConsumoFacturado.ToString());
+                    //}
                     OpBel = Convert.ToInt32(fi["OpBel"]);
                     Vble.Distrito = fi["Zona"].ToString() == "" || fi["Zona"].ToString().Any(x => !char.IsNumber(x)) ? 0 : Convert.ToInt32(fi["Zona"]);
                     //Importe1 = Convert.ToDouble(fi["Importe1"], CultureInfo.CreateSpecificCulture("en-US"));                                    

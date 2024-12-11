@@ -33,6 +33,10 @@ namespace gagFIS_Interfase
         public string detalle { get; set; }
         public string Desde { get; set; }
         public string Hasta { get; set; }
+        /// <summary>
+        /// DZ = Abreviación para obtener informe detalle Zona; 
+        /// AZ = Abreviación para obtener inform de Altas de la zona (donde trae la ubicacion- Latitud y Longitud)
+        /// </summary>
         public string tipoResumen { get; set; } 
 
         ArrayList ListaFechas = new ArrayList();
@@ -299,7 +303,9 @@ namespace gagFIS_Interfase
         }
 
         private void BGWInfSuperv_DoWork(object sender, DoWorkEventArgs e)
-        {  
+        {
+            simulateHeavyWork();
+
             if (ResumenDetTeleLectura == "LabelTeleLect")
             {
                 CargaDetalleTeleLect();
@@ -309,7 +315,7 @@ namespace gagFIS_Interfase
             else if (ResumenDetTeleLectura == "LabelTodosRem")
             {
                 CargaDetalleZonaSelec();
-                CargarResumenLectDias();
+                //CargarResumenLectDias();
             }
             else
             {
@@ -895,245 +901,7 @@ private void ObtenerPeriodoRemesa()
 
             datosAdapter.Dispose();
             comandoSQL.Dispose();
-
-            //ListaFechas.RemoveRange(0, ListaFechas.Count);
-
-            //foreach (DataRow item in TablaFechas.Rows)
-            //{
-            //    ListaFechas.Add(item.Field<DateTime>("Fecha").ToString());
-            //    ListaCodigosLect.Add(item.Field<Int32>("Operario").ToString());
-            //    ListaRutas.Add(item.Field<Int32>("Ruta").ToString());
-
-            //}
-
-            //for (int i = 0; i < ListaFechas.Count; i++)
-            //{
-
-            //    if (ListaCodigosLect[i].ToString() != "0")
-            //    {
-
-            //        string SelectHoraMin = "SELECT MIN(M.ActualHora) FROM Conexiones C INNER JOIN Medidores M" +
-            //                              " ON C.ConexionID = M.ConexionID AND C.Periodo = M.Periodo" +
-            //                              " WHERE C.Ruta = " + ListaRutas[i].ToString() + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
-            //                              " AND C.Operario = " + ListaCodigosLect[i].ToString() +
-            //                              " AND M.ActualFecha = '" + Convert.ToDateTime(ListaFechas[i]).ToString("yyyy-MM-dd") + "'" +
-            //                               " GROUP BY  M.ActualFecha, C.Ruta, C.Operario" +
-            //                               " ORDER BY M.ActualHora ASC";
-
-            //        MySqlCommand command = new MySqlCommand(SelectHoraMin, DB.conexBD);
-            //        command.CommandTimeout = 300;
-            //        if (command.ExecuteScalar() == null)
-            //        {
-            //            HoraInicio.Add("0");
-            //        }
-            //        else
-            //        {
-            //            HoraInicio.Add(Convert.ToDateTime(command.ExecuteScalar().ToString()));
-            //        }
-
-            //        command.Dispose();
-
-            //        string SelectHoraMax = "SELECT MAX(M.ActualHora) FROM Conexiones C INNER JOIN Medidores M" +
-            //                              " ON C.ConexionID = M.ConexionID AND C.Periodo = M.Periodo" +
-            //                              " WHERE C.Ruta = " + ListaRutas[i].ToString() + " AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
-            //                              " AND M.ActualFecha = '" + Convert.ToDateTime(ListaFechas[i]).ToString("yyyy-MM-dd") + "'" +
-            //                              " GROUP BY  M.ActualFecha, C.Ruta, C.Operario" +
-            //                               " ORDER BY M.ActualHora ASC";
-
-            //        command = new MySqlCommand(SelectHoraMax, DB.conexBD);
-            //        command.CommandTimeout = 300;
-            //        if (command.ExecuteScalar() == null)
-            //        {
-            //            HoraFin.Add("0");
-            //        }
-            //        else
-            //        {
-            //            HoraFin.Add(Convert.ToDateTime(command.ExecuteScalar().ToString()));
-            //        }
-
-            //        command.Dispose();
-
-            //        string TotalUsuarios = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
-            //                               " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
-            //                               " WHERE C.Ruta = " +  ListaRutas[i].ToString() + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
-            //                               " AND M.ActualFecha = '" + Convert.ToDateTime(ListaFechas[i]).ToString("yyyy-MM-dd") + "'" +
-            //                               " AND C.ImpresionOBS MOD 100 >= 0" +
-            //                                " GROUP BY  M.ActualFecha, C.Ruta, C.Operario" +
-            //                               " ORDER BY M.ActualHora ASC";
-
-            //        command = new MySqlCommand(TotalUsuarios, DB.conexBD);
-            //        command.CommandTimeout = 300;
-            //        if (command.ExecuteScalar() == null)
-            //        {
-            //            CantUsurios.Add("0");
-            //        }
-            //        else
-            //        {
-            //            CantUsurios.Add(command.ExecuteScalar().ToString());
-            //        }
-
-            //        command.Dispose();
-
-            //        string SelectTomados = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
-            //                               " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
-            //                               " WHERE C.Ruta = " + ListaRutas[i].ToString() + " and C.Periodo = " + Vble.Periodo +
-            //                               " AND M.ActualFecha = '" + Convert.ToDateTime(ListaFechas[i]).ToString("yyyy-MM-dd") + "'" +
-            //                               " AND C.ImpresionOBS MOD 100 > 0" +
-            //                               " GROUP BY  M.ActualFecha, C.Ruta, C.Operario" +
-            //                               " ORDER BY M.ActualHora ASC";
-
-            //        command = new MySqlCommand(SelectTomados, DB.conexBD);
-            //        command.CommandTimeout = 300;
-            //        if (command.ExecuteScalar() == null)
-            //        {
-            //            Tomados.Add("0");
-            //        }
-            //        else
-            //        {
-            //            Tomados.Add(command.ExecuteScalar().ToString());
-            //        }
-
-            //        command.Dispose();
-
-            //        string SelectImpresos = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
-            //                                " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
-            //                                " WHERE C.Ruta = " + ListaRutas[i].ToString() + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
-            //                                " AND M.ActualFecha = '" +  Convert.ToDateTime(ListaFechas[i]).ToString("yyyy-MM-dd") + "'" +
-            //                                " AND C.ImpresionOBS MOD 100 = 1" +
-            //                                " GROUP BY M.ActualFecha, C.Ruta, C.Operario" +
-            //                               " ORDER BY M.ActualHora ASC";
-
-            //        command = new MySqlCommand(SelectImpresos, DB.conexBD);
-            //        command.CommandTimeout = 300;
-            //        if (command.ExecuteScalar() == null)
-            //        {
-            //            Impresos.Add("0");
-            //        }
-            //        else
-            //        {
-            //            Impresos.Add(command.ExecuteScalar().ToString());
-            //        }
-
-            //        command.Dispose();
-
-            //        string SelectLeidosSinImprimir = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
-            //                                " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
-            //                                " WHERE C.Ruta = " + ListaRutas[i].ToString() + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
-            //                                " AND M.ActualFecha = '" + Convert.ToDateTime(ListaFechas[i]).ToString("yyyy-MM-dd") + "'" +
-            //                                " AND C.ImpresionOBS MOD 100 > 1" +
-            //                                " GROUP BY  M.ActualFecha, C.Ruta, C.Operario" +
-            //                               " ORDER BY M.ActualHora ASC";
-
-            //        command = new MySqlCommand(SelectLeidosSinImprimir, DB.conexBD);
-            //        command.CommandTimeout = 300;
-            //        if (command.ExecuteScalar() == null)
-            //        {
-            //            LeidosSinImprimir.Add("0");
-            //        }
-            //        else
-            //        {
-            //            LeidosSinImprimir.Add(command.ExecuteScalar().ToString());
-            //        }
-
-
-            //        command.Dispose();
-
-            //        string SelectFueraRango = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
-            //                                " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
-            //                                " WHERE C.Ruta = " + ListaRutas[i].ToString() + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
-            //                                " AND M.ActualFecha = '" + Convert.ToDateTime(ListaFechas[i]).ToString("yyyy-MM-dd") + "'" +
-            //                                " AND C.ImpresionOBS MOD 100 = 4" +
-            //                                " GROUP BY  M.ActualFecha, C.Ruta, C.Operario" +
-            //                               " ORDER BY M.ActualHora ASC";
-
-            //        command = new MySqlCommand(SelectFueraRango, DB.conexBD);
-            //        command.CommandTimeout = 300;
-            //        if (command.ExecuteScalar() == null)
-            //        {
-            //            FueraDeRango.Add("0");
-            //        }
-            //        else
-            //        {
-            //            FueraDeRango.Add(command.ExecuteScalar().ToString());
-            //        }
-
-            //        command.Dispose();
-
-            //        string SelectIndicados = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
-            //                                " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
-            //                                " WHERE C.Ruta = " + ListaRutas[i].ToString() + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
-            //                                " AND M.ActualFecha = '" + Convert.ToDateTime(ListaFechas[i]).ToString("yyyy-MM-dd") + "'" +
-            //                                " AND C.ImpresionCOD = 1" +
-            //                               " GROUP BY  M.ActualFecha, C.Ruta, C.Operario" +
-            //                               " ORDER BY M.ActualHora ASC";
-
-            //        command = new MySqlCommand(SelectIndicados, DB.conexBD);
-            //        command.CommandTimeout = 300;
-            //        if (command.ExecuteScalar() == null)
-            //        {
-            //            IndicacionNoImpresion.Add("0");
-            //        }
-            //        else
-            //        {
-            //            IndicacionNoImpresion.Add(command.ExecuteScalar().ToString());
-            //        }
-
-            //        command.Dispose();
-
-
-            //        string MarcadosPorLote = " SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
-            //                              " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
-            //                              " WHERE C.Ruta = " + ListaRutas[i].ToString() + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
-            //                              " AND M.ActualFecha = '" + Convert.ToDateTime(ListaFechas[i]).ToString("yyyy-MM-dd") + "'" +
-            //                              " AND C.ImpresionOBS MOD 100 = 46" +
-            //                               " GROUP BY  M.ActualFecha, C.Ruta, C.Operario" +
-            //                               " ORDER BY M.ActualHora ASC";
-
-            //        command = new MySqlCommand(MarcadosPorLote, DB.conexBD);
-            //        command.CommandTimeout = 300;
-            //        if (command.ExecuteScalar() == null)
-            //        {
-            //            MarcadosPorLoteArrayList.Add("0");
-            //        }
-            //        else
-            //        {
-            //            MarcadosPorLoteArrayList.Add(command.ExecuteScalar().ToString());
-            //        }
-
-            //        command.Dispose();
-
-
-            //        string Apagados = " SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
-            //                              " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
-            //                              " WHERE C.Ruta = " + ListaRutas[i].ToString() + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
-            //                              " AND M.ActualFecha = '" + Convert.ToDateTime(ListaFechas[i]).ToString("yyyy-MM-dd") + "'" +
-            //                              " AND C.ImpresionOBS MOD 100 = 17" +
-            //                              " GROUP BY M.ActualFecha, C.Ruta, C.Operario" +
-            //                               " ORDER BY M.ActualHora ASC";
-
-            //        command = new MySqlCommand(Apagados, DB.conexBD);
-            //        command.CommandTimeout = 300;
-            //        if (command.ExecuteScalar() == null)
-            //        {
-            //            ApagadosArrayList.Add("0");
-            //        }
-            //        else
-            //        {
-            //            ApagadosArrayList.Add(command.ExecuteScalar().ToString());
-            //        }
-
-            //        command.Dispose();
-
-
-            //        Inicio.Add(DateTime.ParseExact(Convert.ToDateTime(HoraInicio[i]).ToString("HHmm"), "HHmm", System.Globalization.CultureInfo.InvariantCulture));
-            //        Fin.Add(DateTime.ParseExact(Convert.ToDateTime(HoraFin[i]).ToString("HHmm"), "HHmm", System.Globalization.CultureInfo.InvariantCulture));
-
-            //    }
-
-            //}
-
-
-
+                
             GroupBoxResumenGral.Text = "Resumen detalle de lectura Remesa " + RemesaDetResumen;
 
             //LabCargandoInformes.Visible = false;
@@ -1526,12 +1294,14 @@ private void ObtenerPeriodoRemesa()
                 //items.SubItems.Add(IndicacionNoImpresion[i].ToString());
                 dgResumen.Rows[i].Cells[14].Value = ApagadosArrayList[i].ToString();//Indicados
                                                                                     //LVResumenGral.Items.Add(items);
-                //PLoadingResGral.Visible = false;
+                                                                                    //PLoadingResGral.Visible = false;
                 dgResumen.Visible = true;
                 //LVResumenGral.Visible = true;
                 GroupBoxResumenGral.Visible = true;
             }
 
+            toolStripTotalRegistros.Visible = true;
+            toolStripTotalRegistros.Text = "Total Usuarios = " + dgResumen.RowCount.ToString();
             MiLoadingInformes.Visible = false;
             LabCargandoInformes.Visible = false;
         }

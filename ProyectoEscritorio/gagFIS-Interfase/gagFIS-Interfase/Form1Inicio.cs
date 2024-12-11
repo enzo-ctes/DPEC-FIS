@@ -42,6 +42,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.Threading.Tasks;
 using System.Net.NetworkInformation;
+using iTextSharp.text.pdf.codec;
 //using System.Net.NetworkInformation.IPv4InterfaceStatistics;
 
 
@@ -124,6 +125,7 @@ namespace gagFIS_Interfase
             //btnTest.Location = frCmd.Location;
             //btnTest.SendToBack();
             Vble.LeerNombresCarpetas();
+           
             RButGPG.Checked = false;
             RButBTX.Checked = true;
 
@@ -145,6 +147,7 @@ namespace gagFIS_Interfase
             Vble.LeerArchivoZonaFIS();
 
             Inis.GetPrivateProfileString("Datos", "VerLogImportacion", "", Vble.PanelLogImp, 10, Ctte.ArchivoIniName);
+            CargarRutasLocalidades();
 
             string valor = Vble.PanelLogImp.ToString();
 
@@ -207,6 +210,31 @@ namespace gagFIS_Interfase
                 CargarRutasImportadas();
             }
 
+        }
+
+
+        public void CargarRutasLocalidades()
+        {
+            string query = "SELECT DISTINCT Ruta FROM Conexiones C WHERE C.Periodo = " + Vble.Periodo + " and ( C.Zona = 1 " + Vble.iteracionZona() + ")";
+            if (Vble.ArrayRutasXLoc.Count > 0)
+            {
+                for (int i = 0; i < Vble.ArrayRutasXLoc.Count; i++)
+                {
+                    Vble.ArrayRutasXLoc.Remove(Vble.ArrayRutasXLoc[i]);
+                }
+            }
+            // Crear el comando
+            MySqlCommand command = new MySqlCommand(query, DB.conexBD);
+            // Ejecutar el comando y leer los datos
+            using (MySqlDataReader reader = command.ExecuteReader())
+            {
+                // Procesar los datos devueltos
+                while (reader.Read())
+                {
+                    // Obtener valores por índice o nombre de columna
+                    Vble.ArrayRutasXLoc.Add(reader["Ruta"].ToString());
+                }
+            }
         }
 
         /// <summary>
@@ -345,8 +373,10 @@ namespace gagFIS_Interfase
         }
 
         /// <summary>
-        /// Envio el archivo encriptado a pc local para poder descencriptar mediante archivo.bat y ejecuto la importación,
-        /// esto se hace debido a que no se puede descencriptar el archivo compartido por SAP que se encuentra en la NAS
+        /// Envio el archivo encriptado a pc local 
+        /// en la siguiente ubicación 
+        /// C:\Users\{USUARIO:}\Documents\gagFIS-Interfase\MACRO INTELL - Software\Datos DPEC\Importacion\
+        /// ejecuto la importación, esto se hace debido a que no se puede descencriptar el archivo compartido por SAP que se encuentra en la NAS (en RED)
         /// siendo la ubicación de este NO local.
         /// </summary>
         /// <param name="compartidoconSAP"></param>
@@ -450,12 +480,10 @@ namespace gagFIS_Interfase
                                 {
                                     Directory.CreateDirectory(Vble.DownloadEntregadas + "\\" + FechaDownload);
                                 }
-
                                 if (!Directory.Exists(Vble.DownloadsHechas + "\\" + FechaDownload))
                                 {
                                     Directory.CreateDirectory(Vble.DownloadsHechas + "\\" + FechaDownload);
                                 }
-
                                 File.Copy(fil.FullName, Vble.ArchivoImportación);
 
                                 if (!File.Exists(Vble.DownloadsHechas + "\\" + FechaDownload + "\\" + Vble.NombreArchivoImportacion))
@@ -467,8 +495,6 @@ namespace gagFIS_Interfase
                                     File.Delete(Vble.DownloadsHechas + "\\" + FechaDownload + "\\" + Vble.NombreArchivoImportacion);
                                     File.Move(fil.FullName, Vble.DownloadsHechas + "\\" + FechaDownload + "\\" + Vble.NombreArchivoImportacion);
                                 }
-
-
                                 File.Delete(fil.FullName);
                             }
                             else if (RBQAS.Checked == true)
@@ -481,7 +507,6 @@ namespace gagFIS_Interfase
                                 {
                                     Directory.CreateDirectory(Vble.DownloadsHechasPRUEBA + "\\" + FechaDownload);
                                 }
-
                                 //Vble.DownloadEntregadas = Vble.DownloadEntregadas + "\\" + FechaDownload + "\\" + Vble.NombreArchivoImportacion;
                                 File.Copy(fil.FullName, Vble.ArchivoImportación);
 
@@ -497,8 +522,6 @@ namespace gagFIS_Interfase
                                 }
                                 File.Delete(fil.FullName);
                             }
-
-
                         }
                         else
                         {
@@ -508,13 +531,25 @@ namespace gagFIS_Interfase
                     //llama al procedimiento en 2º Plano donde esta el metodo de Downloads 
                     if (File.Exists(Vble.ArchivoImportación))
                     {
+                        FileInfo FileToImport = new FileInfo(Vble.ArchivoImportación);
+                        Vble.TipoArchivo = FileToImport.Name.Substring(17, 4);
                         //evita que el proceso pare porque se llama a un metodo que se declaro fuera
                         //BeginInvoke(new InvokeDelegate(InvokeMethodActivarProgressBar));
 
                         ///Aca se llama al proceso en segundo plano(que no funciona con mas de un archivo de Imporación)
                         ///Llamo al proceso de leer el archivo directamente( si funciona con mas de un archivo de Importación)
                         //Download2plano.RunWorkerAsync();
-                        LeerArchivoImportacion(Vble.ArchivoImportación);
+
+                        /// A continuación por cada archivo que se va a importar si corrobora si es un archivo dowload con registros 
+                        /// de Usuarios Especiales (UE) o Usuarios Comunes (UC; residenciales y Comerciales)
+                        if (Vble.TipoArchivo == "8888" || Vble.TipoArchivo == "8341")
+                        {
+                            LeerArchivoImportacion(Vble.ArchivoImportación, "UE");
+                        }
+                        else
+                        {
+                            LeerArchivoImportacion(Vble.ArchivoImportación, "UC");
+                        }                        
 
                         Vble.CantImportados = 0;
                         Vble.CantApartados = 0;
@@ -524,7 +559,6 @@ namespace gagFIS_Interfase
                         Vble.ImporPers.Clear();
                         Vble.ImporOrdenesDeLecturas.Clear();
                         //Vble.ImporOrdenesDeLecturas.Clear();
-
                         ////evita que el proceso pare porque se llama a un metodo que se declaro fuera
                         //BeginInvoke(new InvokeDelegate(InvokeMethodDesactivarProgressBar));
                         ////RespaldaDowload();
@@ -804,7 +838,7 @@ namespace gagFIS_Interfase
         }
 
         /// <summary>
-        /// Metodo que realiza la importacion, Desencripta el archivo .btx compartido por SAP o en directorio de PRUEBA de FIS,
+        /// Metodo que realiza la importacion, copia en directorio de PRUEBA de FIS,
         /// genera la carga de la base de Datos y vuelve a encriptar el archivo dejando como respaldo en la Carpeta DownloadsHechas 
         /// en la NAS de FIS
         /// </summary>
@@ -834,6 +868,7 @@ namespace gagFIS_Interfase
                         {
                             if (Vble.IdentificarArchImport(fi.Name) == true)
                             {
+
                                 //MessageBox.Show("PERTENECE");
                                 EnviarAPC(fi.FullName, fi.Name);
                                 ArchImportados++;
@@ -1110,7 +1145,7 @@ namespace gagFIS_Interfase
         /// </summary>
         /// <param name="Ruta"></param>
         /// <returns></returns>
-        public void LeerArchivoImportacion(string registro)
+        public void LeerArchivoImportacion(string registro, string TipoArchivo)
         {
             string DistRuta = "";
             //int i = 0; //incrementara en 1 para almacenar datos en variableXX
@@ -1120,104 +1155,203 @@ namespace gagFIS_Interfase
             Inis.GetPrivateProfileString("NdeLote", "Lote", "0", stb, 50, Ctte.ArchivoIniName);
             Vble.Lote = int.Parse(stb.ToString()) + 1;
             Inis.WritePrivateProfileString("NdeLote", "Lote", Vble.Lote.ToString().Trim(), Ctte.ArchivoIniName);
+            string conexionIDRef = "";
+            int orden = 0;
 
-            using (StreamReader sr = new StreamReader(registro))
+            if (TipoArchivo == "UE")
             {
-                string line;
-
-                while ((line = sr.ReadLine()) != null)
+                using (StreamReader sr = new StreamReader(registro))
                 {
-                    String value = line;
-                    Char delimiter = '|';
-                    String[] substrings = value.Split(delimiter);
-                    //recorre linea por linea separando cada dato del regitro el cual se encuentra dividido por "|" y lo almacena en un 
-                    //vector string para luevo enviarlo al procedimiento correspondiente de cada tabla
-                    for (int i = 0; i < substrings.Length; i++)
-                    {
-                        switch (substrings[i])
-                        {
-                            case "HCX":
-                                //MessageBox.Show("carga tabla conexiones");
-                                //MessageBox.Show("Conexiones: "+ substrings);                      
-                                if (ImportarTablaConex(substrings, k) == 0)
-                                {
-                                    Download2plano.ReportProgress(k);
-                                    k++;
-                                    break;
-                                }
-                                else
-                                {
-                                    Vble.CancelarImportacion = true;
-                                    sr.Dispose();
-                                    File.Delete(Vble.ArchivoImportación);
-                                    return;
-                                }
+                    string line;
 
-                            case "HPS":
-                                //MessageBox.Show("carga tabla Personas");                               
-                                ImportarTablaPersonas(substrings, k);
-                                //MessageBox.Show(substrings[i].IndexOf("'").ToString());
-                                //if (substrings[i].IndexOf("'") == 1)
-                                //{
-                                //}
-                                substrings[i].Replace("'", "");
-                                break;
-                            case "HMD":
-                                //MessageBox.Show("carga tabla medidores");                               
-                                ImportarTablaMedidores(substrings, k);
-                                break;
-                            //case "HCD":
-                            //    ImportaTablaConceptosDatos(substrings);
-                            //    break;
-                            //case "HTX":
-                            //    ImportarTablaTextosVarios(substrings);
-                            //    break;
-                            case "HFS": //Aca importara la tabla donde viene el numero de orden de factura y OPBEL 
-                                ImportarOrdenesLectura(substrings, k);
-                                break;
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        String value = line;
+                        Char delimiter = '|';
+                        String[] substrings = value.Split(delimiter);
+                        
+                        //recorre linea por linea separando cada dato del regitro el cual se encuentra dividido por "|" y lo almacena en un 
+                        //vector string para luevo enviarlo al procedimiento correspondiente de cada tabla
+                        for (int i = 0; i < substrings.Length; i++)
+                        {
+                            switch (substrings[i])
+                            {
+                                case "HCX":
+                                    conexionIDRef = substrings[1];
+                                    //MessageBox.Show("carga tabla conexiones");
+                                    //MessageBox.Show("Conexiones: "+ substrings);                      
+                                    if (ImportarTablaConex(substrings, k) == 0)
+                                    {
+
+                                        Download2plano.ReportProgress(k);
+                                        k++;
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        Vble.CancelarImportacion = true;
+                                        sr.Dispose();
+                                        File.Delete(Vble.ArchivoImportación);
+                                        return;
+                                    }
+
+                                case "HPS":
+                                    //MessageBox.Show("carga tabla Personas");                               
+                                    ImportarTablaPersonas(substrings, k);
+                                    //MessageBox.Show(substrings[i].IndexOf("'").ToString());
+                                    //if (substrings[i].IndexOf("'") == 1)
+                                    //{
+                                    //}
+                                    substrings[i].Replace("'", "");
+                                    break;
+                                case "HMD":
+                                    //MessageBox.Show("carga tabla medidores");
+                                    Vble.substringHMD = substrings;
+                                    //ImportarTablaMedidores(substrings, k);
+
+                                    break;
+                                //case "HCD":
+                                //    ImportaTablaConceptosDatos(substrings);
+                                //    break;
+                                //case "HTX":
+                                //    ImportarTablaTextosVarios(substrings);
+                                //    break;
+                                case "HFS": //Aca importara la tabla donde viene el numero de orden de factura y OPBEL 
+
+                                    if (conexionIDRef == substrings[2].Substring(2))
+                                    {
+                                        orden = orden + 1;
+                                    }
+                                    else
+                                    {
+                                        orden = 0;
+                                    }
+                                    ImportarOrdenesLecturaUE(substrings, k, Vble.substringHMD, conexionIDRef, orden);
+                                    break;
+                            }
                         }
                     }
+                    Vble.ConexBloImp = false;
+                    sr.Close();
+                    sr.Dispose();
+                }
+
+                FileInfo file = new FileInfo(registro);
+                string porc = Vble.Remesa.ToString() + file.Name.Substring(17, file.Name.Substring(17).IndexOf("_"));
+                //string zonaInNameFile = file.Name.Substring(17, file.Name.Substring(17).IndexOf("-"));
+                int zona = 0;
+                if (file.Name.ToString().Contains("-"))
+                {
+                    zona = Convert.ToInt16(file.Name.Substring(17, file.Name.Substring(17).IndexOf("-")));
+                }
+                else
+                {
+                    zona = 8888;
+                }
+                if (Vble.PanelLogImp.ToString() == "1")
+                {
+                    AgregarApartadosALogImportacion(Vble.Periodo, zona, porc, Vble.TotalConexiones, Vble.CantImportados,
+                                                    Vble.CantApartados, Vble.ImporConex, Vble.ImporPers, Vble.ImporOrdenesDeLecturas, Vble.ImporMed);
                 }
                 Vble.ConexBloImp = false;
-                sr.Close();
-                sr.Dispose();
+                Vble.ImporConex.Clear();
+                Vble.ImporMed.Clear();
+                Vble.ImporPers.Clear();
+                Vble.ImporOrdenesDeLecturas.Clear();
             }
+            else if (TipoArchivo == "UC")
+            {
+                using (StreamReader sr = new StreamReader(registro))
+                {
+                    string line;
 
-            FileInfo file = new FileInfo(registro);
-            string porc = Vble.Remesa.ToString() + file.Name.Substring(17, file.Name.Substring(17).IndexOf("_"));
-            //string zonaInNameFile = file.Name.Substring(17, file.Name.Substring(17).IndexOf("-"));
-            int zona = 0;
-            if (file.Name.ToString().Contains("-"))
-            {
-                zona =Convert.ToInt16(file.Name.Substring(17, file.Name.Substring(17).IndexOf("-")));
-            }
-            else
-            {
-                zona = 8888;
-            }
-            
-        
-            //if (Vble.PanelLogImp.ToString() == "1")
-            //{
-            //    InfoImportacion.Visible = true;                
-            //    ListViewItem ResumenImportacion;
-            //    ResumenImportacion = new ListViewItem(file.Name.Substring(17, file.Name.Substring(17).IndexOf("_")));
-            //    ResumenImportacion.SubItems.Add(Vble.TotalConexiones.ToString());
-            //    ResumenImportacion.SubItems.Add(Vble.CantImportados.ToString());
-            //    ResumenImportacion.SubItems.Add(Vble.CantApartados.ToString());
-            //    LVResImpor.Items.Add(ResumenImportacion);
-            //}
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        String value = line;
+                        Char delimiter = '|';
+                        String[] substrings = value.Split(delimiter);
+                        String[] substringHCM = value.Split(delimiter);
+                        //recorre linea por linea separando cada dato del regitro el cual se encuentra dividido por "|" y lo almacena en un 
+                        //vector string para luevo enviarlo al procedimiento correspondiente de cada tabla
+                        for (int i = 0; i < substrings.Length; i++)
+                        {
+                            switch (substrings[i])
+                            {
+                                case "HCX":
 
-            if (Vble.PanelLogImp.ToString() == "1")
-            {
-                AgregarApartadosALogImportacion(Vble.Periodo, zona, porc, Vble.TotalConexiones, Vble.CantImportados,
-                                                Vble.CantApartados, Vble.ImporConex, Vble.ImporPers, Vble.ImporOrdenesDeLecturas, Vble.ImporMed);
+                                    //MessageBox.Show("carga tabla conexiones");
+                                    //MessageBox.Show("Conexiones: "+ substrings);                      
+                                    if (ImportarTablaConex(substrings, k) == 0)
+                                    {
+
+                                        Download2plano.ReportProgress(k);
+                                        k++;
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        Vble.CancelarImportacion = true;
+                                        sr.Dispose();
+                                        File.Delete(Vble.ArchivoImportación);
+                                        return;
+                                    }
+
+                                case "HPS":
+                                    //MessageBox.Show("carga tabla Personas");                               
+                                    ImportarTablaPersonas(substrings, k);
+                                    //MessageBox.Show(substrings[i].IndexOf("'").ToString());
+                                    //if (substrings[i].IndexOf("'") == 1)
+                                    //{
+                                    //}
+                                    substrings[i].Replace("'", "");
+                                    break;
+                                case "HMD":
+                                    //MessageBox.Show("carga tabla medidores");
+                                   
+                                    ImportarTablaMedidores(substrings, k);
+
+                                    break;
+                                //case "HCD":
+                                //    ImportaTablaConceptosDatos(substrings);
+                                //    break;
+                                //case "HTX":
+                                //    ImportarTablaTextosVarios(substrings);
+                                //    break;
+                                case "HFS": //Aca importara la tabla donde viene el numero de orden de factura y OPBEL 
+                                    ImportarOrdenesLectura(substrings, k);
+                                    break;
+                            }
+                        }
+                    }
+                    Vble.ConexBloImp = false;
+                    sr.Close();
+                    sr.Dispose();
+                }
+
+                FileInfo file = new FileInfo(registro);
+                string porc = Vble.Remesa.ToString() + file.Name.Substring(17, file.Name.Substring(17).IndexOf("_"));
+                //string zonaInNameFile = file.Name.Substring(17, file.Name.Substring(17).IndexOf("-"));
+                int zona = 0;
+                if (file.Name.ToString().Contains("-"))
+                {
+                    zona = Convert.ToInt16(file.Name.Substring(17, file.Name.Substring(17).IndexOf("-")));
+                }
+                else
+                {
+                    zona = 8888;
+                }
+                if (Vble.PanelLogImp.ToString() == "1")
+                {
+                    AgregarApartadosALogImportacion(Vble.Periodo, zona, porc, Vble.TotalConexiones, Vble.CantImportados,
+                                                    Vble.CantApartados, Vble.ImporConex, Vble.ImporPers, Vble.ImporOrdenesDeLecturas, Vble.ImporMed);
+                }
+                Vble.ConexBloImp = false;
+                Vble.ImporConex.Clear();
+                Vble.ImporMed.Clear();
+                Vble.ImporPers.Clear();
+                Vble.ImporOrdenesDeLecturas.Clear();
             }
-            Vble.ConexBloImp = false;
-            Vble.ImporConex.Clear();
-            Vble.ImporMed.Clear();
-            Vble.ImporPers.Clear();
-            Vble.ImporOrdenesDeLecturas.Clear();
+           
         }
 
         /// <summary>
@@ -1893,6 +2027,26 @@ namespace gagFIS_Interfase
                             update = $"UPDATE conexiones SET OrdenLectura = '{OrdenLectura}', FechaCalP = {FechaLecturaProgr}, " +
                                    $"ConsumoControl = {LecturaControl} WHERE ConexionID = {Conexionid} AND Periodo = {Vble.Periodo}";
                         }
+
+
+                        /////Codigo prueba para Usuarios especiales, en donde se generará un registro por Linea HFS que se encuentra en el archivo DOWLOAD
+                        /////  if (VerificarExistencia("medidores", "ConexionID", Convert.ToInt32(conexionID), Vble.Periodo) == 0)
+                        //{
+
+                        //    string insert;//Declaración de string que contendra la consulta INSERT               
+                        //    insert = "INSERT INTO medidores (ConexionID, Periodo, Modelo, Numero, Multiplicador, Digitos, AnteriorFecha, " +
+                        //                                    "AnteriorEstado, ActualFecha, ActualHora, TipoLectura, Latitud, Longitud) " +
+                        //                    "VALUES (" + Convert.ToInt32(conexionID) + ", " + Vble.Periodo + ", '" + Modelo + "', '" + Numero + "', " +
+                        //                                 Multiplicador + ", " + Digitos + ", '" + AnteriorFecha.ToString("yyyy/MM/dd") + "', " + AnteriorEstado + ", '2000/01/01', '00:00', 0, 0, 0)";
+                        //    //preparamos la cadena pra insercion
+                        //    MySqlCommand command = new MySqlCommand(insert, DB.conexBD);
+                        //    //y la ejecutamos
+                        //    command.ExecuteNonQuery();
+                        //    //finalmente cerramos la conexion ya que solo debe servir para una sola orden
+                        //    command.Dispose();
+                        //    //MessageBox.Show("Se agrego el Medidor Nº: " + Numero + " y Modelo: " + Modelo);
+                        //}
+
                         //preparamos la cadena pra insercion
                         MySqlCommand command = new MySqlCommand(update, DB.conexBD);
                         //y la ejecutamos
@@ -1975,6 +2129,180 @@ namespace gagFIS_Interfase
             }
         }
 
+        /// <summary>
+        /// Importa la linea HFS que contiene las ordenes de lectura asociada al usuario que se esta insertando a la base Mysql
+        /// </summary>
+        /// <param name="substrings"></param>
+        public static void ImportarOrdenesLecturaUE(string[] substringsHFS, int k, string[] substringsHCM, string conexionIDRef, int orden)
+        {
+
+            string OrdenLectura = substringsHFS[1].Trim();//orden de lectura
+            string Conexionid = substringsHFS[2].Substring(2).Trim();// Instalacion
+                                                                     //IFormatProvider culture = new System.Globalization.CultureInfo("es-AR", true);
+                                                                     //VARIABLE PARA EL INSERT 
+            Int32 Multiplicador, Digitos, AnteriorEstado;
+            string Numero, Modelo;
+            DateTime AnteriorFecha;
+            int i;
+           
+
+           
+            substringsHCM[2] = substringsHCM[2] == "" ? "0" : substringsHCM[2];
+            Numero = substringsHCM[2].ToString();
+
+            substringsHCM[3] = substringsHCM[3] == "" ? "0" : substringsHCM[3];
+            Modelo = substringsHCM[3].ToString();
+
+            substringsHCM[4] = substringsHCM[4] == "" ? "0" : substringsHCM[4];
+            i = substringsHCM[4].IndexOf(".");
+            substringsHCM[4] = i < 0 ? substringsHCM[4] : substringsHCM[4].Substring(0, i);
+            Multiplicador = Convert.ToInt32(substringsHCM[4]);
+
+            substringsHCM[5] = substringsHCM[5] == "" ? "0" : substringsHCM[5];
+            Digitos = Convert.ToInt32(substringsHCM[5]);
+
+            substringsHCM[6] = substringsHCM[6] == "" ? "01/01/2000" : substringsHCM[6];
+            AnteriorFecha = DateTime.Parse(substringsHCM[6]);//
+
+            substringsHCM[7] = substringsHCM[7] == "" ? "0" : substringsHCM[7];
+            AnteriorEstado = int.Parse(substringsHCM[7], NumberStyles.Number, CultureInfo.GetCultureInfo("en-US"));
+                       
+
+            if (Vble.ConexBloImp == false)
+            {
+                if (substringsHFS.Length == 13)
+                {
+
+                    bool NoImprXExCons = false;
+
+                    substringsHFS[5] = substringsHFS[5].Trim() == "" ? "00000000" : substringsHFS[5].Trim();
+                    Int32 FechaLecturaProgr = Convert.ToInt32(substringsHFS[5].Trim());
+
+                    substringsHFS[6] = substringsHFS[6].Contains('.') ? substringsHFS[6].Substring(0, substringsHFS[6].IndexOf('.')) : substringsHFS[6];
+                    substringsHFS[12] = substringsHFS[12].Contains('-') ? substringsHFS[12].Replace("-", "") : substringsHFS[12];
+
+                    Int32 LecturaControl = int.TryParse(substringsHFS[6].Trim(), NumberStyles.Any, CultureInfo.GetCultureInfo("es-AR"), out int Resul) ? Resul : -1;
+                    Int32 ConsumoResidual = int.TryParse(substringsHFS[12].Trim(), NumberStyles.Any, CultureInfo.GetCultureInfo("es-AR"), out int Residual) ? Residual : 0;
+
+                    NoImprXExCons = ConsumoResidual != 0 ? true : false;
+
+                    try
+                    {
+                        string update;//Declaración de string que contendra la consulta UPDATE    
+
+                        /////Si NoImprXExCons es true, en la consulta cambia el campo ImpresionCOD a 1 que indica no imprimir por 
+                        ///// exceso de consumo al venir el consumo residual en el download distinto de 0.
+                        //if (NoImprXExCons)
+                        //{
+                        //    update = $"UPDATE conexiones SET OrdenLectura = '{OrdenLectura}', FechaCalP = {FechaLecturaProgr}, " +
+                        //         $"ConsumoControl = {LecturaControl}, ImpresionCOD = 1 WHERE ConexionID = {Conexionid} AND Periodo = {Vble.Periodo}";
+                        //    ////Habilitar la linea siguiente cuando se van a indicar los usuarios con exceso de consumo con ImpresionCOD = 2 para 
+                        //    ///indicar que tambien se van a imprimir 
+                        //         //$"ConsumoControl = {LecturaControl}, ImpresionCOD = 2 WHERE ConexionID = {Conexionid} AND Periodo = {Vble.Periodo}";
+
+                        //}
+                        //else
+                        //{
+                        //    update = $"UPDATE conexiones SET OrdenLectura = '{OrdenLectura}', FechaCalP = {FechaLecturaProgr}, " +
+                        //           $"ConsumoControl = {LecturaControl} WHERE ConexionID = {Conexionid} AND Periodo = {Vble.Periodo}";
+                        //}
+
+
+                        ///Codigo prueba para Usuarios especiales, en donde se generará un registro por Linea HFS que se encuentra en el archivo DOWLOAD
+                       if (VerificarExistenciaUEMedidores("medidores", "ConexionID", Convert.ToInt32(conexionIDRef), Vble.Periodo, OrdenLectura) == 0)
+                        {
+
+                            string insert;//Declaración de string que contendra la consulta INSERT               
+                            insert = "INSERT INTO medidores (ConexionID, OrdenLectura, Orden, Periodo, Modelo, Numero, Multiplicador, Digitos, AnteriorFecha, " +
+                                                            "AnteriorEstado, ActualFecha, ActualHora, TipoLectura, Latitud, Longitud) " +
+                                            "VALUES (" + Convert.ToInt32(Conexionid) + ", '" + OrdenLectura + "', " + orden + ", " + Vble.Periodo + ", '" + Modelo + "', '" + Numero + "', " +
+                                                         Multiplicador + ", " + Digitos + ", '" + AnteriorFecha.ToString("yyyy/MM/dd") + "', " + AnteriorEstado + ", '2000/01/01', '00:00', 0, 0, 0)";
+                            //preparamos la cadena pra insercion
+                            MySqlCommand command = new MySqlCommand(insert, DB.conexBD);
+                            //y la ejecutamos
+                            command.ExecuteNonQuery();
+                            //finalmente cerramos la conexion ya que solo debe servir para una sola orden
+                            command.Dispose();
+                            //MessageBox.Show("Se agrego el Medidor Nº: " + Numero + " y Modelo: " + Modelo);
+                        }
+                        else
+                        {
+                            StringBuilder VerificarOrdLect = new StringBuilder();
+                            Inis.GetPrivateProfileString("Datos", "VerificarOrdLect", "0", VerificarOrdLect, 2, Ctte.ArchivoIniName);
+
+                            if (VerificarOrdLect.ToString() == "1")
+                            {
+                                ///Verifico si la instalacion perteneciente al periodo que se esta importando, está con ImpresionOBS 0 (No cargado, No Leido, No procesado) 
+                                ///y se vuelve a importar 
+                                ///la ruta, que actualice la Orden de Lectura para el caso de que se haya anulado y vuelto a generar la importación
+                                ///y no existan dos ordenes de lecturas distintas.
+                                int Existe;
+                                MySqlCommand da;
+                                string txSQL = "SELECT Count(*) as Existe FROM medidores WHERE ConexionID = " + Conexionid + " AND OrdenLectura = '" + OrdenLectura + "' AND Periodo = " + Vble.Periodo;
+                                da = new MySqlCommand(txSQL, DB.conexBD);
+                                da.Parameters.AddWithValue("ImpresionOBS", Conexionid);
+                                Existe = Convert.ToInt32(da.ExecuteScalar());
+                                da.Dispose();
+                                if (Existe == 1)
+                                {
+                                    string UpdateOrdenLect;//Declaración de string que contendra la consulta UPDATE               
+                                    UpdateOrdenLect = $"UPDATE medidores SET OrdenLectura = '{OrdenLectura}',  Modelo = '{Modelo}' , Numero = '{Numero}', Multiplicador = '{Multiplicador}', " +
+                                        $"                                   Digitos = '{Digitos}', AnteriorFecha = '{AnteriorFecha}', " +
+                                        $"                                   AnteriorEstado = '{AnteriorEstado}' WHERE ConexionID = {Conexionid} AND Periodo = {Vble.Periodo}";
+                                    //preparamos la cadena pra insercion
+                                    MySqlCommand commandCxOrdLec = new MySqlCommand(UpdateOrdenLect, DB.conexBD);
+                                    //y la ejecutamos
+                                    commandCxOrdLec.ExecuteNonQuery();
+                                    //finalmente cerramos la conexion ya que solo debe servir para una sola orden
+                                    commandCxOrdLec.Dispose();
+                                    //comandoSQL.Dispose();
+                                }
+                            }
+
+                            string updateLectCtrl;//Declaración de string que contendra la consulta UPDATE               
+                            updateLectCtrl = $"UPDATE medidores SET LecturaControl = {LecturaControl} " +
+                                             $"WHERE ConexionID = {Conexionid} AND Periodo = {Vble.Periodo}";
+                            //preparamos la cadena pra insercion
+                            MySqlCommand commandMed = new MySqlCommand(updateLectCtrl, DB.conexBD);
+                            //y la ejecutamos
+                            commandMed.ExecuteNonQuery();
+                            //finalmente cerramos la conexion ya que solo debe servir para una sola orden
+                            commandMed.Dispose();
+                            //comandoSQL.Dispose();
+
+                            Vble.CantImportados++;
+                        }
+                       
+                       
+                    }
+                    catch (Exception er)
+                    {
+                        MessageBox.Show(er.Message + ". Error al agregar Orden de Lectura y Nº de OpBel a la Instalación " + Conexionid.ToString());
+                    }
+
+                }
+                else
+                {
+                    Conexionid = substringsHFS[1];//
+                    Vble.ImporOrdenesDeLecturas.Add(k + " - " + Conexionid.ToString());
+                    Vble.ConexBloImp = true;
+                    if (Conexionid != "")
+                    {
+                        DeleteUserPorBloq(Conexionid.ToString(), Vble.Periodo, "medidores", "ConexionID");
+                        DeleteUserPorBloq(Conexionid.ToString(), Vble.Periodo, "personas", "PersonaID");
+                        DeleteUserPorBloq(Conexionid.ToString(), Vble.Periodo, "conexiones", "ConexionID");
+                        Vble.ImporOrdenesDeLecturas.Add(k + " - " + Conexionid.ToString());
+                        Vble.CantApartados++;
+                    }
+                }
+            }
+            else
+            {
+                Vble.CantApartados++;
+                Vble.ImporOrdenesDeLecturas.Add(k);
+                Vble.ConexBloImp = false;
+            }
+        }
 
 
         /// <summary>
@@ -2182,6 +2510,33 @@ namespace gagFIS_Interfase
             int count = 0;
 
             txSQL = "SELECT Count(*) FROM " + tabla + " WHERE " + ClavePrimaria + " = " + ValorPK + " and Periodo = " + Periodo;
+            da = new MySqlCommand(txSQL, DB.conexBD);
+            da.Parameters.AddWithValue(ClavePrimaria, ValorPK);
+            count = Convert.ToInt32(da.ExecuteScalar());
+
+            da.Dispose();
+
+            if (count == 0)
+                return count;
+            else
+                return count;
+        }
+
+        /// <summary>
+        /// Verifica si existe ya el medidor con el numero de conexionID y el periodo que se esta cargando para que nose repita el registro
+        /// </summary>
+        /// <param name="tabla"></param>
+        /// <param name="ClavePrimaria">Nombre de la Clave primaria enviada como parametro</param>
+        /// <param name="ValorPK">El valor que se pasa a comparar con el nombre de la clave primaria</param>
+        /// <param name="Periodo"></param>
+        /// <returns></returns>
+        public static int VerificarExistenciaUEMedidores(string tabla, string ClavePrimaria, int ValorPK, int Periodo, string OrdenLectura)
+        {
+            string txSQL;
+            MySqlCommand da;
+            int count = 0;
+
+            txSQL = "SELECT Count(*) FROM " + tabla + " WHERE " + ClavePrimaria + " = " + ValorPK + " and Periodo = " + Periodo + " AND OrdenLectura = '" + OrdenLectura + "'" ;
             da = new MySqlCommand(txSQL, DB.conexBD);
             da.Parameters.AddWithValue(ClavePrimaria, ValorPK);
             count = Convert.ToInt32(da.ExecuteScalar());
@@ -2914,22 +3269,9 @@ namespace gagFIS_Interfase
 
             try
             {
-
                 this.Cursor = Cursors.WaitCursor;
-
-                //ContarCantidadDeConexiones();  
-
-                //if (Vble.TotalConexiones > 0)
-                //{
-                //this.progressBar.Maximum = Vble.TotalConexiones;
-                ////this.iTalk_ProgressBar1.Maximum = Vble.TotalConexiones;
-                //BeginInvoke(new InvokeDelegate(InvokeMethodActivarProgressBar));
-                //InvokeMethodActivarProgressBar();
-                Download2plano.RunWorkerAsync();
-                //}
-                //this.Cursor = Cursors.Default;
-
-
+                ///Download2plano llama a los metodos y funciones que ejecuta la importacion de los archivos download.
+                Download2plano.RunWorkerAsync();       
             }
             catch (Exception r)
             {
@@ -3141,12 +3483,13 @@ namespace gagFIS_Interfase
             var Form7Inf = new Form7InformesAltas();
             Form7Inf.MdiParent = this.MdiParent;
             Form7Inf.WindowState = FormWindowState.Maximized;
+            Form7InformesAltas.PantallaSolicitud = "Inicio";
             if (DB.sDbUsu.ToUpper() == "SUPERVISOR")
             {
-                TabPage pageDetalle = Form7Inf.tabControl1.TabPages["TPDetalleSituaciones"];
-                Form7Inf.tabControl1.TabPages.Remove(pageDetalle);
-                TabPage pagDetalleZona = Form7Inf.tabControl1.TabPages["TBDetalleZona"];
-                Form7Inf.tabControl1.TabPages.Remove(pagDetalleZona);
+                TabPage pageDetalle = Form7Inf.btnImprimirC.TabPages["TPDetalleSituaciones"];
+                Form7Inf.btnImprimirC.TabPages.Remove(pageDetalle);
+                TabPage pagDetalleZona = Form7Inf.btnImprimirC.TabPages["TBDetalleZona"];
+                Form7Inf.btnImprimirC.TabPages.Remove(pagDetalleZona);
             }
             Form7Inf.Show();
            

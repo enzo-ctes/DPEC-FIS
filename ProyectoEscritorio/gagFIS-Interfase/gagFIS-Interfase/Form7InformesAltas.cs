@@ -1,21 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using System.Threading;
-using System.Data.SQLite;
-using System.Globalization;
-using System.Collections;
-using System.IO;
+﻿using DGV2Printer;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
-using DGV2Printer;
+using MySql.Data.MySqlClient;
+using System;
+using System.ComponentModel;
+using System.Data;
+using System.Diagnostics.Eventing.Reader;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 //using Excel = Microsoft.Office.Interop.Excel;
 //using Microsoft.Office.Interop.Excel;
@@ -28,7 +25,7 @@ namespace gagFIS_Interfase
         DataTable TablaNovedades = new DataTable();
         DataTable TablaAltas = new DataTable();
         DataGridView TablaSituaciones = new DataGridView();
-        
+
         DataTable Tabla = new DataTable();
         DataTable TablaConexDirec = new DataTable();
         DataTable TablaDetalleSituaciones = new DataTable();
@@ -53,9 +50,11 @@ namespace gagFIS_Interfase
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonFecha.Checked == true)
-            {                
+            {
                 DTPDesdeAltas.Visible = true;
                 DTPHastaAltas.Visible = true;
+                tbPeriodoAltas.Visible = false;
+                btnAddPeriodoAltas.Visible = false;
                 CBPerDesdeAltas.Visible = false;
                 CBPerHastaAltas.Visible = false;
                 CBTipoAlta.Visible = false;
@@ -84,19 +83,27 @@ namespace gagFIS_Interfase
             radioButtonTipoAlta.Checked = false;
             this.Cursor = Cursors.WaitCursor;
 
-         
+            if (DB.sDbUsu.ToUpper() == "OPERARIO")
+            {
+                this.btnExcelAltas.Visible = false;
+                this.btnExellConDir.Visible = false;
+                this.btnExcelOrd.Visible = false;
+                this.btnImprimirAltas.Visible = false;
+                this.btnImprimirConDir.Visible = false;
+                this.btnImprimirOrd.Visible = false;
+            }
+            else if (DB.sDbUsu.ToUpper() == "SUPERVISOR" || DB.sDbUsu.ToUpper() == "ADMIN")
+            {
+                this.btnExcelAltas.Visible = true;
+                this.btnExellConDir.Visible = true;
+                this.btnExcelOrd.Visible = true;
+            }
+
             if (CantidadAltas() > 0) CargarAltas();
             if (CantidadConexDirec() > 0) CargarConexDirectas();
             if (CantidadConOrdenativos() > 0) CargarOrdenativos();
-            if (DB.sDbUsu.ToUpper() == "SUPERVISOR")
-            {
-
-            }
-            else
-            {
-                if (CantidadUsuarios() > 0) CargarDetalleSituaciones();
-            }
-
+            //if (CantidadUsuarios() > 0) CargarDetalleSituaciones();
+           
             //DGAlta hace referencia al datagridview de altas
             DGAlta.Columns["Ruta"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             DGAlta.Columns["Operario"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -130,13 +137,7 @@ namespace gagFIS_Interfase
             lblCantAltas.Text = "Cantidad = " + DGAlta.Rows.Count.ToString();
             lblCantCxDir.Text = "Cantidad = " + DGConDir.Rows.Count.ToString();
             lblCantOrd.Text = "Cantidad = " + DGOrdenat.Rows.Count.ToString();
-
-
-          
-
-
         }
-
 
         /// <summary>
         /// Funcion que carga DGConexionesDirectas por Periodo seleccionado de los combobox desde y hasta
@@ -150,12 +151,19 @@ namespace gagFIS_Interfase
             MySqlCommandBuilder comandoSQL;
             //DataTable Tabla;
             string txSQL = "";
-
             try
             {
+                if (desde == "")
+                {
+                    desde = Vble.Periodo.ToString();
+                }
+                if (hasta == "")
+                {
+                    hasta = Vble.Periodo.ToString();
+                }
                 //Lee la tabla ALTAS pertenecientes al periodo
-                txSQL = "SELECT Periodo, Ruta, Numero, Estado, Fecha, Hora, Domicilio, Observaciones, Operario FROM Altas" +
-                        " WHERE (Periodo >= '" + desde + "' AND Periodo <= '" + hasta + "') AND Numero < 0" ;
+                txSQL = "SELECT Periodo, Ruta, Numero, Estado, Fecha, Hora, Domicilio, Observaciones, Operario, Latitud, Longitud FROM Altas" +
+                        " WHERE (Periodo >= " + desde + " AND Periodo <= " + hasta + ") AND Numero like 'Cx%'";
                 //" ORDER BY Fecha ASC";
 
                 TablaConexDirec = new DataTable();
@@ -172,20 +180,18 @@ namespace gagFIS_Interfase
                 DGConDir.Columns["Observaciones"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
                 DGConDir.Columns["Periodo"].Visible = false;
-                DGConDir.Columns["Fecha"].Visible = false;
+                DGConDir.Columns["Fecha"].Visible = true;
                 labelPeriodoConDir.Text = Vble.Periodo.ToString().Substring(4, 2) + "-" + Vble.Periodo.ToString().Substring(0, 4);
                 lblCantCxDir.Text = "Cantidad = " + DGConDir.RowCount.ToString();
 
                 LblRutaConexDirc.Visible = true;
                 TBBuscarRutaConexDirec.Visible = true;
-
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
             }
         }
-
 
         /// <summary>
         /// Funcion que carga DGAlta por Periodo seleccionado de los combobox desde y hasta
@@ -199,9 +205,29 @@ namespace gagFIS_Interfase
             MySqlCommandBuilder comandoSQL;
             //DataTable Tabla;
             string txSQL = "";
-
             try
             {
+
+                ////Lee la tabla ALTAS pertenecientes al periodo
+                //if (PantallaSolicitud == "Exportacion")
+                //{
+                //    txSQL = "SELECT Periodo, Ruta, Numero, Estado, Fecha, Hora, Domicilio, Observaciones, Operario, Latitud, Longitud FROM Altas" +
+                //        " WHERE (Periodo >= '" + desde + "' AND Periodo <= '" + hasta + "') AND (Numero NOT LIKE '%CxDir%') AND Ruta = " + RutaDesdeExportacion +
+                //        " ORDER BY Fecha ASC";
+                //}
+                //else if (PantallaSolicitud == "Inicio")
+                //{
+                //    txSQL = "SELECT Periodo, Ruta, Numero, Estado, Fecha, Hora, Domicilio, Observaciones, Operario, Latitud, Longitud FROM Altas" +
+                //        " WHERE (Periodo >= '" + desde + "' AND Periodo <= '" + hasta + "') AND (Numero NOT LIKE '%CxDir%') AND Ruta = " + 1 +
+                //      " ORDER BY Fecha ASC";
+                //}
+                //else
+                //{
+                //    txSQL = "SELECT Periodo, Ruta, Numero, Estado, Fecha, Hora, Domicilio, Observaciones, Operario, Latitud, Longitud FROM Altas" +
+                //        " WHERE (Periodo >= '" + desde + "' AND Periodo <= '" + hasta + "') AND (Numero NOT LIKE '%CxDir%')" +
+                //        " ORDER BY Fecha ASC";
+                //}
+
                 //Lee la tabla ALTAS pertenecientes al periodo
                 txSQL = "SELECT Periodo, Ruta, Numero, Estado, Fecha, Hora, Domicilio, Observaciones, Operario, Latitud, Longitud FROM Altas" +
                         " WHERE (Periodo >= '" + desde + "' AND Periodo <= '" + hasta + "') AND (Numero NOT LIKE '%CxDir%')";
@@ -227,7 +253,6 @@ namespace gagFIS_Interfase
 
                 labelRuta.Visible = true;
                 TBBuscarRuta.Visible = true;
-
             }
             catch (Exception e)
             {
@@ -271,7 +296,7 @@ namespace gagFIS_Interfase
                         "USING (ConexionID, Periodo) " +
                         "left JOIN (SELECT ConexionID, Periodo, Codigo, Observ FROM NovedadesConex WHERE (Orden = 0 OR Observ <> '') and Periodo = " + Vble.Periodo + ") N6 " +
                         "USING (ConexionID, Periodo) " +
-                        "WHERE C.Periodo = " + Vble.Periodo + " AND (C.Zona = " + Vble.ArrayZona[0].ToString() + iteracionZona() + ") " +
+                        "WHERE C.Periodo = " + Vble.Periodo + " AND (C.Zona = " + Vble.ArrayZona[0].ToString() + Vble.iteracionZona() + ") " +
                         "AND N1.Codigo > 0 " +
                         "AND (C.Periodo >= '" + desde + "' AND C.Periodo <= '" + hasta + "')";
                 //" ORDER BY Fecha ASC";
@@ -328,7 +353,7 @@ namespace gagFIS_Interfase
                             " WHERE ABM = '" + Tipo + "' AND Periodo = " + Vble.Periodo + " AND (Numero NOT LIKE '%CxDir%')";
                     //" ORDER BY Fecha ASC";
                 }
-                else if (Tipo == "M") 
+                else if (Tipo == "M")
                 {
                     //Lee la tabla ALTAS pertenecientes al periodo
                     txSQL = "SELECT Periodo, Ruta, Numero, Estado, Fecha, Hora, Domicilio, Observaciones, Operario FROM Altas" +
@@ -337,28 +362,28 @@ namespace gagFIS_Interfase
                 }
 
 
-                    TablaAltas = new DataTable();
-                    datosAdapter = new MySqlDataAdapter(txSQL, DB.conexBD);
-                    comandoSQL = new MySqlCommandBuilder(datosAdapter);
-                    datosAdapter.Fill(TablaAltas);
-                    DGAlta.DataSource = TablaAltas;
-                    //DGAlta.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    DGAlta.Columns["Ruta"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-                    DGAlta.Columns["Operario"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+                TablaAltas = new DataTable();
+                datosAdapter = new MySqlDataAdapter(txSQL, DB.conexBD);
+                comandoSQL = new MySqlCommandBuilder(datosAdapter);
+                datosAdapter.Fill(TablaAltas);
+                DGAlta.DataSource = TablaAltas;
+                //DGAlta.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                DGAlta.Columns["Ruta"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+                DGAlta.Columns["Operario"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
 
-                    DGAlta.Columns["Domicilio"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    DGAlta.Columns["Observaciones"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    DGAlta.Columns["Observaciones"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                DGAlta.Columns["Domicilio"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                DGAlta.Columns["Observaciones"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                DGAlta.Columns["Observaciones"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
-                    DGAlta.Columns["Fecha"].Visible = true;
-                    DGAlta.Columns["Periodo"].Visible = false;
-                    labelPeriodoAlt.Text = Vble.Periodo.ToString().Substring(4, 2) + "-" + Vble.Periodo.ToString().Substring(0, 4);
-                    lblCantAltas.Text = "Cantidad = " + DGAlta.RowCount.ToString();
+                DGAlta.Columns["Fecha"].Visible = true;
+                DGAlta.Columns["Periodo"].Visible = false;
+                labelPeriodoAlt.Text = Vble.Periodo.ToString().Substring(4, 2) + "-" + Vble.Periodo.ToString().Substring(0, 4);
+                lblCantAltas.Text = "Cantidad = " + DGAlta.RowCount.ToString();
 
-                    labelRuta.Visible = true;
-                    TBBuscarRuta.Visible = true;
+                labelRuta.Visible = true;
+                TBBuscarRuta.Visible = true;
 
-               
+
 
             }
             catch (Exception e)
@@ -386,7 +411,7 @@ namespace gagFIS_Interfase
                 //Lee la tabla ALTAS pertenecientes al periodo
                 txSQL = "SELECT Periodo, Ruta, Numero, Estado, Fecha, Hora, Domicilio, Observaciones, Operario, Latitud, Longitud FROM Altas" +
                         " WHERE (Fecha BETWEEN '" + desde + "' AND '" + hasta + "') AND (Numero NOT LIKE '%CxDir%')";
-                        //" ORDER BY Fecha ASC";
+                //" ORDER BY Fecha ASC";
 
                 TablaAltas = new DataTable();
 
@@ -434,7 +459,7 @@ namespace gagFIS_Interfase
             try
             {
                 //Lee la tabla ALTAS pertenecientes al periodo
-                txSQL = "SELECT Periodo, Ruta, Numero, Estado, Fecha, Hora, Domicilio, Observaciones, Operario FROM Altas" +
+                txSQL = "SELECT Periodo, Ruta, Numero, Estado, Fecha, Hora, Domicilio, Observaciones, Operario, Latitud, Longitud FROM Altas" +
                         " WHERE (Fecha BETWEEN '" + desde + "' AND '" + hasta + "') AND Numero like 'Cx%'";
                 //" ORDER BY Fecha ASC";
 
@@ -468,7 +493,8 @@ namespace gagFIS_Interfase
             }
         }
 
-        
+
+
         /// <summary>
         /// Funcion que carga DGNovedades por fechas considerando Desde y Hasta de los DataTimePiker
         /// /// ACLARACIÓN: en el caso de que se quite o agregue columnas en la consulta de altas, se tendrá que tener en cuenta
@@ -505,10 +531,10 @@ namespace gagFIS_Interfase
                         "USING (ConexionID, Periodo) " +
                         "left JOIN (SELECT ConexionID, Periodo, Codigo, Observ FROM NovedadesConex WHERE (Orden = 0 OR Observ <> '') and Periodo = " + Vble.Periodo + ") N6 " +
                         "USING (ConexionID, Periodo) " +
-                        "WHERE C.Periodo = " + Vble.Periodo + " AND (C.Zona = " + Vble.ArrayZona[0].ToString() + iteracionZona() + ") " +
+                        "WHERE C.Periodo = " + Vble.Periodo + " AND (C.Zona = " + Vble.ArrayZona[0].ToString() + Vble.iteracionZona() + ") " +
                         "AND N1.Codigo > 0 " +
                         "AND (M.ActualFecha BETWEEN '" + desde + "' AND '" + hasta + "')";
-                
+
                 //" ORDER BY Fecha ASC";
 
                 TablaConexDirec = new DataTable();
@@ -554,18 +580,26 @@ namespace gagFIS_Interfase
             MySqlDataAdapter datosAdapter;
             MySqlCommandBuilder comandoSQL;
             //DataTable Tabla;
-           
+
             string txSQL = "";
 
             try
             {
+               
 
                 //Lee la tabla ALTAS pertenecientes al periodo
                 if (PantallaSolicitud == "Exportacion")
                 {
                     txSQL = "SELECT Periodo, Ruta, Numero, Estado, Fecha, Hora, Domicilio, Observaciones, Operario, Latitud, Longitud FROM Altas" +
-                        " WHERE Periodo = " + Vble.Periodo + " AND Numero NOT LIKE 'CxDir%' AND Ruta = " + RutaDesdeExportacion + 
+                        " WHERE Periodo = " + Vble.Periodo + " AND Numero NOT LIKE 'CxDir%' AND Ruta = " + RutaDesdeExportacion +
                         " ORDER BY Fecha ASC";
+                }
+                else if (PantallaSolicitud == "Inicio")
+                {
+                    
+                    txSQL = "SELECT Periodo, Ruta, Numero, Estado, Fecha, Hora, Domicilio, Observaciones, Operario, Latitud, Longitud FROM Altas" +
+                      " WHERE Periodo = " + Vble.Periodo + " AND Numero NOT LIKE 'CxDir%' AND (Ruta = " + 1 + Vble.iteracionRuta() + ")" +
+                      " ORDER BY Fecha ASC";
                 }
                 else
                 {
@@ -573,7 +607,7 @@ namespace gagFIS_Interfase
                         " WHERE Periodo = " + Vble.Periodo + " AND Numero NOT LIKE 'CxDir%'" +
                         " ORDER BY Fecha ASC";
                 }
-                
+
 
                 TablaAltas = new DataTable();
 
@@ -587,7 +621,7 @@ namespace gagFIS_Interfase
                 DGAlta.DataBindingComplete += (s, e) =>
                 {
                     if (DGAlta.Columns.Contains("Ruta"))
-                    {                       
+                    {
 
                         DGAlta.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                         DGAlta.Columns["Ruta"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -602,10 +636,10 @@ namespace gagFIS_Interfase
                     }
                 };
 
-            
-              
 
-               
+
+
+
                 labelPeriodoAlt.Text = Vble.Periodo.ToString().Substring(4, 2) + "-" + Vble.Periodo.ToString().Substring(0, 4);
                 LabCantidadAlt.Text = "Cantidad = " + DGAlta.RowCount.ToString();
 
@@ -709,11 +743,17 @@ namespace gagFIS_Interfase
                 if (PantallaSolicitud == "Exportacion")
                 {
                     txSQL = "SELECT Periodo, Ruta, Numero, Estado, Fecha, Hora, Domicilio, Observaciones, Operario, Latitud, Longitud FROM Altas" +
-                       " WHERE Periodo = " + Vble.Periodo + " AND Numero like 'CxDir%' AND Ruta = " + RutaDesdeExportacion + 
+                       " WHERE Periodo = " + Vble.Periodo + " AND Numero like 'CxDir%' AND Ruta = " + RutaDesdeExportacion +
                        " ORDER BY Fecha ASC";
                 }
+                else if (PantallaSolicitud == "Inicio")
+                {
+                    txSQL = "SELECT Periodo, Ruta, Numero, Estado, Fecha, Hora, Domicilio, Observaciones, Operario, Latitud, Longitud FROM Altas" +
+                       " WHERE Periodo = " + Vble.Periodo + " AND Numero like 'CxDir%' AND (Ruta = " + 1 + Vble.iteracionRuta() + ")" +
+                      " ORDER BY Fecha ASC";
+                }
                 else
-                { 
+                {
                     txSQL = "SELECT Periodo, Ruta, Numero, Estado, Fecha, Hora, Domicilio, Observaciones, Operario, Latitud, Longitud FROM Altas" +
                         " WHERE Periodo = " + Vble.Periodo + " AND Numero like 'CxDir%'" +
                         " ORDER BY Fecha ASC";
@@ -790,7 +830,7 @@ namespace gagFIS_Interfase
                        "USING (ConexionID, Periodo) " +
                        "left JOIN (SELECT ConexionID, Periodo, Codigo, Observ FROM NovedadesConex WHERE (Orden = 0 OR Observ <> '') and Periodo = " + Vble.Periodo + ") N6 " +
                        "USING (ConexionID, Periodo) " +
-                       "WHERE C.Periodo = " + Vble.Periodo + " AND (C.Zona = " + Vble.ArrayZona[0].ToString() + iteracionZona() + ") AND C.Ruta = " + RutaDesdeExportacion +
+                       "WHERE C.Periodo = " + Vble.Periodo + " AND (C.Zona = " + Vble.ArrayZona[0].ToString() + Vble.iteracionZona() + ") AND C.Ruta = " + RutaDesdeExportacion +
                        " AND N1.Codigo > 0 " +
                        "ORDER BY C.Ruta, M.ActualFecha ASC, M.ActualHora ASC";
                 }
@@ -816,12 +856,12 @@ namespace gagFIS_Interfase
                         "USING (ConexionID, Periodo) " +
                         "left JOIN (SELECT ConexionID, Periodo, Codigo, Observ FROM NovedadesConex WHERE (Orden = 0 OR Observ <> '') and Periodo = " + Vble.Periodo + ") N6 " +
                         "USING (ConexionID, Periodo) " +
-                        "WHERE C.Periodo = " + Vble.Periodo + " AND (C.Zona = " + Vble.ArrayZona[0].ToString() + iteracionZona() + ") " +
+                        "WHERE C.Periodo = " + Vble.Periodo + " AND (C.Zona = " + Vble.ArrayZona[0].ToString() + Vble.iteracionZona() + ") " +
                         "AND N1.Codigo > 0 " +
                         "ORDER BY C.Ruta, M.ActualFecha ASC, M.ActualHora ASC";
                 }
-                    TablaNovedades = new DataTable();
-                
+                TablaNovedades = new DataTable();
+
                 datosAdapter = new MySqlDataAdapter(txSQL, DB.conexBD);
                 datosAdapter.SelectCommand.CommandTimeout = 300;
                 comandoSQL = new MySqlCommandBuilder(datosAdapter);
@@ -849,30 +889,59 @@ namespace gagFIS_Interfase
         }
 
 
-        /// <summary>
-        /// Consulta con iteracion para cargar la cantidad de conexiones que pertenecen a la secuencia seleccionada
-        /// </summary>
-        /// <returns></returns>
-        private string iteracionZona()
-        {
-            string where = "";
-            try
-            {
-                for (int i = 0; i < Vble.ArrayZona.Count; i++)
-                {
+        ///// <summary>
+        ///// Consulta con iteracion para cargar la cantidad de conexiones que pertenecen a la secuencia seleccionada
+        ///// </summary>
+        ///// <returns></returns>
+        //private string iteracionZona()
+        //{
+        //    string where = "";
+        //    try
+        //    {
+        //        for (int i = 0; i < Vble.ArrayZona.Count; i++)
+        //        {
 
-                    where += " OR C.Zona = " + Vble.ArrayZona[i];
-                         
-                }
+        //            where += " OR C.Zona = " + Vble.ArrayZona[i];
 
-            }
-            catch (Exception r)
-            {
-                MessageBox.Show(r.Message + "Error Al realizar Iteración de Nodos Seleccionado", "Error de Consulta", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return where;
+        //        }
 
-        }
+        //    }
+        //    catch (Exception r)
+        //    {
+        //        MessageBox.Show(r.Message + "Error Al realizar Iteración de Nodos Seleccionado", "Error de Consulta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    return where;
+
+        //}
+
+      
+
+        ///// <summary>
+        ///// Consulta con iteracion para cargar la cantidad de conexiones que pertenecen a la secuencia seleccionada
+        ///// </summary>
+        ///// <returns></returns>
+        //private string RutasDistintXLocalidades()
+        //{
+        //    string where = "";
+        //    try
+        //    {
+        //        for (int i = 0; i < Vble.ArrayZona.Count; i++)
+        //        {
+
+        //            where += " OR C.Zona = " + Vble.ArrayZona[i];
+
+        //        }
+
+        //    }
+        //    catch (Exception r)
+        //    {
+        //        MessageBox.Show(r.Message + "Error Al realizar Iteración de Nodos Seleccionado", "Error de Consulta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    return where;
+
+        //}
+
+
 
 
         /// <summary>
@@ -954,15 +1023,15 @@ namespace gagFIS_Interfase
 
             }
             else
-	            {
-                    txSQL = "SELECT DISTINCT Count(*) FROM Conexiones WHERE Periodo = " + Vble.Periodo + " AND Ruta = " + RutaDesdeExportacion;
-                    da = new MySqlCommand(txSQL, DB.conexBD);
-                    da.Parameters.AddWithValue("Periodo", Vble.Periodo);
-                    count = Convert.ToInt32(da.ExecuteScalar());
-                }
+            {
+                txSQL = "SELECT DISTINCT Count(*) FROM Conexiones WHERE Periodo = " + Vble.Periodo + " AND Ruta = " + RutaDesdeExportacion;
+                da = new MySqlCommand(txSQL, DB.conexBD);
+                da.Parameters.AddWithValue("Periodo", Vble.Periodo);
+                count = Convert.ToInt32(da.ExecuteScalar());
+            }
 
-          
-             
+
+
             if (count == 0)
                 return count;
             else
@@ -1031,7 +1100,7 @@ namespace gagFIS_Interfase
                             else if (ImpresionCANT == "2")
                             {
                                 Leidos++;
-                                
+
                             }
                             break;
                         case 2:
@@ -1165,17 +1234,17 @@ namespace gagFIS_Interfase
                                 CantImpresiones = (Convert.ToInt16(CantImpresiones) - 1).ToString();
                                 Impresos++;
                             }
-                            
+
 
                             //if (ImpresionCANT.Substring(ImpresionCANT.Length - 1, 1) == "1" || ImpresionCANT.Substring(ImpresionCANT.Length - 1, 1) == "9")
                             //{
-                               
+
                             //    Impresos++;
                             //}
                             //else if (ImpresionCANT.Substring(ImpresionCANT.Length - 1, 1) == "2")
                             //{
                             //    Leidos++;
-                               
+
                             //}
                             break;
                     }
@@ -1194,7 +1263,7 @@ namespace gagFIS_Interfase
             }
 
             DGDetalleSituaciones.DataSource = TablaDetalleSituaciones;
-            DGDetalleSituaciones.Columns["ImpresionCANT"].Visible = false;            
+            DGDetalleSituaciones.Columns["ImpresionCANT"].Visible = false;
             LblPeriodoDetSit.Text = DGDetalleSituaciones.Rows[0].Cells["Periodo"].Value.ToString();
             LblRutaDetSit.Text = DGDetalleSituaciones.Rows[0].Cells["Ruta"].Value.ToString();
             LblLecturista.Text = DGDetalleSituaciones.Rows[0].Cells["Operario"].Value.ToString();
@@ -1220,47 +1289,47 @@ namespace gagFIS_Interfase
         /// <returns></returns>
         private string IdentificaEstado(string ImpresionCANT)
         {
-           
-                if (ImpresionCANT == ((int)ImpCntStatus.NoLeido).ToString())
-                {
-                    return "NO LEIDO";
-                }
-                else if (ImpresionCANT == ((int)ImpCntStatus.LeidoConCorrecionEstado).ToString())
-                {
-                    return "LEIDO Con Correción Estado";
-                }
-                else if (ImpresionCANT == ((int)ImpCntStatus.LeidoConTeleLectura).ToString())
-                {
-                    return "Tele-LEIDO";
-                }
-                else if (ImpresionCANT == ((int)ImpCntStatus.LeidoConCorrecionEstadoyTeleLectura).ToString())
-                {
-                    return "Tele-LEIDO con corrección estado, NO IMPRESO";
-                }
-                else if (ImpresionCANT == ((int)ImpCntStatus.LeidoImpreso).ToString())
-                {
-                    return "IMPRESO";
-                }
-                else if (ImpresionCANT == ((int)ImpCntStatus.LeidoImpresoConCorreccion).ToString())
-                {
-                    return "IMPRESO con correción";
-                }
-                else if (ImpresionCANT == ((int)ImpCntStatus.LeidoImpresoConTeleLectura).ToString())
-                {
-                    return "Tele-LEIDO, IMPRESO";
-                }
-                else if (ImpresionCANT == ((int)ImpCntStatus.LeidoImpresoConTeleLecturaCorrecionEstado).ToString())
-                {
-                    return "Tele-LEIDO, IMPRESO con Corrección";
-                }
-                else if (ImpresionCANT == ((int)ImpCntStatus.Leido).ToString())
-                {
-                    return "LEIDO";
-                }
-                else if (ImpresionCANT == ((int)ImpCntStatus.Apagado).ToString())
-                {
-                    return "APAGADO";
-                }
+
+            if (ImpresionCANT == ((int)ImpCntStatus.NoLeido).ToString())
+            {
+                return "NO LEIDO";
+            }
+            else if (ImpresionCANT == ((int)ImpCntStatus.LeidoConCorrecionEstado).ToString())
+            {
+                return "LEIDO Con Correción Estado";
+            }
+            else if (ImpresionCANT == ((int)ImpCntStatus.LeidoConTeleLectura).ToString())
+            {
+                return "Tele-LEIDO";
+            }
+            else if (ImpresionCANT == ((int)ImpCntStatus.LeidoConCorrecionEstadoyTeleLectura).ToString())
+            {
+                return "Tele-LEIDO con corrección estado, NO IMPRESO";
+            }
+            else if (ImpresionCANT == ((int)ImpCntStatus.LeidoImpreso).ToString())
+            {
+                return "IMPRESO";
+            }
+            else if (ImpresionCANT == ((int)ImpCntStatus.LeidoImpresoConCorreccion).ToString())
+            {
+                return "IMPRESO con correción";
+            }
+            else if (ImpresionCANT == ((int)ImpCntStatus.LeidoImpresoConTeleLectura).ToString())
+            {
+                return "Tele-LEIDO, IMPRESO";
+            }
+            else if (ImpresionCANT == ((int)ImpCntStatus.LeidoImpresoConTeleLecturaCorrecionEstado).ToString())
+            {
+                return "Tele-LEIDO, IMPRESO con Corrección";
+            }
+            else if (ImpresionCANT == ((int)ImpCntStatus.Leido).ToString())
+            {
+                return "LEIDO";
+            }
+            else if (ImpresionCANT == ((int)ImpCntStatus.Apagado).ToString())
+            {
+                return "APAGADO";
+            }
             else
             {
                 return "-";
@@ -1364,7 +1433,7 @@ namespace gagFIS_Interfase
             else if (ImpresionCANT == ((int)ImpCntPrinter.ImpresoEnLote).ToString())
             {
                 return "Impreso en Lote";
-            }            
+            }
             return "-";
         }
 
@@ -1391,7 +1460,7 @@ namespace gagFIS_Interfase
             else if (ImpresionCANT == ((int)ImpCntNoved.TarifasNoImprimibles).ToString())
             {
                 return "Tarifa NO imprimible";
-            }          
+            }
             return "-";
         }
 
@@ -1414,7 +1483,7 @@ namespace gagFIS_Interfase
             else if (ImpresionCANT == ((int)ImpCntPeri.ExcedeLimiteLectura).ToString())
             {
                 return "Excede Limite 2: de Lectura";
-            }          
+            }
 
             return "-";
         }
@@ -1447,7 +1516,7 @@ namespace gagFIS_Interfase
             {
                 return "-";
             }
-           
+
         }
 
         /// <summary>
@@ -1489,7 +1558,7 @@ namespace gagFIS_Interfase
             else if (ImpresionCANT == ((int)ImpCntPosFac.ExcesoDeRenglones).ToString())
             {
                 return "Exceso de renglones";
-            }         
+            }
             else
             {
                 return "-";
@@ -1546,7 +1615,7 @@ namespace gagFIS_Interfase
             }
             return "-";
         }
-          
+
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -1571,13 +1640,14 @@ namespace gagFIS_Interfase
 
             //Anterior
             if (Per == 1)
-            { 
+            {
                 CBPerDesdeAltas.Items.Add((Anio - 1).ToString("0000") + "06");
                 CBPerHastaAltas.Items.Add((Anio - 1).ToString("0000") + "06");
                 CBPerDesdeConDir.Items.Add((Anio - 1).ToString("0000") + "06");
                 CBPerHastaConDir.Items.Add((Anio - 1).ToString("0000") + "06");
             }
-            else { 
+            else
+            {
                 CBPerDesdeAltas.Items.Add(Anio.ToString("0000") +
                     (Per - 1).ToString("00"));
                 CBPerHastaAltas.Items.Add(Anio.ToString("0000") +
@@ -1600,22 +1670,22 @@ namespace gagFIS_Interfase
 
             //Siguiente
             if (Per == 6)
-            {  
+            {
                 CBPerDesdeAltas.Items.Add((Anio + 1).ToString("0000") + "01");
                 CBPerHastaAltas.Items.Add((Anio + 1).ToString("0000") + "01");
                 CBPerDesdeConDir.Items.Add((Anio + 1).ToString("0000") + "01");
                 CBPerHastaConDir.Items.Add((Anio + 1).ToString("0000") + "01");
             }
             else
-            { 
-                CBPerDesdeAltas.Items.Add(Anio.ToString("0000")  +
+            {
+                CBPerDesdeAltas.Items.Add(Anio.ToString("0000") +
                     (Per + 1).ToString("00"));
                 CBPerHastaAltas.Items.Add(Anio.ToString("0000") +
                     (Per + 1).ToString("00"));
                 CBPerDesdeConDir.Items.Add(Anio.ToString("0000") +
                     (Per + 1).ToString("00"));
                 CBPerHastaConDir.Items.Add(Anio.ToString("0000") +
-                    (Per + 1).ToString("00"));
+                   (Per + 1).ToString("00"));
 
                 ////Si no está el por defecto lo agrega
                 //Inis.GetPrivateProfileString(
@@ -1626,7 +1696,7 @@ namespace gagFIS_Interfase
 
                 //Defecto
                 CBPerDesdeAltas.Text = PerDef.ToString();
-                CBPerHastaAltas.Text = PerDef.ToString();
+                //CBPerHastaAltas.Text = PerDef.ToString();
 
                 CBPerDesdeConDir.Text = PerDef.ToString();
                 CBPerHastaConDir.Text = PerDef.ToString();
@@ -1698,7 +1768,7 @@ namespace gagFIS_Interfase
             //Gira la hoja en posicion horizontal
             document.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
             string PathInformesAltas = Vble.CarpetaRespaldo + Vble.ValorarUnNombreRuta(Vble.CarpetaInformesAltas) + NombreArchivo;
-            
+
             if (!Directory.Exists(Vble.CarpetaRespaldo + Vble.ValorarUnNombreRuta(Vble.CarpetaInformesAltas)))
             {
                 Directory.CreateDirectory(Vble.CarpetaRespaldo + Vble.ValorarUnNombreRuta(Vble.CarpetaInformesAltas));
@@ -1740,7 +1810,7 @@ namespace gagFIS_Interfase
             document.Add(imagenDPEC);
             document.Add(new Paragraph("  "));
             Chunk chunk = new Chunk();
-           
+
             if (PantallaSolicitud == "Exportacion")
             {
                 if (tabPagConexDirect.Text == "Conexiones Directas")
@@ -1754,7 +1824,7 @@ namespace gagFIS_Interfase
                     chunk = new Chunk("         Informe de Altas \n\n         Periodo: " + labelPeriodoAlt.Text + " \n\n   " + " Ruta: " + RutaDesdeExportacion,
                                     FontFactory.GetFont("Arial", 20, iTextSharp.text.Font.BOLD,
                                     new iTextSharp.text.BaseColor(0, 102, 0)));
-                }                
+                }
             }
             else
             {
@@ -1781,7 +1851,7 @@ namespace gagFIS_Interfase
             Paragraph titulo = new Paragraph();
             titulo.Add(chunk);
             titulo.Alignment = Element.ALIGN_CENTER;
-            document.Add(new Paragraph(titulo));           
+            document.Add(new Paragraph(titulo));
 
             Paragraph infoinforme = new Paragraph("Fecha: " + DateTime.Today.ToString("dd/MM/yyyy") + "\n Operario: " + DB.sDbUsu, FontFactory.GetFont("Arial", 8, iTextSharp.text.Font.NORMAL));
             infoinforme.Alignment = Element.ALIGN_RIGHT;
@@ -1795,7 +1865,7 @@ namespace gagFIS_Interfase
             table.TotalWidth = page.Width - 90;
             table.LockedWidth = true;
             //asigno el ancho de las columnas
-            float[] widths = new float[] {0.8f, 1.3f, 1.0f, 1.5f, 1.5f, 4.5f, 3.0f, 1.5f, 1.9f, 1.9f };
+            float[] widths = new float[] { 0.8f, 1.3f, 1.0f, 1.5f, 1.5f, 4.5f, 3.0f, 1.5f, 1.9f, 1.9f };
             table.SetWidths(widths);
 
             ////Estructura de tabla:
@@ -1817,7 +1887,7 @@ namespace gagFIS_Interfase
             //table.AddCell(Modelo);
             PdfPCell Numero = (new PdfPCell(new Phrase("Numero ", FontFactory.GetFont("Arial", 11, iTextSharp.text.Font.BOLD))) { Rowspan = 1 });
             Numero.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
-            table.AddCell(Numero);            
+            table.AddCell(Numero);
             PdfPCell SinLeer = (new PdfPCell(new Paragraph("Estado", FontFactory.GetFont("Arial", 11, iTextSharp.text.Font.BOLD))) { Rowspan = 1 });
             SinLeer.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
             table.AddCell(SinLeer);
@@ -1862,7 +1932,7 @@ namespace gagFIS_Interfase
                 //table.AddCell(fi5);
                 PdfPCell fi6 = (new PdfPCell(new Paragraph(fi.Cells["Numero"].Value.ToString(), FontFactory.GetFont("Arial", 9, iTextSharp.text.Font.NORMAL))));
                 fi6.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
-                table.AddCell(fi6);                
+                table.AddCell(fi6);
                 PdfPCell fi7 = (new PdfPCell(new Paragraph(fi.Cells["Estado"].Value.ToString(), FontFactory.GetFont("Arial", 9, iTextSharp.text.Font.NORMAL))));
                 fi7.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
                 table.AddCell(fi7);
@@ -1914,55 +1984,92 @@ namespace gagFIS_Interfase
         /// <param name="grd"></param>
         private void ExportarAltasExcel(DataGridView grd)
         {
-            SaveFileDialog fichero = new SaveFileDialog();
-            fichero.Filter = "Excel (*.xls)|*.xls";
-            if (fichero.ShowDialog() == DialogResult.OK)
+          
+
+            int k = 0;
+            int nroFilaExcel = 0;
+            string[,] sArray;
+            string[,] sArrayResGral;
+            int filasResGral = 0;
+            int columnasResGral = 0;
+            sArray = new string[grd.Rows.Count, grd.Columns.Count];
+            nroFilaExcel = grd.Rows.Count + 2;
+
+            filasResGral++;
+            Microsoft.Office.Interop.Excel.Application aplicacion;
+            Microsoft.Office.Interop.Excel.Workbook libros_trabajo;
+            //Microsoft.Office.Interop.Excel.Worksheet hoja_trabajo1;
+            aplicacion = new Microsoft.Office.Interop.Excel.Application();
+            libros_trabajo = aplicacion.Workbooks.Add();
+            //libros_trabajo.Sheets.Add();
+            //libros_trabajo.Sheets.Add();
+
+
+            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+            excel.Application.Workbooks.Add(true);
+            libros_trabajo = excel.Workbooks.Add();
+
+            object[,] datos = new object[grd.Rows.Count + 1, grd.Columns.Count]; // +1 por la cabecera
+            for (int j = 0; j < grd.Columns.Count; j++) //cabeceras
             {
-                Microsoft.Office.Interop.Excel.Application aplicacion;
-                Microsoft.Office.Interop.Excel.Workbook libros_trabajo;
-                Microsoft.Office.Interop.Excel.Worksheet hoja_trabajo;
-                aplicacion = new Microsoft.Office.Interop.Excel.Application();
-                libros_trabajo = aplicacion.Workbooks.Add();
-                hoja_trabajo = (Microsoft.Office.Interop.Excel.Worksheet)libros_trabajo.Worksheets.get_Item(1);
+                datos[0, j] = grd.Columns[j].Name;               
 
-                //Agregamos los encabezados de la tabla altas en negrita y con fondo gris
-                for (int j = 1; j <= grd.Columns.Count; j++)
-                {
-                    hoja_trabajo.Cells[1, j]  = grd.Columns[j-1].HeaderText;
-                    hoja_trabajo.Cells[1, j].Font.Bold = true;
-                    hoja_trabajo.Cells[1, j].Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Silver);
-                }
-
-
-                for (int i = 0; i <= grd.Rows.Count - 1; i++)
-                {
-                    for (int j = 0; j < grd.Columns.Count; j++)
-                    {
-                        hoja_trabajo.Cells[i + 2, j + 1] = grd.Rows[i].Cells[j].Value.ToString();
-                    }
-                }
-
-                libros_trabajo.SaveAs(fichero.FileName,  Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
-                string NombreArchivo = System.IO.Path.GetFileName(fichero.FileName);
-                
-                libros_trabajo.Close(true);
-                aplicacion.Quit();
-
-                //Exporto lo mismo a un archivo PDF que queda como respaldo de FIS aparte del archivo .xls 
-                ExportarAltasPDF(grd, NombreArchivo, fichero.FileName);
-
-
-                if (!Directory.Exists(Vble.CarpetaRespaldo + Vble.ValorarUnNombreRuta(Vble.CarpetaInformesAltas)))
-                {
-                    Directory.CreateDirectory(Vble.CarpetaRespaldo + Vble.ValorarUnNombreRuta(Vble.CarpetaInformesAltas));
-                    File.Copy(fichero.FileName, Vble.CarpetaRespaldo + Vble.ValorarUnNombreRuta(Vble.CarpetaInformesAltas) + NombreArchivo);
-                }
-                else
-                {
-                    File.Copy(fichero.FileName, Vble.CarpetaRespaldo + Vble.ValorarUnNombreRuta(Vble.CarpetaInformesAltas) + NombreArchivo);
-                }
-                
             }
+
+            for (int i = 0; i < grd.Rows.Count; i++)
+            {
+                for (int j = 0; j < grd.Columns.Count; j++)
+                {
+                    datos[i + 1, j] = grd.Rows[i].Cells[j].Value;
+                }
+
+                if (grd.Name == "DGAlta")
+                {
+                    bgwExpExcelAltas.ReportProgress(i);
+                }
+                else if ( grd.Name == "DGConDir")
+                {
+                    bgwExpExcelConDir.ReportProgress(i);
+                }
+                else if (grd.Name == "DGOrdenat")
+                {
+                    bgwExpExcelOrd.ReportProgress(i);
+                }
+            }
+
+
+            excel.Range[excel.Cells[1, 1], excel.Cells[datos.GetLength(0), datos.GetLength(1)]].Value = datos;
+            //excel.Visible = true;
+            Microsoft.Office.Interop.Excel.Worksheet hoja_trabajo1 = (Microsoft.Office.Interop.Excel.Worksheet)excel.ActiveSheet;
+
+            object misValue = System.Reflection.Missing.Value;
+            object misValue2 = System.Reflection.Missing.Value;
+            object misValue3 = System.Reflection.Missing.Value;
+
+            //// Aplicar formato a la cabecera (primera fila)
+            //Microsoft.Office.Interop.Excel.Range headerRange = hoja_trabajo1.Range[
+            //    hoja_trabajo1.Cells[1, 1],
+            //    hoja_trabajo1.Cells[1, grd.Columns.Count]
+            //];
+
+            //headerRange.Font.Bold = true; // Negrita
+            //headerRange.Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.Gray); // Fondo gris
+            //headerRange.Font.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.White); // Texto blanco
+            //headerRange.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter; // Alineación centrada
+
+            //libros_trabajo.Worksheets.Add(hoja_trabajo1);
+
+            string NombreArchivo = System.IO.Path.GetFileName(Vble.FileName);
+            libros_trabajo.SaveAs(Vble.FileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+            //excel.GetSaveAsFilename(Vble.NombreArchivo, misValue, misValue, misValue, misValue);
+
+            hoja_trabajo1.Activate();
+            libros_trabajo.Close(true);
+            excel.Quit();
+            aplicacion.Quit();
+
+
+
         }
 
 
@@ -2024,9 +2131,9 @@ namespace gagFIS_Interfase
             Chunk chunk = new Chunk();
             if (PantallaSolicitud == "Exportacion")
             {
-                 chunk = new Chunk("         Informe de Ordenativos \n\n         Periodo: " + LabelPeriodoOrden.Text + "\n\n    Ruta: " + RutaDesdeExportacion,
-                                   FontFactory.GetFont("Arial", 20, iTextSharp.text.Font.BOLD,
-                                   new iTextSharp.text.BaseColor(0, 102, 0)));
+                chunk = new Chunk("         Informe de Ordenativos \n\n         Periodo: " + LabelPeriodoOrden.Text + "\n\n    Ruta: " + RutaDesdeExportacion,
+                                  FontFactory.GetFont("Arial", 20, iTextSharp.text.Font.BOLD,
+                                  new iTextSharp.text.BaseColor(0, 102, 0)));
 
                 if (tabPageOrdenativos.Text == "Ordenativos")
                 {
@@ -2041,7 +2148,7 @@ namespace gagFIS_Interfase
                                    FontFactory.GetFont("Arial", 20, iTextSharp.text.Font.BOLD,
                                    new iTextSharp.text.BaseColor(0, 102, 0)));
             }
-           
+
             //chunk.SetUnderline(0.9f, -1.8f);
             Paragraph titulo = new Paragraph();
             titulo.Add(chunk);
@@ -2282,7 +2389,7 @@ namespace gagFIS_Interfase
             table.LockedWidth = true;
             //asigno el ancho de las columnas
             //float[] widths = new float[] {1.5f, 1.3f, 2.0f, 4.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f};
-            float[] widths = new float[] {1.6f, 1.6f, 1.5f, 1.5f, 1.5f, 2.0f, 1.5f, 1.7f, 2.2f, 2.1f, 2.1f, 1.5f, 1.5f, 1.5f, 1.5f, 1.0f, 0.8f };
+            float[] widths = new float[] { 1.6f, 1.6f, 1.5f, 1.5f, 1.5f, 2.0f, 1.5f, 1.7f, 2.2f, 2.1f, 2.1f, 1.5f, 1.5f, 1.5f, 1.5f, 1.0f, 0.8f };
             table.SetWidths(widths);
 
 
@@ -2303,11 +2410,11 @@ namespace gagFIS_Interfase
             iTextSharp.text.Rectangle page2 = document.PageSize;
             PdfPTable table2 = new PdfPTable(1);
             table2.WidthPercentage = 50;
-            table2.TotalWidth =  160;
+            table2.TotalWidth = 160;
             table2.LockedWidth = true;
             //asigno el ancho de las columnas
             //float[] widths = new float[] {1.5f, 1.3f, 2.0f, 4.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f, 1.5f};
-            float[] widths2 = new float[] { 5.0f};
+            float[] widths2 = new float[] { 5.0f };
             table2.SetWidths(widths2);
 
             //PdfPCell Periodo = (new PdfPCell(new Paragraph("Periodo", FontFactory.GetFont("Arial", 11, iTextSharp.text.Font.BOLD))) { Rowspan = 1 });
@@ -2500,23 +2607,41 @@ namespace gagFIS_Interfase
         private void button1_Click(object sender, EventArgs e)
         {
 
-            if (DGAlta.RowCount > 0)
+            SaveFileDialog fichero = new SaveFileDialog();
+            string InformesPDF = Vble.ValorarUnNombreRuta(Vble.CarpetaInformesPDF);
+            InformesPDF += Vble.Periodo + "\\" + DateTime.Today.ToString("yyyyMMdd");
+
+            if (!Directory.Exists(InformesPDF))
             {
-                //metodo de exportación con datagridview de altas como parametro
-                ExportarAltasExcel(DGAlta);
-               
+                Directory.CreateDirectory(InformesPDF);
             }
-            else
+            fichero.InitialDirectory = InformesPDF;
+            fichero.Filter = "Excel (*.xlsx)|.*xls";
+            Vble.TipoInforme = "EXLS";
+
+            if (fichero.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show("Disculpe No existen Altas para realizar la Exportación, verifique la busqueda " +
-                    "o tal vez aún no existen altas en la base de datos", "Exportación", MessageBoxButtons.OK , MessageBoxIcon.Asterisk);
+                Vble.FileName = fichero.FileName;
+                if (DGAlta.RowCount > 0)
+                {
+                    //iTalk_ProgressBarAltas.Visible = true;
+                    //metodo de exportación con datagridview de altas como parametro
+                    bgwExpExcelAltas.RunWorkerAsync();
+
+
+                }
+                else
+                {
+                    MessageBox.Show("Disculpe No existen Altas para realizar la Exportación, verifique la busqueda " +
+                                    "o tal vez aún no existen altas en la base de datos", "Exportación", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
             }
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-         
+
         }
 
         private void dateTimePickerDesde_ValueChanged(object sender, EventArgs e)
@@ -2540,6 +2665,8 @@ namespace gagFIS_Interfase
         {
             if (radioButtonPeriodo.Checked == true)
             {
+                btnAddPeriodoAltas.Visible = true;
+                tbPeriodoAltas.Visible = true;
                 DTPDesdeAltas.Visible = false;
                 DTPHastaAltas.Visible = false;
                 labelMotivo.Visible = false;
@@ -2557,8 +2684,8 @@ namespace gagFIS_Interfase
         }
 
         private void comboBoxPerDesde_SelectedIndexChanged(object sender, EventArgs e)
-        {            
-            CargarAltasPorPeriodos(CBPerDesdeAltas.Text, CBPerHastaAltas.Text);            
+        {
+            CargarAltasPorPeriodos(CBPerDesdeAltas.Text, CBPerHastaAltas.Text);
         }
 
         private void comboBoxPerHasta_SelectedIndexChanged(object sender, EventArgs e)
@@ -2572,6 +2699,10 @@ namespace gagFIS_Interfase
             {
                 DTPDesdeAltas.Visible = false;
                 DTPHastaAltas.Visible = false;
+                CBPerDesdeAltas.Visible = false;
+                CBPerHastaAltas.Visible = false;
+                tbPeriodoAltas.Visible = false;
+                btnAddPeriodoAltas.Visible = false;
                 CBTipoAlta.Visible = true;
                 labelMotivo.Visible = true;
                 label3.Visible = true;
@@ -2600,42 +2731,42 @@ namespace gagFIS_Interfase
 
             if (DGAlta.RowCount > 0)
             {
-            if (radioButtonFecha.Checked == true)
-            {
-                LeyendaCabecera = "Resumen de Altas por fecha \n\r Desde: " + DTPDesdeAltas.Value.ToString("dd/MM/yyyy") + " Hasta: " + DTPHastaAltas.Value.ToString("dd/MM/yyyy") +
-                      "\n\r Periodo: " + labelPeriodoAlt.Text;
-            }
-            else if (radioButtonPeriodo.Checked == true)
-            {
-                LeyendaCabecera = "Resumen de Altas por Periodo \n\r Desde: " + DTPDesdeAltas.Value.ToString("dd/MM/yyyy") + " Hasta: " + DTPHastaAltas.Value.ToString("dd/MM/yyyy") +
-                      "\n\r Periodo: " + labelPeriodoAlt.Text;
-            }
-            else if (radioButtonTipoAlta.Checked == true)
-            {
-                if (CBTipoAlta.Text == "A")
+                if (radioButtonFecha.Checked == true)
                 {
-                    LeyendaCabecera = "Resumen de Altas \n\r Periodo: " + labelPeriodoAlt.Text;
+                    LeyendaCabecera = "Resumen de Altas por fecha \n\r Desde: " + DTPDesdeAltas.Value.ToString("dd/MM/yyyy") + " Hasta: " + DTPHastaAltas.Value.ToString("dd/MM/yyyy") +
+                          "\n\r Periodo: " + labelPeriodoAlt.Text;
                 }
-                else
+                else if (radioButtonPeriodo.Checked == true)
                 {
-                    LeyendaCabecera = "Resumen de Modificaciones \n\r Periodo: " + labelPeriodoAlt.Text;
-
-
+                    LeyendaCabecera = "Resumen de Altas por Periodo \n\r Desde: " + DTPDesdeAltas.Value.ToString("dd/MM/yyyy") + " Hasta: " + DTPHastaAltas.Value.ToString("dd/MM/yyyy") +
+                          "\n\r Periodo: " + labelPeriodoAlt.Text;
                 }
-            }
+                else if (radioButtonTipoAlta.Checked == true)
+                {
+                    if (CBTipoAlta.Text == "A")
+                    {
+                        LeyendaCabecera = "Resumen de Altas \n\r Periodo: " + labelPeriodoAlt.Text;
+                    }
+                    else
+                    {
+                        LeyendaCabecera = "Resumen de Modificaciones \n\r Periodo: " + labelPeriodoAlt.Text;
 
-            DGAlta.Columns["Observaciones"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            PrintDataGridView pr = new PrintDataGridView(DGAlta)
-            {
-                ReportHeader = LeyendaCabecera,
-                ReportFooter = "Macro Intell - DPEC",
-                MargenDerecho = 10,
-                MargenIzquierdo = 30,
-                MargenInferior = 20,
-                MargenSuperior = 30
-            };
 
-            pr.Print(this);
+                    }
+                }
+
+                DGAlta.Columns["Observaciones"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                PrintDataGridView pr = new PrintDataGridView(DGAlta)
+                {
+                    ReportHeader = LeyendaCabecera,
+                    ReportFooter = "Macro Intell - DPEC",
+                    MargenDerecho = 10,
+                    MargenIzquierdo = 30,
+                    MargenInferior = 20,
+                    MargenSuperior = 30
+                };
+
+                pr.Print(this);
             }
             else
             {
@@ -2648,7 +2779,7 @@ namespace gagFIS_Interfase
             SaveFileDialog fichero = new SaveFileDialog();
             fichero.Filter = "PDF (*.pdf)|.*pdf";
             if (fichero.ShowDialog() == DialogResult.OK)
-            {                
+            {
                 //Exporto lo mismo a un archivo PDF que queda como respaldo de FIS aparte del archivo .xls 
                 ExportarAltasPDF(DGAlta, System.IO.Path.GetFileName(fichero.FileName), System.IO.Path.GetFullPath(fichero.FileName));
 
@@ -2660,7 +2791,7 @@ namespace gagFIS_Interfase
             if (this.DGAlta.RowCount > 0)
             {
                 if (TBBuscarRuta.Text.Any(x => char.IsNumber(x)))
-                {                  
+                {
                     string fieldName = string.Concat("[", TablaAltas.Columns[4].ColumnName, "]");
                     //string fieldName = "conexionID";
                     TablaAltas.DefaultView.Sort = fieldName;
@@ -2689,7 +2820,7 @@ namespace gagFIS_Interfase
                         {
                             CargarAltasPorFechas(DTPDesdeAltas.Value.ToString("yyyy/MM/dd"), DTPHastaAltas.Value.ToString("yyyy/MM/dd"));
                         }
-                       
+
                     }
                     else if (radioButtonPeriodo.Checked == true)
                     {
@@ -2706,7 +2837,7 @@ namespace gagFIS_Interfase
                         {
                             CargarAltasPorPeriodos(CBPerDesdeAltas.Text, CBPerHastaAltas.Text);
                         }
-                       
+
                     }
                     else if (radioButtonTipoAlta.Checked == true)
                     {
@@ -2724,7 +2855,7 @@ namespace gagFIS_Interfase
                         {
                             CargarPorTipoAlta(this.CBTipoAlta.Text);
                         }
-                        
+
                     }
                     else
                     {
@@ -2741,13 +2872,14 @@ namespace gagFIS_Interfase
                         {
                             CargarAltasPorPeriodos(CBPerDesdeAltas.Text, CBPerHastaAltas.Text);
                         }
-                       
+
                     }
                 }
             }
+           
             else
             {
-                 
+
                 if (radioButtonFecha.Checked == true)
                 {
                     DTPDesdeAltas.Visible = true;
@@ -2763,7 +2895,7 @@ namespace gagFIS_Interfase
                     {
                         CargarAltasPorFechas(DTPDesdeAltas.Value.ToString("yyyy/MM/dd"), DTPHastaAltas.Value.ToString("yyyy/MM/dd"));
                     }
-                    
+
                 }
                 else if (radioButtonPeriodo.Checked == true)
                 {
@@ -2780,7 +2912,7 @@ namespace gagFIS_Interfase
                     {
                         CargarAltasPorPeriodos(CBPerDesdeAltas.Text, CBPerHastaAltas.Text);
                     }
-                   
+
                 }
                 else if (radioButtonTipoAlta.Checked == true)
                 {
@@ -2798,10 +2930,14 @@ namespace gagFIS_Interfase
                     {
                         CargarPorTipoAlta(this.CBTipoAlta.Text);
                     }
-                    
+
                 }
-             
             }
+            if (this.TBBuscarRuta.Text == "")
+            {                
+                    CargarAltas();               
+            }
+            
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -2811,12 +2947,12 @@ namespace gagFIS_Interfase
 
         //private void DGAlta_CellContentClick(object sender, DataGridViewCellEventArgs e)
         //{
-           
+
         //}
 
         //private void DGAlta_MouseClick(object sender, MouseEventArgs e)
         //{
-           
+
         //}
 
         //private void DGAlta_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -2835,12 +2971,12 @@ namespace gagFIS_Interfase
         //        int Y = altoCelda + DGAlta.Location.Y + 15;
 
         //        contextMenuStrip1.Show(DGAlta, new Point(X, Y));               
-               
+
         //    }
 
-           
-              
-           
+
+
+
         //    //if (e.Button == MouseButtons.Right)
         //    //{
         //    //    this.DGAlta.Rows[e.RowIndex].Selected = true;
@@ -2913,8 +3049,8 @@ namespace gagFIS_Interfase
                 {
                     LeyendaCabecera = "Resumen de Conexiones Directas por Periodo \n\r Desde: " + DTPDesdeConDir.Value.ToString("dd/MM/yyyy") + " Hasta: " + DTPHastaAltas.Value.ToString("dd/MM/yyyy") +
                           "\n\r Periodo: " + labelPeriodoConDir.Text;
-                }              
-                
+                }
+
 
                 DGConDir.Columns["Observaciones"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 PrintDataGridView pr = new PrintDataGridView(DGConDir)
@@ -2934,13 +3070,16 @@ namespace gagFIS_Interfase
                 MessageBox.Show("NO existen datos para imprimir", "Sin datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-           
+
 
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
             if (RBFechaConDir.Checked == true)
             {
+
+                tbPerConDir.Visible = false;
+                btnAddPeriodoConDir.Visible = false;
                 DTPDesdeConDir.Visible = true;
                 DTPHastaConDir.Visible = true;
                 CBPerDesdeConDir.Visible = false;
@@ -2966,10 +3105,12 @@ namespace gagFIS_Interfase
         {
             if (RBPeriodoConDir.Checked == true)
             {
+                tbPerConDir.Visible = true;
+                btnAddPeriodoConDir.Visible = true;
                 DTPDesdeConDir.Visible = false;
                 DTPHastaConDir.Visible = false;
                 labelPerDesdeConDir.Visible = true;
-                labelPerHastaConDir.Visible = true;                
+                labelPerHastaConDir.Visible = true;
                 CBPerDesdeConDir.Visible = true;
                 CBPerHastaConDir.Visible = true;
                 if (CantidadConexDirec() > 0)
@@ -2987,6 +3128,7 @@ namespace gagFIS_Interfase
         private void CBPerDesdeConDir_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarConDirPorPeriodos(CBPerDesdeConDir.Text, CBPerHastaConDir.Text);
+
         }
 
         private void CBPerHastaConDir_SelectedIndexChanged(object sender, EventArgs e)
@@ -3087,8 +3229,8 @@ namespace gagFIS_Interfase
                     {
                         CargarConDirPorPeriodos(CBPerDesdeConDir.Text, CBPerHastaConDir.Text);
                     }
-                }               
-            }            
+                }
+            }
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -3407,7 +3549,7 @@ namespace gagFIS_Interfase
                  "USING (ConexionID, Periodo) " +
                  "left JOIN (SELECT ConexionID, Periodo, Codigo, Observ FROM NovedadesConex WHERE (Orden = 0 OR Observ <> '') and Periodo = " + Vble.Periodo + ") N6 " +
                  "USING (ConexionID, Periodo) " +
-                 "WHERE C.Periodo = " + Vble.Periodo + " AND (C.Zona = " + Vble.ArrayZona[0].ToString() + iteracionZona() + ") AND C.Ruta = " + RutaDesdeExportacion +
+                 "WHERE C.Periodo = " + Vble.Periodo + " AND (C.Zona = " + Vble.ArrayZona[0].ToString() + Vble.iteracionZona() + ") AND C.Ruta = " + RutaDesdeExportacion +
                  " AND (N1.Codigo < 98 and N1.Codigo > 0)" +
                  "ORDER BY C.Ruta, M.ActualFecha ASC, M.ActualHora ASC";
                 //" ORDER BY Fecha ASC";
@@ -3435,9 +3577,9 @@ namespace gagFIS_Interfase
 
                 LblRutaOrdenativos.Visible = true;
                 TBBuscarRutaOrdenativos.Visible = true;
-                lblCantOrd.Text =  "Cantidad = " + DGOrdenat.RowCount.ToString();
+                lblCantOrd.Text = "Cantidad = " + DGOrdenat.RowCount.ToString();
             }
-         
+
         }
 
         private void RBTodosOrd_CheckedChanged(object sender, EventArgs e)
@@ -3465,7 +3607,7 @@ namespace gagFIS_Interfase
                  "USING (ConexionID, Periodo) " +
                  "left JOIN (SELECT ConexionID, Periodo, Codigo, Observ FROM NovedadesConex WHERE (Orden = 0 OR Observ <> '') and Periodo = " + Vble.Periodo + ") N6 " +
                  "USING (ConexionID, Periodo) " +
-                 "WHERE C.Periodo = " + Vble.Periodo + " AND (C.Zona = " + Vble.ArrayZona[0].ToString() + iteracionZona() + ") AND C.Ruta = " + RutaDesdeExportacion +
+                 "WHERE C.Periodo = " + Vble.Periodo + " AND (C.Zona = " + Vble.ArrayZona[0].ToString() + Vble.iteracionZona() + ") AND C.Ruta = " + RutaDesdeExportacion +
                  " AND N1.Codigo <> '' " +
                  "ORDER BY C.Ruta, M.ActualFecha ASC, M.ActualHora ASC";
                 //" ORDER BY Fecha ASC";
@@ -3493,18 +3635,18 @@ namespace gagFIS_Interfase
 
                 LblRutaOrdenativos.Visible = true;
                 TBBuscarRutaOrdenativos.Visible = true;
-                lblCantOrd.Text =  "Cantidad = " + DGOrdenat.RowCount.ToString();
+                lblCantOrd.Text = "Cantidad = " + DGOrdenat.RowCount.ToString();
             }
         }
 
         private void Form7InformesAltas_Shown(object sender, EventArgs e)
         {
-           
+
         }
 
         private void bgwInicioPantalla_DoWork(object sender, DoWorkEventArgs e)
         {
-          
+
         }
 
         private void bgwInicioPantalla_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -3516,11 +3658,21 @@ namespace gagFIS_Interfase
         {
             ///centro el label y textbox de la pestaña Altas
             // Centrar el Label
-            labelRuta.Left = (this.ClientSize.Width - labelRuta.Width) /2;
+            labelRuta.Left = (this.ClientSize.Width - labelRuta.Width) / 2;
             labelRuta.Top = (this.ClientSize.Height - labelRuta.Height) / 4; // Ajusta la posición superior del Label si es necesario
             // Centrar el TextBox debajo del Label
             TBBuscarRuta.Left = (this.ClientSize.Width - TBBuscarRuta.Width) / 2;
             TBBuscarRuta.Top = labelRuta.Bottom + 10; // Ajusta la distancia entre el Label y el TextBox
+
+            ///centro el label y textbox de la pestaña Altas
+            // Centrar el Label
+            LblPorcAltas.Left = (this.ClientSize.Width - LblPorcAltas.Width) / 2;
+            LblPorcAltas.Top = (this.ClientSize.Height - LblPorcAltas.Height) / 6; // Ajusta la posición superior del Label si es necesario
+            // Centrar el TextBox debajo del Label
+            ProgressBarAltas.Left = (this.ClientSize.Width - ProgressBarAltas.Width) / 2;
+            ProgressBarAltas.Top = LblPorcAltas.Bottom + 10; // Ajusta la distancia entre el Label y el TextBox
+
+
 
             ///centro el label y textbox de la pestaña Conexiones Directas
             // Centrar el Label
@@ -3537,6 +3689,190 @@ namespace gagFIS_Interfase
             // Centrar el TextBox debajo del Label
             TBBuscarRutaOrdenativos.Left = (this.ClientSize.Width - TBBuscarRutaOrdenativos.Width) / 2;
             TBBuscarRutaOrdenativos.Top = LblRutaOrdenativos.Bottom + 10; // Ajusta la distancia entre el Label y el TextBox
+        }
+
+        private void BotExporExellConDir_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog fichero = new SaveFileDialog();
+            string InformesPDF = Vble.ValorarUnNombreRuta(Vble.CarpetaInformesPDF);
+            InformesPDF += Vble.Periodo + "\\" + DateTime.Today.ToString("yyyyMMdd");
+
+            if (!Directory.Exists(InformesPDF))
+            {
+                Directory.CreateDirectory(InformesPDF);
+            }
+            fichero.InitialDirectory = InformesPDF;
+            fichero.Filter = "Excel (*.xlsx)|.*xls";
+            Vble.TipoInforme = "EXLS";
+
+            if (fichero.ShowDialog() == DialogResult.OK)
+            {
+                Vble.FileName = fichero.FileName;
+                if (DGConDir.RowCount > 0)
+                {
+                    //iTalk_ProgressBarAltas.Visible = true;
+                    //metodo de exportación con datagridview de altas como parametro
+                    bgwExpExcelConDir.RunWorkerAsync();
+
+
+                }
+            }
+                else
+            {
+                MessageBox.Show("Disculpe No existen Conexiones Directas para realizar la Exportación, verifique la busqueda " +
+                    "o tal vez aún no existen registros en la base de datos", "Exportación", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog fichero = new SaveFileDialog();
+            string InformesPDF = Vble.ValorarUnNombreRuta(Vble.CarpetaInformesPDF);
+            InformesPDF += Vble.Periodo + "\\" + DateTime.Today.ToString("yyyyMMdd");
+
+            if (!Directory.Exists(InformesPDF))
+            {
+                Directory.CreateDirectory(InformesPDF);
+            }
+            fichero.InitialDirectory = InformesPDF;
+            fichero.Filter = "Excel (*.xlsx)|.*xls";
+            Vble.TipoInforme = "EXLS";
+
+            if (fichero.ShowDialog() == DialogResult.OK)
+            {
+                Vble.FileName = fichero.FileName;
+                if (DGOrdenat.RowCount > 0)
+                {
+                    //iTalk_ProgressBarAltas.Visible = true;
+                    //metodo de exportación con datagridview de altas como parametro
+                    bgwExpExcelOrd.RunWorkerAsync();
+
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Disculpe No existen Usuarios con ordenativos para realizar la Exportación, verifique la busqueda " +
+                    "o tal vez aún no existen registros en la base de datos", "Exportación", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+        }
+
+        private void bgwExpExcel_DoWork(object sender, DoWorkEventArgs e)
+        {
+            simulateHeavyWork(DGAlta);         
+            ExportarAltasExcel(DGAlta);
+        }
+
+        private void simulateHeavyWork(DataGridView dataGrid)
+        {
+            Thread.Sleep(dataGrid.Rows.Count);
+        }
+
+        private void bgwExpExcelConDir_DoWork(object sender, DoWorkEventArgs e)
+        {
+            simulateHeavyWork(DGConDir);
+            ExportarAltasExcel(DGConDir);
+        }
+
+        private void bgwExpExcelOrd_DoWork(object sender, DoWorkEventArgs e)
+        {
+            simulateHeavyWork(DGOrdenat);
+            ExportarAltasExcel(DGOrdenat);
+        }
+
+        private void bgwExpExcelAltas_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+          
+            ProgressBarAltas.Visible = true;
+            LblPorcAltas.Visible = true;
+            ProgressBarAltas.Value = (e.ProgressPercentage * 100) / DGAlta.Rows.Count;
+            LblPorcAltas.Text = ((e.ProgressPercentage * 100) / DGAlta.Rows.Count).ToString() + " %";
+            //this.lblAvanceExportacion.Text = (e.ProgressPercentage * 100) / DGAlta.Rows.Count + " % completado";
+        }
+
+        private void bgwExpExcelAltas_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {           
+            ProgressBarAltas.Value = 100;
+            ProgressBarAltas.Visible = false;
+            LblPorcAltas.Visible = false;
+            this.Cursor = Cursors.Default;
+            MessageBox.Show("La exportación a finalizado", "Exportación", MessageBoxButtons.OK, MessageBoxIcon.Information);          
+        }
+
+        private void tabPagAltasyMod_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void bgwExpExcelConDir_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+
+            ProgressBarConexDirec.Visible = true;
+            LblPorcConDir.Visible = true;
+            ProgressBarConexDirec.Value = (e.ProgressPercentage * 100) / DGConDir.Rows.Count;
+            LblPorcConDir.Text = ((e.ProgressPercentage * 100) / DGConDir.Rows.Count).ToString() + " %";
+            //this.lblAvanceExportacion.Text = (e.ProgressPercentage * 100) / DGAlta.Rows.Count + " % completado";
+        }
+
+        private void bgwExpExcelConDir_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            ProgressBarConexDirec.Value = 100;
+            ProgressBarConexDirec.Visible = false;
+            LblPorcConDir.Visible = false;
+            this.Cursor = Cursors.Default;
+            MessageBox.Show("La exportación a finalizado", "Exportación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            AgregarPeriodoApestañas(tbPeriodoAltas, CBPerDesdeAltas, CBPerHastaAltas);
+        }
+
+        private void AgregarPeriodoApestañas(TextBox textPeriodo, ComboBox comboDesdePeriodo, ComboBox comboHastaPeriodo)
+        {
+            //Expresion Regular para que acepte el periodo con el formato 0000-00
+            string sPattern = "^\\d{6}$";
+            bool existeperiodo = false;
+
+            if (System.Text.RegularExpressions.Regex.IsMatch(textPeriodo.Text, sPattern))
+            {
+                foreach (var item in comboDesdePeriodo.Items)
+                {
+                    if (item.ToString() == textPeriodo.Text)
+                    {
+                        existeperiodo = true;
+                    }
+                }
+                if (existeperiodo)
+                {
+                    //this.toolTip1.Show("Ya existe el periodo", this.tbPeriodoAltas, 2000);
+                    textPeriodo.Text = "";
+                }
+                else
+                {
+                    comboDesdePeriodo.Items.Add(textPeriodo.Text);
+                    comboHastaPeriodo.Items.Add(textPeriodo.Text);
+                    this.toolTip1.Show("Periodo agregado Correctamente", textPeriodo, 2000);
+                    textPeriodo.Text = "";
+                }
+
+            }
+            else
+            {
+                this.toolTip1.Show("Formato del Periodo Inválido", this.tbPeriodoAltas, 2000);
+                textPeriodo.Text = "";
+            }
+        }
+
+        private void btnAddPeriodoConDir_Click(object sender, EventArgs e)
+        {
+            AgregarPeriodoApestañas(tbPerConDir, CBPerDesdeConDir, CBPerHastaConDir);
         }
     }
 }

@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form7InformesAltas));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.labelPeriodoAlt = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -50,20 +50,27 @@
             this.TBBuscarRuta = new System.Windows.Forms.TextBox();
             this.labelRuta = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.button4 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.btnImprimirC = new System.Windows.Forms.TabControl();
             this.tabPagAltasyMod = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.button4 = new System.Windows.Forms.Button();
+            this.btnImprimirAltas = new System.Windows.Forms.Button();
             this.lblCantAltas = new System.Windows.Forms.Label();
+            this.LblPorcAltas = new System.Windows.Forms.Label();
+            this.ProgressBarAltas = new System.Windows.Forms.ProgressBar();
+            this.btnExcelAltas = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.iTalk_GroupBox1 = new iTalk.iTalk_GroupBox();
             this.DGAlta = new System.Windows.Forms.DataGridView();
             this.tabPagConexDirect = new System.Windows.Forms.TabPage();
-            this.lblCantCxDir = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.BotExporPDFConDir = new System.Windows.Forms.Button();
-            this.BotPrintConDir = new System.Windows.Forms.Button();
-            this.BotExporExellConDir = new System.Windows.Forms.Button();
+            this.lblCantCxDir = new System.Windows.Forms.Label();
+            this.btnImprimirConDir = new System.Windows.Forms.Button();
+            this.ProgressBarConexDirec = new System.Windows.Forms.ProgressBar();
+            this.btnExellConDir = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.LblPorcConDir = new System.Windows.Forms.Label();
             this.TBBuscarRutaConexDirec = new System.Windows.Forms.TextBox();
             this.LblRutaConexDirc = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -84,9 +91,9 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.TBBuscarRutaOrdenativos = new System.Windows.Forms.TextBox();
-            this.button7 = new System.Windows.Forms.Button();
+            this.btnImprimirOrd = new System.Windows.Forms.Button();
             this.LblRutaOrdenativos = new System.Windows.Forms.Label();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btnExcelOrd = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.RBTodosOrd = new System.Windows.Forms.RadioButton();
             this.RBSin98_98 = new System.Windows.Forms.RadioButton();
@@ -143,12 +150,22 @@
             this.DGConexDirec = new System.Windows.Forms.DataGridView();
             this.DGOrd = new System.Windows.Forms.DataGridView();
             this.bgwInicioPantalla = new System.ComponentModel.BackgroundWorker();
+            this.bgwExpExcelAltas = new System.ComponentModel.BackgroundWorker();
+            this.bgwExpExcelConDir = new System.ComponentModel.BackgroundWorker();
+            this.bgwExpExcelOrd = new System.ComponentModel.BackgroundWorker();
+            this.btnAddPeriodoConDir = new System.Windows.Forms.Button();
+            this.tbPerConDir = new System.Windows.Forms.TextBox();
+            this.tbPeriodoAltas = new System.Windows.Forms.TextBox();
+            this.btnAddPeriodoAltas = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.btnImprimirC.SuspendLayout();
             this.tabPagAltasyMod.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.iTalk_GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGAlta)).BeginInit();
             this.tabPagConexDirect.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.iTalk_GroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGConDir)).BeginInit();
@@ -185,6 +202,8 @@
             // groupBox1
             // 
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox1.Controls.Add(this.tbPeriodoAltas);
+            this.groupBox1.Controls.Add(this.btnAddPeriodoAltas);
             this.groupBox1.Controls.Add(this.labelPeriodoAlt);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label3);
@@ -199,9 +218,9 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.radioButtonPeriodo);
             this.groupBox1.Controls.Add(this.radioButtonFecha);
-            this.groupBox1.Location = new System.Drawing.Point(414, 6);
+            this.groupBox1.Location = new System.Drawing.Point(422, 33);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(285, 188);
+            this.groupBox1.Size = new System.Drawing.Size(365, 188);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtrar Altas";
@@ -359,7 +378,7 @@
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(1050, 610);
+            this.button3.Location = new System.Drawing.Point(1066, 733);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(62, 37);
             this.button3.TabIndex = 4;
@@ -370,7 +389,7 @@
             // TBBuscarRuta
             // 
             this.TBBuscarRuta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TBBuscarRuta.Location = new System.Drawing.Point(653, 199);
+            this.TBBuscarRuta.Location = new System.Drawing.Point(653, 226);
             this.TBBuscarRuta.Multiline = true;
             this.TBBuscarRuta.Name = "TBBuscarRuta";
             this.TBBuscarRuta.Size = new System.Drawing.Size(76, 29);
@@ -384,7 +403,7 @@
             this.labelRuta.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelRuta.AutoSize = true;
-            this.labelRuta.Location = new System.Drawing.Point(597, 207);
+            this.labelRuta.Location = new System.Drawing.Point(597, 234);
             this.labelRuta.Name = "labelRuta";
             this.labelRuta.Size = new System.Drawing.Size(48, 13);
             this.labelRuta.TabIndex = 9;
@@ -398,100 +417,146 @@
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             this.contextMenuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.contextMenuStrip1_ItemClicked);
             // 
+            // btnImprimirC
+            // 
+            this.btnImprimirC.Controls.Add(this.tabPagAltasyMod);
+            this.btnImprimirC.Controls.Add(this.tabPagConexDirect);
+            this.btnImprimirC.Controls.Add(this.tabPageOrdenativos);
+            this.btnImprimirC.Controls.Add(this.TPDetalleSituaciones);
+            this.btnImprimirC.Controls.Add(this.TBDetalleZona);
+            this.btnImprimirC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnImprimirC.Location = new System.Drawing.Point(0, 0);
+            this.btnImprimirC.Name = "btnImprimirC";
+            this.btnImprimirC.SelectedIndex = 0;
+            this.btnImprimirC.Size = new System.Drawing.Size(1142, 856);
+            this.btnImprimirC.TabIndex = 10;
+            // 
+            // tabPagAltasyMod
+            // 
+            this.tabPagAltasyMod.Controls.Add(this.tableLayoutPanel1);
+            this.tabPagAltasyMod.Controls.Add(this.groupBox1);
+            this.tabPagAltasyMod.Controls.Add(this.TBBuscarRuta);
+            this.tabPagAltasyMod.Controls.Add(this.labelRuta);
+            this.tabPagAltasyMod.Controls.Add(this.iTalk_GroupBox1);
+            this.tabPagAltasyMod.Location = new System.Drawing.Point(4, 22);
+            this.tabPagAltasyMod.Name = "tabPagAltasyMod";
+            this.tabPagAltasyMod.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPagAltasyMod.Size = new System.Drawing.Size(1134, 830);
+            this.tabPagAltasyMod.TabIndex = 0;
+            this.tabPagAltasyMod.Text = "Altas y modificaciones";
+            this.tabPagAltasyMod.UseVisualStyleBackColor = true;
+            this.tabPagAltasyMod.Click += new System.EventHandler(this.tabPagAltasyMod_Click);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 6;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.34783F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.65217F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 231F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 179F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
+            this.tableLayoutPanel1.Controls.Add(this.button4, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnImprimirAltas, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblCantAltas, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.LblPorcAltas, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.ProgressBarAltas, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnExcelAltas, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.button5, 3, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 665);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.86598F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 36.08247F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.05155F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1128, 162);
+            this.tableLayoutPanel1.TabIndex = 14;
+            // 
             // button4
             // 
-            this.button4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button4.Location = new System.Drawing.Point(446, 612);
+            this.button4.Location = new System.Drawing.Point(310, 37);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(124, 37);
+            this.button4.Size = new System.Drawing.Size(124, 31);
             this.button4.TabIndex = 7;
             this.button4.Text = "Generar PDF";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button2
+            // btnImprimirAltas
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.Location = new System.Drawing.Point(643, 612);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(124, 37);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Imprimir";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
-            // button1
-            // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.Location = new System.Drawing.Point(257, 612);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(124, 37);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Exportar a Excell";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPagAltasyMod);
-            this.tabControl1.Controls.Add(this.tabPagConexDirect);
-            this.tabControl1.Controls.Add(this.tabPageOrdenativos);
-            this.tabControl1.Controls.Add(this.TPDetalleSituaciones);
-            this.tabControl1.Controls.Add(this.TBDetalleZona);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1126, 733);
-            this.tabControl1.TabIndex = 10;
-            // 
-            // tabPagAltasyMod
-            // 
-            this.tabPagAltasyMod.Controls.Add(this.lblCantAltas);
-            this.tabPagAltasyMod.Controls.Add(this.button5);
-            this.tabPagAltasyMod.Controls.Add(this.groupBox1);
-            this.tabPagAltasyMod.Controls.Add(this.TBBuscarRuta);
-            this.tabPagAltasyMod.Controls.Add(this.button4);
-            this.tabPagAltasyMod.Controls.Add(this.button2);
-            this.tabPagAltasyMod.Controls.Add(this.labelRuta);
-            this.tabPagAltasyMod.Controls.Add(this.iTalk_GroupBox1);
-            this.tabPagAltasyMod.Controls.Add(this.button1);
-            this.tabPagAltasyMod.Location = new System.Drawing.Point(4, 22);
-            this.tabPagAltasyMod.Name = "tabPagAltasyMod";
-            this.tabPagAltasyMod.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagAltasyMod.Size = new System.Drawing.Size(1118, 707);
-            this.tabPagAltasyMod.TabIndex = 0;
-            this.tabPagAltasyMod.Text = "Altas y modificaciones";
-            this.tabPagAltasyMod.UseVisualStyleBackColor = true;
+            this.btnImprimirAltas.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnImprimirAltas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnImprimirAltas.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimirAltas.Image")));
+            this.btnImprimirAltas.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnImprimirAltas.Location = new System.Drawing.Point(555, 39);
+            this.btnImprimirAltas.Name = "btnImprimirAltas";
+            this.btnImprimirAltas.Size = new System.Drawing.Size(124, 34);
+            this.btnImprimirAltas.TabIndex = 6;
+            this.btnImprimirAltas.Text = "Imprimir";
+            this.btnImprimirAltas.UseVisualStyleBackColor = true;
+            this.btnImprimirAltas.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // lblCantAltas
             // 
-            this.lblCantAltas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCantAltas.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblCantAltas.AutoSize = true;
-            this.lblCantAltas.Location = new System.Drawing.Point(912, 611);
+            this.lblCantAltas.Location = new System.Drawing.Point(798, 0);
             this.lblCantAltas.Name = "lblCantAltas";
             this.lblCantAltas.Size = new System.Drawing.Size(49, 13);
             this.lblCantAltas.TabIndex = 11;
             this.lblCantAltas.Text = "Cantidad";
             // 
+            // LblPorcAltas
+            // 
+            this.LblPorcAltas.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.LblPorcAltas.AutoSize = true;
+            this.LblPorcAltas.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.LblPorcAltas.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblPorcAltas.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.LblPorcAltas.Location = new System.Drawing.Point(505, 5);
+            this.LblPorcAltas.Name = "LblPorcAltas";
+            this.LblPorcAltas.Size = new System.Drawing.Size(68, 23);
+            this.LblPorcAltas.TabIndex = 1;
+            this.LblPorcAltas.Text = "label4";
+            this.LblPorcAltas.Visible = false;
+            // 
+            // ProgressBarAltas
+            // 
+            this.ProgressBarAltas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.ProgressBarAltas.Location = new System.Drawing.Point(246, 5);
+            this.ProgressBarAltas.Name = "ProgressBarAltas";
+            this.ProgressBarAltas.Size = new System.Drawing.Size(253, 23);
+            this.ProgressBarAltas.TabIndex = 13;
+            this.ProgressBarAltas.Visible = false;
+            // 
+            // btnExcelAltas
+            // 
+            this.btnExcelAltas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnExcelAltas.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnExcelAltas.Image = ((System.Drawing.Image)(resources.GetObject("btnExcelAltas.Image")));
+            this.btnExcelAltas.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExcelAltas.Location = new System.Drawing.Point(116, 37);
+            this.btnExcelAltas.Name = "btnExcelAltas";
+            this.btnExcelAltas.Size = new System.Drawing.Size(124, 36);
+            this.btnExcelAltas.TabIndex = 2;
+            this.btnExcelAltas.Text = "Exportar a Excell";
+            this.btnExcelAltas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExcelAltas.UseVisualStyleBackColor = true;
+            this.btnExcelAltas.Click += new System.EventHandler(this.button1_Click);
+            // 
             // button5
             // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(1048, 610);
+            this.button5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button5.Location = new System.Drawing.Point(791, 37);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(62, 37);
+            this.button5.Size = new System.Drawing.Size(62, 34);
             this.button5.TabIndex = 10;
             this.button5.Text = "Cerrar";
             this.button5.UseVisualStyleBackColor = true;
@@ -502,11 +567,11 @@
             this.iTalk_GroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.iTalk_GroupBox1.BackColor = System.Drawing.SystemColors.Control;
             this.iTalk_GroupBox1.Controls.Add(this.DGAlta);
-            this.iTalk_GroupBox1.Location = new System.Drawing.Point(3, 247);
+            this.iTalk_GroupBox1.Location = new System.Drawing.Point(3, 309);
             this.iTalk_GroupBox1.MinimumSize = new System.Drawing.Size(136, 50);
             this.iTalk_GroupBox1.Name = "iTalk_GroupBox1";
             this.iTalk_GroupBox1.Padding = new System.Windows.Forms.Padding(5, 28, 5, 5);
-            this.iTalk_GroupBox1.Size = new System.Drawing.Size(1131, 350);
+            this.iTalk_GroupBox1.Size = new System.Drawing.Size(1147, 350);
             this.iTalk_GroupBox1.TabIndex = 5;
             this.iTalk_GroupBox1.Text = "Tabla de Altas";
             // 
@@ -519,15 +584,12 @@
             this.DGAlta.Location = new System.Drawing.Point(5, 28);
             this.DGAlta.Name = "DGAlta";
             this.DGAlta.ReadOnly = true;
-            this.DGAlta.Size = new System.Drawing.Size(1121, 317);
+            this.DGAlta.Size = new System.Drawing.Size(1137, 317);
             this.DGAlta.TabIndex = 0;
             // 
             // tabPagConexDirect
             // 
-            this.tabPagConexDirect.Controls.Add(this.lblCantCxDir);
-            this.tabPagConexDirect.Controls.Add(this.BotExporPDFConDir);
-            this.tabPagConexDirect.Controls.Add(this.BotPrintConDir);
-            this.tabPagConexDirect.Controls.Add(this.BotExporExellConDir);
+            this.tabPagConexDirect.Controls.Add(this.tableLayoutPanel2);
             this.tabPagConexDirect.Controls.Add(this.TBBuscarRutaConexDirec);
             this.tabPagConexDirect.Controls.Add(this.LblRutaConexDirc);
             this.tabPagConexDirect.Controls.Add(this.button3);
@@ -536,21 +598,38 @@
             this.tabPagConexDirect.Location = new System.Drawing.Point(4, 22);
             this.tabPagConexDirect.Name = "tabPagConexDirect";
             this.tabPagConexDirect.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagConexDirect.Size = new System.Drawing.Size(1118, 707);
+            this.tabPagConexDirect.Size = new System.Drawing.Size(1134, 830);
             this.tabPagConexDirect.TabIndex = 1;
             this.tabPagConexDirect.Text = "Conexiones Directas";
             this.tabPagConexDirect.UseVisualStyleBackColor = true;
             this.tabPagConexDirect.Click += new System.EventHandler(this.tabPage2_Click);
             // 
-            // lblCantCxDir
+            // tableLayoutPanel2
             // 
-            this.lblCantCxDir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCantCxDir.AutoSize = true;
-            this.lblCantCxDir.Location = new System.Drawing.Point(912, 611);
-            this.lblCantCxDir.Name = "lblCantCxDir";
-            this.lblCantCxDir.Size = new System.Drawing.Size(49, 13);
-            this.lblCantCxDir.TabIndex = 15;
-            this.lblCantCxDir.Text = "Cantidad";
+            this.tableLayoutPanel2.ColumnCount = 6;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.28315F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.71685F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 222F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 153F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
+            this.tableLayoutPanel2.Controls.Add(this.BotExporPDFConDir, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.lblCantCxDir, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnImprimirConDir, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.ProgressBarConexDirec, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnExellConDir, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.button12, 3, 1);
+            this.tableLayoutPanel2.Controls.Add(this.LblPorcConDir, 2, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 666);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 4;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.86598F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 36.08247F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.05155F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1128, 161);
+            this.tableLayoutPanel2.TabIndex = 16;
             // 
             // BotExporPDFConDir
             // 
@@ -558,42 +637,88 @@
             this.BotExporPDFConDir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.BotExporPDFConDir.Image = ((System.Drawing.Image)(resources.GetObject("BotExporPDFConDir.Image")));
             this.BotExporPDFConDir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BotExporPDFConDir.Location = new System.Drawing.Point(446, 612);
+            this.BotExporPDFConDir.Location = new System.Drawing.Point(321, 43);
             this.BotExporPDFConDir.Name = "BotExporPDFConDir";
-            this.BotExporPDFConDir.Size = new System.Drawing.Size(124, 37);
+            this.BotExporPDFConDir.Size = new System.Drawing.Size(124, 29);
             this.BotExporPDFConDir.TabIndex = 14;
             this.BotExporPDFConDir.Text = "Generar PDF";
             this.BotExporPDFConDir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BotExporPDFConDir.UseVisualStyleBackColor = true;
             this.BotExporPDFConDir.Click += new System.EventHandler(this.button6_Click);
             // 
-            // BotPrintConDir
+            // lblCantCxDir
             // 
-            this.BotPrintConDir.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.BotPrintConDir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BotPrintConDir.Image = ((System.Drawing.Image)(resources.GetObject("BotPrintConDir.Image")));
-            this.BotPrintConDir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BotPrintConDir.Location = new System.Drawing.Point(643, 612);
-            this.BotPrintConDir.Name = "BotPrintConDir";
-            this.BotPrintConDir.Size = new System.Drawing.Size(124, 37);
-            this.BotPrintConDir.TabIndex = 13;
-            this.BotPrintConDir.Text = "Imprimir";
-            this.BotPrintConDir.UseVisualStyleBackColor = true;
-            this.BotPrintConDir.Click += new System.EventHandler(this.button7_Click);
+            this.lblCantCxDir.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblCantCxDir.AutoSize = true;
+            this.lblCantCxDir.Location = new System.Drawing.Point(788, 0);
+            this.lblCantCxDir.Name = "lblCantCxDir";
+            this.lblCantCxDir.Size = new System.Drawing.Size(49, 13);
+            this.lblCantCxDir.TabIndex = 15;
+            this.lblCantCxDir.Text = "Cantidad";
             // 
-            // BotExporExellConDir
+            // btnImprimirConDir
             // 
-            this.BotExporExellConDir.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.BotExporExellConDir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BotExporExellConDir.Image = ((System.Drawing.Image)(resources.GetObject("BotExporExellConDir.Image")));
-            this.BotExporExellConDir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BotExporExellConDir.Location = new System.Drawing.Point(257, 612);
-            this.BotExporExellConDir.Name = "BotExporExellConDir";
-            this.BotExporExellConDir.Size = new System.Drawing.Size(124, 37);
-            this.BotExporExellConDir.TabIndex = 12;
-            this.BotExporExellConDir.Text = "Exportar a Excell";
-            this.BotExporExellConDir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BotExporExellConDir.UseVisualStyleBackColor = true;
+            this.btnImprimirConDir.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnImprimirConDir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnImprimirConDir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimirConDir.Image")));
+            this.btnImprimirConDir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnImprimirConDir.Location = new System.Drawing.Point(517, 39);
+            this.btnImprimirConDir.Name = "btnImprimirConDir";
+            this.btnImprimirConDir.Size = new System.Drawing.Size(124, 29);
+            this.btnImprimirConDir.TabIndex = 13;
+            this.btnImprimirConDir.Text = "Imprimir";
+            this.btnImprimirConDir.UseVisualStyleBackColor = true;
+            this.btnImprimirConDir.Visible = false;
+            this.btnImprimirConDir.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // ProgressBarConexDirec
+            // 
+            this.ProgressBarConexDirec.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.ProgressBarConexDirec.Location = new System.Drawing.Point(256, 5);
+            this.ProgressBarConexDirec.Name = "ProgressBarConexDirec";
+            this.ProgressBarConexDirec.Size = new System.Drawing.Size(255, 22);
+            this.ProgressBarConexDirec.TabIndex = 13;
+            this.ProgressBarConexDirec.Visible = false;
+            // 
+            // btnExellConDir
+            // 
+            this.btnExellConDir.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnExellConDir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnExellConDir.Image = ((System.Drawing.Image)(resources.GetObject("btnExellConDir.Image")));
+            this.btnExellConDir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExellConDir.Location = new System.Drawing.Point(126, 39);
+            this.btnExellConDir.Name = "btnExellConDir";
+            this.btnExellConDir.Size = new System.Drawing.Size(124, 29);
+            this.btnExellConDir.TabIndex = 12;
+            this.btnExellConDir.Text = "Exportar a Excell";
+            this.btnExellConDir.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExellConDir.UseVisualStyleBackColor = true;
+            this.btnExellConDir.Click += new System.EventHandler(this.BotExporExellConDir_Click);
+            // 
+            // button12
+            // 
+            this.button12.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.button12.Location = new System.Drawing.Point(824, 39);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(62, 29);
+            this.button12.TabIndex = 16;
+            this.button12.Text = "Cerrar";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // LblPorcConDir
+            // 
+            this.LblPorcConDir.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.LblPorcConDir.AutoSize = true;
+            this.LblPorcConDir.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.LblPorcConDir.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblPorcConDir.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.LblPorcConDir.Location = new System.Drawing.Point(517, 5);
+            this.LblPorcConDir.Name = "LblPorcConDir";
+            this.LblPorcConDir.Size = new System.Drawing.Size(68, 23);
+            this.LblPorcConDir.TabIndex = 1;
+            this.LblPorcConDir.Text = "label4";
+            this.LblPorcConDir.Visible = false;
             // 
             // TBBuscarRutaConexDirec
             // 
@@ -620,6 +745,8 @@
             // groupBox2
             // 
             this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox2.Controls.Add(this.tbPerConDir);
+            this.groupBox2.Controls.Add(this.btnAddPeriodoConDir);
             this.groupBox2.Controls.Add(this.labelPeriodoConDir);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.CBPerHastaConDir);
@@ -630,9 +757,9 @@
             this.groupBox2.Controls.Add(this.labelPerDesdeConDir);
             this.groupBox2.Controls.Add(this.RBPeriodoConDir);
             this.groupBox2.Controls.Add(this.RBFechaConDir);
-            this.groupBox2.Location = new System.Drawing.Point(425, 34);
+            this.groupBox2.Location = new System.Drawing.Point(433, 34);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(291, 195);
+            this.groupBox2.Size = new System.Drawing.Size(345, 195);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtrar Conexiones Directas";
@@ -742,11 +869,11 @@
             this.iTalk_GroupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.iTalk_GroupBox2.BackColor = System.Drawing.SystemColors.Control;
             this.iTalk_GroupBox2.Controls.Add(this.DGConDir);
-            this.iTalk_GroupBox2.Location = new System.Drawing.Point(0, 286);
+            this.iTalk_GroupBox2.Location = new System.Drawing.Point(0, 348);
             this.iTalk_GroupBox2.MinimumSize = new System.Drawing.Size(136, 50);
             this.iTalk_GroupBox2.Name = "iTalk_GroupBox2";
             this.iTalk_GroupBox2.Padding = new System.Windows.Forms.Padding(5, 28, 5, 5);
-            this.iTalk_GroupBox2.Size = new System.Drawing.Size(1131, 312);
+            this.iTalk_GroupBox2.Size = new System.Drawing.Size(1147, 312);
             this.iTalk_GroupBox2.TabIndex = 6;
             this.iTalk_GroupBox2.Text = "Conexiones Directas";
             // 
@@ -759,7 +886,7 @@
             this.DGConDir.Location = new System.Drawing.Point(5, 28);
             this.DGConDir.Name = "DGConDir";
             this.DGConDir.ReadOnly = true;
-            this.DGConDir.Size = new System.Drawing.Size(1121, 279);
+            this.DGConDir.Size = new System.Drawing.Size(1137, 279);
             this.DGConDir.TabIndex = 0;
             // 
             // tabPageOrdenativos
@@ -768,15 +895,15 @@
             this.tabPageOrdenativos.Controls.Add(this.button9);
             this.tabPageOrdenativos.Controls.Add(this.button6);
             this.tabPageOrdenativos.Controls.Add(this.TBBuscarRutaOrdenativos);
-            this.tabPageOrdenativos.Controls.Add(this.button7);
+            this.tabPageOrdenativos.Controls.Add(this.btnImprimirOrd);
             this.tabPageOrdenativos.Controls.Add(this.LblRutaOrdenativos);
-            this.tabPageOrdenativos.Controls.Add(this.button8);
+            this.tabPageOrdenativos.Controls.Add(this.btnExcelOrd);
             this.tabPageOrdenativos.Controls.Add(this.groupBox3);
             this.tabPageOrdenativos.Controls.Add(this.iTalk_GroupBox3);
             this.tabPageOrdenativos.Location = new System.Drawing.Point(4, 22);
             this.tabPageOrdenativos.Name = "tabPageOrdenativos";
             this.tabPageOrdenativos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageOrdenativos.Size = new System.Drawing.Size(1118, 707);
+            this.tabPageOrdenativos.Size = new System.Drawing.Size(1134, 830);
             this.tabPageOrdenativos.TabIndex = 2;
             this.tabPageOrdenativos.Text = "Ordenativos";
             this.tabPageOrdenativos.UseVisualStyleBackColor = true;
@@ -785,7 +912,7 @@
             // 
             this.lblCantOrd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCantOrd.AutoSize = true;
-            this.lblCantOrd.Location = new System.Drawing.Point(912, 611);
+            this.lblCantOrd.Location = new System.Drawing.Point(928, 734);
             this.lblCantOrd.Name = "lblCantOrd";
             this.lblCantOrd.Size = new System.Drawing.Size(49, 13);
             this.lblCantOrd.TabIndex = 20;
@@ -794,7 +921,7 @@
             // button9
             // 
             this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button9.Location = new System.Drawing.Point(1029, 623);
+            this.button9.Location = new System.Drawing.Point(1045, 746);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(62, 37);
             this.button9.TabIndex = 19;
@@ -808,7 +935,7 @@
             this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
             this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button6.Location = new System.Drawing.Point(492, 623);
+            this.button6.Location = new System.Drawing.Point(500, 746);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(124, 37);
             this.button6.TabIndex = 18;
@@ -829,19 +956,19 @@
             this.TBBuscarRutaOrdenativos.Visible = false;
             this.TBBuscarRutaOrdenativos.TextChanged += new System.EventHandler(this.TBBuscarRutaOrdenativos_TextChanged);
             // 
-            // button7
+            // btnImprimirOrd
             // 
-            this.button7.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
-            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button7.Location = new System.Drawing.Point(689, 623);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(124, 37);
-            this.button7.TabIndex = 17;
-            this.button7.Text = "Imprimir";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Visible = false;
+            this.btnImprimirOrd.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnImprimirOrd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnImprimirOrd.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimirOrd.Image")));
+            this.btnImprimirOrd.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnImprimirOrd.Location = new System.Drawing.Point(697, 746);
+            this.btnImprimirOrd.Name = "btnImprimirOrd";
+            this.btnImprimirOrd.Size = new System.Drawing.Size(124, 37);
+            this.btnImprimirOrd.TabIndex = 17;
+            this.btnImprimirOrd.Text = "Imprimir";
+            this.btnImprimirOrd.UseVisualStyleBackColor = true;
+            this.btnImprimirOrd.Visible = false;
             // 
             // LblRutaOrdenativos
             // 
@@ -853,20 +980,20 @@
             this.LblRutaOrdenativos.Text = "Ruta Nº:";
             this.LblRutaOrdenativos.Visible = false;
             // 
-            // button8
+            // btnExcelOrd
             // 
-            this.button8.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
-            this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button8.Location = new System.Drawing.Point(303, 623);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(124, 37);
-            this.button8.TabIndex = 16;
-            this.button8.Text = "Exportar a Excell";
-            this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Visible = false;
+            this.btnExcelOrd.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnExcelOrd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnExcelOrd.Image = ((System.Drawing.Image)(resources.GetObject("btnExcelOrd.Image")));
+            this.btnExcelOrd.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExcelOrd.Location = new System.Drawing.Point(311, 746);
+            this.btnExcelOrd.Name = "btnExcelOrd";
+            this.btnExcelOrd.Size = new System.Drawing.Size(124, 37);
+            this.btnExcelOrd.TabIndex = 16;
+            this.btnExcelOrd.Text = "Exportar a Excell";
+            this.btnExcelOrd.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExcelOrd.UseVisualStyleBackColor = true;
+            this.btnExcelOrd.Click += new System.EventHandler(this.button8_Click);
             // 
             // groupBox3
             // 
@@ -883,7 +1010,7 @@
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.RBPeriodoNov);
             this.groupBox3.Controls.Add(this.RBFechaNov);
-            this.groupBox3.Location = new System.Drawing.Point(419, 29);
+            this.groupBox3.Location = new System.Drawing.Point(427, 29);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(291, 195);
             this.groupBox3.TabIndex = 13;
@@ -1013,11 +1140,11 @@
             this.iTalk_GroupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.iTalk_GroupBox3.BackColor = System.Drawing.SystemColors.Control;
             this.iTalk_GroupBox3.Controls.Add(this.DGOrdenat);
-            this.iTalk_GroupBox3.Location = new System.Drawing.Point(-7, 269);
+            this.iTalk_GroupBox3.Location = new System.Drawing.Point(-7, 331);
             this.iTalk_GroupBox3.MinimumSize = new System.Drawing.Size(136, 50);
             this.iTalk_GroupBox3.Name = "iTalk_GroupBox3";
             this.iTalk_GroupBox3.Padding = new System.Windows.Forms.Padding(5, 28, 5, 5);
-            this.iTalk_GroupBox3.Size = new System.Drawing.Size(1134, 340);
+            this.iTalk_GroupBox3.Size = new System.Drawing.Size(1150, 340);
             this.iTalk_GroupBox3.TabIndex = 12;
             this.iTalk_GroupBox3.Text = "Usuarios con Ordenativos";
             // 
@@ -1030,7 +1157,7 @@
             this.DGOrdenat.Location = new System.Drawing.Point(5, 28);
             this.DGOrdenat.Name = "DGOrdenat";
             this.DGOrdenat.ReadOnly = true;
-            this.DGOrdenat.Size = new System.Drawing.Size(1124, 307);
+            this.DGOrdenat.Size = new System.Drawing.Size(1140, 307);
             this.DGOrdenat.TabIndex = 0;
             // 
             // TPDetalleSituaciones
@@ -1059,7 +1186,7 @@
             this.TPDetalleSituaciones.Location = new System.Drawing.Point(4, 22);
             this.TPDetalleSituaciones.Name = "TPDetalleSituaciones";
             this.TPDetalleSituaciones.Padding = new System.Windows.Forms.Padding(3);
-            this.TPDetalleSituaciones.Size = new System.Drawing.Size(1118, 707);
+            this.TPDetalleSituaciones.Size = new System.Drawing.Size(1134, 830);
             this.TPDetalleSituaciones.TabIndex = 3;
             this.TPDetalleSituaciones.Text = "Detalle situaciones";
             this.TPDetalleSituaciones.UseVisualStyleBackColor = true;
@@ -1254,7 +1381,7 @@
             // splitContainer4
             // 
             this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitContainer4.Location = new System.Drawing.Point(3, 178);
+            this.splitContainer4.Location = new System.Drawing.Point(3, 301);
             this.splitContainer4.Name = "splitContainer4";
             this.splitContainer4.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -1268,7 +1395,7 @@
             this.splitContainer4.Panel2.Controls.Add(this.button10);
             this.splitContainer4.Panel2.Controls.Add(this.button11);
             this.splitContainer4.Panel2.Controls.Add(this.button13);
-            this.splitContainer4.Size = new System.Drawing.Size(1112, 526);
+            this.splitContainer4.Size = new System.Drawing.Size(1128, 526);
             this.splitContainer4.SplitterDistance = 417;
             this.splitContainer4.TabIndex = 3;
             // 
@@ -1278,27 +1405,27 @@
             this.DGDetalleSituaciones.AllowUserToDeleteRows = false;
             this.DGDetalleSituaciones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGDetalleSituaciones.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGDetalleSituaciones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGDetalleSituaciones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.DGDetalleSituaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGDetalleSituaciones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DGDetalleSituaciones.Location = new System.Drawing.Point(0, 0);
             this.DGDetalleSituaciones.Name = "DGDetalleSituaciones";
             this.DGDetalleSituaciones.ReadOnly = true;
-            this.DGDetalleSituaciones.Size = new System.Drawing.Size(1112, 417);
+            this.DGDetalleSituaciones.Size = new System.Drawing.Size(1128, 417);
             this.DGDetalleSituaciones.TabIndex = 2;
             // 
             // LabCantidad
             // 
             this.LabCantidad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LabCantidad.AutoSize = true;
-            this.LabCantidad.Location = new System.Drawing.Point(912, 10);
+            this.LabCantidad.Location = new System.Drawing.Point(928, 10);
             this.LabCantidad.Name = "LabCantidad";
             this.LabCantidad.Size = new System.Drawing.Size(55, 13);
             this.LabCantidad.TabIndex = 28;
@@ -1308,7 +1435,7 @@
             // button10
             // 
             this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button10.Location = new System.Drawing.Point(1032, 10);
+            this.button10.Location = new System.Drawing.Point(1048, 10);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(62, 37);
             this.button10.TabIndex = 23;
@@ -1322,7 +1449,7 @@
             this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button11.Image = ((System.Drawing.Image)(resources.GetObject("button11.Image")));
             this.button11.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button11.Location = new System.Drawing.Point(558, 10);
+            this.button11.Location = new System.Drawing.Point(566, 10);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(124, 37);
             this.button11.TabIndex = 22;
@@ -1337,7 +1464,7 @@
             this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button13.Image = ((System.Drawing.Image)(resources.GetObject("button13.Image")));
             this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button13.Location = new System.Drawing.Point(369, 10);
+            this.button13.Location = new System.Drawing.Point(377, 10);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(124, 37);
             this.button13.TabIndex = 20;
@@ -1381,7 +1508,7 @@
             this.TBDetalleZona.Location = new System.Drawing.Point(4, 22);
             this.TBDetalleZona.Name = "TBDetalleZona";
             this.TBDetalleZona.Padding = new System.Windows.Forms.Padding(3);
-            this.TBDetalleZona.Size = new System.Drawing.Size(1118, 707);
+            this.TBDetalleZona.Size = new System.Drawing.Size(1134, 830);
             this.TBDetalleZona.TabIndex = 4;
             this.TBDetalleZona.Text = "Detalle por Zona";
             this.TBDetalleZona.UseVisualStyleBackColor = true;
@@ -1546,13 +1673,76 @@
             this.bgwInicioPantalla.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwInicioPantalla_DoWork);
             this.bgwInicioPantalla.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwInicioPantalla_RunWorkerCompleted);
             // 
+            // bgwExpExcelAltas
+            // 
+            this.bgwExpExcelAltas.WorkerReportsProgress = true;
+            this.bgwExpExcelAltas.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwExpExcel_DoWork);
+            this.bgwExpExcelAltas.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwExpExcelAltas_ProgressChanged);
+            this.bgwExpExcelAltas.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwExpExcelAltas_RunWorkerCompleted);
+            // 
+            // bgwExpExcelConDir
+            // 
+            this.bgwExpExcelConDir.WorkerReportsProgress = true;
+            this.bgwExpExcelConDir.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwExpExcelConDir_DoWork);
+            this.bgwExpExcelConDir.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwExpExcelConDir_ProgressChanged);
+            this.bgwExpExcelConDir.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwExpExcelConDir_RunWorkerCompleted);
+            // 
+            // bgwExpExcelOrd
+            // 
+            this.bgwExpExcelOrd.WorkerReportsProgress = true;
+            this.bgwExpExcelOrd.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwExpExcelOrd_DoWork);
+            // 
+            // btnAddPeriodoConDir
+            // 
+            this.btnAddPeriodoConDir.Image = global::gagFIS_Interfase.Properties.Resources.Add_little1;
+            this.btnAddPeriodoConDir.Location = new System.Drawing.Point(319, 55);
+            this.btnAddPeriodoConDir.Name = "btnAddPeriodoConDir";
+            this.btnAddPeriodoConDir.Size = new System.Drawing.Size(22, 23);
+            this.btnAddPeriodoConDir.TabIndex = 13;
+            this.btnAddPeriodoConDir.UseVisualStyleBackColor = true;
+            this.btnAddPeriodoConDir.Visible = false;
+            this.btnAddPeriodoConDir.Click += new System.EventHandler(this.btnAddPeriodoConDir_Click);
+            // 
+            // tbPerConDir
+            // 
+            this.tbPerConDir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPerConDir.Location = new System.Drawing.Point(245, 54);
+            this.tbPerConDir.Multiline = true;
+            this.tbPerConDir.Name = "tbPerConDir";
+            this.tbPerConDir.Size = new System.Drawing.Size(69, 24);
+            this.tbPerConDir.TabIndex = 17;
+            this.tbPerConDir.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbPerConDir.Visible = false;
+            // 
+            // tbPeriodoAltas
+            // 
+            this.tbPeriodoAltas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPeriodoAltas.Location = new System.Drawing.Point(255, 57);
+            this.tbPeriodoAltas.Multiline = true;
+            this.tbPeriodoAltas.Name = "tbPeriodoAltas";
+            this.tbPeriodoAltas.Size = new System.Drawing.Size(69, 24);
+            this.tbPeriodoAltas.TabIndex = 19;
+            this.tbPeriodoAltas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbPeriodoAltas.Visible = false;
+            // 
+            // btnAddPeriodoAltas
+            // 
+            this.btnAddPeriodoAltas.Image = global::gagFIS_Interfase.Properties.Resources.Add_little1;
+            this.btnAddPeriodoAltas.Location = new System.Drawing.Point(329, 58);
+            this.btnAddPeriodoAltas.Name = "btnAddPeriodoAltas";
+            this.btnAddPeriodoAltas.Size = new System.Drawing.Size(22, 23);
+            this.btnAddPeriodoAltas.TabIndex = 18;
+            this.btnAddPeriodoAltas.UseVisualStyleBackColor = true;
+            this.btnAddPeriodoAltas.Visible = false;
+            this.btnAddPeriodoAltas.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Form7InformesAltas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1126, 733);
+            this.ClientSize = new System.Drawing.Size(1142, 856);
             this.ControlBox = false;
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.btnImprimirC);
             this.Name = "Form7InformesAltas";
             this.Text = "Informes";
             this.Load += new System.EventHandler(this.Form7InformesAltas_Load);
@@ -1560,13 +1750,17 @@
             this.Resize += new System.EventHandler(this.Form7InformesAltas_Resize);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
+            this.btnImprimirC.ResumeLayout(false);
             this.tabPagAltasyMod.ResumeLayout(false);
             this.tabPagAltasyMod.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.iTalk_GroupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGAlta)).EndInit();
             this.tabPagConexDirect.ResumeLayout(false);
             this.tabPagConexDirect.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.iTalk_GroupBox2.ResumeLayout(false);
@@ -1620,7 +1814,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton radioButtonPeriodo;
         private System.Windows.Forms.RadioButton radioButtonFecha;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ComboBox CBPerHastaAltas;
         public System.Windows.Forms.ComboBox CBPerDesdeAltas;
@@ -1629,8 +1822,6 @@
         private System.Windows.Forms.RadioButton radioButtonTipoAlta;
         private System.Windows.Forms.Label labelMotivo;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox TBBuscarRuta;
         private System.Windows.Forms.Label labelRuta;
         private System.Windows.Forms.SplitContainer splitContainer1;
@@ -1657,16 +1848,15 @@
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.DataGridView DGConexDirectas;
         private System.Windows.Forms.Label labelCantConDir;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button BotExporPDFConDir;
-        private System.Windows.Forms.Button BotPrintConDir;
-        private System.Windows.Forms.Button BotExporExellConDir;
+        private System.Windows.Forms.Button btnImprimirConDir;
+        private System.Windows.Forms.Button btnExellConDir;
         private System.Windows.Forms.TabPage tabPageOrdenativos;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.TextBox TBBuscarRutaOrdenativos;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnImprimirOrd;
         private System.Windows.Forms.Label LblRutaOrdenativos;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btnExcelOrd;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label LabelPeriodoOrden;
         private System.Windows.Forms.Label label8;
@@ -1719,10 +1909,29 @@
         private System.Windows.Forms.Label lblCantOrd;
         private System.Windows.Forms.RadioButton RBSin98_98;
         private System.Windows.Forms.RadioButton RBTodosOrd;
-        public System.Windows.Forms.TabControl tabControl1;
+        public System.Windows.Forms.TabControl btnImprimirC;
         private System.ComponentModel.BackgroundWorker bgwInicioPantalla;
         private System.Windows.Forms.DataGridView DGAlta;
         private System.Windows.Forms.DataGridView DGConDir;
         private System.Windows.Forms.DataGridView DGOrdenat;
+        private System.ComponentModel.BackgroundWorker bgwExpExcelAltas;
+        private System.ComponentModel.BackgroundWorker bgwExpExcelConDir;
+        private System.ComponentModel.BackgroundWorker bgwExpExcelOrd;
+        private System.Windows.Forms.ProgressBar ProgressBarAltas;
+        private System.Windows.Forms.Label LblPorcAltas;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnImprimirAltas;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnExcelAltas;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Label LblPorcConDir;
+        private System.Windows.Forms.ProgressBar ProgressBarConexDirec;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button btnAddPeriodoConDir;
+        private System.Windows.Forms.TextBox tbPerConDir;
+        private System.Windows.Forms.TextBox tbPeriodoAltas;
+        private System.Windows.Forms.Button btnAddPeriodoAltas;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
