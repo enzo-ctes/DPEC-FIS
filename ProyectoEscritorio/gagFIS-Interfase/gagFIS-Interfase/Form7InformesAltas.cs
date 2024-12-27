@@ -1,6 +1,7 @@
 ﻿using DGV2Printer;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using Microsoft.VisualBasic.Devices;
 using MySql.Data.MySqlClient;
 using System;
 using System.ComponentModel;
@@ -33,7 +34,7 @@ namespace gagFIS_Interfase
         public int rowIndex { get; set; }
         public static string PantallaSolicitud { get; set; }
         public static string RutaDesdeExportacion { get; set; }
-
+       
 
         public Form7InformesAltas()
         {
@@ -101,7 +102,7 @@ namespace gagFIS_Interfase
 
             if (CantidadAltas() > 0) CargarAltas();
             if (CantidadConexDirec() > 0) CargarConexDirectas();
-            if (CantidadConOrdenativos() > 0) CargarOrdenativos();
+            //if (CantidadConOrdenativos() > 0) CargarOrdenativos();
             //if (CantidadUsuarios() > 0) CargarDetalleSituaciones();
            
             //DGAlta hace referencia al datagridview de altas
@@ -124,14 +125,14 @@ namespace gagFIS_Interfase
             DGConDir.Columns["Periodo"].Visible = false;
             DGConDir.Columns["Fecha"].Visible = true;
 
-            //DGAlta.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; 
-            //DGOrdenat.Columns["Ruta"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            //DGOrdenat.Columns["Operario"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;                
-            DGOrdenat.Columns["Observaciones"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            //DGOrdenat.Columns["Observaciones"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            //DGOrdenat.Columns["Periodo"].Visible = false;
-            //DGOrdenat.Columns["Fecha"].Visible = false;
-            //bgwInicioPantalla.RunWorkerAsync();
+            ////DGAlta.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; 
+            ////DGOrdenat.Columns["Ruta"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            ////DGOrdenat.Columns["Operario"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;                
+            //DGOrdenat.Columns["Observaciones"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            ////DGOrdenat.Columns["Observaciones"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            ////DGOrdenat.Columns["Periodo"].Visible = false;
+            ////DGOrdenat.Columns["Fecha"].Visible = false;
+            ////bgwInicioPantalla.RunWorkerAsync();
 
             this.Cursor = Cursors.Default;
             lblCantAltas.Text = "Cantidad = " + DGAlta.Rows.Count.ToString();
@@ -951,13 +952,14 @@ namespace gagFIS_Interfase
         public static int CantidadAltas()
         {
             string txSQL;
-            MySqlCommand da;
+            
             int count = 0;
-
+            MySqlCommand da;
             txSQL = "SELECT Count(*) FROM Altas WHERE Periodo = " + Vble.Periodo + " AND (Numero NOT LIKE '%CxDir%')";
             da = new MySqlCommand(txSQL, DB.conexBD);
             da.Parameters.AddWithValue("Periodo", Vble.Periodo);
             count = Convert.ToInt32(da.ExecuteScalar());
+            da.Dispose();
             if (count == 0)
                 return count;
             else
@@ -3235,7 +3237,25 @@ namespace gagFIS_Interfase
 
         private void button9_Click(object sender, EventArgs e)
         {
-            this.Close();
+            // Liberar cualquier recurso adicional
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+
+            if (bgwSelectOrdSinEstim.IsBusy)
+            {
+                bgwSelectOrdSinEstim.CancelAsync();
+               
+                this.Close();
+                
+            }
+            if (bgwSelectOrdTodos.IsBusy)
+            {
+                bgwSelectOrdTodos.CancelAsync();
+               
+                this.Close();
+               
+            }
+
         }
 
         private void TBBuscarRutaOrdenativos_TextChanged(object sender, EventArgs e)
@@ -3526,122 +3546,40 @@ namespace gagFIS_Interfase
 
         private void radioButton1_CheckedChanged_2(object sender, EventArgs e)
         {
-            if (RBSin98_98.Checked == true)
-            {
-                //Lee la tabla ALTAS pertenecientes al periodo
-                string txSQL = "SELECT C.Zona AS Localidad, C.Ruta, C.ConexionID as Instalacion, M.Numero as Medidor, " +
-                 "M.ActualFecha AS Fecha_de_Lectura, M.ActualHora as Hora_de_Lectura, " +
-                 "M.ActualEstado, " +
-                 "N1.Codigo as Ord1, N2.Codigo as Ord2, N3.Codigo as Ord3, N4.Codigo as Ord4, N5.Codigo as Ord5, N6.Observ as Observaciones " +
-                 "FROM Conexiones C " +
-                 "JOIN Medidores M USING (ConexionID, Periodo) " +
-                 //"JOIN NovedadesConex N USING (ConexionID, Periodo) " +
-                 "left JOIN(SELECT ConexionID, Periodo, Codigo FROM NovedadesConex WHERE Orden = 1 and Periodo = " + Vble.Periodo + ") N1 " +
-                 //"ON N1.ConexionID = C.ConexionID AND N1.Periodo = C.Periodo " +
-                 "USING (ConexionID, Periodo) " +
-                 "left JOIN(SELECT ConexionID, Periodo, Codigo FROM NovedadesConex WHERE Orden = 2 and Periodo = " + Vble.Periodo + ") N2 " +
-                 "USING (ConexionID, Periodo) " +
-                 "left JOIN(SELECT ConexionID, Periodo, Codigo FROM NovedadesConex WHERE Orden = 3 and Periodo = " + Vble.Periodo + ") N3 " +
-                 "USING (ConexionID, Periodo) " +
-                 "left JOIN(SELECT ConexionID, Periodo, Codigo FROM NovedadesConex WHERE Orden = 4 and Periodo = " + Vble.Periodo + ") N4 " +
-                 "USING (ConexionID, Periodo) " +
-                 "left JOIN(SELECT ConexionID, Periodo, Codigo FROM NovedadesConex WHERE Orden = 5 and Periodo = " + Vble.Periodo + ") N5 " +
-                 "USING (ConexionID, Periodo) " +
-                 "left JOIN (SELECT ConexionID, Periodo, Codigo, Observ FROM NovedadesConex WHERE (Orden = 0 OR Observ <> '') and Periodo = " + Vble.Periodo + ") N6 " +
-                 "USING (ConexionID, Periodo) " +
-                 "WHERE C.Periodo = " + Vble.Periodo + " AND (C.Zona = " + Vble.ArrayZona[0].ToString() + Vble.iteracionZona() + ") AND C.Ruta = " + RutaDesdeExportacion +
-                 " AND (N1.Codigo < 98 and N1.Codigo > 0)" +
-                 "ORDER BY C.Ruta, M.ActualFecha ASC, M.ActualHora ASC";
-                //" ORDER BY Fecha ASC";
 
-                TablaNovedades = new DataTable();
+             StartBackgroundProcess(bgwSelectOrdSinEstim);
 
-                MySqlDataAdapter datosAdapter = new MySqlDataAdapter(txSQL, DB.conexBD);
-                datosAdapter.SelectCommand.CommandTimeout = 300;
-                MySqlCommandBuilder comandoSQL = new MySqlCommandBuilder(datosAdapter);
-                datosAdapter.Fill(TablaNovedades);
-                DGOrdenat.DataSource = TablaNovedades;
-
-                //DGAlta.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; 
-                //DGOrdenat.Columns["Ruta"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-                //DGOrdenat.Columns["Operario"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-
-
-                DGOrdenat.Columns["Observaciones"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                //DGOrdenat.Columns["Observaciones"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-
-                //DGOrdenat.Columns["Periodo"].Visible = false;
-                //DGOrdenat.Columns["Fecha"].Visible = false;
-                LabelPeriodoOrden.Text = Vble.Periodo.ToString().Substring(4, 2) + "-" + Vble.Periodo.ToString().Substring(0, 4);
-                LabCanConexConOrd.Text = "Cantidad = " + DGOrdenat.RowCount.ToString();
-
-                LblRutaOrdenativos.Visible = true;
-                TBBuscarRutaOrdenativos.Visible = true;
-                lblCantOrd.Text = "Cantidad = " + DGOrdenat.RowCount.ToString();
-            }
+           
 
         }
 
         private void RBTodosOrd_CheckedChanged(object sender, EventArgs e)
         {
-            if (RBTodosOrd.Checked == true)
-            {
-                //Lee la tabla ALTAS pertenecientes al periodo
-                string txSQL = "SELECT C.Zona AS Localidad, C.Ruta, C.ConexionID as Instalacion, M.Numero as Medidor, " +
-                 "M.ActualFecha AS Fecha_de_Lectura, M.ActualHora as Hora_de_Lectura, " +
-                 "M.ActualEstado, " +
-                 "N1.Codigo as Ord1, N2.Codigo as Ord2, N3.Codigo as Ord3, N4.Codigo as Ord4, N5.Codigo as Ord5, N6.Observ as Observaciones " +
-                 "FROM Conexiones C " +
-                 "JOIN Medidores M USING (ConexionID, Periodo) " +
-                 //"JOIN NovedadesConex N USING (ConexionID, Periodo) " +
-                 "left JOIN(SELECT ConexionID, Periodo, Codigo FROM NovedadesConex WHERE Orden = 1 and Periodo = " + Vble.Periodo + ") N1 " +
-                 //"ON N1.ConexionID = C.ConexionID AND N1.Periodo = C.Periodo " +
-                 "USING (ConexionID, Periodo) " +
-                 "left JOIN(SELECT ConexionID, Periodo, Codigo FROM NovedadesConex WHERE Orden = 2 and Periodo = " + Vble.Periodo + ") N2 " +
-                 "USING (ConexionID, Periodo) " +
-                 "left JOIN(SELECT ConexionID, Periodo, Codigo FROM NovedadesConex WHERE Orden = 3 and Periodo = " + Vble.Periodo + ") N3 " +
-                 "USING (ConexionID, Periodo) " +
-                 "left JOIN(SELECT ConexionID, Periodo, Codigo FROM NovedadesConex WHERE Orden = 4 and Periodo = " + Vble.Periodo + ") N4 " +
-                 "USING (ConexionID, Periodo) " +
-                 "left JOIN(SELECT ConexionID, Periodo, Codigo FROM NovedadesConex WHERE Orden = 5 and Periodo = " + Vble.Periodo + ") N5 " +
-                 "USING (ConexionID, Periodo) " +
-                 "left JOIN (SELECT ConexionID, Periodo, Codigo, Observ FROM NovedadesConex WHERE (Orden = 0 OR Observ <> '') and Periodo = " + Vble.Periodo + ") N6 " +
-                 "USING (ConexionID, Periodo) " +
-                 "WHERE C.Periodo = " + Vble.Periodo + " AND (C.Zona = " + Vble.ArrayZona[0].ToString() + Vble.iteracionZona() + ") AND C.Ruta = " + RutaDesdeExportacion +
-                 " AND N1.Codigo <> '' " +
-                 "ORDER BY C.Ruta, M.ActualFecha ASC, M.ActualHora ASC";
-                //" ORDER BY Fecha ASC";
+            // Inicializar el BackgroundWorker
 
-                TablaNovedades = new DataTable();
+            //bgwSelectOrd.DoWork += bgwSelectOrd_DoWork;
+            //bgwSelectOrd.RunWorkerCompleted += bgwSelectOrd_RunWorkerCompleted;
 
-                MySqlDataAdapter datosAdapter = new MySqlDataAdapter(txSQL, DB.conexBD);
-                datosAdapter.SelectCommand.CommandTimeout = 300;
-                MySqlCommandBuilder comandoSQL = new MySqlCommandBuilder(datosAdapter);
-                datosAdapter.Fill(TablaNovedades);
-                DGOrdenat.DataSource = TablaNovedades;
-
-                //DGAlta.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; 
-                //DGOrdenat.Columns["Ruta"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-                //DGOrdenat.Columns["Operario"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-
-
-                DGOrdenat.Columns["Observaciones"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                //DGOrdenat.Columns["Observaciones"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-
-                //DGOrdenat.Columns["Periodo"].Visible = false;
-                //DGOrdenat.Columns["Fecha"].Visible = false;
-                LabelPeriodoOrden.Text = Vble.Periodo.ToString().Substring(4, 2) + "-" + Vble.Periodo.ToString().Substring(0, 4);
-                LabCanConexConOrd.Text = "Cantidad = " + DGOrdenat.RowCount.ToString();
-
-                LblRutaOrdenativos.Visible = true;
-                TBBuscarRutaOrdenativos.Visible = true;
-                lblCantOrd.Text = "Cantidad = " + DGOrdenat.RowCount.ToString();
-            }
+            // Iniciar el proceso al cargar el formulario
+            PictureBoxOrd.Visible = true;
+            StartBackgroundProcess(bgwSelectOrdSinEstim);           
         }
+
+        private void StartBackgroundProcess(BackgroundWorker bgwOrdenativos)
+        {
+            if (!bgwOrdenativos.IsBusy)
+            {
+                PictureBoxOrd.Visible = true;
+                DGOrdenat.Visible = false;           
+                bgwOrdenativos.RunWorkerAsync();
+            }
+          
+        }
+
 
         private void Form7InformesAltas_Shown(object sender, EventArgs e)
         {
-
+            
         }
 
         private void bgwInicioPantalla_DoWork(object sender, DoWorkEventArgs e)
@@ -3873,6 +3811,160 @@ namespace gagFIS_Interfase
         private void btnAddPeriodoConDir_Click(object sender, EventArgs e)
         {
             AgregarPeriodoApestañas(tbPerConDir, CBPerDesdeConDir, CBPerHastaConDir);
+        }
+
+        private void bgwSelectOrd_DoWork(object sender, DoWorkEventArgs e)
+        {
+            //if (RBTodosOrd.Checked == true)
+            //{
+
+                if (CantidadConOrdenativos() > 0) CargarOrdenativos();
+                //Lee la tabla ALTAS pertenecientes al periodo
+                //string txSQL = "SELECT C.Zona AS Localidad, C.Ruta, C.ConexionID as Instalacion, M.Numero as Medidor, " +
+                // "M.ActualFecha AS Fecha_de_Lectura, M.ActualHora as Hora_de_Lectura, " +
+                // "M.ActualEstado, " +
+                // "N1.Codigo as Ord1, N2.Codigo as Ord2, N3.Codigo as Ord3, N4.Codigo as Ord4, N5.Codigo as Ord5, N6.Observ as Observaciones " +
+                // "FROM Conexiones C " +
+                // "JOIN Medidores M USING (ConexionID, Periodo) " +
+                // //"JOIN NovedadesConex N USING (ConexionID, Periodo) " +
+                // "left JOIN(SELECT ConexionID, Periodo, Codigo FROM NovedadesConex WHERE Orden = 1 and Periodo = " + Vble.Periodo + ") N1 " +
+                // //"ON N1.ConexionID = C.ConexionID AND N1.Periodo = C.Periodo " +
+                // "USING (ConexionID, Periodo) " +
+                // "left JOIN(SELECT ConexionID, Periodo, Codigo FROM NovedadesConex WHERE Orden = 2 and Periodo = " + Vble.Periodo + ") N2 " +
+                // "USING (ConexionID, Periodo) " +
+                // "left JOIN(SELECT ConexionID, Periodo, Codigo FROM NovedadesConex WHERE Orden = 3 and Periodo = " + Vble.Periodo + ") N3 " +
+                // "USING (ConexionID, Periodo) " +
+                // "left JOIN(SELECT ConexionID, Periodo, Codigo FROM NovedadesConex WHERE Orden = 4 and Periodo = " + Vble.Periodo + ") N4 " +
+                // "USING (ConexionID, Periodo) " +
+                // "left JOIN(SELECT ConexionID, Periodo, Codigo FROM NovedadesConex WHERE Orden = 5 and Periodo = " + Vble.Periodo + ") N5 " +
+                // "USING (ConexionID, Periodo) " +
+                // "left JOIN (SELECT ConexionID, Periodo, Codigo, Observ FROM NovedadesConex WHERE (Orden = 0 OR Observ <> '') and Periodo = " + Vble.Periodo + ") N6 " +
+                // "USING (ConexionID, Periodo) " +
+                // //"WHERE C.Periodo = " + Vble.Periodo + " AND (C.Zona = " + Vble.ArrayZona[0].ToString() + Vble.iteracionZona() + ") AND (Ruta = " + 1 + Vble.iteracionRuta().Substring(0, 14) + ")" +
+                // "WHERE C.Periodo = " + Vble.Periodo + " AND (C.Zona = " + Vble.ArrayZona[0].ToString() + Vble.iteracionZona() + ") AND C.Ruta = " + RutaDesdeExportacion +
+                // " AND N1.Codigo <> '' " +
+                // "ORDER BY C.Ruta, M.ActualFecha ASC, M.ActualHora ASC";
+                ////" ORDER BY Fecha ASC";
+
+
+                //TablaNovedades = new DataTable();
+
+                //MySqlDataAdapter datosAdapter = new MySqlDataAdapter(txSQL, DB.conexBD);
+                //datosAdapter.SelectCommand.CommandTimeout = 300;
+                //MySqlCommandBuilder comandoSQL = new MySqlCommandBuilder(datosAdapter);
+                //datosAdapter.Fill(TablaNovedades);
+                //DGOrdenat.DataSource = TablaNovedades;
+
+                ////DGAlta.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; 
+                ////DGOrdenat.Columns["Ruta"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+                ////DGOrdenat.Columns["Operario"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+
+
+                DGOrdenat.Columns["Observaciones"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                ////DGOrdenat.Columns["Observaciones"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+                ////DGOrdenat.Columns["Periodo"].Visible = false;
+                ////DGOrdenat.Columns["Fecha"].Visible = false;
+                ///
+                LabelPeriodoOrden.Text = Vble.Periodo.ToString().Substring(4, 2) + "-" + Vble.Periodo.ToString().Substring(0, 4);
+                //LabCanConexConOrd.Text = "Cantidad = " + DGOrdenat.RowCount.ToString();
+
+                LblRutaOrdenativos.Visible = true;
+                TBBuscarRutaOrdenativos.Visible = true;
+                lblCantOrd.Text = "Cantidad = " + DGOrdenat.RowCount.ToString();
+            //}
+        }
+
+        private void bgwSelectOrd_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Error != null)
+            {
+                MessageBox.Show("Ocurrió un error: " + e.Error.Message);
+            }
+            else
+            {
+             
+                // Ocultar el GIF y mostrar el DataGridView
+                PictureBoxOrd.Visible = false;
+                DGOrdenat.Visible = true;
+                bgwSelectOrdSinEstim.CancelAsync();
+            }
+
+          
+        }
+
+        private void bgwSelectOrdSinEstim_DoWork(object sender, DoWorkEventArgs e)
+        {
+            //if (RBSin98_98.Checked == true)
+            //{
+                //Lee la tabla ALTAS pertenecientes al periodo
+                string txSQL = "SELECT C.Zona AS Localidad, C.Ruta, C.ConexionID as Instalacion, M.Numero as Medidor, " +
+                 "M.ActualFecha AS Fecha_de_Lectura, M.ActualHora as Hora_de_Lectura, " +
+                 "M.ActualEstado, " +
+                 "N1.Codigo as Ord1, N2.Codigo as Ord2, N3.Codigo as Ord3, N4.Codigo as Ord4, N5.Codigo as Ord5, N6.Observ as Observaciones " +
+                 "FROM Conexiones C " +
+                 "JOIN Medidores M USING (ConexionID, Periodo) " +
+                 //"JOIN NovedadesConex N USING (ConexionID, Periodo) " +
+                 "left JOIN(SELECT ConexionID, Periodo, Codigo FROM NovedadesConex WHERE Orden = 1 and Periodo = " + Vble.Periodo + ") N1 " +
+                 //"ON N1.ConexionID = C.ConexionID AND N1.Periodo = C.Periodo " +
+                 "USING (ConexionID, Periodo) " +
+                 "left JOIN(SELECT ConexionID, Periodo, Codigo FROM NovedadesConex WHERE Orden = 2 and Periodo = " + Vble.Periodo + ") N2 " +
+                 "USING (ConexionID, Periodo) " +
+                 "left JOIN(SELECT ConexionID, Periodo, Codigo FROM NovedadesConex WHERE Orden = 3 and Periodo = " + Vble.Periodo + ") N3 " +
+                 "USING (ConexionID, Periodo) " +
+                 "left JOIN(SELECT ConexionID, Periodo, Codigo FROM NovedadesConex WHERE Orden = 4 and Periodo = " + Vble.Periodo + ") N4 " +
+                 "USING (ConexionID, Periodo) " +
+                 "left JOIN(SELECT ConexionID, Periodo, Codigo FROM NovedadesConex WHERE Orden = 5 and Periodo = " + Vble.Periodo + ") N5 " +
+                 "USING (ConexionID, Periodo) " +
+                 "left JOIN (SELECT ConexionID, Periodo, Codigo, Observ FROM NovedadesConex WHERE (Orden = 0 OR Observ <> '') and Periodo = " + Vble.Periodo + ") N6 " +
+                 "USING (ConexionID, Periodo) " +
+                 "WHERE C.Periodo = " + Vble.Periodo + " AND (C.Zona = " + Vble.ArrayZona[0].ToString() + Vble.iteracionZona() + ") " /* AND C.Ruta = " + RutaDesdeExportacion + */ +
+                 " AND (N1.Codigo < 98 and N1.Codigo > 0)" +
+                 "ORDER BY C.Ruta, M.ActualFecha ASC, M.ActualHora ASC";
+                //" ORDER BY Fecha ASC";
+
+                TablaNovedades = new DataTable();
+
+                MySqlDataAdapter datosAdapter = new MySqlDataAdapter(txSQL, DB.conexBD);
+                datosAdapter.SelectCommand.CommandTimeout = 300;
+                MySqlCommandBuilder comandoSQL = new MySqlCommandBuilder(datosAdapter);
+                datosAdapter.Fill(TablaNovedades);
+                DGOrdenat.DataSource = TablaNovedades;
+
+                //DGAlta.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; 
+                //DGOrdenat.Columns["Ruta"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+                //DGOrdenat.Columns["Operario"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+
+
+                DGOrdenat.Columns["Observaciones"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                //DGOrdenat.Columns["Observaciones"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+                //DGOrdenat.Columns["Periodo"].Visible = false;
+                //DGOrdenat.Columns["Fecha"].Visible = false;
+                LabelPeriodoOrden.Text = Vble.Periodo.ToString().Substring(4, 2) + "-" + Vble.Periodo.ToString().Substring(0, 4);
+                LabCanConexConOrd.Text = "Cantidad = " + DGOrdenat.RowCount.ToString();
+
+                LblRutaOrdenativos.Visible = true;
+                TBBuscarRutaOrdenativos.Visible = true;
+                lblCantOrd.Text = "Cantidad = " + DGOrdenat.RowCount.ToString();
+           // }
+        }
+
+        private void bgwSelectOrdSinEstim_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Error != null)
+            {
+                MessageBox.Show("Ocurrió un error: " + e.Error.Message);
+            }
+            else
+            {
+
+                // Ocultar el GIF y mostrar el DataGridView
+                PictureBoxOrd.Visible = false;
+                DGOrdenat.Visible = true;
+                bgwSelectOrdSinEstim.CancelAsync();
+            
+            }
         }
     }
 }

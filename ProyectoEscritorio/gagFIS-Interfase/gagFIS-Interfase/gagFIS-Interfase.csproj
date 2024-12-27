@@ -692,6 +692,7 @@
     <None Include="bin\Resources\ICONOS\Regular\GIF circular loading.gif" />
     <None Include="bin\Resources\ICONOS\Regular\gif loading puntos.gif" />
     <None Include="bin\Resources\ICONOS\Regular\gif loading circular rayas.gif" />
+    <None Include="bin\Resources\gifCargando.gif" />
     <Content Include="MacroIntell Isologo.ico" />
     <None Include="Resources\bin_closed.png" />
     <Content Include="Resources\ICONOS\Regular\gif loading circular rayas.gif" />

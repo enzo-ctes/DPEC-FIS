@@ -3224,7 +3224,7 @@ namespace gagFIS_Interfase {
                 {
                     if (DriveType.Network == strDrive.DriveType)
                     {
-                        if (strDrive.Name == "T:\\")
+                        if (strDrive.Name == "T:\\" || strDrive.Name == "M:\\")
                         {
 
                         }

@@ -73,9 +73,3 @@ quedando solo en la pc que realizo la descarga. Ahora se agrega una copia en el 
 localidad a la que pertenece la ruta, y el directorio donde se alojan los archivos lleva el dato del periodo, colectora, numero de descarga(actualemnte no se controla),
 dia, hora, minuto y segundo de la descarga realizada.
 
----2024-12-11
-En esta fecha se realiza respaldo con las siguientes modificaciones.
-Usuario Supervisor: funciona los infomres de alta y conexiones directas
-Usuarios Especiales: se esta desarrollando la parte de descargas de rutas con usuarios especials. Cargas ya funciona.
-
-

@@ -8579,3 +8579,15 @@ UNIQUE
 2024-12-10 (13:38:10) 10/12/2024 01:38:10---> There is already an open
      DataReader associated with this Connection which must be closed first.
      Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2024-12-12 (09:56:39) 12/12/2024 09:56:39---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2024-12-26 (13:10:02) 26/12/2024 01:10:02---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2024-12-27 (08:46:56) 27/12/2024 08:46:56---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2024-12-27 (10:11:48) 27/12/2024 10:11:48---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD

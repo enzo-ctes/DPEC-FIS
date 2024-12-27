@@ -30,8 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form7InformesAltas));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tbPeriodoAltas = new System.Windows.Forms.TextBox();
+            this.btnAddPeriodoAltas = new System.Windows.Forms.Button();
             this.labelPeriodoAlt = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -74,6 +76,8 @@
             this.TBBuscarRutaConexDirec = new System.Windows.Forms.TextBox();
             this.LblRutaConexDirc = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tbPerConDir = new System.Windows.Forms.TextBox();
+            this.btnAddPeriodoConDir = new System.Windows.Forms.Button();
             this.labelPeriodoConDir = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.CBPerHastaConDir = new System.Windows.Forms.ComboBox();
@@ -108,6 +112,7 @@
             this.RBPeriodoNov = new System.Windows.Forms.RadioButton();
             this.RBFechaNov = new System.Windows.Forms.RadioButton();
             this.iTalk_GroupBox3 = new iTalk.iTalk_GroupBox();
+            this.PictureBoxOrd = new System.Windows.Forms.PictureBox();
             this.DGOrdenat = new System.Windows.Forms.DataGridView();
             this.TPDetalleSituaciones = new System.Windows.Forms.TabPage();
             this.RBRuta = new System.Windows.Forms.RadioButton();
@@ -153,11 +158,9 @@
             this.bgwExpExcelAltas = new System.ComponentModel.BackgroundWorker();
             this.bgwExpExcelConDir = new System.ComponentModel.BackgroundWorker();
             this.bgwExpExcelOrd = new System.ComponentModel.BackgroundWorker();
-            this.btnAddPeriodoConDir = new System.Windows.Forms.Button();
-            this.tbPerConDir = new System.Windows.Forms.TextBox();
-            this.tbPeriodoAltas = new System.Windows.Forms.TextBox();
-            this.btnAddPeriodoAltas = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.bgwSelectOrdTodos = new System.ComponentModel.BackgroundWorker();
+            this.bgwSelectOrdSinEstim = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
             this.btnImprimirC.SuspendLayout();
             this.tabPagAltasyMod.SuspendLayout();
@@ -172,6 +175,7 @@
             this.tabPageOrdenativos.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.iTalk_GroupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxOrd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGOrdenat)).BeginInit();
             this.TPDetalleSituaciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
@@ -224,6 +228,28 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtrar Altas";
+            // 
+            // tbPeriodoAltas
+            // 
+            this.tbPeriodoAltas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPeriodoAltas.Location = new System.Drawing.Point(255, 57);
+            this.tbPeriodoAltas.Multiline = true;
+            this.tbPeriodoAltas.Name = "tbPeriodoAltas";
+            this.tbPeriodoAltas.Size = new System.Drawing.Size(69, 24);
+            this.tbPeriodoAltas.TabIndex = 19;
+            this.tbPeriodoAltas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbPeriodoAltas.Visible = false;
+            // 
+            // btnAddPeriodoAltas
+            // 
+            this.btnAddPeriodoAltas.Image = global::gagFIS_Interfase.Properties.Resources.Add_little1;
+            this.btnAddPeriodoAltas.Location = new System.Drawing.Point(329, 58);
+            this.btnAddPeriodoAltas.Name = "btnAddPeriodoAltas";
+            this.btnAddPeriodoAltas.Size = new System.Drawing.Size(22, 23);
+            this.btnAddPeriodoAltas.TabIndex = 18;
+            this.btnAddPeriodoAltas.UseVisualStyleBackColor = true;
+            this.btnAddPeriodoAltas.Visible = false;
+            this.btnAddPeriodoAltas.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // labelPeriodoAlt
             // 
@@ -455,7 +481,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 231F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 179F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 155F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
             this.tableLayoutPanel1.Controls.Add(this.button4, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnImprimirAltas, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblCantAltas, 3, 0);
@@ -480,7 +506,7 @@
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button4.Location = new System.Drawing.Point(310, 37);
+            this.button4.Location = new System.Drawing.Point(306, 37);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(124, 31);
             this.button4.TabIndex = 7;
@@ -495,7 +521,7 @@
             this.btnImprimirAltas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnImprimirAltas.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimirAltas.Image")));
             this.btnImprimirAltas.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnImprimirAltas.Location = new System.Drawing.Point(555, 39);
+            this.btnImprimirAltas.Location = new System.Drawing.Point(550, 39);
             this.btnImprimirAltas.Name = "btnImprimirAltas";
             this.btnImprimirAltas.Size = new System.Drawing.Size(124, 34);
             this.btnImprimirAltas.TabIndex = 6;
@@ -507,7 +533,7 @@
             // 
             this.lblCantAltas.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblCantAltas.AutoSize = true;
-            this.lblCantAltas.Location = new System.Drawing.Point(798, 0);
+            this.lblCantAltas.Location = new System.Drawing.Point(793, 0);
             this.lblCantAltas.Name = "lblCantAltas";
             this.lblCantAltas.Size = new System.Drawing.Size(49, 13);
             this.lblCantAltas.TabIndex = 11;
@@ -520,7 +546,7 @@
             this.LblPorcAltas.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.LblPorcAltas.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblPorcAltas.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.LblPorcAltas.Location = new System.Drawing.Point(505, 5);
+            this.LblPorcAltas.Location = new System.Drawing.Point(500, 5);
             this.LblPorcAltas.Name = "LblPorcAltas";
             this.LblPorcAltas.Size = new System.Drawing.Size(68, 23);
             this.LblPorcAltas.TabIndex = 1;
@@ -530,9 +556,9 @@
             // ProgressBarAltas
             // 
             this.ProgressBarAltas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProgressBarAltas.Location = new System.Drawing.Point(246, 5);
+            this.ProgressBarAltas.Location = new System.Drawing.Point(243, 5);
             this.ProgressBarAltas.Name = "ProgressBarAltas";
-            this.ProgressBarAltas.Size = new System.Drawing.Size(253, 23);
+            this.ProgressBarAltas.Size = new System.Drawing.Size(251, 23);
             this.ProgressBarAltas.TabIndex = 13;
             this.ProgressBarAltas.Visible = false;
             // 
@@ -542,7 +568,7 @@
             this.btnExcelAltas.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnExcelAltas.Image = ((System.Drawing.Image)(resources.GetObject("btnExcelAltas.Image")));
             this.btnExcelAltas.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnExcelAltas.Location = new System.Drawing.Point(116, 37);
+            this.btnExcelAltas.Location = new System.Drawing.Point(113, 37);
             this.btnExcelAltas.Name = "btnExcelAltas";
             this.btnExcelAltas.Size = new System.Drawing.Size(124, 36);
             this.btnExcelAltas.TabIndex = 2;
@@ -554,7 +580,7 @@
             // button5
             // 
             this.button5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button5.Location = new System.Drawing.Point(791, 37);
+            this.button5.Location = new System.Drawing.Point(786, 37);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(62, 34);
             this.button5.TabIndex = 10;
@@ -612,7 +638,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 222F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 153F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 133F));
             this.tableLayoutPanel2.Controls.Add(this.BotExporPDFConDir, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.lblCantCxDir, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnImprimirConDir, 2, 1);
@@ -637,7 +663,7 @@
             this.BotExporPDFConDir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.BotExporPDFConDir.Image = ((System.Drawing.Image)(resources.GetObject("BotExporPDFConDir.Image")));
             this.BotExporPDFConDir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BotExporPDFConDir.Location = new System.Drawing.Point(321, 43);
+            this.BotExporPDFConDir.Location = new System.Drawing.Point(318, 43);
             this.BotExporPDFConDir.Name = "BotExporPDFConDir";
             this.BotExporPDFConDir.Size = new System.Drawing.Size(124, 29);
             this.BotExporPDFConDir.TabIndex = 14;
@@ -650,7 +676,7 @@
             // 
             this.lblCantCxDir.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblCantCxDir.AutoSize = true;
-            this.lblCantCxDir.Location = new System.Drawing.Point(788, 0);
+            this.lblCantCxDir.Location = new System.Drawing.Point(783, 0);
             this.lblCantCxDir.Name = "lblCantCxDir";
             this.lblCantCxDir.Size = new System.Drawing.Size(49, 13);
             this.lblCantCxDir.TabIndex = 15;
@@ -662,7 +688,7 @@
             this.btnImprimirConDir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnImprimirConDir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimirConDir.Image")));
             this.btnImprimirConDir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnImprimirConDir.Location = new System.Drawing.Point(517, 39);
+            this.btnImprimirConDir.Location = new System.Drawing.Point(512, 39);
             this.btnImprimirConDir.Name = "btnImprimirConDir";
             this.btnImprimirConDir.Size = new System.Drawing.Size(124, 29);
             this.btnImprimirConDir.TabIndex = 13;
@@ -674,9 +700,9 @@
             // ProgressBarConexDirec
             // 
             this.ProgressBarConexDirec.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProgressBarConexDirec.Location = new System.Drawing.Point(256, 5);
+            this.ProgressBarConexDirec.Location = new System.Drawing.Point(254, 5);
             this.ProgressBarConexDirec.Name = "ProgressBarConexDirec";
-            this.ProgressBarConexDirec.Size = new System.Drawing.Size(255, 22);
+            this.ProgressBarConexDirec.Size = new System.Drawing.Size(252, 22);
             this.ProgressBarConexDirec.TabIndex = 13;
             this.ProgressBarConexDirec.Visible = false;
             // 
@@ -686,7 +712,7 @@
             this.btnExellConDir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnExellConDir.Image = ((System.Drawing.Image)(resources.GetObject("btnExellConDir.Image")));
             this.btnExellConDir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnExellConDir.Location = new System.Drawing.Point(126, 39);
+            this.btnExellConDir.Location = new System.Drawing.Point(124, 39);
             this.btnExellConDir.Name = "btnExellConDir";
             this.btnExellConDir.Size = new System.Drawing.Size(124, 29);
             this.btnExellConDir.TabIndex = 12;
@@ -698,7 +724,7 @@
             // button12
             // 
             this.button12.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.button12.Location = new System.Drawing.Point(824, 39);
+            this.button12.Location = new System.Drawing.Point(819, 39);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(62, 29);
             this.button12.TabIndex = 16;
@@ -713,7 +739,7 @@
             this.LblPorcConDir.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.LblPorcConDir.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblPorcConDir.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.LblPorcConDir.Location = new System.Drawing.Point(517, 5);
+            this.LblPorcConDir.Location = new System.Drawing.Point(512, 5);
             this.LblPorcConDir.Name = "LblPorcConDir";
             this.LblPorcConDir.Size = new System.Drawing.Size(68, 23);
             this.LblPorcConDir.TabIndex = 1;
@@ -763,6 +789,28 @@
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filtrar Conexiones Directas";
+            // 
+            // tbPerConDir
+            // 
+            this.tbPerConDir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPerConDir.Location = new System.Drawing.Point(245, 54);
+            this.tbPerConDir.Multiline = true;
+            this.tbPerConDir.Name = "tbPerConDir";
+            this.tbPerConDir.Size = new System.Drawing.Size(69, 24);
+            this.tbPerConDir.TabIndex = 17;
+            this.tbPerConDir.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbPerConDir.Visible = false;
+            // 
+            // btnAddPeriodoConDir
+            // 
+            this.btnAddPeriodoConDir.Image = global::gagFIS_Interfase.Properties.Resources.Add_little1;
+            this.btnAddPeriodoConDir.Location = new System.Drawing.Point(319, 55);
+            this.btnAddPeriodoConDir.Name = "btnAddPeriodoConDir";
+            this.btnAddPeriodoConDir.Size = new System.Drawing.Size(22, 23);
+            this.btnAddPeriodoConDir.TabIndex = 13;
+            this.btnAddPeriodoConDir.UseVisualStyleBackColor = true;
+            this.btnAddPeriodoConDir.Visible = false;
+            this.btnAddPeriodoConDir.Click += new System.EventHandler(this.btnAddPeriodoConDir_Click);
             // 
             // labelPeriodoConDir
             // 
@@ -1139,6 +1187,7 @@
             // 
             this.iTalk_GroupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.iTalk_GroupBox3.BackColor = System.Drawing.SystemColors.Control;
+            this.iTalk_GroupBox3.Controls.Add(this.PictureBoxOrd);
             this.iTalk_GroupBox3.Controls.Add(this.DGOrdenat);
             this.iTalk_GroupBox3.Location = new System.Drawing.Point(-7, 331);
             this.iTalk_GroupBox3.MinimumSize = new System.Drawing.Size(136, 50);
@@ -1147,6 +1196,19 @@
             this.iTalk_GroupBox3.Size = new System.Drawing.Size(1150, 340);
             this.iTalk_GroupBox3.TabIndex = 12;
             this.iTalk_GroupBox3.Text = "Usuarios con Ordenativos";
+            // 
+            // PictureBoxOrd
+            // 
+            this.PictureBoxOrd.BackColor = System.Drawing.Color.White;
+            this.PictureBoxOrd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PictureBoxOrd.Image = global::gagFIS_Interfase.Properties.Resources.gifCargando;
+            this.PictureBoxOrd.Location = new System.Drawing.Point(5, 28);
+            this.PictureBoxOrd.Name = "PictureBoxOrd";
+            this.PictureBoxOrd.Size = new System.Drawing.Size(1140, 307);
+            this.PictureBoxOrd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PictureBoxOrd.TabIndex = 1;
+            this.PictureBoxOrd.TabStop = false;
+            this.PictureBoxOrd.Visible = false;
             // 
             // DGOrdenat
             // 
@@ -1405,14 +1467,14 @@
             this.DGDetalleSituaciones.AllowUserToDeleteRows = false;
             this.DGDetalleSituaciones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGDetalleSituaciones.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGDetalleSituaciones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGDetalleSituaciones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DGDetalleSituaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGDetalleSituaciones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DGDetalleSituaciones.Location = new System.Drawing.Point(0, 0);
@@ -1692,49 +1754,18 @@
             this.bgwExpExcelOrd.WorkerReportsProgress = true;
             this.bgwExpExcelOrd.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwExpExcelOrd_DoWork);
             // 
-            // btnAddPeriodoConDir
+            // bgwSelectOrdTodos
             // 
-            this.btnAddPeriodoConDir.Image = global::gagFIS_Interfase.Properties.Resources.Add_little1;
-            this.btnAddPeriodoConDir.Location = new System.Drawing.Point(319, 55);
-            this.btnAddPeriodoConDir.Name = "btnAddPeriodoConDir";
-            this.btnAddPeriodoConDir.Size = new System.Drawing.Size(22, 23);
-            this.btnAddPeriodoConDir.TabIndex = 13;
-            this.btnAddPeriodoConDir.UseVisualStyleBackColor = true;
-            this.btnAddPeriodoConDir.Visible = false;
-            this.btnAddPeriodoConDir.Click += new System.EventHandler(this.btnAddPeriodoConDir_Click);
+            this.bgwSelectOrdTodos.WorkerReportsProgress = true;
+            this.bgwSelectOrdTodos.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwSelectOrd_DoWork);
+            this.bgwSelectOrdTodos.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwSelectOrd_RunWorkerCompleted);
             // 
-            // tbPerConDir
+            // bgwSelectOrdSinEstim
             // 
-            this.tbPerConDir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPerConDir.Location = new System.Drawing.Point(245, 54);
-            this.tbPerConDir.Multiline = true;
-            this.tbPerConDir.Name = "tbPerConDir";
-            this.tbPerConDir.Size = new System.Drawing.Size(69, 24);
-            this.tbPerConDir.TabIndex = 17;
-            this.tbPerConDir.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tbPerConDir.Visible = false;
-            // 
-            // tbPeriodoAltas
-            // 
-            this.tbPeriodoAltas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPeriodoAltas.Location = new System.Drawing.Point(255, 57);
-            this.tbPeriodoAltas.Multiline = true;
-            this.tbPeriodoAltas.Name = "tbPeriodoAltas";
-            this.tbPeriodoAltas.Size = new System.Drawing.Size(69, 24);
-            this.tbPeriodoAltas.TabIndex = 19;
-            this.tbPeriodoAltas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tbPeriodoAltas.Visible = false;
-            // 
-            // btnAddPeriodoAltas
-            // 
-            this.btnAddPeriodoAltas.Image = global::gagFIS_Interfase.Properties.Resources.Add_little1;
-            this.btnAddPeriodoAltas.Location = new System.Drawing.Point(329, 58);
-            this.btnAddPeriodoAltas.Name = "btnAddPeriodoAltas";
-            this.btnAddPeriodoAltas.Size = new System.Drawing.Size(22, 23);
-            this.btnAddPeriodoAltas.TabIndex = 18;
-            this.btnAddPeriodoAltas.UseVisualStyleBackColor = true;
-            this.btnAddPeriodoAltas.Visible = false;
-            this.btnAddPeriodoAltas.Click += new System.EventHandler(this.button1_Click_1);
+            this.bgwSelectOrdSinEstim.WorkerReportsProgress = true;
+            this.bgwSelectOrdSinEstim.WorkerSupportsCancellation = true;
+            this.bgwSelectOrdSinEstim.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwSelectOrdSinEstim_DoWork);
+            this.bgwSelectOrdSinEstim.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwSelectOrdSinEstim_RunWorkerCompleted);
             // 
             // Form7InformesAltas
             // 
@@ -1770,6 +1801,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.iTalk_GroupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxOrd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGOrdenat)).EndInit();
             this.TPDetalleSituaciones.ResumeLayout(false);
             this.TPDetalleSituaciones.PerformLayout();
@@ -1933,5 +1965,8 @@
         private System.Windows.Forms.TextBox tbPeriodoAltas;
         private System.Windows.Forms.Button btnAddPeriodoAltas;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.ComponentModel.BackgroundWorker bgwSelectOrdTodos;
+        private System.Windows.Forms.PictureBox PictureBoxOrd;
+        private System.ComponentModel.BackgroundWorker bgwSelectOrdSinEstim;
     }
 }
