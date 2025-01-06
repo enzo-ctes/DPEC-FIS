@@ -6863,6 +6863,11 @@ namespace gagFIS_Interfase
                 e.ContextMenuStrip = null; // Deshabilitar el menú contextual en esa celda
             }
         }
+
+        private void ItemDetalleZona_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

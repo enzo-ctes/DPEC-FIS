@@ -104,26 +104,33 @@ namespace gagFIS_Interfase
             if (CantidadConexDirec() > 0) CargarConexDirectas();
             //if (CantidadConOrdenativos() > 0) CargarOrdenativos();
             //if (CantidadUsuarios() > 0) CargarDetalleSituaciones();
-           
-            //DGAlta hace referencia al datagridview de altas
-            DGAlta.Columns["Ruta"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            DGAlta.Columns["Operario"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            DGAlta.Columns["Domicilio"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            DGAlta.Columns["Observaciones"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            DGAlta.Columns["Observaciones"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            DGAlta.Columns["Periodo"].Visible = false;
-            DGAlta.Columns["Fecha"].Visible = true;
-            DGAlta.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            //DGConDir hace referencia al datagridview de conexiones directas
-            //DGAlta.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; 
-            DGConDir.Columns["Ruta"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            DGConDir.Columns["Operario"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            DGConDir.Columns["Domicilio"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            DGConDir.Columns["Observaciones"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            DGConDir.Columns["Observaciones"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            DGConDir.Columns["Periodo"].Visible = false;
-            DGConDir.Columns["Fecha"].Visible = true;
+            //DGAlta hace referencia al datagridview de altas
+            if (DGAlta.RowCount > 0)
+            {
+                DGAlta.Columns["Ruta"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+                DGAlta.Columns["Operario"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+                DGAlta.Columns["Domicilio"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                DGAlta.Columns["Observaciones"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                DGAlta.Columns["Observaciones"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                DGAlta.Columns["Periodo"].Visible = false;
+                DGAlta.Columns["Fecha"].Visible = true;
+                DGAlta.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+
+            if (DGConDir.RowCount > 0)
+            {
+                //DGConDir hace referencia al datagridview de conexiones directas
+                //DGAlta.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; 
+                DGConDir.Columns["Ruta"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+                DGConDir.Columns["Operario"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+                DGConDir.Columns["Domicilio"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                DGConDir.Columns["Observaciones"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                DGConDir.Columns["Observaciones"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                DGConDir.Columns["Periodo"].Visible = false;
+                DGConDir.Columns["Fecha"].Visible = true;
+
+            }
 
             ////DGAlta.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; 
             ////DGOrdenat.Columns["Ruta"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -3256,6 +3263,7 @@ namespace gagFIS_Interfase
                
             }
 
+            this.Close();
         }
 
         private void TBBuscarRutaOrdenativos_TextChanged(object sender, EventArgs e)

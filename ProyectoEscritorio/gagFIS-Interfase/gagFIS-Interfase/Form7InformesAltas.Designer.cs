@@ -62,8 +62,6 @@
             this.ProgressBarAltas = new System.Windows.Forms.ProgressBar();
             this.btnExcelAltas = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.iTalk_GroupBox1 = new iTalk.iTalk_GroupBox();
-            this.DGAlta = new System.Windows.Forms.DataGridView();
             this.tabPagConexDirect = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.BotExporPDFConDir = new System.Windows.Forms.Button();
@@ -88,8 +86,6 @@
             this.labelPerDesdeConDir = new System.Windows.Forms.Label();
             this.RBPeriodoConDir = new System.Windows.Forms.RadioButton();
             this.RBFechaConDir = new System.Windows.Forms.RadioButton();
-            this.iTalk_GroupBox2 = new iTalk.iTalk_GroupBox();
-            this.DGConDir = new System.Windows.Forms.DataGridView();
             this.tabPageOrdenativos = new System.Windows.Forms.TabPage();
             this.lblCantOrd = new System.Windows.Forms.Label();
             this.button9 = new System.Windows.Forms.Button();
@@ -111,9 +107,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.RBPeriodoNov = new System.Windows.Forms.RadioButton();
             this.RBFechaNov = new System.Windows.Forms.RadioButton();
-            this.iTalk_GroupBox3 = new iTalk.iTalk_GroupBox();
-            this.PictureBoxOrd = new System.Windows.Forms.PictureBox();
-            this.DGOrdenat = new System.Windows.Forms.DataGridView();
             this.TPDetalleSituaciones = new System.Windows.Forms.TabPage();
             this.RBRuta = new System.Windows.Forms.RadioButton();
             this.RBInstalacion = new System.Windows.Forms.RadioButton();
@@ -139,8 +132,6 @@
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
-            this.LblBuscar = new iTalk.iTalk_Label();
-            this.TextFiltro = new iTalk.iTalk_TextBox_Small();
             this.TBDetalleZona = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridViewAltas = new System.Windows.Forms.DataGridView();
@@ -161,22 +152,24 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.bgwSelectOrdTodos = new System.ComponentModel.BackgroundWorker();
             this.bgwSelectOrdSinEstim = new System.ComponentModel.BackgroundWorker();
+            this.iTalk_GroupBox1 = new iTalk.iTalk_GroupBox();
+            this.DGAlta = new System.Windows.Forms.DataGridView();
+            this.iTalk_GroupBox2 = new iTalk.iTalk_GroupBox();
+            this.DGConDir = new System.Windows.Forms.DataGridView();
+            this.iTalk_GroupBox3 = new iTalk.iTalk_GroupBox();
+            this.PictureBoxOrd = new System.Windows.Forms.PictureBox();
+            this.DGOrdenat = new System.Windows.Forms.DataGridView();
+            this.LblBuscar = new iTalk.iTalk_Label();
+            this.TextFiltro = new iTalk.iTalk_TextBox_Small();
             this.groupBox1.SuspendLayout();
             this.btnImprimirC.SuspendLayout();
             this.tabPagAltasyMod.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.iTalk_GroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGAlta)).BeginInit();
             this.tabPagConexDirect.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.iTalk_GroupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGConDir)).BeginInit();
             this.tabPageOrdenativos.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.iTalk_GroupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxOrd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DGOrdenat)).BeginInit();
             this.TPDetalleSituaciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
@@ -201,6 +194,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGAltas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGConexDirec)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGOrd)).BeginInit();
+            this.iTalk_GroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGAlta)).BeginInit();
+            this.iTalk_GroupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGConDir)).BeginInit();
+            this.iTalk_GroupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxOrd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGOrdenat)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -222,7 +222,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.radioButtonPeriodo);
             this.groupBox1.Controls.Add(this.radioButtonFecha);
-            this.groupBox1.Location = new System.Drawing.Point(422, 33);
+            this.groupBox1.Location = new System.Drawing.Point(428, 33);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(365, 188);
             this.groupBox1.TabIndex = 1;
@@ -454,7 +454,7 @@
             this.btnImprimirC.Location = new System.Drawing.Point(0, 0);
             this.btnImprimirC.Name = "btnImprimirC";
             this.btnImprimirC.SelectedIndex = 0;
-            this.btnImprimirC.Size = new System.Drawing.Size(1142, 856);
+            this.btnImprimirC.Size = new System.Drawing.Size(1154, 856);
             this.btnImprimirC.TabIndex = 10;
             // 
             // tabPagAltasyMod
@@ -467,7 +467,7 @@
             this.tabPagAltasyMod.Location = new System.Drawing.Point(4, 22);
             this.tabPagAltasyMod.Name = "tabPagAltasyMod";
             this.tabPagAltasyMod.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagAltasyMod.Size = new System.Drawing.Size(1134, 830);
+            this.tabPagAltasyMod.Size = new System.Drawing.Size(1146, 830);
             this.tabPagAltasyMod.TabIndex = 0;
             this.tabPagAltasyMod.Text = "Altas y modificaciones";
             this.tabPagAltasyMod.UseVisualStyleBackColor = true;
@@ -481,7 +481,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 231F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 179F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 162F));
             this.tableLayoutPanel1.Controls.Add(this.button4, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnImprimirAltas, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.lblCantAltas, 3, 0);
@@ -497,7 +497,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 36.08247F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.05155F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1128, 162);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1140, 162);
             this.tableLayoutPanel1.TabIndex = 14;
             // 
             // button4
@@ -506,7 +506,7 @@
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button4.Location = new System.Drawing.Point(306, 37);
+            this.button4.Location = new System.Drawing.Point(314, 37);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(124, 31);
             this.button4.TabIndex = 7;
@@ -521,7 +521,7 @@
             this.btnImprimirAltas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnImprimirAltas.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimirAltas.Image")));
             this.btnImprimirAltas.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnImprimirAltas.Location = new System.Drawing.Point(550, 39);
+            this.btnImprimirAltas.Location = new System.Drawing.Point(560, 39);
             this.btnImprimirAltas.Name = "btnImprimirAltas";
             this.btnImprimirAltas.Size = new System.Drawing.Size(124, 34);
             this.btnImprimirAltas.TabIndex = 6;
@@ -533,7 +533,7 @@
             // 
             this.lblCantAltas.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblCantAltas.AutoSize = true;
-            this.lblCantAltas.Location = new System.Drawing.Point(793, 0);
+            this.lblCantAltas.Location = new System.Drawing.Point(803, 0);
             this.lblCantAltas.Name = "lblCantAltas";
             this.lblCantAltas.Size = new System.Drawing.Size(49, 13);
             this.lblCantAltas.TabIndex = 11;
@@ -546,7 +546,7 @@
             this.LblPorcAltas.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.LblPorcAltas.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblPorcAltas.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.LblPorcAltas.Location = new System.Drawing.Point(500, 5);
+            this.LblPorcAltas.Location = new System.Drawing.Point(510, 5);
             this.LblPorcAltas.Name = "LblPorcAltas";
             this.LblPorcAltas.Size = new System.Drawing.Size(68, 23);
             this.LblPorcAltas.TabIndex = 1;
@@ -556,9 +556,9 @@
             // ProgressBarAltas
             // 
             this.ProgressBarAltas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProgressBarAltas.Location = new System.Drawing.Point(243, 5);
+            this.ProgressBarAltas.Location = new System.Drawing.Point(248, 5);
             this.ProgressBarAltas.Name = "ProgressBarAltas";
-            this.ProgressBarAltas.Size = new System.Drawing.Size(251, 23);
+            this.ProgressBarAltas.Size = new System.Drawing.Size(256, 23);
             this.ProgressBarAltas.TabIndex = 13;
             this.ProgressBarAltas.Visible = false;
             // 
@@ -568,7 +568,7 @@
             this.btnExcelAltas.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnExcelAltas.Image = ((System.Drawing.Image)(resources.GetObject("btnExcelAltas.Image")));
             this.btnExcelAltas.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnExcelAltas.Location = new System.Drawing.Point(113, 37);
+            this.btnExcelAltas.Location = new System.Drawing.Point(118, 37);
             this.btnExcelAltas.Name = "btnExcelAltas";
             this.btnExcelAltas.Size = new System.Drawing.Size(124, 36);
             this.btnExcelAltas.TabIndex = 2;
@@ -580,38 +580,13 @@
             // button5
             // 
             this.button5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button5.Location = new System.Drawing.Point(786, 37);
+            this.button5.Location = new System.Drawing.Point(796, 37);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(62, 34);
             this.button5.TabIndex = 10;
             this.button5.Text = "Cerrar";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // iTalk_GroupBox1
-            // 
-            this.iTalk_GroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.iTalk_GroupBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.iTalk_GroupBox1.Controls.Add(this.DGAlta);
-            this.iTalk_GroupBox1.Location = new System.Drawing.Point(3, 309);
-            this.iTalk_GroupBox1.MinimumSize = new System.Drawing.Size(136, 50);
-            this.iTalk_GroupBox1.Name = "iTalk_GroupBox1";
-            this.iTalk_GroupBox1.Padding = new System.Windows.Forms.Padding(5, 28, 5, 5);
-            this.iTalk_GroupBox1.Size = new System.Drawing.Size(1147, 350);
-            this.iTalk_GroupBox1.TabIndex = 5;
-            this.iTalk_GroupBox1.Text = "Tabla de Altas";
-            // 
-            // DGAlta
-            // 
-            this.DGAlta.AllowUserToAddRows = false;
-            this.DGAlta.AllowUserToDeleteRows = false;
-            this.DGAlta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGAlta.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DGAlta.Location = new System.Drawing.Point(5, 28);
-            this.DGAlta.Name = "DGAlta";
-            this.DGAlta.ReadOnly = true;
-            this.DGAlta.Size = new System.Drawing.Size(1137, 317);
-            this.DGAlta.TabIndex = 0;
             // 
             // tabPagConexDirect
             // 
@@ -638,7 +613,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 222F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 153F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 133F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
             this.tableLayoutPanel2.Controls.Add(this.BotExporPDFConDir, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.lblCantCxDir, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnImprimirConDir, 2, 1);
@@ -663,7 +638,7 @@
             this.BotExporPDFConDir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.BotExporPDFConDir.Image = ((System.Drawing.Image)(resources.GetObject("BotExporPDFConDir.Image")));
             this.BotExporPDFConDir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BotExporPDFConDir.Location = new System.Drawing.Point(318, 43);
+            this.BotExporPDFConDir.Location = new System.Drawing.Point(316, 43);
             this.BotExporPDFConDir.Name = "BotExporPDFConDir";
             this.BotExporPDFConDir.Size = new System.Drawing.Size(124, 29);
             this.BotExporPDFConDir.TabIndex = 14;
@@ -676,7 +651,7 @@
             // 
             this.lblCantCxDir.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblCantCxDir.AutoSize = true;
-            this.lblCantCxDir.Location = new System.Drawing.Point(783, 0);
+            this.lblCantCxDir.Location = new System.Drawing.Point(781, 0);
             this.lblCantCxDir.Name = "lblCantCxDir";
             this.lblCantCxDir.Size = new System.Drawing.Size(49, 13);
             this.lblCantCxDir.TabIndex = 15;
@@ -688,7 +663,7 @@
             this.btnImprimirConDir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnImprimirConDir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimirConDir.Image")));
             this.btnImprimirConDir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnImprimirConDir.Location = new System.Drawing.Point(512, 39);
+            this.btnImprimirConDir.Location = new System.Drawing.Point(510, 39);
             this.btnImprimirConDir.Name = "btnImprimirConDir";
             this.btnImprimirConDir.Size = new System.Drawing.Size(124, 29);
             this.btnImprimirConDir.TabIndex = 13;
@@ -700,9 +675,9 @@
             // ProgressBarConexDirec
             // 
             this.ProgressBarConexDirec.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProgressBarConexDirec.Location = new System.Drawing.Point(254, 5);
+            this.ProgressBarConexDirec.Location = new System.Drawing.Point(253, 5);
             this.ProgressBarConexDirec.Name = "ProgressBarConexDirec";
-            this.ProgressBarConexDirec.Size = new System.Drawing.Size(252, 22);
+            this.ProgressBarConexDirec.Size = new System.Drawing.Size(251, 22);
             this.ProgressBarConexDirec.TabIndex = 13;
             this.ProgressBarConexDirec.Visible = false;
             // 
@@ -712,7 +687,7 @@
             this.btnExellConDir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnExellConDir.Image = ((System.Drawing.Image)(resources.GetObject("btnExellConDir.Image")));
             this.btnExellConDir.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnExellConDir.Location = new System.Drawing.Point(124, 39);
+            this.btnExellConDir.Location = new System.Drawing.Point(123, 39);
             this.btnExellConDir.Name = "btnExellConDir";
             this.btnExellConDir.Size = new System.Drawing.Size(124, 29);
             this.btnExellConDir.TabIndex = 12;
@@ -724,7 +699,7 @@
             // button12
             // 
             this.button12.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.button12.Location = new System.Drawing.Point(819, 39);
+            this.button12.Location = new System.Drawing.Point(817, 39);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(62, 29);
             this.button12.TabIndex = 16;
@@ -739,7 +714,7 @@
             this.LblPorcConDir.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.LblPorcConDir.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblPorcConDir.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.LblPorcConDir.Location = new System.Drawing.Point(512, 5);
+            this.LblPorcConDir.Location = new System.Drawing.Point(510, 5);
             this.LblPorcConDir.Name = "LblPorcConDir";
             this.LblPorcConDir.Size = new System.Drawing.Size(68, 23);
             this.LblPorcConDir.TabIndex = 1;
@@ -911,31 +886,6 @@
             this.RBFechaConDir.Text = "Fecha";
             this.RBFechaConDir.UseVisualStyleBackColor = true;
             this.RBFechaConDir.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
-            // 
-            // iTalk_GroupBox2
-            // 
-            this.iTalk_GroupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.iTalk_GroupBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.iTalk_GroupBox2.Controls.Add(this.DGConDir);
-            this.iTalk_GroupBox2.Location = new System.Drawing.Point(0, 348);
-            this.iTalk_GroupBox2.MinimumSize = new System.Drawing.Size(136, 50);
-            this.iTalk_GroupBox2.Name = "iTalk_GroupBox2";
-            this.iTalk_GroupBox2.Padding = new System.Windows.Forms.Padding(5, 28, 5, 5);
-            this.iTalk_GroupBox2.Size = new System.Drawing.Size(1147, 312);
-            this.iTalk_GroupBox2.TabIndex = 6;
-            this.iTalk_GroupBox2.Text = "Conexiones Directas";
-            // 
-            // DGConDir
-            // 
-            this.DGConDir.AllowUserToAddRows = false;
-            this.DGConDir.AllowUserToDeleteRows = false;
-            this.DGConDir.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGConDir.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DGConDir.Location = new System.Drawing.Point(5, 28);
-            this.DGConDir.Name = "DGConDir";
-            this.DGConDir.ReadOnly = true;
-            this.DGConDir.Size = new System.Drawing.Size(1137, 279);
-            this.DGConDir.TabIndex = 0;
             // 
             // tabPageOrdenativos
             // 
@@ -1182,45 +1132,6 @@
             this.RBFechaNov.TabStop = true;
             this.RBFechaNov.Text = "Fecha";
             this.RBFechaNov.UseVisualStyleBackColor = true;
-            // 
-            // iTalk_GroupBox3
-            // 
-            this.iTalk_GroupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.iTalk_GroupBox3.BackColor = System.Drawing.SystemColors.Control;
-            this.iTalk_GroupBox3.Controls.Add(this.PictureBoxOrd);
-            this.iTalk_GroupBox3.Controls.Add(this.DGOrdenat);
-            this.iTalk_GroupBox3.Location = new System.Drawing.Point(-7, 331);
-            this.iTalk_GroupBox3.MinimumSize = new System.Drawing.Size(136, 50);
-            this.iTalk_GroupBox3.Name = "iTalk_GroupBox3";
-            this.iTalk_GroupBox3.Padding = new System.Windows.Forms.Padding(5, 28, 5, 5);
-            this.iTalk_GroupBox3.Size = new System.Drawing.Size(1150, 340);
-            this.iTalk_GroupBox3.TabIndex = 12;
-            this.iTalk_GroupBox3.Text = "Usuarios con Ordenativos";
-            // 
-            // PictureBoxOrd
-            // 
-            this.PictureBoxOrd.BackColor = System.Drawing.Color.White;
-            this.PictureBoxOrd.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PictureBoxOrd.Image = global::gagFIS_Interfase.Properties.Resources.gifCargando;
-            this.PictureBoxOrd.Location = new System.Drawing.Point(5, 28);
-            this.PictureBoxOrd.Name = "PictureBoxOrd";
-            this.PictureBoxOrd.Size = new System.Drawing.Size(1140, 307);
-            this.PictureBoxOrd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PictureBoxOrd.TabIndex = 1;
-            this.PictureBoxOrd.TabStop = false;
-            this.PictureBoxOrd.Visible = false;
-            // 
-            // DGOrdenat
-            // 
-            this.DGOrdenat.AllowUserToAddRows = false;
-            this.DGOrdenat.AllowUserToDeleteRows = false;
-            this.DGOrdenat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGOrdenat.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DGOrdenat.Location = new System.Drawing.Point(5, 28);
-            this.DGOrdenat.Name = "DGOrdenat";
-            this.DGOrdenat.ReadOnly = true;
-            this.DGOrdenat.Size = new System.Drawing.Size(1140, 307);
-            this.DGOrdenat.TabIndex = 0;
             // 
             // TPDetalleSituaciones
             // 
@@ -1535,36 +1446,6 @@
             this.button13.UseVisualStyleBackColor = true;
             this.button13.Visible = false;
             // 
-            // LblBuscar
-            // 
-            this.LblBuscar.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.LblBuscar.AutoSize = true;
-            this.LblBuscar.BackColor = System.Drawing.Color.Transparent;
-            this.LblBuscar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.LblBuscar.Location = new System.Drawing.Point(481, 141);
-            this.LblBuscar.Name = "LblBuscar";
-            this.LblBuscar.Size = new System.Drawing.Size(43, 13);
-            this.LblBuscar.TabIndex = 27;
-            this.LblBuscar.Text = "Buscar:";
-            // 
-            // TextFiltro
-            // 
-            this.TextFiltro.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.TextFiltro.BackColor = System.Drawing.Color.Transparent;
-            this.TextFiltro.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.TextFiltro.ForeColor = System.Drawing.Color.DimGray;
-            this.TextFiltro.Location = new System.Drawing.Point(533, 135);
-            this.TextFiltro.MaxLength = 32767;
-            this.TextFiltro.Multiline = false;
-            this.TextFiltro.Name = "TextFiltro";
-            this.TextFiltro.ReadOnly = false;
-            this.TextFiltro.Size = new System.Drawing.Size(319, 28);
-            this.TextFiltro.TabIndex = 26;
-            this.TextFiltro.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
-            this.TextFiltro.UseSystemPasswordChar = false;
-            this.TextFiltro.TextChanged += new System.EventHandler(this.TextFiltro_TextChanged);
-            // 
             // TBDetalleZona
             // 
             this.TBDetalleZona.Location = new System.Drawing.Point(4, 22);
@@ -1767,11 +1648,130 @@
             this.bgwSelectOrdSinEstim.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwSelectOrdSinEstim_DoWork);
             this.bgwSelectOrdSinEstim.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwSelectOrdSinEstim_RunWorkerCompleted);
             // 
+            // iTalk_GroupBox1
+            // 
+            this.iTalk_GroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.iTalk_GroupBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.iTalk_GroupBox1.Controls.Add(this.DGAlta);
+            this.iTalk_GroupBox1.Location = new System.Drawing.Point(3, 309);
+            this.iTalk_GroupBox1.MinimumSize = new System.Drawing.Size(136, 50);
+            this.iTalk_GroupBox1.Name = "iTalk_GroupBox1";
+            this.iTalk_GroupBox1.Padding = new System.Windows.Forms.Padding(5, 28, 5, 5);
+            this.iTalk_GroupBox1.Size = new System.Drawing.Size(1159, 350);
+            this.iTalk_GroupBox1.TabIndex = 5;
+            this.iTalk_GroupBox1.Text = "Tabla de Altas";
+            // 
+            // DGAlta
+            // 
+            this.DGAlta.AllowUserToAddRows = false;
+            this.DGAlta.AllowUserToDeleteRows = false;
+            this.DGAlta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGAlta.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DGAlta.Location = new System.Drawing.Point(5, 28);
+            this.DGAlta.Name = "DGAlta";
+            this.DGAlta.ReadOnly = true;
+            this.DGAlta.Size = new System.Drawing.Size(1149, 317);
+            this.DGAlta.TabIndex = 0;
+            // 
+            // iTalk_GroupBox2
+            // 
+            this.iTalk_GroupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.iTalk_GroupBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.iTalk_GroupBox2.Controls.Add(this.DGConDir);
+            this.iTalk_GroupBox2.Location = new System.Drawing.Point(0, 348);
+            this.iTalk_GroupBox2.MinimumSize = new System.Drawing.Size(136, 50);
+            this.iTalk_GroupBox2.Name = "iTalk_GroupBox2";
+            this.iTalk_GroupBox2.Padding = new System.Windows.Forms.Padding(5, 28, 5, 5);
+            this.iTalk_GroupBox2.Size = new System.Drawing.Size(1147, 312);
+            this.iTalk_GroupBox2.TabIndex = 6;
+            this.iTalk_GroupBox2.Text = "Conexiones Directas";
+            // 
+            // DGConDir
+            // 
+            this.DGConDir.AllowUserToAddRows = false;
+            this.DGConDir.AllowUserToDeleteRows = false;
+            this.DGConDir.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGConDir.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DGConDir.Location = new System.Drawing.Point(5, 28);
+            this.DGConDir.Name = "DGConDir";
+            this.DGConDir.ReadOnly = true;
+            this.DGConDir.Size = new System.Drawing.Size(1137, 279);
+            this.DGConDir.TabIndex = 0;
+            // 
+            // iTalk_GroupBox3
+            // 
+            this.iTalk_GroupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.iTalk_GroupBox3.BackColor = System.Drawing.SystemColors.Control;
+            this.iTalk_GroupBox3.Controls.Add(this.PictureBoxOrd);
+            this.iTalk_GroupBox3.Controls.Add(this.DGOrdenat);
+            this.iTalk_GroupBox3.Location = new System.Drawing.Point(-7, 331);
+            this.iTalk_GroupBox3.MinimumSize = new System.Drawing.Size(136, 50);
+            this.iTalk_GroupBox3.Name = "iTalk_GroupBox3";
+            this.iTalk_GroupBox3.Padding = new System.Windows.Forms.Padding(5, 28, 5, 5);
+            this.iTalk_GroupBox3.Size = new System.Drawing.Size(1150, 340);
+            this.iTalk_GroupBox3.TabIndex = 12;
+            this.iTalk_GroupBox3.Text = "Usuarios con Ordenativos";
+            // 
+            // PictureBoxOrd
+            // 
+            this.PictureBoxOrd.BackColor = System.Drawing.Color.White;
+            this.PictureBoxOrd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PictureBoxOrd.Image = global::gagFIS_Interfase.Properties.Resources.gifCargando;
+            this.PictureBoxOrd.Location = new System.Drawing.Point(5, 28);
+            this.PictureBoxOrd.Name = "PictureBoxOrd";
+            this.PictureBoxOrd.Size = new System.Drawing.Size(1140, 307);
+            this.PictureBoxOrd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PictureBoxOrd.TabIndex = 1;
+            this.PictureBoxOrd.TabStop = false;
+            this.PictureBoxOrd.Visible = false;
+            // 
+            // DGOrdenat
+            // 
+            this.DGOrdenat.AllowUserToAddRows = false;
+            this.DGOrdenat.AllowUserToDeleteRows = false;
+            this.DGOrdenat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGOrdenat.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DGOrdenat.Location = new System.Drawing.Point(5, 28);
+            this.DGOrdenat.Name = "DGOrdenat";
+            this.DGOrdenat.ReadOnly = true;
+            this.DGOrdenat.Size = new System.Drawing.Size(1140, 307);
+            this.DGOrdenat.TabIndex = 0;
+            // 
+            // LblBuscar
+            // 
+            this.LblBuscar.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.LblBuscar.AutoSize = true;
+            this.LblBuscar.BackColor = System.Drawing.Color.Transparent;
+            this.LblBuscar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
+            this.LblBuscar.Location = new System.Drawing.Point(481, 141);
+            this.LblBuscar.Name = "LblBuscar";
+            this.LblBuscar.Size = new System.Drawing.Size(43, 13);
+            this.LblBuscar.TabIndex = 27;
+            this.LblBuscar.Text = "Buscar:";
+            // 
+            // TextFiltro
+            // 
+            this.TextFiltro.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.TextFiltro.BackColor = System.Drawing.Color.Transparent;
+            this.TextFiltro.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.TextFiltro.ForeColor = System.Drawing.Color.DimGray;
+            this.TextFiltro.Location = new System.Drawing.Point(533, 135);
+            this.TextFiltro.MaxLength = 32767;
+            this.TextFiltro.Multiline = false;
+            this.TextFiltro.Name = "TextFiltro";
+            this.TextFiltro.ReadOnly = false;
+            this.TextFiltro.Size = new System.Drawing.Size(319, 28);
+            this.TextFiltro.TabIndex = 26;
+            this.TextFiltro.TextAlignment = System.Windows.Forms.HorizontalAlignment.Left;
+            this.TextFiltro.UseSystemPasswordChar = false;
+            this.TextFiltro.TextChanged += new System.EventHandler(this.TextFiltro_TextChanged);
+            // 
             // Form7InformesAltas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1142, 856);
+            this.ClientSize = new System.Drawing.Size(1154, 856);
             this.ControlBox = false;
             this.Controls.Add(this.btnImprimirC);
             this.Name = "Form7InformesAltas";
@@ -1786,23 +1786,16 @@
             this.tabPagAltasyMod.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.iTalk_GroupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DGAlta)).EndInit();
             this.tabPagConexDirect.ResumeLayout(false);
             this.tabPagConexDirect.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.iTalk_GroupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DGConDir)).EndInit();
             this.tabPageOrdenativos.ResumeLayout(false);
             this.tabPageOrdenativos.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.iTalk_GroupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxOrd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DGOrdenat)).EndInit();
             this.TPDetalleSituaciones.ResumeLayout(false);
             this.TPDetalleSituaciones.PerformLayout();
             this.splitContainer4.Panel1.ResumeLayout(false);
@@ -1832,6 +1825,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGAltas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGConexDirec)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGOrd)).EndInit();
+            this.iTalk_GroupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DGAlta)).EndInit();
+            this.iTalk_GroupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DGConDir)).EndInit();
+            this.iTalk_GroupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxOrd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGOrdenat)).EndInit();
             this.ResumeLayout(false);
 
         }

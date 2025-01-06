@@ -8591,3 +8591,97 @@ UNIQUE
 2024-12-27 (10:11:48) 27/12/2024 10:11:48---> There is already an open
      DataReader associated with this Connection which must be closed first.
      Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2024-12-30 (11:08:49) 30/12/2024 11:08:49---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2024-12-30 (11:12:37) Localidad: 227 Se Exportaron los archivos: |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\LEC_12276700_20241230111230.btx |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\FAC_12276700_20241230111230.btx |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\LOG_12276700_20241230111230.btx |
+2024-12-30 (11:12:43) Localidad: 227 Se Exportaron los archivos: |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\LEC_12276701_20241230111237.btx |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\FAC_12276701_20241230111237.btx |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\LOG_12276701_20241230111237.btx |
+2024-12-30 (11:12:47) Localidad: 227 Se Exportaron los archivos: |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\LEC_12276702_20241230111243.btx |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\FAC_12276702_20241230111243.btx |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\LOG_12276702_20241230111243.btx |
+2024-12-30 (12:04:26) 30/12/2024 12:04:26---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2024-12-30 (12:05:29) 30/12/2024 12:05:29---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2024-12-30 (12:05:31) 30/12/2024 12:05:31---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-02 (10:32:53) 02/01/2025 10:32:53---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-02 (12:10:36) 02/01/2025 12:10:36---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-03 (06:51:10) 03/01/2025 06:51:10---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-03 (07:02:05) Localidad: 206 Se Exportaron los archivos: |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\LEC_22065530_20250103070203.btx |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\FAC_22065530_20250103070203.btx |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\LOG_22065530_20250103070203.btx |
+2025-01-03 (07:02:09) Localidad: 206 Se Exportaron los archivos: |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\LEC_22065531_20250103070206.btx |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\FAC_22065531_20250103070206.btx |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\LOG_22065531_20250103070206.btx |
+2025-01-03 (07:54:17) 03/01/2025 07:54:17---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-03 (08:05:40) Localidad: 206 Se Exportaron los archivos: |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\LEC_22065532_20250103080536.btx |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\FAC_22065532_20250103080536.btx |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\LOG_22065532_20250103080536.btx |
+2025-01-03 (08:21:21) 03/01/2025 08:21:21---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-03 (08:32:43) Localidad: 244 Se Exportaron los archivos: |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\LEC_12447570_20250103083226.btx |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\FAC_12447570_20250103083226.btx |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\LOG_12447570_20250103083226.btx |
+2025-01-03 (09:26:59) 03/01/2025 09:26:59---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-03 (11:08:18) 03/01/2025 11:08:18---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-03 (11:13:42) 03/01/2025 11:13:42---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-03 (12:05:17) Localidad: 206 Se Exportaron los archivos: |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\LEC_22065535_20250103120514.btx |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\FAC_22065535_20250103120514.btx |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\LOG_22065535_20250103120514.btx |
+2025-01-03 (12:05:20) Localidad: 206 Se Exportaron los archivos: |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\LEC_22065536_20250103120517.btx |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\FAC_22065536_20250103120517.btx |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\LOG_22065536_20250103120517.btx |
+2025-01-06 (07:17:06) 06/01/2025 07:17:06---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-06 (10:39:59) 06/01/2025 10:39:59---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-06 (13:40:23) 06/01/2025 01:40:23---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-06 (13:42:17) 06/01/2025 01:42:17---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-06 (13:43:25) 06/01/2025 01:43:25---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-06 (13:51:00) 06/01/2025 01:51:00---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-06 (13:52:05) Localidad: 206 Se Exportaron los archivos: |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\LEC_22065545_20250106135202.btx |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\FAC_22065545_20250106135202.btx |
+     C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\LOG_22065545_20250106135202.btx |

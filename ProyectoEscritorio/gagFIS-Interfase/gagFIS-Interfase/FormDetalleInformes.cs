@@ -20,6 +20,7 @@ using Excel = Microsoft.Office.Interop.Excel;
 using static Mysqlx.Datatypes.Scalar.Types;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Rectangle = System.Drawing.Rectangle;
+using System.Web.UI.WebControls;
 
 namespace gagFIS_Interfase
 {
@@ -72,9 +73,16 @@ namespace gagFIS_Interfase
 
         private void FormDetalleInformes_Load(object sender, EventArgs e)
         {
+
+            //LblDatosInforme.Text = detalle;
+            //LblDatosInforme.Visible = true;
             if (tipoResumen == "DZ")
             {
                 BGWInfSuperv.RunWorkerAsync();
+
+                toolStripTotalRegistros.Visible = true;
+                toolStripTotalRegistros.Text = "Total Usuarios = " + dgResumen.RowCount.ToString();
+                
                 //dgResumen.ScrollBars = ScrollBars.Both;
             }
             else if (tipoResumen == "AZ")
@@ -104,7 +112,7 @@ namespace gagFIS_Interfase
 
         private void simulateHeavyWork()
         {
-            Thread.Sleep(dgResumen.Rows.Count);
+            Thread.Sleep(0);
         }
 
         /// <summary>
@@ -315,14 +323,15 @@ namespace gagFIS_Interfase
             else if (ResumenDetTeleLectura == "LabelTodosRem")
             {
                 CargaDetalleZonaSelec();
-                //CargarResumenLectDias();
+                CargarResumenLectDias();
             }
             else
             {
                 CargaDetalle();
                 CargarResumenLectDias();
             }
-            this.WindowState = FormWindowState.Maximized;
+            //this.WindowState = FormWindowState.Maximized;
+            //dgResumen.ScrollBars = System.Windows.Forms.ScrollBars.Both;
         }
 
        
@@ -384,48 +393,74 @@ namespace gagFIS_Interfase
                 {          
                       //string fechaLecturas =item.ToString();
                       ListaFechas.Add(item.ToString());
-                      //int cantidadMayoresQue5 = numeros.Where(n => n > 5).Count();
+                    //int cantidadMayoresQue5 = numeros.Where(n => n > 5).Count();
 
-                      string SelectTomados = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
-                                           " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
-                                           //" WHERE C.Ruta = " + RutaNº + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
-                                           " WHERE C.Periodo = " + Vble.Periodo +
-                                           " AND M.ActualFecha = '" + fechaLecturas + "'" +
-                                           " AND C.Zona = " + ZonaDetResumen + "" +
-                                           " AND C.ImpresionOBS MOD 100 > 0";
+                    string SelectCants = "SELECT SUM(IF(C.ImpresionOBS MOD 100 > 0, 1, 0)) AS Tomados, " +
+                     "SUM(IF(C.ImpresionOBS MOD 100 > 1, 1, 0)) AS LeidosSinImprimir, " +
+                     "SUM(IF(C.ImpresionOBS MOD 100 = 1, 1, 0)) AS Impresos FROM Conexiones C INNER JOIN Medidores M" +
+                     " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
+                     //" WHERE C.Ruta = " + RutaNº + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
+                     " WHERE C.Periodo = " + Vble.Periodo +
+                     " AND M.ActualFecha = '" + fechaLecturas + "'" +
+                     " AND C.Zona = " + ZonaDetResumen;
 
-                      MySqlCommand command = new MySqlCommand(SelectTomados, DB.conexBD);
-                      command.CommandTimeout = 300;
-                      Tomados.Add(command.ExecuteScalar().ToString());
-                      command.Dispose();
-                                    
+                    MySqlCommand command = new MySqlCommand(SelectCants, DB.conexBD);
+                    command.CommandTimeout = 300;                    
+                   
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            //int id = reader.GetInt32(0); // Primer columna
+                            //string username = reader.GetString(1); // Segunda columna
+                            Tomados.Add(reader.GetInt32(0));//TOMADOS
+                            LeidosSinImprimir.Add(reader.GetInt32(1).ToString());//LEIDOS SIN IMPRIMIR
+                            Impresos.Add(reader.GetInt32(2).ToString());//IMPRESOS
+                        }
+                        reader.Dispose();
+                    }
+                    command.Dispose();
+                    //string SelectTomados = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
+                    //                       " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
+                    //                       //" WHERE C.Ruta = " + RutaNº + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
+                    //                       " WHERE C.Periodo = " + Vble.Periodo +
+                    //                       " AND M.ActualFecha = '" + fechaLecturas + "'" +
+                    //                       " AND C.Zona = " + ZonaDetResumen + "" +
+                    //                       " AND C.ImpresionOBS MOD 100 > 0";
+
+                    //  MySqlCommand command = new MySqlCommand(SelectTomados, DB.conexBD);
+                    //  command.CommandTimeout = 300;
+                    //  Tomados.Add(command.ExecuteScalar().ToString());
+                    //  command.Dispose();
 
 
-                      string SelectLeidosSinImprimir = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
-                                              " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
-                                              " WHERE C.Periodo = " + Vble.Periodo +
-                                             " AND M.ActualFecha = '" + fechaLecturas + "'" +
-                                             " AND C.Zona = " + ZonaDetResumen + "" +
-                                             " AND C.ImpresionOBS MOD 100 > 1";
 
-                      command = new MySqlCommand(SelectLeidosSinImprimir, DB.conexBD);
-                      command.CommandTimeout = 300;
-                      LeidosSinImprimir.Add(command.ExecuteScalar().ToString());
-                      command.Dispose();
+                    //  string SelectLeidosSinImprimir = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
+                    //                          " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
+                    //                          " WHERE C.Periodo = " + Vble.Periodo +
+                    //                         " AND M.ActualFecha = '" + fechaLecturas + "'" +
+                    //                         " AND C.Zona = " + ZonaDetResumen + "" +
+                    //                         " AND C.ImpresionOBS MOD 100 > 1";
 
-                      string SelectImpresos = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
-                                              " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
-                                              //" WHERE C.Ruta = " + RutaNº + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
-                                              " WHERE C.Periodo = " + Vble.Periodo +
-                                             " AND M.ActualFecha = '" + fechaLecturas + "'" +
-                                             " AND C.Zona = " + ZonaDetResumen + "" +
-                                             " AND C.ImpresionOBS MOD 100 = 1";
+                    //  command = new MySqlCommand(SelectLeidosSinImprimir, DB.conexBD);
+                    //  command.CommandTimeout = 300;
+                    //  LeidosSinImprimir.Add(command.ExecuteScalar().ToString());
+                    //  command.Dispose();
 
-                      command = new MySqlCommand(SelectImpresos, DB.conexBD);
-                      command.CommandTimeout = 300;
-                      Impresos.Add(command.ExecuteScalar().ToString());
-                      command.Dispose();                  
-                  }
+                    //  string SelectImpresos = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
+                    //                          " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
+                    //                          //" WHERE C.Ruta = " + RutaNº + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
+                    //                          " WHERE C.Periodo = " + Vble.Periodo +
+                    //                         " AND M.ActualFecha = '" + fechaLecturas + "'" +
+                    //                         " AND C.Zona = " + ZonaDetResumen + "" +
+                    //                         " AND C.ImpresionOBS MOD 100 = 1";
+
+                    //  command = new MySqlCommand(SelectImpresos, DB.conexBD);
+                    //  command.CommandTimeout = 300;
+                    //  Impresos.Add(command.ExecuteScalar().ToString());
+                    //  command.Dispose();                  
+                }
             }
 
             //InitializeComponent(); // you need to add a listView named listView1 with the designer
@@ -1172,7 +1207,7 @@ private void ObtenerPeriodoRemesa()
             //MiLoadingInformes.Visible = false;
         }
 
-        private void BGWInfSuperv_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private async void BGWInfSuperv_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             for (int i = 0; i < ListaFechas.Count; i++)
             {
@@ -1299,12 +1334,23 @@ private void ObtenerPeriodoRemesa()
                 //LVResumenGral.Visible = true;
                 GroupBoxResumenGral.Visible = true;
             }
-
+            //var resultado = await Task.Run(() => RealizarOperacionPesada());
             toolStripTotalRegistros.Visible = true;
             toolStripTotalRegistros.Text = "Total Usuarios = " + dgResumen.RowCount.ToString();
             MiLoadingInformes.Visible = false;
-            LabCargandoInformes.Visible = false;
         }
+
+        //private int RealizarOperacionPesada()
+        //{
+        //    dgResumen.Visible = true;
+        //    //LVResumenGral.Visible = true;
+        //    GroupBoxResumenGral.Visible = true;
+
+        //    toolStripTotalRegistros.Visible = true;
+        //    toolStripTotalRegistros.Text = "Total Usuarios = " + dgResumen.RowCount.ToString();
+        //    MiLoadingInformes.Visible = false;
+        //    return 1;
+        //}
 
         private void BGWInfSuperv_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
@@ -1406,45 +1452,129 @@ private void ObtenerPeriodoRemesa()
             }
 
             string cantLecturas = "0";
-          
-            foreach (var ope in lecturistas)
+
+
+            //foreach (var ope in lecturistas)
+            //{
+            //    //var lecturas = dgResumen.Rows.Cast<DataGridViewRow>()
+            //    //               .Where(row => (Convert.ToInt32(row.Cells["Periodo"].Value) == Vble.Periodo) && row.Cells["Fecha"].Value.ToString() == Convert.ToDateTime(item).ToString("dd-MM-yyyy").ToString()
+            //    //                && row.Cells["Zona"].Value.ToString() == ZonaDetResumen
+            //    //                && row.Cells["Operario"].Value == ope)
+            //    //               .Count();
+            //    if (ope.ToString() != "0")
+            //    {
+            //string SelectTomadosxLect = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
+            //                   " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
+            //                   //" WHERE C.Ruta = " + RutaNº + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
+            //                   " WHERE C.Periodo = " + Vble.Periodo +
+            //                   " AND M.ActualFecha = '" + Convert.ToDateTime(FechaLec).ToString("yyyy-MM-dd") + "'" +
+            //                   " AND C.Zona = " + ZonaDetResumen + "" +
+            //                   " AND C.Operario = " + ope + 
+            //                   " AND C.ImpresionOBS MOD 100 > 0";
+
+
+
+            //MySqlCommand command = new MySqlCommand(SelectTomadosxLect, DB.conexBD);
+            //command.CommandTimeout = 300;
+            //cantLecturas = command.ExecuteScalar().ToString();
+            //command.Dispose();
+
+            //if (cantLecturas != "0")
+            //{
+            //    items = new ListViewItem(LVLectDias.SelectedItems[0].Text);
+            //    items.SubItems.Add(ope.ToString());
+            //    items.SubItems.Add(cantLecturas);
+            //    LVLectOper.Items.Add(items);
+            //    cantLecturas = "0";
+            //}
+
+
+            //    }
+            //}
+
+
+            string SelectTomadosxLect = "SELECT C.Operario, " +
+                                        "COUNT(C.ConexionID) as Total FROM Conexiones C INNER JOIN Medidores M" +
+                                   " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
+                                   //" WHERE C.Ruta = " + RutaNº + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
+                                   " WHERE C.Periodo = " + Vble.Periodo +
+                                   " AND M.ActualFecha = '" + Convert.ToDateTime(FechaLec).ToString("yyyy-MM-dd") + "'" +
+                                   " AND C.Zona = " + ZonaDetResumen + "" +
+                                   " AND ( C.Operario = 1 " + iteracionLecturista(lecturistas) + ")" +
+                                   " AND C.ImpresionOBS MOD 100 > 0" +
+                                   "  GROUP BY C.Operario";
+
+            MySqlCommand command = new MySqlCommand(SelectTomadosxLect, DB.conexBD);
+            command.CommandTimeout = 300;
+            //cantLecturas = command.ExecuteScalar().ToString();
+           
+
+
+            using (MySqlDataReader reader = command.ExecuteReader())
             {
-                //var lecturas = dgResumen.Rows.Cast<DataGridViewRow>()
-                //               .Where(row => (Convert.ToInt32(row.Cells["Periodo"].Value) == Vble.Periodo) && row.Cells["Fecha"].Value.ToString() == Convert.ToDateTime(item).ToString("dd-MM-yyyy").ToString()
-                //                && row.Cells["Zona"].Value.ToString() == ZonaDetResumen
-                //                && row.Cells["Operario"].Value == ope)
-                //               .Count();
-                if (ope.ToString() != "0")
+                while (reader.Read())
                 {
-                    string SelectTomadosxLect = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
-                                       " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
-                                       //" WHERE C.Ruta = " + RutaNº + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
-                                       " WHERE C.Periodo = " + Vble.Periodo +
-                                       " AND M.ActualFecha = '" + Convert.ToDateTime(FechaLec).ToString("yyyy-MM-dd") + "'" +
-                                       " AND C.Zona = " + ZonaDetResumen + "" +
-                                       " AND C.Operario = " + ope +
-                                       " AND C.ImpresionOBS MOD 100 > 0";
+                    ////int id = reader.GetInt32(0); // Primer columna
+                    ////string username = reader.GetString(1); // Segunda columna
+                    //Tomados.Add(reader.GetInt32(0));//TOMADOS
+                    //LeidosSinImprimir.Add(reader.GetInt32(1).ToString());//LEIDOS SIN IMPRIMIR
+                    //Impresos.Add(reader.GetInt32(2).ToString());//IMPRESOS
 
-
-
-                    MySqlCommand command = new MySqlCommand(SelectTomadosxLect, DB.conexBD);
-                    command.CommandTimeout = 300;
-                    cantLecturas = command.ExecuteScalar().ToString();
-                    command.Dispose();
-
-                    if (cantLecturas != "0")
-                    {
-                        items = new ListViewItem(LVLectDias.SelectedItems[0].Text);
-                        items.SubItems.Add(ope.ToString());
-                        items.SubItems.Add(cantLecturas);
-                        LVLectOper.Items.Add(items);
-                        cantLecturas = "0";
-                    }
-
-                   
+                    items = new ListViewItem(LVLectDias.SelectedItems[0].Text);
+                    items.SubItems.Add(reader.GetInt32(0).ToString());//operario   
+                    items.SubItems.Add(reader.GetInt32(1).ToString());//cantidad lecturistas
+                    LVLectOper.Items.Add(items);
+                    cantLecturas = "0";
                 }
+                reader.Dispose();
             }
+
+            command.Dispose();
+
+            //if (cantLecturas != "0")
+            //{
+            //    items = new ListViewItem(LVLectDias.SelectedItems[0].Text);
+            //    items.SubItems.Add(ope.ToString());
+            //    items.SubItems.Add(cantLecturas);
+            //    LVLectOper.Items.Add(items);
+            //    cantLecturas = "0";
+            //}
+          
+
             PBLOprs.Visible = false;
+        }
+
+        /// <summary>
+        /// Consulta con iteracion para cargar la cantidad de conexiones que pertenecen a la secuencia seleccionada
+        /// </summary>
+        /// <returns></returns>
+        private string iteracionLecturista(List<object> operarios)
+        {
+            string where = "";
+            try
+            {
+                for (int i = 0; i < operarios.Count; i++)
+                {
+
+                    where += " OR C.Operario = " + operarios[i];
+                    //where += " OR ((conexiones.conexionid=infoconex.conexionid " +
+                    //" AND conexiones.periodo = " + Vble.Periodo +
+                    //" AND conexiones.ImpresionOBS = " + 0 +
+                    //" AND conexiones.Zona = " + ArrayZona[i] + ")" +
+                    ////" AND" 
+                    //" OR (conexiones.conexionid=infoconex.conexionid " +
+                    //    " AND conexiones.periodo = " + Vble.Periodo +
+                    //    " AND conexiones.ImpresionOBS = " + 500 +
+                    //    " AND conexiones.Zona = " + ArrayZona[i] + "))";                
+                }
+
+            }
+            catch (Exception r)
+            {
+                MessageBox.Show(r.Message + "Error Al realizar Iteración de Nodos Seleccionado", "Error de Consulta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return where;
+
         }
 
         private void bgwLectXOp_DoWork(object sender, DoWorkEventArgs e)
@@ -1513,6 +1643,11 @@ private void ObtenerPeriodoRemesa()
 
             //GroupBoxResumenGral.Text = "Resumen detalle de lectura Remesa " + RemesaDetResumen;
            
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     } 
 }

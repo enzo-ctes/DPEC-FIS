@@ -2299,8 +2299,8 @@ namespace gagFIS_Interfase {
             string Cargado = "NO";
             try
             {
-                string user = "macroint";
-                string pass = "Micc4001";
+                string user = Vble.UserFTP();
+                string pass = Vble.PassAdmin();
                 string ServerDownloadPath = "ftp://macrointell.com.ar/DPEC-FIS/Cargas/" + Localidad + "/" + DirectorioColecEnServidor + "/";
                 DirectoryInfo Archivo = new DirectoryInfo(Archivos);
 
@@ -4318,6 +4318,7 @@ namespace gagFIS_Interfase {
             DetalleImpresos.WindowState = FormWindowState.Maximized;
             DetalleImpresos.ImpresionOBS = ImpresionOBS;
             DetalleImpresos.Remesa = Remesa;
+
             //DetalleImpresos.Desde = Desde;
             //DetalleImpresos.Hasta = Hasta;
             DetalleImpresos.Visible = false;
