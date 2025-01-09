@@ -100,6 +100,7 @@ namespace gagFIS_Interfase
         ContextMenuStrip menu = new ContextMenuStrip();
         string ZonaDetRes = "";
         string RemesaDetRes = "";
+        string ZonaLocalidad = "";
 
         public FormDetallePreDescarga()
         {
@@ -6664,11 +6665,13 @@ namespace gagFIS_Interfase
                     {
                         RemesaDetRes = DGResumenExp.Rows[e.RowIndex].Cells[1].Value.ToString();
                         ZonaDetRes = DGResumenExp.Rows[e.RowIndex].Cells[0].Value.ToString();
+                        ZonaLocalidad = DGResumenExp.Rows[e.RowIndex].Cells[2].Value.ToString();
                     }
                     else
                     {
                         RemesaDetRes = DGResumenExp.Rows[e.RowIndex].Cells[0].Value.ToString();
                         ZonaDetRes = DGResumenExp.Rows[e.RowIndex].Cells[1].Value.ToString();
+                        ZonaLocalidad = DGResumenExp.Rows[e.RowIndex].Cells[2].Value.ToString();
                     }             
 
                     //mostramos el menu
@@ -6698,6 +6701,7 @@ namespace gagFIS_Interfase
         private void contextMenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             FormDetalleInformes pantallaDetalle = new FormDetalleInformes();
+             
             CMSDetalleInformes.Close();
             //string Zona = DGResumenExp.
 
@@ -6705,33 +6709,28 @@ namespace gagFIS_Interfase
             {
                 if (e.ClickedItem.Name == "ItemDetalleZona")
                 {
+
                     pantallaDetalle.tipoResumen = "DZ";//Abreviación para obtener informe detalle Zona
                     pantallaDetalle.ZonaDetResumen = ZonaDetRes;
                     pantallaDetalle.RemesaDetResumen = RemesaDetRes;
                     pantallaDetalle.ResumenDetTeleLectura = LabelLeyenda.Text;
                     pantallaDetalle.zonaTeleLect = ZonaDetRes;
-                    pantallaDetalle.remTeleLect = RemesaDetRes;
+                    pantallaDetalle.remTeleLect = RemesaDetRes;                  
+                    pantallaDetalle.detalle = $"INFORME DETALLE LECTURAS, LOCALIDAD: {ZonaLocalidad}  ";
+                    
                     pantallaDetalle.Show();
                 }
-                else if (e.ClickedItem.Name == "ItemAltasZona")
-                    {
-                        pantallaDetalle.tipoResumen = "AZ"; //Abreviación para obtener inform de Altas de la zona (donde trae la ubicacion- Latitud y Longitud)
-                        pantallaDetalle.ZonaDetResumen = ZonaDetRes;
-                        pantallaDetalle.RemesaDetResumen = RemesaDetRes;
-                        pantallaDetalle.ResumenDetTeleLectura = LabelLeyenda.Text;
-                        pantallaDetalle.zonaTeleLect = ZonaDetRes;
-                        pantallaDetalle.remTeleLect = RemesaDetRes;
-                        pantallaDetalle.Show();
-                    }
-                {
-
-                }
+                //else if (e.ClickedItem.Name == "ItemAltasZona")
+                //    {
+                //        pantallaDetalle.tipoResumen = "AZ"; //Abreviación para obtener inform de Altas de la zona (donde trae la ubicacion- Latitud y Longitud)
+                //        pantallaDetalle.ZonaDetResumen = ZonaDetRes;
+                //        pantallaDetalle.RemesaDetResumen = RemesaDetRes;
+                //        pantallaDetalle.ResumenDetTeleLectura = LabelLeyenda.Text;
+                //        pantallaDetalle.zonaTeleLect = ZonaDetRes;
+                //        pantallaDetalle.remTeleLect = RemesaDetRes;
+                //        pantallaDetalle.Show();
+                //    }                
             }
-        }
-
-        private void CMSDetalleInformes_Opening(object sender, CancelEventArgs e)
-        {
-
         }
 
         private void DGResumenExp_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -6865,6 +6864,11 @@ namespace gagFIS_Interfase
         }
 
         private void ItemDetalleZona_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked_1(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }

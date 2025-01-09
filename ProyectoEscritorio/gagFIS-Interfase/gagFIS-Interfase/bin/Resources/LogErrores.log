@@ -8685,3 +8685,9 @@ UNIQUE
      C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\LEC_22065545_20250106135202.btx |
      C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\FAC_22065545_20250106135202.btx |
      C:\A_DPEC\_Pruebas\Respaldo\UPLOAD\LOG_22065545_20250106135202.btx |
+2025-01-08 (12:55:12) 08/01/2025 12:55:12---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-09 (08:38:07) 09/01/2025 08:38:07---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD

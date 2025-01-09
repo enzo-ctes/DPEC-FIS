@@ -21,6 +21,7 @@ using static Mysqlx.Datatypes.Scalar.Types;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Rectangle = System.Drawing.Rectangle;
 using System.Web.UI.WebControls;
+using System.Data.Common;
 
 namespace gagFIS_Interfase
 {
@@ -74,26 +75,59 @@ namespace gagFIS_Interfase
         private void FormDetalleInformes_Load(object sender, EventArgs e)
         {
 
-            //LblDatosInforme.Text = detalle;
-            //LblDatosInforme.Visible = true;
+            LblDatosInforme.Text = detalle;
+            LblDatosInforme.Visible = true;
             if (tipoResumen == "DZ")
             {
-                BGWInfSuperv.RunWorkerAsync();
+                CargaDatos();
+                //this.Invoke(new Action(() =>
+                //{
+                //    BGWInfSuperv.RunWorkerAsync();
+                //    toolStripTotalRegistros.Visible = true;
+                //    toolStripTotalRegistros.Text = "Total Usuarios = " + dgResumen2.RowCount.ToString();
+                //}));
+               
+                
+                //dgResumen2.ScrollBars = ScrollBars.Both;
+            }
+        }
+      private async void CargaDatos()
+        {
+            try
+            {
+                await Task.Run(() => HeavyBackgroundWork());
 
                 toolStripTotalRegistros.Visible = true;
-                toolStripTotalRegistros.Text = "Total Usuarios = " + dgResumen.RowCount.ToString();
-                
-                //dgResumen.ScrollBars = ScrollBars.Both;
+                toolStripTotalRegistros.Text = "Total Usuarios = " + dgResumen2.RowCount.ToString();
+                MiLoadingInformes2.Visible = false;
+                PBLLecDias2.Visible = false;
             }
-            else if (tipoResumen == "AZ")
+            catch (Exception ex)
             {
-                BGWInfAltas.RunWorkerAsync();
+                MessageBox.Show($"Error: {ex.Message}");
             }
-            
-
         }
-
-     
+        private void HeavyBackgroundWork()
+        {
+            if (ResumenDetTeleLectura == "LabelTeleLect")
+            {
+                CargaDetalleTeleLect();
+                CargarResumenLectDias();
+                //CargarResumenLectOperarios();
+            }
+            else if (ResumenDetTeleLectura == "LabelTodosRem")
+            {
+                CargaDetalleZonaSelec();
+                CargarResumenLectDias();
+                
+            }
+            else
+            {
+                CargaDetalle();
+                CargarResumenLectDias();                
+              
+            }
+        }
 
         private void LVResumenGral_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -112,7 +146,7 @@ namespace gagFIS_Interfase
 
         private void simulateHeavyWork()
         {
-            Thread.Sleep(0);
+            
         }
 
         /// <summary>
@@ -153,103 +187,41 @@ namespace gagFIS_Interfase
             int columnasResGral = 0;
             sArray = new string[grd.Rows.Count, grd.Columns.Count];
             nroFilaExcel = grd.Rows.Count + 2;
-            PBExcelCircular.Visible = true;
-            lpbexcelCircular.Visible = true;
             
-
-            /////Almaceno en variables locales la cantidad de filas y columnas que tiene el resumen general para luego recorrer
-            /////y generar en el excel su cuadro correspondiente.
-            //foreach (ListViewItem item in LVResumenGral.Items)
-            //{
-            //    filasResGral++;
-            //}
-
-            filasResGral++;
-            //columnasResGral = LVResumenGral.Columns.Count;
-            //sArrayResGral = new string[filasResGral, columnasResGral];
-            Microsoft.Office.Interop.Excel.Application aplicacion;
-            Microsoft.Office.Interop.Excel.Workbook libros_trabajo;
-            //Microsoft.Office.Interop.Excel.Worksheet hoja_trabajo1;
-            aplicacion = new Microsoft.Office.Interop.Excel.Application();
-            libros_trabajo = aplicacion.Workbooks.Add();
-            libros_trabajo.Sheets.Add();
-            libros_trabajo.Sheets.Add();
+            filasResGral++;      
+            //Microsoft.Office.Interop.Excel.Application aplicacion;
+            //Microsoft.Office.Interop.Excel.Workbook libros_trabajo;
 
 
-            //hoja_trabajo1 = (Microsoft.Office.Interop.Excel.Worksheet)libros_trabajo.Worksheets.get_Item(1);
-
-            ////armo el array con el contenido del grid
-            //for (int i = 1; i <= grd.Rows.Count - 1; i++)
-            //{
-            //    for (int j = 0; j < grd.Columns.Count; j++)
-            //    {
-            //        if (grd.Rows[i].Cells[j].Value != null)
-            //        {
-            //            sArray[i, j] = grd.Rows[i - 1].Cells[j].Value.ToString();
-            //        }
-
-            //    }
-            //}
-            //for (int i = 0; i <= grd.Rows.Count - 1; i++)
-            //{
-            //    for (int j = 0; j < grd.Columns.Count; j++)
-            //    {
-            //        if (grd.Rows[i].Cells[j].Value != null)
-            //        {
-            //            hoja_trabajo1.Cells[i + 2, j + 1] = grd.Rows[i].Cells[j].Value.ToString();
-            //            //Vble.LineaExportartxt += "\n";
-                        
-            //        }
-                    
-            //    }
-            //    bgwDetalleExport.ReportProgress(k);
-            //    k++;
-            //}
+            // Crear una instancia única de Excel
+            Microsoft.Office.Interop.Excel.Application aplicacion = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel.Workbook libros_trabajo = aplicacion.Workbooks.Add();
+            Microsoft.Office.Interop.Excel.Worksheet hoja_trabajo1 = (Microsoft.Office.Interop.Excel.Worksheet)libros_trabajo.ActiveSheet;
+            hoja_trabajo1.Name = "Detalle Lecturas Loc - " + ZonaDetResumen;
 
 
 
-            ////Inserto los datos del array a las celdas del excel
-            //for (int f = 1; f < grd.Rows.Count; f++)
-            //{
+            // Crear una nueva hoja para los datos del ListView
 
-            //    for (int n = 1; n <= grd.Columns.Count; n++)
-            //    {
-            //        hoja_trabajo1.Cells[f, n] = sArray[f - 1, n - 1];
-            //        //Vble.LineaExportartxt += sArray[f, n] + "|";
-            //    }
-            //    //Vble.LineaExportartxt += "\n";
-            //    bgwDetalleExport.ReportProgress(k);
-            //    k++;
-            //}
+            //aplicacion = new Microsoft.Office.Interop.Excel.Application();
+            //libros_trabajo = aplicacion.Workbooks.Add();
 
+            //Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+            //excel.Application.Workbooks.Add(true);
 
+            Microsoft.Office.Interop.Excel.Worksheet hoja_trabajo2 = (Microsoft.Office.Interop.Excel.Worksheet)libros_trabajo.Sheets.Add();
+            hoja_trabajo2.Name = "# Lecturas x Día";
 
-            ////armo el array con el contenido del grid
-            //for (int i = 1; i <= grd.Rows.Count - 1; i++)
-            //{
-            //    for (int j = 0; j < grd.Columns.Count; j++)
-            //    {
-            //        if (grd.Rows[i].Cells[j].Value != null)
-            //        {
-            //            sArray[i, j] = grd.Rows[i-1].Cells[j].Value.ToString();
-            //            bgwDetalleExport.ReportProgress(i);
-            //            i++;
-            //        }
-            //    }
-            //}
+            Microsoft.Office.Interop.Excel.Worksheet hoja_trabajo3 = (Microsoft.Office.Interop.Excel.Worksheet)libros_trabajo.Sheets.Add();
+            hoja_trabajo3.Name = "# Lecturas x Operario";
 
-
-
-            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
-            excel.Application.Workbooks.Add(true);
+            //libros_trabajo.Sheets.Add(hoja_trabajo2);
 
             object[,] datos = new object[grd.Rows.Count + 1, grd.Columns.Count]; // +1 por la cabecera
             for (int j = 0; j < grd.Columns.Count; j++) //cabeceras
             {
                 datos[0, j] = grd.Columns[j].Name;
             }
-
-
             for (int i = 0; i < grd.Rows.Count; i++)
             {
                 for (int j = 0; j < grd.Columns.Count; j++)
@@ -258,35 +230,86 @@ namespace gagFIS_Interfase
                 }
                 bgwDetalleExport.ReportProgress(i);
             }
+            // Escribir los datos en la nueva hoja
+            hoja_trabajo1.Range[hoja_trabajo1.Cells[1, 1], hoja_trabajo1.Cells[datos.GetLength(0), datos.GetLength(1)]].Value = datos;
 
-            excel.Range[excel.Cells[1, 1], excel.Cells[datos.GetLength(0), datos.GetLength(1)]].Value = datos;
-            excel.Visible = true;
-            Microsoft.Office.Interop.Excel.Worksheet hoja_trabajo1 = (Microsoft.Office.Interop.Excel.Worksheet)excel.ActiveSheet;
-            hoja_trabajo1.Activate();
-           
-           
-         
 
-            object misValue = System.Reflection.Missing.Value;
-            object misValue2 = System.Reflection.Missing.Value;
-            object misValue3 = System.Reflection.Missing.Value;
+
+            if (LVLectDias2.Items.Count > 1)
+            {
+                // Asignar datos del ListView Lecturas x Dia a un arreglo
+                int filasListView = LVLectDias2.Items.Count;
+                int columnasListView = LVLectDias2.Columns.Count;
+                object[,] datosListView = new object[filasListView + 1, columnasListView]; // +1 para las cabeceras
+
+                // Llenar las cabeceras
+                for (int col = 0; col < columnasListView; col++)
+                {
+                    datosListView[0, col] = LVLectDias2.Columns[col].Text; // Encabezado de columna
+                }
+
+                // Llenar los datos del ListView
+                for (int fila = 0; fila < filasListView; fila++)
+                {
+                    for (int col = 0; col < columnasListView; col++)
+                    {
+                        datosListView[fila + 1, col] = LVLectDias2.Items[fila].SubItems[col].Text; // Subítems
+                    }
+                }
+                // Escribir los datos en la nueva hoja
+                hoja_trabajo2.Range[hoja_trabajo2.Cells[1, 1], hoja_trabajo2.Cells[datosListView.GetLength(0), datosListView.GetLength(1)]].Value = datosListView;
+            }
+          
+
+            if (LVLectOper2.Items.Count > 1)
+            {
+                // Asignar datos del ListView Lecturas x Dia a un arreglo
+                int filasListView = LVLectOper2.Items.Count;
+                int columnasListView = LVLectOper2.Columns.Count;
+                object[,] datosListView = new object[filasListView + 1, columnasListView]; // +1 para las cabeceras
+
+                // Llenar las cabeceras
+                for (int col = 0; col < columnasListView; col++)
+                {
+                    datosListView[0, col] = LVLectOper2.Columns[col].Text; // Encabezado de columna
+                }
+
+                // Llenar los datos del ListView
+                for (int fila = 0; fila < filasListView; fila++)
+                {
+                    for (int col = 0; col < columnasListView; col++)
+                    {
+                        datosListView[fila + 1, col] = LVLectOper2.Items[fila].SubItems[col].Text; // Subítems
+                    }
+                }
+                // Escribir los datos en la nueva hoja
+                hoja_trabajo3.Range[hoja_trabajo3.Cells[1, 1], hoja_trabajo3.Cells[datosListView.GetLength(0), datosListView.GetLength(1)]].Value = datosListView;
+            }
+                    
+
+            //aplicacion.Visible = true;            
+            //hoja_trabajo1.Activate();
+
+            object misValue = System.Reflection.Missing.Value;            
 
             libros_trabajo.SaveAs(Vble.FileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
             string NombreArchivo = System.IO.Path.GetFileName(Vble.FileName);
-            libros_trabajo.Close(true);
-            aplicacion.Quit();
-                    
+            //libros_trabajo.Close(true);
+            aplicacion.Quit();   
+                      
         }
 
         private void bgwDetalleExport_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             // this.progressBar.Visible = true;
             //lblAvanceExportacion.Visible = true;   
+
             PBExcelCircular.Visible = true;
-            PBExcelCircular.Value = ((e.ProgressPercentage * 100) / dgResumen.Rows.Count);
-            // this.progressBar.Value = ((e.ProgressPercentage * 100) / dgResumen.Rows.Count);
-            lpbexcelCircular.Text = "Exportando... " + ((e.ProgressPercentage * 100) / dgResumen.Rows.Count) + " % completado";
-            //this.lblAvanceExportacion.Text = "Exportando... " + ((e.ProgressPercentage * 100) / dgResumen.Rows.Count) + " % completado";
+            PBExcelCircular.Value = ((e.ProgressPercentage * 100) / dgResumen2.Rows.Count);
+            lpbexcelCircular.Visible = true;
+            // this.progressBar.Value = ((e.ProgressPercentage * 100) / dgResumen2.Rows.Count);
+            lpbexcelCircular.Text = "Exportando... " + ((e.ProgressPercentage * 100) / dgResumen2.Rows.Count) + " % completado";
+            //this.lblAvanceExportacion.Text = "Exportando... " + ((e.ProgressPercentage * 100) / dgResumen2.Rows.Count) + " % completado";
             //this.progressBar.Value = e.ProgressPercentage;
             //this.lblAvanceExportacion.Text = "Exportando usuario " + e.ProgressPercentage + " ";
         }
@@ -297,7 +320,7 @@ namespace gagFIS_Interfase
             PBExcelCircular.Visible = false;
             lpbexcelCircular.Visible = false;
             PBExcelCircular.Value = 0;
-            MiLoadingInformes.Visible = false;
+            MiLoadingInformes2.Visible = false;
             lblAvanceExportacion.Visible = false;
             MessageBox.Show("La exportacion a finalizado", "Exportación", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.progressBar.Value = 0;           
@@ -307,7 +330,7 @@ namespace gagFIS_Interfase
 
         private void bgwDetalleExport_DoWork(object sender, DoWorkEventArgs e)
         {
-            ExportarExcelDetalleXRuta(dgResumen);
+            ExportarExcelDetalleXRuta(dgResumen2);
         }
 
         private void BGWInfSuperv_DoWork(object sender, DoWorkEventArgs e)
@@ -321,17 +344,154 @@ namespace gagFIS_Interfase
                 //CargarResumenLectOperarios();
             }
             else if (ResumenDetTeleLectura == "LabelTodosRem")
-            {
-                CargaDetalleZonaSelec();
-                CargarResumenLectDias();
+            {                                  
+                    CargaDetalleZonaSelec();
+                    CargarResumenLectDias();
             }
             else
             {
                 CargaDetalle();
                 CargarResumenLectDias();
             }
-            //this.WindowState = FormWindowState.Maximized;
-            //dgResumen.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+
+            #region esto estaba en runworkerComplete()
+            //for (int i = 0; i < ListaFechas.Count; i++)
+            //{
+            //    var dif = (Convert.ToDateTime(Fin[i]) - Convert.ToDateTime(Inicio[i])).TotalHours;
+            //    ///agrega el item fecha
+            //    //items = new ListViewItem(Convert.ToDateTime(ListaFechas[i]).ToString("dd/MM/yyyy"));
+            //    dgResumen2.Rows.Add();
+            //    dgResumen2.Rows[i].Cells[0].Value = Convert.ToDateTime(ListaFechas[i]).ToString("dd/MM/yyyy"); //Fecha
+
+            //    ///agrega el item Cod Lecturista
+            //    //items.SubItems.Add(ListaCodigosLect[i].ToString());
+            //    dgResumen2.Rows[i].Cells[1].Value = ListaCodigosLect[i].ToString(); //Lecturista
+            //    ///agrega el item Ruta
+            //    //items.SubItems.Add(ListaRutas[i].ToString());
+            //    dgResumen2.Rows[i].Cells[2].Value = ListaRutas[i].ToString(); //Ruta
+            //    ///agrega el item hora inicio
+            //    //items.SubItems.Add(Convert.ToDateTime(HoraInicio[i]).ToString("HH:mm:ss"));
+            //    dgResumen2.Rows[i].Cells[3].Value = Convert.ToDateTime(HoraInicio[i]).ToString("HH:mm:ss"); //HoraInicio
+            //    ///agrega el item hora fin
+            //    //items.SubItems.Add(Convert.ToDateTime(HoraFin[i]).ToString("HH:mm:ss"));
+            //    dgResumen2.Rows[i].Cells[4].Value = Convert.ToDateTime(HoraFin[i]).ToString("HH:mm:ss"); //HoraFin
+
+
+            //    ///agrega el item Duracion
+            //    if (dif.ToString().Length > 3)
+            //    {
+            //        //items.SubItems.Add(dif.ToString().Substring(0, 3));
+            //        dgResumen2.Rows[i].Cells[5].Value = dif.ToString().Substring(0, 3); //diferencia
+            //    }
+            //    else if (dif.ToString().Length == 3)
+            //    {
+            //        //items.SubItems.Add(dif.ToString().Substring(0, 3));
+            //        dgResumen2.Rows[i].Cells[5].Value = dif.ToString().Substring(0, 3); //diferencia
+            //    }
+            //    else if (dif.ToString().Length == 2)
+            //    {
+            //        //items.SubItems.Add(dif.ToString().Substring(0, 1));
+            //        dgResumen2.Rows[i].Cells[5].Value = dif.ToString().Substring(0, 1); //diferencia
+            //    }
+            //    else if (dif.ToString().Length == 1)
+            //    {
+            //        //items.SubItems.Add(dif.ToString().Substring(0, 1));
+            //        dgResumen2.Rows[i].Cells[5].Value = dif.ToString().Substring(0, 1); //diferencia
+            //    }
+
+            //    if (Convert.ToDecimal(dif) != 0)
+            //    {
+            //        if ((Convert.ToInt32(Tomados[i]) / Convert.ToDecimal(dif)).ToString().Length > 3)
+            //        {
+            //            //items.SubItems.Add((Convert.ToInt32(Tomados[i]) / Convert.ToDecimal(dif)).ToString().Substring(0, 4) + " % ");
+            //            dgResumen2.Rows[i].Cells[6].Value = (Convert.ToInt32(Tomados[i]) / Convert.ToDecimal(dif)).ToString().Substring(0, 4) + " % "; //diferencia
+            //        }
+            //        else
+            //        {
+            //            int dividendo = Convert.ToInt32(Tomados[i]);
+            //            decimal divisor = Convert.ToDecimal(dif);
+            //            decimal resul = (dividendo / divisor);
+            //            if (resul.ToString().Length <= 3)
+            //            {
+            //                if (resul.ToString().Contains(","))
+            //                {
+            //                    //items.SubItems.Add((resul).ToString().Substring(0, 2) + " % ");
+            //                    dgResumen2.Rows[i].Cells[6].Value = (resul).ToString().Substring(0, 2) + " % "; //PorcentajeHora
+            //                }
+            //                else
+            //                {
+            //                    //items.SubItems.Add((resul).ToString());
+            //                    dgResumen2.Rows[i].Cells[6].Value = (resul).ToString() + " % "; //PorcentajeHora
+            //                }
+
+            //            }
+
+            //        }
+
+            //    }
+            //    else if (dif == 0)
+            //    {
+            //        //items.SubItems.Add("0");
+            //    }
+
+            //    ///agrega el item Cantidad Usuarios
+            //    //items.SubItems.Add(CantUsurios[i].ToString());
+            //    dgResumen2.Rows[i].Cells[7].Value = CantUsurios[i].ToString(); //CantidadUsuarios
+            //    ///agrega el item Cantidad Tomados/Leidos
+            //    //items.SubItems.Add(Tomados[i].ToString());
+            //    dgResumen2.Rows[i].Cells[8].Value = Tomados[i].ToString();
+            //    ///agrega el item Cantidad Impresos
+            //    //items.SubItems.Add(Impresos[i].ToString());
+            //    dgResumen2.Rows[i].Cells[9].Value = Impresos[i].ToString();
+
+            //    if (Convert.ToDecimal(Tomados[i]) != 0)
+            //    {
+            //        if (((Convert.ToInt32(Impresos[i]) / Convert.ToDecimal(Tomados[i])) * 100).ToString().Length > 2)
+            //        {
+            //            //items.SubItems.Add(((Convert.ToInt32(Impresos[i]) / Convert.ToDecimal(Tomados[i])) * 100).ToString().Substring(0, 2) + " %");
+            //            dgResumen2.Rows[i].Cells[10].Value = ((Convert.ToInt32(Impresos[i]) / Convert.ToDecimal(Tomados[i])) * 100).ToString().Substring(0, 2) + " %";
+            //        }
+            //        else
+            //        {
+            //            //items.SubItems.Add(((Convert.ToInt32(Impresos[i]) / Convert.ToDecimal(Tomados[i])) * 100).ToString().Substring(0, 1) + " %");
+            //            dgResumen2.Rows[i].Cells[10].Value = ((Convert.ToInt32(Impresos[i]) / Convert.ToDecimal(Tomados[i])) * 100).ToString().Substring(0, 1) + " %";
+            //        }
+
+            //    }
+
+            //    //items.SubItems.Add(LeidosSinImprimir[i].ToString());
+            //    //dgResumen2.Rows[i].Cells[11].Value = LeidosSinImprimir[i].ToString();//LeidosSinImprimir
+
+            //    //items.SubItems.Add(FueraDeRango[i].ToString());
+            //    dgResumen2.Rows[i].Cells[11].Value = FueraDeRango[i].ToString();//FueraRango
+
+            //    //items.SubItems.Add(IndicacionNoImpresion[i].ToString());
+            //    dgResumen2.Rows[i].Cells[12].Value = IndicacionNoImpresion[i].ToString();//Indicados
+
+            //    //items.SubItems.Add(IndicacionNoImpresion[i].ToString());
+            //    dgResumen2.Rows[i].Cells[13].Value = MarcadosPorLoteArrayList[i].ToString();//Marcados Por Lote
+
+
+            //    //items.SubItems.Add(IndicacionNoImpresion[i].ToString());
+            //    dgResumen2.Rows[i].Cells[14].Value = ApagadosArrayList[i].ToString();//Indicados
+            //                                                                        //LVResumenGral.Items.Add(items);
+            //                                                                        //PLoadingResGral.Visible = false;
+            //                                                                        //dgResumen2.Visible = true;
+            //                                                                        ////LVResumenGral.Visible = true;
+            //                                                                        //GroupBoxResumenGral.Visible = true;
+            //}
+            ////var resultado = await Task.Run(() => RealizarOperacionPesada());
+            #endregion
+            //dgResumen2.Visible = true;          
+            //GroupBoxResumenGral.Visible = true;
+
+           
+                //toolStripTotalRegistros.Visible = true;
+                //toolStripTotalRegistros.Text = "Total Usuarios = " + dgResumen2.RowCount.ToString();
+                MiLoadingInformes2.Visible = false;
+       
+         
+
         }
 
        
@@ -356,45 +516,24 @@ namespace gagFIS_Interfase
             ArrayList Fin = new ArrayList();
             ArrayList PorcenajePorHora = new ArrayList();
 
-            //PLoadingResGral.Visible = true;
-            //TextBoxRuta.Enabled = false;
-            //DTPDesdeTomLect.Enabled = false;
-            //DTPHastaTomLect.Enabled = false;
+           
 
-            ObtenerPeriodoRemesa();
+            ObtenerPeriodoRemesa();           
 
-            string SelectFechas = "";
-
-            ////if (RutaNº != "")
-            ////{
-            ////    SelectFechas = "SELECT DISTINCT M.ActualFecha AS Fecha FROM Conexiones C " +
-            ////   "INNER JOIN Medidores M ON C.ConexionID = M.ConexionID AND C.Periodo = M.Periodo " +
-            ////   "WHERE C.Ruta = " + RutaNº + " AND C.Periodo = " + Vble.Periodo + " AND M.Periodo = " + Vble.Periodo +
-            ////   " AND M.ActualFecha BETWEEN '" + Desde + "' AND '" + Hasta + "' AND M.ActualFecha <> '01-01-2000' ORDER BY Fecha ASC";
-            ////}
-            ////else
-            ////{
-            //    SelectFechas = "SELECT DISTINCT M.ActualFecha AS Fecha FROM Conexiones C " +
-            //   "INNER JOIN Medidores M ON C.ConexionID = M.ConexionID AND C.Periodo = M.Periodo " +
-            //   "WHERE C.Periodo = " + Vble.Periodo + " AND M.Periodo = " + Vble.Periodo +
-            //   " AND M.ActualFecha BETWEEN '" + Desde + "' AND '" + DateTime.Today.ToString("yyyy-MM-dd") + "' AND M.ActualFecha <> '01-01-2000' AND " +
-            //   " C.Zona = " + ZonaDetResumen + " ORDER BY Fecha ASC";
-            ////}            
-
-             fechasDistintas = dgResumen.Rows.Cast<DataGridViewRow>()
+            fechasDistintas = dgResumen2.Rows.Cast<DataGridViewRow>()
+                        .Where(row => row.Cells["Fecha"].Value.ToString() != "2000-01-01") // Evitar celdas nulas
                         .Select (row => Convert.ToDateTime(row.Cells["Fecha"].Value))
                         .Distinct()
-                        .ToList();
+                        .ToList();          
 
             foreach (var item in fechasDistintas)
             {
                 string fechaLecturas = Convert.ToDateTime(item).ToString("yyyy-MM-dd");
                 if (fechaLecturas != "2000-01-01")
                 {          
-                      //string fechaLecturas =item.ToString();
-                      ListaFechas.Add(item.ToString());
+                    //string fechaLecturas =item.ToString();
+                    ListaFechas.Add(item.ToString());
                     //int cantidadMayoresQue5 = numeros.Where(n => n > 5).Count();
-
                     string SelectCants = "SELECT SUM(IF(C.ImpresionOBS MOD 100 > 0, 1, 0)) AS Tomados, " +
                      "SUM(IF(C.ImpresionOBS MOD 100 > 1, 1, 0)) AS LeidosSinImprimir, " +
                      "SUM(IF(C.ImpresionOBS MOD 100 = 1, 1, 0)) AS Impresos FROM Conexiones C INNER JOIN Medidores M" +
@@ -405,8 +544,7 @@ namespace gagFIS_Interfase
                      " AND C.Zona = " + ZonaDetResumen;
 
                     MySqlCommand command = new MySqlCommand(SelectCants, DB.conexBD);
-                    command.CommandTimeout = 300;                    
-                   
+                    command.CommandTimeout = 300;      
 
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
@@ -420,101 +558,23 @@ namespace gagFIS_Interfase
                         }
                         reader.Dispose();
                     }
-                    command.Dispose();
-                    //string SelectTomados = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
-                    //                       " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
-                    //                       //" WHERE C.Ruta = " + RutaNº + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
-                    //                       " WHERE C.Periodo = " + Vble.Periodo +
-                    //                       " AND M.ActualFecha = '" + fechaLecturas + "'" +
-                    //                       " AND C.Zona = " + ZonaDetResumen + "" +
-                    //                       " AND C.ImpresionOBS MOD 100 > 0";
-
-                    //  MySqlCommand command = new MySqlCommand(SelectTomados, DB.conexBD);
-                    //  command.CommandTimeout = 300;
-                    //  Tomados.Add(command.ExecuteScalar().ToString());
-                    //  command.Dispose();
-
-
-
-                    //  string SelectLeidosSinImprimir = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
-                    //                          " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
-                    //                          " WHERE C.Periodo = " + Vble.Periodo +
-                    //                         " AND M.ActualFecha = '" + fechaLecturas + "'" +
-                    //                         " AND C.Zona = " + ZonaDetResumen + "" +
-                    //                         " AND C.ImpresionOBS MOD 100 > 1";
-
-                    //  command = new MySqlCommand(SelectLeidosSinImprimir, DB.conexBD);
-                    //  command.CommandTimeout = 300;
-                    //  LeidosSinImprimir.Add(command.ExecuteScalar().ToString());
-                    //  command.Dispose();
-
-                    //  string SelectImpresos = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
-                    //                          " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
-                    //                          //" WHERE C.Ruta = " + RutaNº + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
-                    //                          " WHERE C.Periodo = " + Vble.Periodo +
-                    //                         " AND M.ActualFecha = '" + fechaLecturas + "'" +
-                    //                         " AND C.Zona = " + ZonaDetResumen + "" +
-                    //                         " AND C.ImpresionOBS MOD 100 = 1";
-
-                    //  command = new MySqlCommand(SelectImpresos, DB.conexBD);
-                    //  command.CommandTimeout = 300;
-                    //  Impresos.Add(command.ExecuteScalar().ToString());
-                    //  command.Dispose();                  
+                    command.Dispose();                  
                 }
             }
 
-            //InitializeComponent(); // you need to add a listView named listView1 with the designer
-            //LVLectDias.FullRowSelect = true;
-            //LVLectDias extender = new ListViewExtender(listView1);
-            //// extend 2nd column
-            //ListViewButtonColumn buttonAction = new ListViewButtonColumn(1);
-            //buttonAction.Click += OnButtonActionClick;
-            //buttonAction.FixedWidth = true;
-
-            //extender.AddColumn(buttonAction);
-
-            //for (int i = 0; i < 10000; i++)
-            //{
-            //    ListViewItem item = listView1.Items.Add("item" + i);
-            //    item.SubItems.Add("button " + i);
-            //}
-
-
             for (int i = 0; i < ListaFechas.Count; i++)
                 {
-                //var dif = (Convert.ToDateTime(Fin[i]) - Convert.ToDateTime(Inicio[i])).TotalHours;
-                ///agrega el item fecha
-
-                //items.UseItemStyleForSubItems = false;
-                //items.SubItems.Add(new ListViewItem.ListViewSubItem(items, ""));
-                items = new ListViewItem(Convert.ToDateTime(ListaFechas[i]).ToString("dd/MM/yyyy"));
-                //items = new ListViewItem(Convert.ToDateTime(ListaFechas[i]).ToString("dd/MM/yyyy"));
-                //items.SubItems.Add(CantUsuriosXFecha[i].ToString());
+           
+                items = new ListViewItem(Convert.ToDateTime(ListaFechas[i]).ToString("dd/MM/yyyy"));              
                 items.SubItems.Add(Tomados[i].ToString());
                 items.SubItems.Add(LeidosSinImprimir[i].ToString());                             
                 items.SubItems.Add(Impresos[i].ToString());
-                //items.SubItems.Add("Ver");
-                // Agregar el botón como control al subitem correspondiente
-                //Rectangle bounds = items.SubItems["Ver"].Bounds;  // Cambiar el índice por la posición correcta del subitem donde quieres mostrar el botón.
-                //btnEditar.Size = new Size(bounds.Width - 10, bounds.Height - 10);
-                //btnEditar.Location = new Point(bounds.Left + 5, bounds.Top + 5);
-                //LVLectDias.Controls.Add(btnEditar);
 
-
-
-                LVLectDias.Items.Add(items);
-
-
+                LVLectDias2.Items.Add(items);
             }
-            PBLLecDias.Visible = false;
-            PBLOprs.Visible = false;
+        }   
 
-        }
-
-
-   
-
-private void ObtenerPeriodoRemesa()
+      private void ObtenerPeriodoRemesa()
         {
             string Periodo = Vble.Periodo.ToString().Substring(4);
             switch (Periodo)
@@ -770,7 +830,7 @@ private void ObtenerPeriodoRemesa()
         }
 
         private void CargaDetalleZonaSelec()
-        {
+        {          
            string CONSULTA = "SELECT DISTINCT C.Periodo, C.Zona, C.Remesa, C.Ruta, C.ConexionID AS NInstalacion, C.Contrato, " +
                                    "C.titularID AS IC, " +
                                    "P.Apellido, " +
@@ -841,19 +901,34 @@ private void ObtenerPeriodoRemesa()
                                    " AND C.Zona = " + zonaTeleLect +
                                    "  GROUP BY C.ConexionID, M.Numero ORDER BY Fecha Asc, HoraLect ASC, C.Secuencia";
 
-            MySqlDataAdapter datosAdapter = new MySqlDataAdapter(CONSULTA, DB.conexBD);
-            MySqlCommandBuilder comandoSQL = new MySqlCommandBuilder(datosAdapter);
+            ///se utiliza con using para llamarlo en un hilo secundario.
+            using ( MySqlDataAdapter datosAdapter = new MySqlDataAdapter(CONSULTA, DB.conexBD))            
+            { 
+                TablaFechas = new DataTable();
+                datosAdapter.Fill(TablaFechas);
+                ActualizarDataGrid(TablaFechas); // La Actualización segura se hace en el hilo principal
+                datosAdapter.Dispose();                
+            }          
 
-            TablaFechas = new DataTable();
-            datosAdapter.Fill(TablaFechas);
-            //datosAdapter.Fill(Tabla);
-            dgResumen.Columns.Clear();
-            dgResumen.DataSource = TablaFechas;
+        }
 
-            datosAdapter.Dispose();
-            comandoSQL.Dispose();
-            GroupBoxResumenGral.Text = "Resumen detalle de lectura Remesa " + RemesaDetResumen;
-
+        /// <summary>
+        /// Actualización del datagridview al rellenarse de manera segura en el hilo principal utilizando el metodo Invoke
+        /// </summary>
+        /// <param name="tabla"></param>
+        private void ActualizarDataGrid(DataTable tabla)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new Action(() => ActualizarDataGrid(tabla)));               
+                
+            }
+            else
+            {
+                dgResumen2.Columns.Clear();
+                dgResumen2.DataSource = tabla;
+               
+            }
         }
 
         /// <summary>
@@ -931,16 +1006,16 @@ private void ObtenerPeriodoRemesa()
             TablaFechas = new DataTable();
             datosAdapter.Fill(TablaFechas);
             //datosAdapter.Fill(Tabla);
-            dgResumen.Columns.Clear();
-            dgResumen.DataSource = TablaFechas;
+            dgResumen2.Columns.Clear();
+            dgResumen2.DataSource = TablaFechas;
 
             datosAdapter.Dispose();
             comandoSQL.Dispose();
                 
-            GroupBoxResumenGral.Text = "Resumen detalle de lectura Remesa " + RemesaDetResumen;
+          
 
             //LabCargandoInformes.Visible = false;
-            //MiLoadingInformes.Visible = false;
+            //MiLoadingInformes2.Visible = false;
         }
 
         /// <summary>
@@ -1204,160 +1279,41 @@ private void ObtenerPeriodoRemesa()
             GroupBoxResumenGral.Text = "Resumen detalle de lectura Remesa " + RemesaDetResumen;
 
             //LabCargandoInformes.Visible = false;
-            //MiLoadingInformes.Visible = false;
+            //MiLoadingInformes2.Visible = false;
         }
 
-        private async void BGWInfSuperv_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void BGWInfSuperv_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            for (int i = 0; i < ListaFechas.Count; i++)
-            {
-                var dif = (Convert.ToDateTime(Fin[i]) - Convert.ToDateTime(Inicio[i])).TotalHours;
-                ///agrega el item fecha
-                //items = new ListViewItem(Convert.ToDateTime(ListaFechas[i]).ToString("dd/MM/yyyy"));
-                dgResumen.Rows.Add();
-                dgResumen.Rows[i].Cells[0].Value = Convert.ToDateTime(ListaFechas[i]).ToString("dd/MM/yyyy"); //Fecha
 
-                ///agrega el item Cod Lecturista
-                //items.SubItems.Add(ListaCodigosLect[i].ToString());
-                dgResumen.Rows[i].Cells[1].Value = ListaCodigosLect[i].ToString(); //Lecturista
-                ///agrega el item Ruta
-                //items.SubItems.Add(ListaRutas[i].ToString());
-                dgResumen.Rows[i].Cells[2].Value = ListaRutas[i].ToString(); //Ruta
-                ///agrega el item hora inicio
-                //items.SubItems.Add(Convert.ToDateTime(HoraInicio[i]).ToString("HH:mm:ss"));
-                dgResumen.Rows[i].Cells[3].Value = Convert.ToDateTime(HoraInicio[i]).ToString("HH:mm:ss"); //HoraInicio
-                ///agrega el item hora fin
-                //items.SubItems.Add(Convert.ToDateTime(HoraFin[i]).ToString("HH:mm:ss"));
-                dgResumen.Rows[i].Cells[4].Value = Convert.ToDateTime(HoraFin[i]).ToString("HH:mm:ss"); //HoraFin
+            //GroupBoxResumenGral.Text = "Resumen detalle de lectura Remesa " + RemesaDetResumen;
+           
+            PBLLecDias2.Visible = false;
+            //var stopwatch = new System.Diagnostics.Stopwatch();
+            //stopwatch.Start();
 
+            //// Operación sospechosa
+            //CargaDetalleTeleLect();  
 
-                ///agrega el item Duracion
-                if (dif.ToString().Length > 3)
-                {
-                    //items.SubItems.Add(dif.ToString().Substring(0, 3));
-                    dgResumen.Rows[i].Cells[5].Value = dif.ToString().Substring(0, 3); //diferencia
-                }
-                else if (dif.ToString().Length == 3)
-                {
-                    //items.SubItems.Add(dif.ToString().Substring(0, 3));
-                    dgResumen.Rows[i].Cells[5].Value = dif.ToString().Substring(0, 3); //diferencia
-                }
-                else if (dif.ToString().Length == 2)
-                {
-                    //items.SubItems.Add(dif.ToString().Substring(0, 1));
-                    dgResumen.Rows[i].Cells[5].Value = dif.ToString().Substring(0, 1); //diferencia
-                }
-                else if (dif.ToString().Length == 1)
-                {
-                    //items.SubItems.Add(dif.ToString().Substring(0, 1));
-                    dgResumen.Rows[i].Cells[5].Value = dif.ToString().Substring(0, 1); //diferencia
-                }
-
-                if (Convert.ToDecimal(dif) != 0)
-                {
-                    if ((Convert.ToInt32(Tomados[i]) / Convert.ToDecimal(dif)).ToString().Length > 3)
-                    {
-                        //items.SubItems.Add((Convert.ToInt32(Tomados[i]) / Convert.ToDecimal(dif)).ToString().Substring(0, 4) + " % ");
-                        dgResumen.Rows[i].Cells[6].Value = (Convert.ToInt32(Tomados[i]) / Convert.ToDecimal(dif)).ToString().Substring(0, 4) + " % "; //diferencia
-                    }
-                    else
-                    {
-                        int dividendo = Convert.ToInt32(Tomados[i]);
-                        decimal divisor = Convert.ToDecimal(dif);
-                        decimal resul = (dividendo / divisor);
-                        if (resul.ToString().Length <= 3)
-                        {
-                            if (resul.ToString().Contains(","))
-                            {
-                                //items.SubItems.Add((resul).ToString().Substring(0, 2) + " % ");
-                                dgResumen.Rows[i].Cells[6].Value = (resul).ToString().Substring(0, 2) + " % "; //PorcentajeHora
-                            }
-                            else
-                            {
-                                //items.SubItems.Add((resul).ToString());
-                                dgResumen.Rows[i].Cells[6].Value = (resul).ToString() + " % "; //PorcentajeHora
-                            }
-
-                        }
-
-                    }
-
-                }
-                else if (dif == 0)
-                {
-                    //items.SubItems.Add("0");
-                }
-
-                ///agrega el item Cantidad Usuarios
-                //items.SubItems.Add(CantUsurios[i].ToString());
-                dgResumen.Rows[i].Cells[7].Value = CantUsurios[i].ToString(); //CantidadUsuarios
-                ///agrega el item Cantidad Tomados/Leidos
-                //items.SubItems.Add(Tomados[i].ToString());
-                dgResumen.Rows[i].Cells[8].Value = Tomados[i].ToString();
-                ///agrega el item Cantidad Impresos
-                //items.SubItems.Add(Impresos[i].ToString());
-                dgResumen.Rows[i].Cells[9].Value = Impresos[i].ToString();
-
-                if (Convert.ToDecimal(Tomados[i]) != 0)
-                {
-                    if (((Convert.ToInt32(Impresos[i]) / Convert.ToDecimal(Tomados[i])) * 100).ToString().Length > 2)
-                    {
-                        //items.SubItems.Add(((Convert.ToInt32(Impresos[i]) / Convert.ToDecimal(Tomados[i])) * 100).ToString().Substring(0, 2) + " %");
-                        dgResumen.Rows[i].Cells[10].Value = ((Convert.ToInt32(Impresos[i]) / Convert.ToDecimal(Tomados[i])) * 100).ToString().Substring(0, 2) + " %";
-                    }
-                    else
-                    {
-                        //items.SubItems.Add(((Convert.ToInt32(Impresos[i]) / Convert.ToDecimal(Tomados[i])) * 100).ToString().Substring(0, 1) + " %");
-                        dgResumen.Rows[i].Cells[10].Value = ((Convert.ToInt32(Impresos[i]) / Convert.ToDecimal(Tomados[i])) * 100).ToString().Substring(0, 1) + " %";
-                    }
-
-                }
-
-                //items.SubItems.Add(LeidosSinImprimir[i].ToString());
-                //dgResumen.Rows[i].Cells[11].Value = LeidosSinImprimir[i].ToString();//LeidosSinImprimir
-
-                //items.SubItems.Add(FueraDeRango[i].ToString());
-                dgResumen.Rows[i].Cells[11].Value = FueraDeRango[i].ToString();//FueraRango
-
-                //items.SubItems.Add(IndicacionNoImpresion[i].ToString());
-                dgResumen.Rows[i].Cells[12].Value = IndicacionNoImpresion[i].ToString();//Indicados
-
-                //items.SubItems.Add(IndicacionNoImpresion[i].ToString());
-                dgResumen.Rows[i].Cells[13].Value = MarcadosPorLoteArrayList[i].ToString();//Marcados Por Lote
-
-
-                //items.SubItems.Add(IndicacionNoImpresion[i].ToString());
-                dgResumen.Rows[i].Cells[14].Value = ApagadosArrayList[i].ToString();//Indicados
-                                                                                    //LVResumenGral.Items.Add(items);
-                                                                                    //PLoadingResGral.Visible = false;
-                dgResumen.Visible = true;
-                //LVResumenGral.Visible = true;
-                GroupBoxResumenGral.Visible = true;
-            }
-            //var resultado = await Task.Run(() => RealizarOperacionPesada());
-            toolStripTotalRegistros.Visible = true;
-            toolStripTotalRegistros.Text = "Total Usuarios = " + dgResumen.RowCount.ToString();
-            MiLoadingInformes.Visible = false;
+            //stopwatch.Stop();
+            //MessageBox.Show($"Tiempo en ProcesarDatosPesados: {stopwatch.ElapsedMilliseconds} ms");
         }
 
         //private int RealizarOperacionPesada()
         //{
-        //    dgResumen.Visible = true;
+        //    dgResumen2.Visible = true;
         //    //LVResumenGral.Visible = true;
         //    GroupBoxResumenGral.Visible = true;
 
         //    toolStripTotalRegistros.Visible = true;
-        //    toolStripTotalRegistros.Text = "Total Usuarios = " + dgResumen.RowCount.ToString();
-        //    MiLoadingInformes.Visible = false;
+        //    toolStripTotalRegistros.Text = "Total Usuarios = " + dgResumen2.RowCount.ToString();
+      
+        //    MiLoadingInformes2.Visible = false;
         //    return 1;
         //}
 
         private void BGWInfSuperv_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            //CheckForIllegalCrossThreadCalls = false;
-            LabCargandoInformes.Location = new Point(MiLoadingInformes.Width / 2 - 120, MiLoadingInformes.Height / 2 + 50);
-            MiLoadingInformes.Visible = true;
-            LabCargandoInformes.Visible = true;
+            
         }
 
         private void TextFiltro_TextChanged(object sender, EventArgs e)
@@ -1365,24 +1321,24 @@ private void ObtenerPeriodoRemesa()
 
         }
 
-        private void LVLectDias_SelectedIndexChanged(object sender, EventArgs e)
+        private void LVLectDias2_SelectedIndexChanged(object sender, EventArgs e)
         {
          
         }
 
-        private void LVLectDias_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void LVLectDias2_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            lecturistas = dgResumen.Rows.Cast<DataGridViewRow>()
+            lecturistas = dgResumen2.Rows.Cast<DataGridViewRow>()
                       .Select(row => (row.Cells["Operario"].Value))
                       .Distinct()
                       .ToList();
-            PBLOprs.WaitOnLoad = false;
-            PBLOprs.Visible = true;
+            PBLLecDias2.WaitOnLoad = false;
+            PBLLecDias2.Visible = true;
            
 
             bgwLectXOp_DoWork();
 
-            //if (LVLectDias.SelectedItems.Count == 1)
+            //if (LVLectDias2.SelectedItems.Count == 1)
             //{
             //    LogImpApartados logImp = new LogImpApartados();
             //    logImp.TxtPorcion.Text = Vble.PorcionImp;
@@ -1434,10 +1390,8 @@ private void ObtenerPeriodoRemesa()
         }
 
         private void bgwLectXOp_DoWork()
-        {
-            PBLOprs.Visible = true;
-            
-            LVLectOper.Items.Clear();
+        {                      
+            LVLectOper2.Items.Clear();
             ThreadStart lecturasPorOperarios = new ThreadStart(LectxOperario);
             Thread thread = new Thread(lecturasPorOperarios);
 
@@ -1446,7 +1400,7 @@ private void ObtenerPeriodoRemesa()
 
         public void LectxOperario()
         {
-            foreach (ListViewItem item in LVLectDias.SelectedItems)
+            foreach (ListViewItem item in LVLectDias2.SelectedItems)
             {
                 FechaLec = item.Text;
             }
@@ -1456,7 +1410,7 @@ private void ObtenerPeriodoRemesa()
 
             //foreach (var ope in lecturistas)
             //{
-            //    //var lecturas = dgResumen.Rows.Cast<DataGridViewRow>()
+            //    //var lecturas = dgResumen2.Rows.Cast<DataGridViewRow>()
             //    //               .Where(row => (Convert.ToInt32(row.Cells["Periodo"].Value) == Vble.Periodo) && row.Cells["Fecha"].Value.ToString() == Convert.ToDateTime(item).ToString("dd-MM-yyyy").ToString()
             //    //                && row.Cells["Zona"].Value.ToString() == ZonaDetResumen
             //    //                && row.Cells["Operario"].Value == ope)
@@ -1481,10 +1435,10 @@ private void ObtenerPeriodoRemesa()
 
             //if (cantLecturas != "0")
             //{
-            //    items = new ListViewItem(LVLectDias.SelectedItems[0].Text);
+            //    items = new ListViewItem(LVLectDias2.SelectedItems[0].Text);
             //    items.SubItems.Add(ope.ToString());
             //    items.SubItems.Add(cantLecturas);
-            //    LVLectOper.Items.Add(items);
+            //    LVLectOper2.Items.Add(items);
             //    cantLecturas = "0";
             //}
 
@@ -1520,10 +1474,10 @@ private void ObtenerPeriodoRemesa()
                     //LeidosSinImprimir.Add(reader.GetInt32(1).ToString());//LEIDOS SIN IMPRIMIR
                     //Impresos.Add(reader.GetInt32(2).ToString());//IMPRESOS
 
-                    items = new ListViewItem(LVLectDias.SelectedItems[0].Text);
+                    items = new ListViewItem(LVLectDias2.SelectedItems[0].Text);
                     items.SubItems.Add(reader.GetInt32(0).ToString());//operario   
                     items.SubItems.Add(reader.GetInt32(1).ToString());//cantidad lecturistas
-                    LVLectOper.Items.Add(items);
+                    LVLectOper2.Items.Add(items);
                     cantLecturas = "0";
                 }
                 reader.Dispose();
@@ -1533,15 +1487,16 @@ private void ObtenerPeriodoRemesa()
 
             //if (cantLecturas != "0")
             //{
-            //    items = new ListViewItem(LVLectDias.SelectedItems[0].Text);
+            //    items = new ListViewItem(LVLectDias2.SelectedItems[0].Text);
             //    items.SubItems.Add(ope.ToString());
             //    items.SubItems.Add(cantLecturas);
-            //    LVLectOper.Items.Add(items);
+            //    LVLectOper2.Items.Add(items);
             //    cantLecturas = "0";
             //}
           
 
-            PBLOprs.Visible = false;
+            PBLLecDias2.Visible = false;
+            PBLOprs2.Visible = false;
         }
 
         /// <summary>
@@ -1582,14 +1537,15 @@ private void ObtenerPeriodoRemesa()
             //bgwLectXOp_DoWork();
            
             LectxOperario();
+            PBLOprs2.Visible = false;
         }
 
         private void bgwLectXOp_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            PBLOprs.Visible = false;
+           
         }
 
-        private void dgResumen_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
+        private void dgResumen2_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
         {
            
         }
@@ -1612,42 +1568,28 @@ private void ObtenerPeriodoRemesa()
 
         private void BGWInfAltas_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (tipoResumen == "AZ")
-            {
-                ObtenerAltasZona();
-            }
-        }
-
-        private void ObtenerAltasZona()
-        {
-            //MySqlDataAdapter datosAdapter;
-            //MySqlCommandBuilder comandoSQL;
-            //string txSQL = "";
-
-            //    //Numero <> 'CxDir' AND
-            //    //Lee la tabla ALTAS pertenecientes al periodo
-            //    string CONSULTA = "SELECT Ruta, Numero, Estado, Fecha, Hora, Domicilio, Observaciones, Operario, Latitud, Longitud FROM Altas" +
-            //            " WHERE Periodo = " + Vble.Periodo + " AND Ruta = " + TextBoxRuta.Text + " AND ABM = 'A'" +
-            //            " ORDER BY Fecha ASC, Hora ASC";
-
-            //    TablaFechas = new DataTable();
-
-            //    datosAdapter = new MySqlDataAdapter(CONSULTA, DB.conexBD);
-            //    comandoSQL = new MySqlCommandBuilder(datosAdapter);
-            //    datosAdapter.Fill(TablaFechas);
-            //    dgResumen.Columns.Clear();
-            //    dgResumen.DataSource = TablaFechas;
-
-            //    comandoSQL.Dispose();
-            //    datosAdapter.Dispose();       
-
-            //GroupBoxResumenGral.Text = "Resumen detalle de lectura Remesa " + RemesaDetResumen;
            
         }
+
+      
 
         private void button9_Click(object sender, EventArgs e)
         {
             this.Close();
+           
+        }
+
+        private void LVLectDias2_MouseDoubleClick_1(object sender, MouseEventArgs e)
+        {
+            lecturistas = dgResumen2.Rows.Cast<DataGridViewRow>()
+                     .Select(row => (row.Cells["Operario"].Value))
+                     .Distinct()
+                     .ToList();
+            PBLOprs2.WaitOnLoad = false;
+            PBLOprs2.Visible = true;
+
+            bgwLectXOp_DoWork();
+
         }
     } 
 }

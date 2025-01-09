@@ -4306,7 +4306,7 @@ namespace gagFIS_Interfase {
 
             DetalleImpresos.IndicadorTipoInforme = IndicadorTipoInforme;
             DetalleImpresos.LabelLeyenda.Text = LeyendaImpresion;
-            DetalleImpresos.leyenda.Text = Leyenda;
+            DetalleImpresos.leyenda.Text = Leyenda;           
             //DetalleImpresos.CONSULTANOIMPRESOS = "";
             DetalleImpresos.CONSULTANOIMPRESOS = CONSULTA;
             DetalleImpresos.Periodo = Vble.Periodo;
