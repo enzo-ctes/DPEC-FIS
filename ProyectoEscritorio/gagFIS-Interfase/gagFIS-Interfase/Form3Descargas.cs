@@ -1986,62 +1986,65 @@ namespace gagFIS_Interfase
                     Vble.CantConex = Tabla.Rows.Count;                   
                     Vble.Remesa = Convert.ToInt32(fi["Remesa"]);
 
-                    string update;//Declaración de string que contendra la consulta UPDATE               
-                    update = "UPDATE Conexiones SET ImpresionOBS = " + (ImpresionOBS + (StatusChange * 100)) +
-                                                    ", ImpresionCANT = " + ImpresionCANT +
-                                                    ", Periodo = " + Vble.PeriodoEnColectora +
-                                                    ", Operario = " + Operario +
-                                                    ", ConsumoFacturado = " + ConsumoFacturado +
-                                                    ", OpBel = " + OpBel +
-                                                    ", OrdenTomado = " + OrdenTomado +
-                                                    ", VencimientoProx = '" + VencimientoProx + "'" + 
-                                                    " WHERE ConexionID = " + conexionID + " AND Periodo = " + Vble.PeriodoEnColectora;
-                    //preparamos la cadena pra insercion
-                    MySqlCommand command = new MySqlCommand(update, DB.conexBD);
-                    //y la ejecutamos
-                    command.ExecuteNonQuery();
-                    //finalmente cerramos la conexion ya que solo debe servir para una sola orden
-                    command.Dispose();
-                    //comandoSQL.Dispose();
+                    int imprOBSprev =  VerificarImpresionOBS(conexionID, Vble.PeriodoEnColectora, "Conexiones");
 
-                    //conexionID = Convert.ToInt32(fi["conexionID"]);                   
-                    ActualFecha = (fi["ActualFecha", DataRowVersion.Original].ToString() == "0" ||
-                                   fi["ActualFecha", DataRowVersion.Original].ToString() == "" ||
-                                   fi["ActualFecha", DataRowVersion.Original].ToString().Contains("1/1/2000") ? "2000/01/01" : fi["ActualFecha"].ToString());
-                    ActualHora = (fi["ActualHora", DataRowVersion.Original].ToString() == "0" ||
-                                  fi["ActualHora", DataRowVersion.Original].ToString() == "" ? "00:00:00" : fi["ActualHora"].ToString());
-                    ActualEstado = Convert.ToInt32(fi["ActualEstado"]);
-                    Latitud = fi["Latitud"].ToString() == "" ? 0 : Convert.ToDouble(fi["Latitud"], CultureInfo.CreateSpecificCulture("es-AR"));
-                    Longitud = fi["Longitud"].ToString() == "" ? 0 : Convert.ToDouble(fi["Longitud"], CultureInfo.CreateSpecificCulture("es-AR"));
-                    EstadoCorreccion = string.IsNullOrEmpty(fi["EstadoCorreccion"].ToString()) ? "" : fi["EstadoCorreccion"].ToString();
-                    EstadoFacturado = string.IsNullOrEmpty(fi["EstadoFacturado"].ToString()) ? "" : fi["EstadoFacturado"].ToString();
-                    EstadoReactiva = string.IsNullOrEmpty(fi["EstadoReactiva"].ToString()) ? "" : fi["EstadoReactiva"].ToString();
-                    EstadoInyectada = string.IsNullOrEmpty(fi["EstadoInyectada"].ToString()) ? "" : fi["EstadoInyectada"].ToString();
+                    if (imprOBSprev == 400 || imprOBSprev == 500 )
+                    {                            
+                            string update;//Declaración de string que contendra la consulta UPDATE               
+                            update = "UPDATE Conexiones SET ImpresionOBS = " + (ImpresionOBS + (StatusChange * 100)) +
+                                                            ", ImpresionCANT = " + ImpresionCANT +
+                                                            ", Periodo = " + Vble.PeriodoEnColectora +
+                                                            ", Operario = " + Operario +
+                                                            ", ConsumoFacturado = " + ConsumoFacturado +
+                                                            ", OpBel = " + OpBel +
+                                                            ", OrdenTomado = " + OrdenTomado +
+                                                            ", VencimientoProx = '" + VencimientoProx + "'" + 
+                                                            " WHERE ConexionID = " + conexionID + " AND Periodo = " + Vble.PeriodoEnColectora;
+                            //preparamos la cadena pra insercion
+                            MySqlCommand command = new MySqlCommand(update, DB.conexBD);
+                            //y la ejecutamos
+                            command.ExecuteNonQuery();
+                            //finalmente cerramos la conexion ya que solo debe servir para una sola orden
+                            command.Dispose();
+                            //comandoSQL.Dispose();
+                            //conexionID = Convert.ToInt32(fi["conexionID"]);                   
+                            ActualFecha = (fi["ActualFecha", DataRowVersion.Original].ToString() == "0" ||
+                                           fi["ActualFecha", DataRowVersion.Original].ToString() == "" ||
+                                           fi["ActualFecha", DataRowVersion.Original].ToString().Contains("1/1/2000") ? "2000/01/01" : fi["ActualFecha"].ToString());
+                            ActualHora = (fi["ActualHora", DataRowVersion.Original].ToString() == "0" ||
+                                          fi["ActualHora", DataRowVersion.Original].ToString() == "" ? "00:00:00" : fi["ActualHora"].ToString());
+                            ActualEstado = Convert.ToInt32(fi["ActualEstado"]);
+                            Latitud = fi["Latitud"].ToString() == "" ? 0 : Convert.ToDouble(fi["Latitud"], CultureInfo.CreateSpecificCulture("es-AR"));
+                            Longitud = fi["Longitud"].ToString() == "" ? 0 : Convert.ToDouble(fi["Longitud"], CultureInfo.CreateSpecificCulture("es-AR"));
+                            EstadoCorreccion = string.IsNullOrEmpty(fi["EstadoCorreccion"].ToString()) ? "" : fi["EstadoCorreccion"].ToString();
+                            EstadoFacturado = string.IsNullOrEmpty(fi["EstadoFacturado"].ToString()) ? "" : fi["EstadoFacturado"].ToString();
+                            EstadoReactiva = string.IsNullOrEmpty(fi["EstadoReactiva"].ToString()) ? "" : fi["EstadoReactiva"].ToString();
+                            EstadoInyectada = string.IsNullOrEmpty(fi["EstadoInyectada"].ToString()) ? "" : fi["EstadoInyectada"].ToString();
+                            TipoLectura = Convert.ToInt32(fi["TipoLectura"]);
 
-                    TipoLectura = Convert.ToInt32(fi["TipoLectura"]);
+                            string updateMedidores;//Declaración de string que contendra la consulta UPDATE               
+                            updateMedidores = "UPDATE Medidores SET ActualFecha = '" + Convert.ToDateTime(ActualFecha).ToString("yyyy/MM/dd") + "', " +
+                                              "ActualHora = '" + Convert.ToDateTime(ActualHora).ToString("HH:mm") + "', " +
+                                              " ActualEstado = " + ActualEstado + ", " +
+                                              " TipoLectura = " + TipoLectura + ", " +
+                                              " Latitud = " + Latitud.ToString().Replace(",", ".") + ", " +
+                                              " Longitud = " + Longitud.ToString().Replace(",", ".") + ", " +
+                                              " EstadoCorreccion = '" + EstadoCorreccion.ToString().Replace(",", ".") + "', " +
+                                              " EstadoFacturado = '" + EstadoFacturado.ToString().Replace(",", ".") + "', " +
+                                              " EstadoReactiva = '" + EstadoReactiva.ToString().Replace(",", ".") + "', " +
+                                              " EstadoInyectada = '" + EstadoInyectada.ToString().Replace(",", ".") + "' " +
+                                              " WHERE ConexionID = " + conexionID + " AND Periodo = " + Vble.PeriodoEnColectora;
 
-                    string updateMedidores;//Declaración de string que contendra la consulta UPDATE               
-                    updateMedidores = "UPDATE Medidores SET ActualFecha = '" + Convert.ToDateTime(ActualFecha).ToString("yyyy/MM/dd") + "', " +
-                                      "ActualHora = '" + Convert.ToDateTime(ActualHora).ToString("HH:mm") + "', " +
-                                      " ActualEstado = " + ActualEstado + ", " +
-                                      " TipoLectura = " + TipoLectura + ", " +
-                                      " Latitud = " + Latitud.ToString().Replace(",", ".") + ", " +
-                                      " Longitud = " + Longitud.ToString().Replace(",", ".") + ", " +
-                                      " EstadoCorreccion = '" + EstadoCorreccion.ToString().Replace(",", ".") + "', " +
-                                      " EstadoFacturado = '" + EstadoFacturado.ToString().Replace(",", ".") + "', " +
-                                      " EstadoReactiva = '" + EstadoReactiva.ToString().Replace(",", ".") + "', " +
-                                      " EstadoInyectada = '" + EstadoInyectada.ToString().Replace(",", ".") + "' " +
-                                      " WHERE ConexionID = " + conexionID + " AND Periodo = " + Vble.PeriodoEnColectora;
+                            //preparamos la cadena pra insercion
+                            MySqlCommand command2 = new MySqlCommand(updateMedidores, DB.conexBD);
+                            //y la ejecutamos
+                            command2.ExecuteNonQuery();
+                            //finalmente cerramos la conexion ya que solo debe servir para una sola orden
+                            command2.Dispose();
 
-                    //preparamos la cadena pra insercion
-                    MySqlCommand command2 = new MySqlCommand(updateMedidores, DB.conexBD);
-                    //y la ejecutamos
-                    command2.ExecuteNonQuery();
-                    //finalmente cerramos la conexion ya que solo debe servir para una sola orden
-                    command2.Dispose();
-
-                    backgroundDescargarAPC.ReportProgress(AvanceDescarga);
-                    AvanceDescarga++;
+                            backgroundDescargarAPC.ReportProgress(AvanceDescarga);
+                            AvanceDescarga++;
+                    }
                 }
 
                 comandoSQL.Dispose();
@@ -2067,6 +2070,110 @@ namespace gagFIS_Interfase
             {
                 MessageBox.Show(r.Message);
             }
+        }
+
+        /// <summary>
+        /// Este método va a realizar una consulta a la base MySQL general donde se encuentran todos los usuarios,
+        /// pero consultará solo por usuario y periodo a medida que se realiza la descarga de la ruta para verificar su estado previo del campo ImpresionOBS
+        /// para saber si el usuario ya a sido descargado, de ésta forma no vuelve a descargarlo para no modificar su primer estado recibido.
+        /// Funcion aplicada el día 22/11/2025 debido a que en capital se necesito cargar la misma ruta en distintas colectoras.
+        /// </summary>
+        /// <param name="conexionID"></param>
+        /// <param name="periodoEnColectora"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        private int VerificarImpresionOBS(int conexionID, int periodoEnColectora, string Tabla)
+        {
+            int estado = 0;
+            string txSQL = "SELECT ImpresionOBS " +             
+             " FROM " + Tabla +              
+             " WHERE ConexionID = " + conexionID + " AND Periodo = " + Vble.PeriodoEnColectora;
+
+            //preparamos la cadena pra insercion
+            MySqlCommand command = new MySqlCommand(txSQL, DB.conexBD);
+            //y la ejecutamos
+            estado = Convert.ToInt16(command.ExecuteScalar());
+            //finalmente cerramos la conexion ya que solo debe servir para una sola orden
+            command.Dispose();
+
+            return estado;
+        }
+
+        /// <summary>
+        /// Este método va a realizar una consulta a la base MySQL general donde se encuentran todos los usuarios,
+        /// pero consultará solo por usuario y periodo a medida que se realiza la descarga de la ruta para verificar su estado previo del campo ImpresionOBS
+        /// para saber si el usuario ya a sido descargado, de ésta forma no vuelve a descargarlo para no modificar su primer estado recibido.
+        /// Funcion aplicada el día 22/11/2025 debido a que en capital se necesito cargar la misma ruta en distintas colectoras.
+        /// </summary>
+        /// <param name="conexionID"></param>
+        /// <param name="periodoEnColectora"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        private int VerificarExistencia(int conexionID, int periodoEnColectora, string Tabla1)
+        {
+            int estado = 0;
+            string txSQL = "SELECT COUNT(*) " +
+             " FROM " + Tabla1 +  
+             " WHERE (ConexionID = " + conexionID + " AND Periodo = " + periodoEnColectora + ")";
+
+            //preparamos la cadena pra insercion
+            MySqlCommand command = new MySqlCommand(txSQL, DB.conexBD);
+            //y la ejecutamos
+            estado = Convert.ToInt16(command.ExecuteScalar());
+            //finalmente cerramos la conexion ya que solo debe servir para una sola orden
+            command.Dispose();
+
+            return estado;
+        }
+        /// <summary>
+        /// Este método con sobrecarga de un parametro param1 va a realizar una consulta a la base MySQL a la tabla NovedadesConex mas precisamente
+        /// en el cual controla, si existe ya una novedad para la conexion y periodo a verificar no agrega la novedad, si no existe agrga la novedad leida.
+        /// <param name="conexionID"></param>
+        /// <param name="periodoEnColectora"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        private int VerificarExistencia(int conexionID, int periodoEnColectora, string Tabla1, string param1)
+        {
+            int estado = 0;
+            string txSQL = "SELECT COUNT(*) " +
+             " FROM " + Tabla1 +
+             " WHERE (ConexionID = " + conexionID + " AND Periodo = " + periodoEnColectora + " AND Orden = " + param1 + ")";
+
+            //preparamos la cadena pra insercion
+            MySqlCommand command = new MySqlCommand(txSQL, DB.conexBD);
+            //y la ejecutamos
+            estado = Convert.ToInt16(command.ExecuteScalar());
+            //finalmente cerramos la conexion ya que solo debe servir para una sola orden
+            command.Dispose();
+
+            return estado;
+        }
+
+        /// <summary>
+        /// Este método va a realizar una consulta a la base MySQL general donde se encuentran todos los usuarios,
+        /// pero consultará solo por usuario y periodo a medida que se realiza la descarga de la ruta para verificar su estado previo del campo ImpresionOBS
+        /// para saber si el usuario ya a sido descargado, de ésta forma no vuelve a descargarlo para no modificar su primer estado recibido.
+        /// Funcion aplicada el día 22/11/2025 debido a que en capital se necesito cargar la misma ruta en distintas colectoras.
+        /// </summary>
+        /// <param name="conexionID"></param>
+        /// <param name="periodoEnColectora"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        private int VerificarExistenciaAltas(int conexionID, int periodoEnColectora, string Tabla1, string Numero, string Fecha)
+        {
+            int estado = 0;
+            string txSQL = "SELECT COUNT(*) " +
+             " FROM " + Tabla1 +
+             " WHERE (ConexionID = " + conexionID + " AND Periodo = " + periodoEnColectora + " and Numero = '" + Numero + "' and Fecha = '" + Convert.ToDateTime(Fecha).ToString("yyyy-MM-dd") + "')";
+
+            //preparamos la cadena pra insercion
+            MySqlCommand command = new MySqlCommand(txSQL, DB.conexBD);
+            //y la ejecutamos
+            estado = Convert.ToInt16(command.ExecuteScalar());
+            //finalmente cerramos la conexion ya que solo debe servir para una sola orden
+            command.Dispose();
+
+            return estado;
         }
 
         /// <summary>
@@ -2918,136 +3025,150 @@ namespace gagFIS_Interfase
                 foreach (DataRow fi in TablaCFaDescargar.Rows)
                 //foreach (DataRow Fila in Tabla.Rows)
                 {
-                    contador++;
-                    ConexionID = fi["ConexionID"].ToString() == "" ? 0 :  Convert.ToInt32(fi["ConexionID"]);
-                    Periodo = fi["Periodo"].ToString() == "" ? 0 : Convert.ToInt32(fi["Periodo"]);
-                    titularID = fi["titularID"].ToString() == "" ? 0 : Convert.ToInt32(fi["titularID"]);
-                    informa1 = fi["Informa1"].ToString().Replace("'", "`");
-                    informa2 = fi["Informa2"].ToString().Replace("'", "`");
-                    informa3 = fi["Informa3"].ToString().Replace("'", "`");
-                    informa4 = fi["Informa4"].ToString().Replace("'", "`");
-                    informa5 = fi["Informa5"].ToString().Replace("'", "`");
-                    Contrato = fi["Contrato"].ToString() == "" ? 0 : Convert.ToInt32(fi["Contrato"]);
-                    Nomb_Ape = fi["Nomb_Ape"].ToString().Replace("'", "`");
-                    Dom_Calle = fi["Dom_Calle"].ToString().Replace("'", "`");
-                    Dom_Numero = string.IsNullOrEmpty(fi["Dom_Numero"].ToString()) ? "" : fi["Dom_Numero"].ToString();
-                    Dom_Piso = string.IsNullOrEmpty(fi["Dom_Piso"].ToString()) ? "" : fi["Dom_Piso"].ToString();
-                    Dom_Dpto = string.IsNullOrEmpty(fi["Dom_Dpto"].ToString()) ? "" : fi["Dom_Dpto"].ToString();
-                    Dom_Suministro = fi["Dom_Suministro"].ToString().Replace("'", "`");
-                    Dom_Localidad = fi["Dom_Localidad"].ToString().Replace("'", "`");
-                    Dom_Cod_Postal = string.IsNullOrEmpty(fi["Dom_Cod_Postal"].ToString()) ? "" : fi["Dom_Cod_Postal"].ToString();
-                    Dom_CodLocalidad = string.IsNullOrEmpty(fi["Dom_CodLocalidad"].ToString()) ? "" : fi["Dom_CodLocalidad"].ToString();
-                    Texto_Debito = string.IsNullOrEmpty(fi["Texto_Debito"].ToString()) ? "" : fi["Texto_Debito"].ToString();
-                    Jubilado = string.IsNullOrEmpty(fi["Jubilado"].ToString()) ? "" : fi["Jubilado"].ToString();
-                    Un_Lectura = string.IsNullOrEmpty(fi["Un_Lectura"].ToString()) ? "" : fi["Un_Lectura"].ToString();
-                    Porcion = string.IsNullOrEmpty(fi["Porcion"].ToString()) ? "" : fi["Porcion"].ToString();
-                    CUIT = string.IsNullOrEmpty(fi["CUIT"].ToString()) ? "" : fi["CUIT"].ToString();
-                    IVA = string.IsNullOrEmpty(fi["IVA"].ToString()) ? "" : fi["IVA"].ToString();
-                    Tarifa = string.IsNullOrEmpty(fi["Tarifa"].ToString()) ? "" : fi["Tarifa"].ToString();
-                    Medidor_Tipo = string.IsNullOrEmpty(fi["Medidor_Tipo"].ToString()) ? "" : fi["Medidor_Tipo"].ToString();
-                    Medidor_Nro = string.IsNullOrEmpty(fi["Medidor_Nro"].ToString()) ? "" : fi["Medidor_Nro"].ToString();
-                    Lec_Anterior = string.IsNullOrEmpty(fi["Lec_Anterior"].ToString()) ? "" : fi["Lec_Anterior"].ToString();
-                    Lec_Actual = string.IsNullOrEmpty(fi["Lec_Actual"].ToString()) ? "" : fi["Lec_Actual"].ToString();
-                    Lect_X = string.IsNullOrEmpty(fi["Lect_X"].ToString()) ? "" : fi["Lect_X"].ToString();
-                    Fec_Anterior = string.IsNullOrEmpty(fi["Fec_Anterior"].ToString()) ? "" : fi["Fec_Anterior"].ToString();
-                    Fec_Actual = string.IsNullOrEmpty(fi["Fec_Actual"].ToString()) ? "" : fi["Fec_Actual"].ToString();
-                    Dias_Fact = string.IsNullOrEmpty(fi["Dias_Fact"].ToString()) ? "" : fi["Dias_Fact"].ToString();
-                    PeriodoFac = string.IsNullOrEmpty(fi["PeriodoFac"].ToString()) ? "" : fi["PeriodoFac"].ToString();
-                    Anio = string.IsNullOrEmpty(fi["Anio"].ToString()) ? "" : fi["Anio"].ToString();
-                    PeriodoB = string.IsNullOrEmpty(fi["PeriodoB"].ToString()) ? "" : fi["PeriodoB"].ToString();
-                    Consumo = string.IsNullOrEmpty(fi["Consumo"].ToString()) ? "" : fi["Consumo"].ToString();
-                    Fec_Emision = string.IsNullOrEmpty(fi["Fec_Emision"].ToString()) ? "" : fi["Fec_Emision"].ToString();
-                    Prox_Vto = string.IsNullOrEmpty(fi["Prox_Vto"].ToString()) ? "" : fi["Prox_Vto"].ToString();
-                    Estimado = string.IsNullOrEmpty(fi["Estimado"].ToString()) ? "" : fi["Estimado"].ToString();
-                    Desconexion1 = string.IsNullOrEmpty(fi["Desconexion1"].ToString()) ? "" : fi["Desconexion1"].ToString();
-                    Total1 = string.IsNullOrEmpty(fi["Total1"].ToString()) ? "" : fi["Total1"].ToString();
-                    Fec_Vto1 = string.IsNullOrEmpty(fi["Fec_Vto1"].ToString()) ? "" : fi["Fec_Vto1"].ToString();
-                    Nro_Fact1 = string.IsNullOrEmpty(fi["Nro_Fact1"].ToString()) ? "" : fi["Nro_Fact1"].ToString();
-                    Desconexion2 = string.IsNullOrEmpty(fi["Desconexion2"].ToString()) ? "" : fi["Desconexion2"].ToString();
-                    Total2 = string.IsNullOrEmpty(fi["Total2"].ToString()) ? "" : fi["Total2"].ToString();
-                    Fec_Vto2 = string.IsNullOrEmpty(fi["Fec_Vto2"].ToString()) ? "" : fi["Fec_Vto2"].ToString();
-                    Nro_Fact2 = string.IsNullOrEmpty(fi["Nro_Fact2"].ToString()) ? "" : fi["Nro_Fact2"].ToString();
-                    Adeudados = string.IsNullOrEmpty(fi["Adeudados"].ToString()) ? "" : fi["Adeudados"].ToString();
-                    Text_Ctrol = string.IsNullOrEmpty(fi["Text_Ctrol"].ToString()) ? "" : fi["Text_Ctrol"].ToString();
-                    LecAnt_TxCtl = string.IsNullOrEmpty(fi["LecAnt_TxCtl"].ToString()) ? "" : fi["LecAnt_TxCtl"].ToString();
-                    Saldo_Favor = string.IsNullOrEmpty(fi["Saldo_Favor"].ToString()) ? "" : fi["Saldo_Favor"].ToString();
-                    Cod_Barra28_A = string.IsNullOrEmpty(fi["Cod_Barra28_A"].ToString())? "": fi["Cod_Barra28_A"].ToString();
-                    Cod_Barra60_A = string.IsNullOrEmpty(fi["Cod_Barra60_A"].ToString()) ? "" : fi["Cod_Barra60_A"].ToString();
-                    Cod_Barra28_B = string.IsNullOrEmpty(fi["Cod_Barra28_B"].ToString()) ? "" : fi["Cod_Barra28_B"].ToString();
-                    Cod_Barra60_B = string.IsNullOrEmpty(fi["Cod_Barra60_B"].ToString()) ? "" : fi["Cod_Barra60_B"].ToString();
-                    CESP = fi["CESP"].ToString();
-                    OpBel = fi["OpBel"].ToString() == "" ? 0 : Convert.ToInt32(fi["OpBel"]);    
-                    CodQr = string.IsNullOrEmpty(fi["CodQr"].ToString()) ? "-" : fi["CodQr"].ToString();
-                    CodQrCont = string.IsNullOrEmpty(fi["CodQrCont"].ToString()) ? "-" : fi["CodQrCont"].ToString();
-                    CodQrb = string.IsNullOrEmpty(fi["CodQrb"].ToString()) ? "-" : fi["CodQrb"].ToString();
-                    CodQrbCont = string.IsNullOrEmpty(fi["CodQrbCont"].ToString()) ? "-" : fi["CodQrbCont"].ToString();
+                    int imprOBSprev = VerificarImpresionOBS(Convert.ToInt32(fi["conexionID"]), Convert.ToInt32(fi["Periodo"].ToString()), "Conexiones");
 
-                    if (contador == 499)
+                    if (imprOBSprev == 501 || imprOBSprev == 572 || imprOBSprev == 573 || imprOBSprev == 571 || imprOBSprev == 574 || imprOBSprev == 525)
                     {
-                        insertImpresor += "(" + ConexionID + ", " + Periodo + ", " + titularID + ", '" + informa1 + "', '" +
-                            informa2 + "', '" + informa3 + "', '" + informa4 + "', '" + informa5 + "', " +
-                            Contrato + ", '" + Nomb_Ape + "', '" + Dom_Calle + "', '" + Dom_Numero + "', '" +
-                            Dom_Piso + "', '" + Dom_Dpto + "', '" + Dom_Suministro + "', '" + Dom_Localidad + "', '" + Dom_Cod_Postal + "', '" +
-                            Dom_CodLocalidad + "', '" + Texto_Debito + "', '" + Jubilado + "', '" + Un_Lectura + "', '" + Porcion + "', '" +
-                            CUIT + "', '" + IVA + "', '" + Tarifa + "', '" + Medidor_Tipo + "',  '" + Medidor_Nro + "', '" + Lec_Anterior + "', '" +
-                            Lec_Actual + "', '" + Lect_X + "', '" + Fec_Anterior + "', '" + Fec_Actual + "', '" + Dias_Fact + "', '" +
-                            PeriodoFac + "', '" + Anio + "', '" + PeriodoB + "', '" + Consumo + "', '" + Fec_Emision + "', '" + Prox_Vto + "', '" +
-                            Estimado + "', '" + Desconexion1 + "', '" + Total1 + "', '" + Fec_Vto1 + "', '" + Nro_Fact1 + "', '" + Desconexion2 + "', '" +
-                            Total2 + "', '" + Fec_Vto2 + "', '" + Nro_Fact2 + "', '" + Adeudados + "', '" + Text_Ctrol + "', '" + LecAnt_TxCtl + "', '" +
-                            Saldo_Favor + "', '" + Cod_Barra28_A + "', '" + Cod_Barra28_B + "', '" + Cod_Barra60_A + "', '" + Cod_Barra60_B + "', '" +
-                            CESP + "', " + OpBel + ", '" + CodQr + "', '" + CodQrCont + "', '" + CodQrb + "', '"  + CodQrbCont + "')";
 
-                        //preparamos la cadena pra insercion
-                        MySqlCommand command = new MySqlCommand(insertImpresor, DB.conexBD);
-                        //y la ejecutamos
-                        command.ExecuteNonQuery();
-                        //finalmente cerramos la conexion ya que solo debe servir para una sola orden
-                        command.Dispose();                        
-                        insertImpresor = "INSERT INTO  Impresor " +
-                             "(ConexionID, Periodo, titularID, Informa1, Informa2, Informa3, Informa4, " +
-                             "Informa5, Contrato, Nomb_Ape, Dom_Calle, Dom_Numero, Dom_Piso, Dom_Dpto, " +
-                             "Dom_Suministro, Dom_Localidad, Dom_Cod_Postal, Dom_CodLocalidad, Texto_Debito, " +
-                             "Jubilado, Un_Lectura, Porcion, CUIT, IVA, Tarifa, Medidor_Tipo, Medidor_Nro, " +
-                             "Lec_Anterior, Lec_Actual, Lect_X, Fec_Anterior, Fec_Actual, Dias_Fact, PeriodoFac, " +
-                             "Anio, PeriodoB, Consumo, Fec_Emision, Prox_Vto, Estimado, Desconexion1, Total1, " +
-                             "Fec_Vto1, Nro_Fact1, Desconexion2, Total2, Fec_Vto2, Nro_Fact2, Adeudados, Text_Ctrol, " +
-                             "LecAnt_TxCtl, Saldo_Favor, Cod_Barra28_A, Cod_Barra60_A, Cod_Barra28_B, Cod_Barra60_B, " +
-                             "CESP, OpBel, CodQr, CodQrCont, CodQrb, CodQrbCont ) " +
-                             "VALUES ";
+                        contador++;
+                        ConexionID = fi["ConexionID"].ToString() == "" ? 0 :  Convert.ToInt32(fi["ConexionID"]);
+                        Periodo = fi["Periodo"].ToString() == "" ? 0 : Convert.ToInt32(fi["Periodo"]);
+                        titularID = fi["titularID"].ToString() == "" ? 0 : Convert.ToInt32(fi["titularID"]);
+                        informa1 = fi["Informa1"].ToString().Replace("'", "`");
+                        informa2 = fi["Informa2"].ToString().Replace("'", "`");
+                        informa3 = fi["Informa3"].ToString().Replace("'", "`");
+                        informa4 = fi["Informa4"].ToString().Replace("'", "`");
+                        informa5 = fi["Informa5"].ToString().Replace("'", "`");
+                        Contrato = fi["Contrato"].ToString() == "" ? 0 : Convert.ToInt32(fi["Contrato"]);
+                        Nomb_Ape = fi["Nomb_Ape"].ToString().Replace("'", "`");
+                        Dom_Calle = fi["Dom_Calle"].ToString().Replace("'", "`");
+                        Dom_Numero = string.IsNullOrEmpty(fi["Dom_Numero"].ToString()) ? "" : fi["Dom_Numero"].ToString();
+                        Dom_Piso = string.IsNullOrEmpty(fi["Dom_Piso"].ToString()) ? "" : fi["Dom_Piso"].ToString();
+                        Dom_Dpto = string.IsNullOrEmpty(fi["Dom_Dpto"].ToString()) ? "" : fi["Dom_Dpto"].ToString();
+                        Dom_Suministro = fi["Dom_Suministro"].ToString().Replace("'", "`");
+                        Dom_Localidad = fi["Dom_Localidad"].ToString().Replace("'", "`");
+                        Dom_Cod_Postal = string.IsNullOrEmpty(fi["Dom_Cod_Postal"].ToString()) ? "" : fi["Dom_Cod_Postal"].ToString();
+                        Dom_CodLocalidad = string.IsNullOrEmpty(fi["Dom_CodLocalidad"].ToString()) ? "" : fi["Dom_CodLocalidad"].ToString();
+                        Texto_Debito = string.IsNullOrEmpty(fi["Texto_Debito"].ToString()) ? "" : fi["Texto_Debito"].ToString();
+                        Jubilado = string.IsNullOrEmpty(fi["Jubilado"].ToString()) ? "" : fi["Jubilado"].ToString();
+                        Un_Lectura = string.IsNullOrEmpty(fi["Un_Lectura"].ToString()) ? "" : fi["Un_Lectura"].ToString();
+                        Porcion = string.IsNullOrEmpty(fi["Porcion"].ToString()) ? "" : fi["Porcion"].ToString();
+                        CUIT = string.IsNullOrEmpty(fi["CUIT"].ToString()) ? "" : fi["CUIT"].ToString();
+                        IVA = string.IsNullOrEmpty(fi["IVA"].ToString()) ? "" : fi["IVA"].ToString();
+                        Tarifa = string.IsNullOrEmpty(fi["Tarifa"].ToString()) ? "" : fi["Tarifa"].ToString();
+                        Medidor_Tipo = string.IsNullOrEmpty(fi["Medidor_Tipo"].ToString()) ? "" : fi["Medidor_Tipo"].ToString();
+                        Medidor_Nro = string.IsNullOrEmpty(fi["Medidor_Nro"].ToString()) ? "" : fi["Medidor_Nro"].ToString();
+                        Lec_Anterior = string.IsNullOrEmpty(fi["Lec_Anterior"].ToString()) ? "" : fi["Lec_Anterior"].ToString();
+                        Lec_Actual = string.IsNullOrEmpty(fi["Lec_Actual"].ToString()) ? "" : fi["Lec_Actual"].ToString();
+                        Lect_X = string.IsNullOrEmpty(fi["Lect_X"].ToString()) ? "" : fi["Lect_X"].ToString();
+                        Fec_Anterior = string.IsNullOrEmpty(fi["Fec_Anterior"].ToString()) ? "" : fi["Fec_Anterior"].ToString();
+                        Fec_Actual = string.IsNullOrEmpty(fi["Fec_Actual"].ToString()) ? "" : fi["Fec_Actual"].ToString();
+                        Dias_Fact = string.IsNullOrEmpty(fi["Dias_Fact"].ToString()) ? "" : fi["Dias_Fact"].ToString();
+                        PeriodoFac = string.IsNullOrEmpty(fi["PeriodoFac"].ToString()) ? "" : fi["PeriodoFac"].ToString();
+                        Anio = string.IsNullOrEmpty(fi["Anio"].ToString()) ? "" : fi["Anio"].ToString();
+                        PeriodoB = string.IsNullOrEmpty(fi["PeriodoB"].ToString()) ? "" : fi["PeriodoB"].ToString();
+                        Consumo = string.IsNullOrEmpty(fi["Consumo"].ToString()) ? "" : fi["Consumo"].ToString();
+                        Fec_Emision = string.IsNullOrEmpty(fi["Fec_Emision"].ToString()) ? "" : fi["Fec_Emision"].ToString();
+                        Prox_Vto = string.IsNullOrEmpty(fi["Prox_Vto"].ToString()) ? "" : fi["Prox_Vto"].ToString();
+                        Estimado = string.IsNullOrEmpty(fi["Estimado"].ToString()) ? "" : fi["Estimado"].ToString();
+                        Desconexion1 = string.IsNullOrEmpty(fi["Desconexion1"].ToString()) ? "" : fi["Desconexion1"].ToString();
+                        Total1 = string.IsNullOrEmpty(fi["Total1"].ToString()) ? "" : fi["Total1"].ToString();
+                        Fec_Vto1 = string.IsNullOrEmpty(fi["Fec_Vto1"].ToString()) ? "" : fi["Fec_Vto1"].ToString();
+                        Nro_Fact1 = string.IsNullOrEmpty(fi["Nro_Fact1"].ToString()) ? "" : fi["Nro_Fact1"].ToString();
+                        Desconexion2 = string.IsNullOrEmpty(fi["Desconexion2"].ToString()) ? "" : fi["Desconexion2"].ToString();
+                        Total2 = string.IsNullOrEmpty(fi["Total2"].ToString()) ? "" : fi["Total2"].ToString();
+                        Fec_Vto2 = string.IsNullOrEmpty(fi["Fec_Vto2"].ToString()) ? "" : fi["Fec_Vto2"].ToString();
+                        Nro_Fact2 = string.IsNullOrEmpty(fi["Nro_Fact2"].ToString()) ? "" : fi["Nro_Fact2"].ToString();
+                        Adeudados = string.IsNullOrEmpty(fi["Adeudados"].ToString()) ? "" : fi["Adeudados"].ToString();
+                        Text_Ctrol = string.IsNullOrEmpty(fi["Text_Ctrol"].ToString()) ? "" : fi["Text_Ctrol"].ToString();
+                        LecAnt_TxCtl = string.IsNullOrEmpty(fi["LecAnt_TxCtl"].ToString()) ? "" : fi["LecAnt_TxCtl"].ToString();
+                        Saldo_Favor = string.IsNullOrEmpty(fi["Saldo_Favor"].ToString()) ? "" : fi["Saldo_Favor"].ToString();
+                        Cod_Barra28_A = string.IsNullOrEmpty(fi["Cod_Barra28_A"].ToString())? "": fi["Cod_Barra28_A"].ToString();
+                        Cod_Barra60_A = string.IsNullOrEmpty(fi["Cod_Barra60_A"].ToString()) ? "" : fi["Cod_Barra60_A"].ToString();
+                        Cod_Barra28_B = string.IsNullOrEmpty(fi["Cod_Barra28_B"].ToString()) ? "" : fi["Cod_Barra28_B"].ToString();
+                        Cod_Barra60_B = string.IsNullOrEmpty(fi["Cod_Barra60_B"].ToString()) ? "" : fi["Cod_Barra60_B"].ToString();
+                        CESP = fi["CESP"].ToString();
+                        OpBel = fi["OpBel"].ToString() == "" ? 0 : Convert.ToInt32(fi["OpBel"]);    
+                        CodQr = string.IsNullOrEmpty(fi["CodQr"].ToString()) ? "-" : fi["CodQr"].ToString();
+                        CodQrCont = string.IsNullOrEmpty(fi["CodQrCont"].ToString()) ? "-" : fi["CodQrCont"].ToString();
+                        CodQrb = string.IsNullOrEmpty(fi["CodQrb"].ToString()) ? "-" : fi["CodQrb"].ToString();
+                        CodQrbCont = string.IsNullOrEmpty(fi["CodQrbCont"].ToString()) ? "-" : fi["CodQrbCont"].ToString();
+
+                        if (contador == 499)
+                        {
+                            insertImpresor += "(" + ConexionID + ", " + Periodo + ", " + titularID + ", '" + informa1 + "', '" +
+                                informa2 + "', '" + informa3 + "', '" + informa4 + "', '" + informa5 + "', " +
+                                Contrato + ", '" + Nomb_Ape + "', '" + Dom_Calle + "', '" + Dom_Numero + "', '" +
+                                Dom_Piso + "', '" + Dom_Dpto + "', '" + Dom_Suministro + "', '" + Dom_Localidad + "', '" + Dom_Cod_Postal + "', '" +
+                                Dom_CodLocalidad + "', '" + Texto_Debito + "', '" + Jubilado + "', '" + Un_Lectura + "', '" + Porcion + "', '" +
+                                CUIT + "', '" + IVA + "', '" + Tarifa + "', '" + Medidor_Tipo + "',  '" + Medidor_Nro + "', '" + Lec_Anterior + "', '" +
+                                Lec_Actual + "', '" + Lect_X + "', '" + Fec_Anterior + "', '" + Fec_Actual + "', '" + Dias_Fact + "', '" +
+                                PeriodoFac + "', '" + Anio + "', '" + PeriodoB + "', '" + Consumo + "', '" + Fec_Emision + "', '" + Prox_Vto + "', '" +
+                                Estimado + "', '" + Desconexion1 + "', '" + Total1 + "', '" + Fec_Vto1 + "', '" + Nro_Fact1 + "', '" + Desconexion2 + "', '" +
+                                Total2 + "', '" + Fec_Vto2 + "', '" + Nro_Fact2 + "', '" + Adeudados + "', '" + Text_Ctrol + "', '" + LecAnt_TxCtl + "', '" +
+                                Saldo_Favor + "', '" + Cod_Barra28_A + "', '" + Cod_Barra28_B + "', '" + Cod_Barra60_A + "', '" + Cod_Barra60_B + "', '" +
+                                CESP + "', " + OpBel + ", '" + CodQr + "', '" + CodQrCont + "', '" + CodQrb + "', '"  + CodQrbCont + "')";
+
+                            //preparamos la cadena pra insercion
+                            MySqlCommand command = new MySqlCommand(insertImpresor, DB.conexBD);
+                            //y la ejecutamos
+                            command.ExecuteNonQuery();
+                            //finalmente cerramos la conexion ya que solo debe servir para una sola orden
+                            command.Dispose();                        
+                            insertImpresor = "INSERT INTO  Impresor " +
+                                 "(ConexionID, Periodo, titularID, Informa1, Informa2, Informa3, Informa4, " +
+                                 "Informa5, Contrato, Nomb_Ape, Dom_Calle, Dom_Numero, Dom_Piso, Dom_Dpto, " +
+                                 "Dom_Suministro, Dom_Localidad, Dom_Cod_Postal, Dom_CodLocalidad, Texto_Debito, " +
+                                 "Jubilado, Un_Lectura, Porcion, CUIT, IVA, Tarifa, Medidor_Tipo, Medidor_Nro, " +
+                                 "Lec_Anterior, Lec_Actual, Lect_X, Fec_Anterior, Fec_Actual, Dias_Fact, PeriodoFac, " +
+                                 "Anio, PeriodoB, Consumo, Fec_Emision, Prox_Vto, Estimado, Desconexion1, Total1, " +
+                                 "Fec_Vto1, Nro_Fact1, Desconexion2, Total2, Fec_Vto2, Nro_Fact2, Adeudados, Text_Ctrol, " +
+                                 "LecAnt_TxCtl, Saldo_Favor, Cod_Barra28_A, Cod_Barra60_A, Cod_Barra28_B, Cod_Barra60_B, " +
+                                 "CESP, OpBel, CodQr, CodQrCont, CodQrb, CodQrbCont ) " +
+                                 "VALUES ";
+                        }
+                        else if (contador == TablaCFaDescargar.Rows.Count)
+                        {
+                            insertImpresor += "(" + ConexionID + ", " + Periodo + ", " + titularID + ", '" + informa1 + "', '" +
+                                informa2 + "', '" + informa3 + "', '" + informa4 + "', '" + informa5 + "', " +
+                                Contrato + ", '" + Nomb_Ape + "', '" + Dom_Calle + "', '" + Dom_Numero + "', '" +
+                                Dom_Piso + "', '" + Dom_Dpto + "', '" + Dom_Suministro + "', '" + Dom_Localidad + "', '" + Dom_Cod_Postal + "', '" +
+                                Dom_CodLocalidad + "', '" + Texto_Debito + "', '" + Jubilado + "', '" + Un_Lectura + "', '" + Porcion + "', '" +
+                                CUIT + "', '" + IVA + "', '" + Tarifa + "', '" + Medidor_Tipo + "',  '" + Medidor_Nro + "', '" + Lec_Anterior + "', '" +
+                                Lec_Actual + "', '" + Lect_X + "', '" + Fec_Anterior + "', '" + Fec_Actual + "', '" + Dias_Fact + "', '" +
+                                PeriodoFac + "', '" + Anio + "', '" + PeriodoB + "', '" + Consumo + "', '" + Fec_Emision + "', '" + Prox_Vto + "', '" +
+                                Estimado + "', '" + Desconexion1 + "', '" + Total1 + "', '" + Fec_Vto1 + "', '" + Nro_Fact1 + "', '" + Desconexion2 + "', '" +
+                                Total2 + "', '" + Fec_Vto2 + "', '" + Nro_Fact2 + "', '" + Adeudados + "', '" + Text_Ctrol + "', '" + LecAnt_TxCtl + "', '" +
+                                Saldo_Favor + "', '" + Cod_Barra28_A + "', '" + Cod_Barra28_B + "', '" + Cod_Barra60_A + "', '" + Cod_Barra60_B + "', '" +
+                                CESP + "', " + OpBel + ", '" + CodQr + "', '" + CodQrCont + "', '" + CodQrb + "', '"  + CodQrbCont + "')";
+                        }
+                        else if (contador < TablaCFaDescargar.Rows.Count)
+                        {
+                            insertImpresor += "(" + ConexionID + ", " + Periodo + ", " + titularID + ", '" + informa1 + "', '" +
+                                 informa2 + "', '" + informa3 + "', '" + informa4 + "', '" + informa5 + "', " +
+                                 Contrato + ", '" + Nomb_Ape + "', '" + Dom_Calle + "', '" + Dom_Numero + "', '" +
+                                 Dom_Piso + "', '" + Dom_Dpto + "', '" + Dom_Suministro + "', '" + Dom_Localidad + "', '" + Dom_Cod_Postal + "', '" +
+                                 Dom_CodLocalidad + "', '" + Texto_Debito + "', '" + Jubilado + "', '" + Un_Lectura + "', '" + Porcion + "', '" +
+                                 CUIT + "', '" + IVA + "', '" + Tarifa + "', '" + Medidor_Tipo + "',  '" + Medidor_Nro + "', '" + Lec_Anterior + "', '" +
+                                 Lec_Actual + "', '" + Lect_X + "', '" + Fec_Anterior + "', '" + Fec_Actual + "', '" + Dias_Fact + "', '" +
+                                 PeriodoFac + "', '" + Anio + "', '" + PeriodoB + "', '" + Consumo + "', '" + Fec_Emision + "', '" + Prox_Vto + "', '" +
+                                 Estimado + "', '" + Desconexion1 + "', '" + Total1 + "', '" + Fec_Vto1 + "', '" + Nro_Fact1 + "', '" + Desconexion2 + "', '" +
+                                 Total2 + "', '" + Fec_Vto2 + "', '" + Nro_Fact2 + "', '" + Adeudados + "', '" + Text_Ctrol + "', '" + LecAnt_TxCtl + "', '" +
+                                 Saldo_Favor + "', '" + Cod_Barra28_A + "', '" + Cod_Barra28_B + "', '" + Cod_Barra60_A + "', '" + Cod_Barra60_B + "', '" +
+                                 CESP + "', " + OpBel + ", '" + CodQr + "', '" + CodQrCont + "', '" + CodQrb + "', '"  + CodQrbCont + "'),";
+                        }
+                        //backgroundDescargarAPC.ReportProgress(AvanceDescarga);
+                        //AvanceDescarga++;
                     }
-                    else if (contador == TablaCFaDescargar.Rows.Count)
-                    {
-                        insertImpresor += "(" + ConexionID + ", " + Periodo + ", " + titularID + ", '" + informa1 + "', '" +
-                            informa2 + "', '" + informa3 + "', '" + informa4 + "', '" + informa5 + "', " +
-                            Contrato + ", '" + Nomb_Ape + "', '" + Dom_Calle + "', '" + Dom_Numero + "', '" +
-                            Dom_Piso + "', '" + Dom_Dpto + "', '" + Dom_Suministro + "', '" + Dom_Localidad + "', '" + Dom_Cod_Postal + "', '" +
-                            Dom_CodLocalidad + "', '" + Texto_Debito + "', '" + Jubilado + "', '" + Un_Lectura + "', '" + Porcion + "', '" +
-                            CUIT + "', '" + IVA + "', '" + Tarifa + "', '" + Medidor_Tipo + "',  '" + Medidor_Nro + "', '" + Lec_Anterior + "', '" +
-                            Lec_Actual + "', '" + Lect_X + "', '" + Fec_Anterior + "', '" + Fec_Actual + "', '" + Dias_Fact + "', '" +
-                            PeriodoFac + "', '" + Anio + "', '" + PeriodoB + "', '" + Consumo + "', '" + Fec_Emision + "', '" + Prox_Vto + "', '" +
-                            Estimado + "', '" + Desconexion1 + "', '" + Total1 + "', '" + Fec_Vto1 + "', '" + Nro_Fact1 + "', '" + Desconexion2 + "', '" +
-                            Total2 + "', '" + Fec_Vto2 + "', '" + Nro_Fact2 + "', '" + Adeudados + "', '" + Text_Ctrol + "', '" + LecAnt_TxCtl + "', '" +
-                            Saldo_Favor + "', '" + Cod_Barra28_A + "', '" + Cod_Barra28_B + "', '" + Cod_Barra60_A + "', '" + Cod_Barra60_B + "', '" +
-                            CESP + "', " + OpBel + ", '" + CodQr + "', '" + CodQrCont + "', '" + CodQrb + "', '"  + CodQrbCont + "')";
-                    }
-                    else if (contador < TablaCFaDescargar.Rows.Count)
-                    {
-                        insertImpresor += "(" + ConexionID + ", " + Periodo + ", " + titularID + ", '" + informa1 + "', '" +
-                             informa2 + "', '" + informa3 + "', '" + informa4 + "', '" + informa5 + "', " +
-                             Contrato + ", '" + Nomb_Ape + "', '" + Dom_Calle + "', '" + Dom_Numero + "', '" +
-                             Dom_Piso + "', '" + Dom_Dpto + "', '" + Dom_Suministro + "', '" + Dom_Localidad + "', '" + Dom_Cod_Postal + "', '" +
-                             Dom_CodLocalidad + "', '" + Texto_Debito + "', '" + Jubilado + "', '" + Un_Lectura + "', '" + Porcion + "', '" +
-                             CUIT + "', '" + IVA + "', '" + Tarifa + "', '" + Medidor_Tipo + "',  '" + Medidor_Nro + "', '" + Lec_Anterior + "', '" +
-                             Lec_Actual + "', '" + Lect_X + "', '" + Fec_Anterior + "', '" + Fec_Actual + "', '" + Dias_Fact + "', '" +
-                             PeriodoFac + "', '" + Anio + "', '" + PeriodoB + "', '" + Consumo + "', '" + Fec_Emision + "', '" + Prox_Vto + "', '" +
-                             Estimado + "', '" + Desconexion1 + "', '" + Total1 + "', '" + Fec_Vto1 + "', '" + Nro_Fact1 + "', '" + Desconexion2 + "', '" +
-                             Total2 + "', '" + Fec_Vto2 + "', '" + Nro_Fact2 + "', '" + Adeudados + "', '" + Text_Ctrol + "', '" + LecAnt_TxCtl + "', '" +
-                             Saldo_Favor + "', '" + Cod_Barra28_A + "', '" + Cod_Barra28_B + "', '" + Cod_Barra60_A + "', '" + Cod_Barra60_B + "', '" +
-                             CESP + "', " + OpBel + ", '" + CodQr + "', '" + CodQrCont + "', '" + CodQrb + "', '"  + CodQrbCont + "'), ";
-                    }
-                    //backgroundDescargarAPC.ReportProgress(AvanceDescarga);
-                    //AvanceDescarga++;
                 }
+
+                // Verifica si el último carácter es una coma
+                if (insertImpresor.EndsWith(","))
+                {
+                    // Elimina el último carácter
+                    insertImpresor = insertImpresor.Remove(insertImpresor.Length - 1);
+                }
+
                 //preparamos la cadena pra insercion                
                 MySqlCommand command2 = new MySqlCommand(insertImpresor, DB.conexBD);
                 //y la ejecutamos              
@@ -4148,47 +4269,51 @@ namespace gagFIS_Interfase
 
                     foreach (DataRow fi in TablaAltas.Rows)
                     {
-                        Vble.Periodo = Convert.ToInt32(fi["Periodo"]);
-                        ABM = fi["ABM", DataRowVersion.Original].ToString();//corroborar una descarga si funciona con la nueva estructura de la tabla altas
-                        fecha = Convert.ToDateTime(fi["Fecha", DataRowVersion.Original]);
-                        Hora = fi["Hora", DataRowVersion.Original].ToString();
-                        ConexionID = fi["ConexionID"].ToString() == "" ? "-" : fi["ConexionID"].ToString();
-                        modelo = fi["Modelo"].ToString() == "" ? "-" : fi["Modelo"].ToString();
-                        numero = fi["Numero"].ToString() == "" ? "-" : fi["Numero"].ToString();
-                        Digitos = fi["Digitos"].ToString() == "" ? "-" : fi["Digitos"].ToString();
-                        FactorMul = fi["FactorMult"].ToString() == "" ? "-" : fi["FactorMult"].ToString();
-                        activa = fi["Activa"].ToString() == "" ? "-" : fi["Activa"].ToString();
-                        estado = fi["Estado"].ToString() == "" ? "-" : fi["Estado"].ToString();
-                        domicilio = fi["Domicilio"].ToString() == "" ? "-" : fi["Domicilio"].ToString();
-                        observaciones = fi["Observaciones"].ToString() == "" ? "-" : fi["Observaciones"].ToString();                      
-                        Ruta = fi["Ruta"].ToString() == "" ? "0" : fi["Ruta"].ToString();
-                        int rutaInt = Convert.ToInt32(Ruta);
-                        //Ruta = (Int64)fi["Ruta"] == 0 ? 0 : (Int64)fi["Ruta"];
-                        Operario = fi["Operario"].ToString() == "" ? "0" : fi["Operario"].ToString();
-                        latitud  =  fi["Latitud"].ToString() == "-28" ? -28 : Convert.ToDouble(fi["Latitud"].ToString().Replace(",", "."), CultureInfo.CreateSpecificCulture("en-US"));
-                        longitud = fi["Longitud"].ToString() == "-58" ? -28 : Convert.ToDouble(fi["Longitud"].ToString().Replace(",", "."), CultureInfo.CreateSpecificCulture("en-US"));
-                        //Convert.ToDouble(substrings[10], CultureInfo.CreateSpecificCulture("en-US"));
+                        int existAlta = VerificarExistenciaAltas(Convert.ToInt32(fi["conexionID"]), Convert.ToInt32(fi["Periodo"].ToString()), "Altas", fi["Numero"].ToString(), fi["Fecha", DataRowVersion.Original].ToString());
 
-                        //if (ABM.ToUpper() == "A")
-                        //{
-                        if ((VerificarExistenciaRegistroAlta("Altas", "Periodo", Vble.Periodo.ToString(), "Ruta", rutaInt, "Fecha", fecha.ToString("yyyy/MM/dd"), "Hora", Hora, "Numero", numero) == 0))
+                        if (existAlta == 0)
                         {
-                            string insert = "INSERT INTO Altas (Periodo, ABM, Ruta, Operario, Fecha, Hora, ConexionID, Modelo, Numero, Digitos, FactorMult, Activa, Estado," +
-                                            " Domicilio, Observaciones, Latitud, Longitud) " +
-                                            "VALUES ('" + Vble.Periodo + "', '" + ABM + "', " + Ruta + ", " + Operario + ", '" + Convert.ToDateTime(fecha).ToString("yyyy/MM/dd") + "', '" + 
-                                            Convert.ToDateTime(Hora).ToString("HH:mm") + "', '" + 
-                                            ConexionID + "', '" + modelo + "', '" + numero + "', '" + 
-                                            Digitos + "', '" + FactorMul + "', '" + activa + "', '" + 
-                                            estado + "', '" + domicilio + "', '" + observaciones + "', '" + latitud.ToString().Replace(",", ".") + "', '" + longitud.ToString().Replace(",", ".") + "') ";
+                            Vble.Periodo = Convert.ToInt32(fi["Periodo"]);
+                            ABM = fi["ABM", DataRowVersion.Original].ToString();//corroborar una descarga si funciona con la nueva estructura de la tabla altas
+                            fecha = Convert.ToDateTime(fi["Fecha", DataRowVersion.Original]);
+                            Hora = fi["Hora", DataRowVersion.Original].ToString();
+                            ConexionID = fi["ConexionID"].ToString() == "" ? "-" : fi["ConexionID"].ToString();
+                            modelo = fi["Modelo"].ToString() == "" ? "-" : fi["Modelo"].ToString();
+                            numero = fi["Numero"].ToString() == "" ? "-" : fi["Numero"].ToString();
+                            Digitos = fi["Digitos"].ToString() == "" ? "-" : fi["Digitos"].ToString();
+                            FactorMul = fi["FactorMult"].ToString() == "" ? "-" : fi["FactorMult"].ToString();
+                            activa = fi["Activa"].ToString() == "" ? "-" : fi["Activa"].ToString();
+                            estado = fi["Estado"].ToString() == "" ? "-" : fi["Estado"].ToString();
+                            domicilio = fi["Domicilio"].ToString() == "" ? "-" : fi["Domicilio"].ToString();
+                            observaciones = fi["Observaciones"].ToString() == "" ? "-" : fi["Observaciones"].ToString();                      
+                            Ruta = fi["Ruta"].ToString() == "" ? "0" : fi["Ruta"].ToString();
+                            int rutaInt = Convert.ToInt32(Ruta);
+                            //Ruta = (Int64)fi["Ruta"] == 0 ? 0 : (Int64)fi["Ruta"];
+                            Operario = fi["Operario"].ToString() == "" ? "0" : fi["Operario"].ToString();
+                            latitud  =  fi["Latitud"].ToString() == "-28" ? -28 : Convert.ToDouble(fi["Latitud"].ToString().Replace(",", "."), CultureInfo.CreateSpecificCulture("en-US"));
+                            longitud = fi["Longitud"].ToString() == "-58" ? -28 : Convert.ToDouble(fi["Longitud"].ToString().Replace(",", "."), CultureInfo.CreateSpecificCulture("en-US"));
+                            //Convert.ToDouble(substrings[10], CultureInfo.CreateSpecificCulture("en-US"));
 
-                            //preparamos la cadena pra insercion
-                            MySqlCommand command = new MySqlCommand(insert, DB.conexBD);
-                            //y la ejecutamos
-                            command.ExecuteNonQuery();
-                            //finalmente cerramos la conexion ya que solo debe servir para una sola orden
-                            command.Dispose();
+                            //if (ABM.ToUpper() == "A")
+                            //{
+                            if ((VerificarExistenciaRegistroAlta("Altas", "Periodo", Vble.Periodo.ToString(), "Ruta", rutaInt, "Fecha", fecha.ToString("yyyy/MM/dd"), "Hora", Hora, "Numero", numero) == 0))
+                            {
+                                string insert = "INSERT INTO Altas (Periodo, ABM, Ruta, Operario, Fecha, Hora, ConexionID, Modelo, Numero, Digitos, FactorMult, Activa, Estado," +
+                                                " Domicilio, Observaciones, Latitud, Longitud) " +
+                                                "VALUES ('" + Vble.Periodo + "', '" + ABM + "', " + Ruta + ", " + Operario + ", '" + Convert.ToDateTime(fecha).ToString("yyyy/MM/dd") + "', '" + 
+                                                Convert.ToDateTime(Hora).ToString("HH:mm") + "', '" + 
+                                                ConexionID + "', '" + modelo + "', '" + numero + "', '" + 
+                                                Digitos + "', '" + FactorMul + "', '" + activa + "', '" + 
+                                                estado + "', '" + domicilio + "', '" + observaciones + "', '" + latitud.ToString().Replace(",", ".") + "', '" + longitud.ToString().Replace(",", ".") + "') ";
+
+                                //preparamos la cadena pra insercion
+                                MySqlCommand command = new MySqlCommand(insert, DB.conexBD);
+                                //y la ejecutamos
+                                command.ExecuteNonQuery();
+                                //finalmente cerramos la conexion ya que solo debe servir para una sola orden
+                                command.Dispose();
+                            }
                         }
-                        //}
                     }
                 }
 
@@ -4211,10 +4336,7 @@ namespace gagFIS_Interfase
         //private void AgregarNovedadesConex(string RutaSqlite)
         private void AgregarNovedadesConex()
         {
-            string txSQL;
-            //SQLiteConnection BaseADescargar = new SQLiteConnection("Data Source=" + RutaSqlite);            
-            //SQLiteConnection BaseADescargar = new SQLiteConnection("Data Source=" + RutaSqlite + "; Password=alVlgePcDdL");
-            //BaseADescargar.Open();
+            string txSQL;           
             string Observacion = "";
 
             try
@@ -4251,24 +4373,28 @@ namespace gagFIS_Interfase
 
                 foreach (DataRow fi in Tabla.Rows)
                 {
-                    string insert;//Declaración de string que contendra la consulta INSERT
-                    insert = "INSERT INTO NovedadesConex (ConexionID, Orden, Periodo, Codigo, Observ) " +
-                             "VALUES (" + Convert.ToInt32(fi["conexionID"].ToString()) + ", " + Convert.ToInt32(fi["Orden"].ToString()) + ", " +
-                              Convert.ToInt32(fi["Periodo"].ToString()) + ", " + Convert.ToInt32(fi["Codigo"].ToString()) + ", '" + (fi["Observ"].ToString()) + "')";
-                    //preparamos la cadena pra insercion
-                    MySqlCommand command2 = new MySqlCommand(insert, DB.conexBD);
-                    //y la ejecutamos
-                    command2.ExecuteNonQuery();
-                    //finalmente cerramos la conexion ya que solo debe servir para una sola orden
-                    command2.Dispose();
+                    int ExistNov = VerificarExistencia(Convert.ToInt32(fi["conexionID"]), Convert.ToInt32(fi["Periodo"].ToString()), "NovedadesConex", fi["Orden"].ToString());
 
-                    //if ((fi["Observ"].ToString().Contains('|')))
-                    //{
-                    //    Int32 EstadoACorregir = Convert.ToInt32(fi["Observ"].ToString().Substring(0, fi["Observ"].ToString().IndexOf('|')));
-                    //    CorregirEstado(Convert.ToInt32(fi["conexionID"].ToString()), Convert.ToInt32(fi["Periodo"].ToString()), EstadoACorregir, Observacion);
-                    //}
+                    if (ExistNov == 0)
+                    {
+                        string insert;//Declaración de string que contendra la consulta INSERT
+                        insert = "INSERT INTO NovedadesConex (ConexionID, Orden, Periodo, Codigo, Observ) " +
+                                 "VALUES (" + Convert.ToInt32(fi["conexionID"].ToString()) + ", " + Convert.ToInt32(fi["Orden"].ToString()) + ", " +
+                                  Convert.ToInt32(fi["Periodo"].ToString()) + ", " + Convert.ToInt32(fi["Codigo"].ToString()) + ", '" + (fi["Observ"].ToString()) + "')";
+                        //preparamos la cadena pra insercion
+                        MySqlCommand command2 = new MySqlCommand(insert, DB.conexBD);
+                        //y la ejecutamos
+                        command2.ExecuteNonQuery();
+                        //finalmente cerramos la conexion ya que solo debe servir para una sola orden
+                        command2.Dispose();
 
+                        //if ((fi["Observ"].ToString().Contains('|')))
+                        //{
+                        //    Int32 EstadoACorregir = Convert.ToInt32(fi["Observ"].ToString().Substring(0, fi["Observ"].ToString().IndexOf('|')));
+                        //    CorregirEstado(Convert.ToInt32(fi["conexionID"].ToString()), Convert.ToInt32(fi["Periodo"].ToString()), EstadoACorregir, Observacion);
+                        //}
 
+                    }
                 }
                 comandoSQL.Dispose();
                 datosAdapter.Dispose();

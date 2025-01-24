@@ -101,6 +101,11 @@ namespace gagFIS_Interfase
         string ZonaDetRes = "";
         string RemesaDetRes = "";
         string ZonaLocalidad = "";
+        string CantConex = "";
+        string CantLeidas = "";
+        string CantImpr = "";
+        string CantSaldos = "";
+
 
         public FormDetallePreDescarga()
         {
@@ -123,7 +128,8 @@ namespace gagFIS_Interfase
 
                 MiLoadingInformes.Visible = true;
 
-
+                this.DGResumenExp.DataSource = "";
+                this.DGResumenExp.Columns.Clear();
 
 
                 this.DTPDesdeTomLect.Text = Vble.TextDesdeInformes;
@@ -191,6 +197,7 @@ namespace gagFIS_Interfase
                             }
                         }
                         LabelLeyenda.Visible = true;
+                        LabelLeyenda.Text = "Ruta " + Ruta;
 
                         if (DB.sDbUsu.ToUpper() == "AUDITORIA")
                         {
@@ -775,13 +782,14 @@ namespace gagFIS_Interfase
             float[] widthsResumen = new float[0];
             //asigno el ancho de las columnas 
             iTextSharp.text.Rectangle page0 = document.PageSize;
-            pdfTable = new PdfPTable(13);
+            pdfTable = new PdfPTable(16);
             pdfTable.WidthPercentage = 180;
             pdfTable.TotalWidth = page0.Width - 90;
             pdfTable.DefaultCell.Padding = LVResumenGral.Width - 100;
             pdfTable.LockedWidth = true;
-            widthsResumen = new float[] { 1.0f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f };
+            widthsResumen = new float[] { 1.0f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.8f, 0.6f, 0.9f, 0.8f, 0.9f, 0.8f, 0.8f, 0.8f };
             pdfTable.SetWidths(widthsResumen);
+            
 
             //LabelLeyenda.Text = "Todos";
             //pdftableAltas que contendra los datos de las altas en caso de que tenga la ruta
@@ -1250,7 +1258,7 @@ namespace gagFIS_Interfase
                 //Agregmos los encabezados del List View Resumen
                 foreach (ColumnHeader column in LVResumenGral.Columns)
                 {
-                    PdfPCell cell = new PdfPCell(new Phrase(column.Text));
+                    PdfPCell cell = new PdfPCell(new Phrase(column.Text, FontFactory.GetFont("Arial", 10, iTextSharp.text.Font.NORMAL)));
                     pdfTable.AddCell(cell);
                 }
                 //Agregamos las lineas de datos del List View Resumen              
@@ -1261,7 +1269,7 @@ namespace gagFIS_Interfase
                     {
                         //Thread.Sleep(100);
                         string valor = itemRow.SubItems[i].Text;
-                        PdfPCell valorcelda = (new PdfPCell(new Phrase(valor)));
+                        PdfPCell valorcelda = (new PdfPCell(new Phrase(valor, FontFactory.GetFont("Arial", 9, iTextSharp.text.Font.NORMAL))));
                         pdfTable.AddCell(valorcelda);
                     }
                 }
@@ -2180,7 +2188,7 @@ namespace gagFIS_Interfase
 
                 DGResumenExp.Columns.Add("%Saldo", "%Saldo");
                 DGResumenExp.Columns["%Saldo"].DisplayIndex = 8;
-                DGResumenExp.Columns["Rem"].Visible = false;
+                DGResumenExp.Columns["Remesa"].Visible = false;
             }
             else{
                 DGResumenExp.Columns["Remesa"].Visible = false;
@@ -2859,10 +2867,18 @@ namespace gagFIS_Interfase
             
             else
             {
-                DGResumenExp.Columns["Localidad"].Visible = false;
+                //DGResumenExp.Columns["Localidad"].Visible = false;
                 DGResumenExp.Columns["NInstalacion"].Visible = false;
-            }            
-            leyenda.Text = "Informe seleccionado: " + LabelLeyenda.Text;
+            }
+                if (LabelLeyenda.Text == "TodosR")
+                {
+                    leyenda.Text = "Informe seleccionado: TODOS";
+                }
+                else
+                {
+                    leyenda.Text = "Informe seleccionado: " + LabelLeyenda.Text;
+                }
+           
             leyenda.Visible = true;
             //Vble.HideLoading();
             CONSULTANOIMPRESOS = "";
@@ -2894,6 +2910,10 @@ namespace gagFIS_Interfase
             ArrayList LeidosSinImprimir = new ArrayList();
             ArrayList FueraDeRango = new ArrayList();
             ArrayList IndicacionNoImpresion = new ArrayList();
+            ArrayList NoImpPorImporte = new ArrayList();
+            ArrayList Apagados = new ArrayList();
+            ArrayList Imposibles = new ArrayList();
+            ArrayList ErroresSAP = new ArrayList();
             ArrayList HoraInicio = new ArrayList();
             ArrayList HoraFin = new ArrayList();
             ArrayList Inicio = new ArrayList();
@@ -2970,7 +2990,17 @@ namespace gagFIS_Interfase
                 //HoraInicio.Add(command.ExecuteScalar().ToString());
                 //command.Dispose();
 
-                string SelectHoraMin = "SELECT MIN(M.ActualHora) as HoraInicio, MAX(M.ActualHora) as HoraFin, Count(C.ConexionID) as Total FROM Conexiones C INNER JOIN Medidores M" +
+                string SelectHoraMin = "SELECT MIN(M.ActualHora) as HoraInicio, MAX(M.ActualHora) as HoraFin, Count(C.ConexionID) as Total, " +
+                                       "SUM(IF (C.ImpresionOBS MOD 100 > 0, 1, 0)) AS Tomados, " +
+                                       "SUM(IF (C.ImpresionOBS MOD 100 = 1, 1, 0)) AS Impresos, " +
+                                       "SUM(IF (C.ImpresionOBS MOD 100 > 1, 1, 0)) AS LeidosSinImprimir, " +
+                                       "SUM(IF (C.ImpresionOBS MOD 100 = 4, 1, 0)) AS FueraRango, " +
+                                       "SUM(IF (C.ImpresionCOD = 1, 1, 0)) AS Indicado, " +
+                                       "SUM(IF ((C.ImpresionOBS MOD 100 = 32 OR C.ImpresionOBS MOD 100 = 72 OR C.ImpresionOBS MOD 100 = 73), 1, 0)) AS Importes, " +
+                                       "SUM(IF (C.ImpresionOBS MOD 100 = 17, 1, 0)) AS Apagados, " +
+                                       "SUM(IF (C.ImpresionOBS MOD 100 = 9, 1, 0)) AS Imposible, " +
+                                       "SUM(IF (C.ImpresionOBS MOD 100 = 77, 1, 0)) AS ErroresSAP " +
+                                       " FROM Conexiones C INNER JOIN Medidores M" +
                                       " ON C.ConexionID = M.ConexionID AND C.Periodo = M.Periodo" +
                                       //" WHERE C.Ruta = " + RutaNº + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
                                       " WHERE C.Ruta = " + RutaNº + " and C.Periodo = " + Vble.Periodo +
@@ -2987,92 +3017,107 @@ namespace gagFIS_Interfase
                     // Accede a los valores por índice de columna o por nombre de columna
                     HoraInicio.Add(reader["HoraInicio"].ToString());
                     HoraFin.Add(reader["HoraFin"].ToString());
-                    CantUsurios.Add(reader["Total"].ToString());                  
+                    Tomados.Add(reader["Tomados"].ToString());
+                    Impresos.Add(reader["Impresos"].ToString());
+                    LeidosSinImprimir.Add(reader["LeidosSinImprimir"].ToString());
+                    FueraDeRango.Add(reader["FueraRango"].ToString());
+                    IndicacionNoImpresion.Add(reader["Indicado"].ToString());
+                    NoImpPorImporte.Add(reader["Importes"].ToString());
+                    Apagados.Add(reader["Apagados"].ToString());
+                    Imposibles.Add(reader["Imposible"].ToString());
+                    ErroresSAP.Add(reader["ErroresSAP"].ToString());
+                    //CantUsurios.Add(reader["Total"].ToString());                  
                 }
                 reader.Dispose();
 
-                //string SelectHoraMax = "SELECT MAX(M.ActualHora) FROM Conexiones C INNER JOIN Medidores M" +
-                //                      " ON C.ConexionID = M.ConexionID AND C.Periodo = M.Periodo" +
-                //                      //" WHERE C.Ruta = " + RutaNº + " AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
-                //                      " WHERE C.Ruta = " + RutaNº + " and C.Periodo = " + Vble.Periodo +
-                //                      " AND M.ActualFecha = '" + Convert.ToDateTime(ListaFechas[i]).ToString("yyyy-MM-dd") + "'";
+               
 
-                //command = new MySqlCommand(SelectHoraMax, DB.conexBD);
-                //command.CommandTimeout = 300;
-                //HoraFin.Add(command.ExecuteScalar().ToString());
-                //command.Dispose();
-
-                //string TotalUsuarios = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
+                //string SelectTomados = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
                 //                       " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
                 //                       //" WHERE C.Ruta = " + RutaNº + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
                 //                       " WHERE C.Ruta = " + RutaNº + " and C.Periodo = " + Vble.Periodo +
-                //                       " AND M.ActualFecha = '" + Convert.ToDateTime(ListaFechas[i]).ToString("yyyy-MM-dd") + "'";
+                //                       " AND M.ActualFecha = '" + Convert.ToDateTime(ListaFechas[i]).ToString("yyyy-MM-dd") + "'" +
+                //                       " AND C.ImpresionOBS MOD 100 > 0";
 
-                //command = new MySqlCommand(TotalUsuarios, DB.conexBD);
+                //command = new MySqlCommand(SelectTomados, DB.conexBD);
                 //command.CommandTimeout = 300;
-                //CantUsurios.Add(command.ExecuteScalar().ToString());
+                //Tomados.Add(command.ExecuteScalar().ToString());
                 //command.Dispose();
 
-                string SelectTomados = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
-                                       " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
-                                       //" WHERE C.Ruta = " + RutaNº + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
-                                       " WHERE C.Ruta = " + RutaNº + " and C.Periodo = " + Vble.Periodo +
-                                       " AND M.ActualFecha = '" + Convert.ToDateTime(ListaFechas[i]).ToString("yyyy-MM-dd") + "'" +
-                                       " AND C.ImpresionOBS > 600";
+                //string SelectImpresos = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
+                //                        " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
+                //                        //" WHERE C.Ruta = " + RutaNº + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
+                //                        " WHERE C.Ruta = " + RutaNº + " and C.Periodo = " + Vble.Periodo +
+                //                        " AND M.ActualFecha = '" + Convert.ToDateTime(ListaFechas[i]).ToString("yyyy-MM-dd") + "'" +
+                //                        " AND C.ImpresionOBS = 601";
 
-                command = new MySqlCommand(SelectTomados, DB.conexBD);
-                command.CommandTimeout = 300;
-                Tomados.Add(command.ExecuteScalar().ToString());
-                command.Dispose();
+                //command = new MySqlCommand(SelectImpresos, DB.conexBD);
+                //command.CommandTimeout = 300;
+                //Impresos.Add(command.ExecuteScalar().ToString());
+                //command.Dispose();
 
-                string SelectImpresos = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
-                                        " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
-                                        //" WHERE C.Ruta = " + RutaNº + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
-                                        " WHERE C.Ruta = " + RutaNº + " and C.Periodo = " + Vble.Periodo +
-                                        " AND M.ActualFecha = '" + Convert.ToDateTime(ListaFechas[i]).ToString("yyyy-MM-dd") + "'" +
-                                        " AND C.ImpresionOBS = 601";
+                //string SelectLeidosSinImprimir = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
+                //                        " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
+                //                        //" WHERE C.Ruta = " + RutaNº + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
+                //                        " WHERE C.Ruta = " + RutaNº + " and C.Periodo = " + Vble.Periodo +
+                //                        " AND M.ActualFecha = '" + Convert.ToDateTime(ListaFechas[i]).ToString("yyyy-MM-dd") + "'" +
+                //                        " AND C.ImpresionOBS > 601";
 
-                command = new MySqlCommand(SelectImpresos, DB.conexBD);
-                command.CommandTimeout = 300;
-                Impresos.Add(command.ExecuteScalar().ToString());
-                command.Dispose();
+                //command = new MySqlCommand(SelectLeidosSinImprimir, DB.conexBD);
+                //command.CommandTimeout = 300;
+                //LeidosSinImprimir.Add(command.ExecuteScalar().ToString());
+                //command.Dispose();
 
-                string SelectLeidosSinImprimir = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
-                                        " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
-                                        //" WHERE C.Ruta = " + RutaNº + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
-                                        " WHERE C.Ruta = " + RutaNº + " and C.Periodo = " + Vble.Periodo +
-                                        " AND M.ActualFecha = '" + Convert.ToDateTime(ListaFechas[i]).ToString("yyyy-MM-dd") + "'" +
-                                        " AND C.ImpresionOBS > 601";
+                //string SelectFueraRango = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
+                //                        " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
+                //                        //" WHERE C.Ruta = " + RutaNº + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
+                //                        " WHERE C.Ruta = " + RutaNº + " and C.Periodo = " + Vble.Periodo +
+                //                        " AND M.ActualFecha = '" + Convert.ToDateTime(ListaFechas[i]).ToString("yyyy-MM-dd") + "'" +
+                //                        " AND C.ImpresionOBS = 604";
 
-                command = new MySqlCommand(SelectLeidosSinImprimir, DB.conexBD);
-                command.CommandTimeout = 300;
-                LeidosSinImprimir.Add(command.ExecuteScalar().ToString());
-                command.Dispose();
+                //command = new MySqlCommand(SelectFueraRango, DB.conexBD);
+                //command.CommandTimeout = 300;
+                //FueraDeRango.Add(command.ExecuteScalar().ToString());
+                //command.Dispose();
 
-                string SelectFueraRango = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
-                                        " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
-                                        //" WHERE C.Ruta = " + RutaNº + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
-                                        " WHERE C.Ruta = " + RutaNº + " and C.Periodo = " + Vble.Periodo +
-                                        " AND M.ActualFecha = '" + Convert.ToDateTime(ListaFechas[i]).ToString("yyyy-MM-dd") + "'" +
-                                        " AND C.ImpresionOBS = 604";
+                //string SelectIndicados = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
+                //                        " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
+                //                        //" WHERE C.Ruta = " + RutaNº + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
+                //                        " WHERE C.Ruta = " + RutaNº + " and C.Periodo = " + Vble.Periodo +
+                //                        " AND M.ActualFecha = '" + Convert.ToDateTime(ListaFechas[i]).ToString("yyyy-MM-dd") + "'" +
+                //                        " AND C.ImpresionCOD = 1";
 
-                command = new MySqlCommand(SelectFueraRango, DB.conexBD);
-                command.CommandTimeout = 300;
-                FueraDeRango.Add(command.ExecuteScalar().ToString());
-                command.Dispose();
+                //command = new MySqlCommand(SelectIndicados, DB.conexBD);
+                //command.CommandTimeout = 300;
+                //string indicados = command.ExecuteScalar() == null ? "0" : command.ExecuteScalar().ToString();
+                //IndicacionNoImpresion.Add(indicados);
+                //command.Dispose();
 
-                string SelectIndicados = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
-                                        " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
-                                        //" WHERE C.Ruta = " + RutaNº + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
-                                        " WHERE C.Ruta = " + RutaNº + " and C.Periodo = " + Vble.Periodo +
-                                        " AND M.ActualFecha = '" + Convert.ToDateTime(ListaFechas[i]).ToString("yyyy-MM-dd") + "'" +
-                                        " AND C.ImpresionCOD = 1";
+                //string SelectImportes = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
+                //                      " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
+                //                      //" WHERE C.Ruta = " + RutaNº + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
+                //                      " WHERE C.Ruta = " + RutaNº + " and C.Periodo = " + Vble.Periodo +
+                //                      " AND M.ActualFecha = '" + Convert.ToDateTime(ListaFechas[i]).ToString("yyyy-MM-dd") + "'" +
+                //                      " AND (C.ImpresionOBS MOD 100 = 32 OR C.ImpresionOBS MOD 100 = 72 OR C.ImpresionOBS MOD 100 = 73) ";
 
-                command = new MySqlCommand(SelectIndicados, DB.conexBD);
-                command.CommandTimeout = 300;
-                string indicados = command.ExecuteScalar() == null ? "0" : command.ExecuteScalar().ToString();
-                IndicacionNoImpresion.Add(indicados);
-                command.Dispose();
+                //command = new MySqlCommand(SelectImportes, DB.conexBD);
+                //command.CommandTimeout = 300;
+                //string importes = command.ExecuteScalar() == null ? "0" : command.ExecuteScalar().ToString();
+                //NoImpPorImporte.Add(importes);
+                //command.Dispose();
+
+                //string SelectApagados = "SELECT Count(C.ConexionID) FROM Conexiones C INNER JOIN Medidores M" +
+                //                     " ON C.ConexionID = M.ConexionID and C.Periodo = M.Periodo" +
+                //                     //" WHERE C.Ruta = " + RutaNº + "  AND M.ActualHora <> '00:00' and C.Periodo = " + Vble.Periodo +
+                //                     " WHERE C.Ruta = " + RutaNº + " and C.Periodo = " + Vble.Periodo +
+                //                     " AND M.ActualFecha = '" + Convert.ToDateTime(ListaFechas[i]).ToString("yyyy-MM-dd") + "'" +
+                //                     " AND C.ImpresionOBS MOD 100 = 17 ";
+
+                //command = new MySqlCommand(SelectApagados, DB.conexBD);
+                //command.CommandTimeout = 300;
+                //string apagados = command.ExecuteScalar() == null ? "0" : command.ExecuteScalar().ToString();
+                //Apagados.Add(apagados);
+                //command.Dispose();
 
 
                 Inicio.Add(DateTime.ParseExact(Convert.ToDateTime(HoraInicio[i]).ToString("HHmm"), "HHmm", System.Globalization.CultureInfo.InvariantCulture));
@@ -3176,8 +3221,7 @@ namespace gagFIS_Interfase
                     items.SubItems.Add("0");
                 }
 
-                ///agrega el item Cantidad Usuarios
-                items.SubItems.Add(CantUsurios[i].ToString());
+               
                 ///agrega el item Cantidad Tomados
                 items.SubItems.Add(Tomados[i].ToString());
                 ///agrega el item Cantidad Impresos
@@ -3198,7 +3242,11 @@ namespace gagFIS_Interfase
 
                 items.SubItems.Add(LeidosSinImprimir[i].ToString());
                 items.SubItems.Add(FueraDeRango[i].ToString());
-                items.SubItems.Add(IndicacionNoImpresion[i].ToString());
+                items.SubItems.Add(IndicacionNoImpresion[i].ToString());                
+                items.SubItems.Add(NoImpPorImporte[i].ToString());
+                items.SubItems.Add(Apagados[i].ToString());
+                items.SubItems.Add(Imposibles[i].ToString());
+                items.SubItems.Add(ErroresSAP[i].ToString());
                 foreach (var item in DictionaryTL.Keys)
                 {
                     if (ListaFechas[i].ToString() == item)
@@ -6672,6 +6720,10 @@ namespace gagFIS_Interfase
                         RemesaDetRes = DGResumenExp.Rows[e.RowIndex].Cells[0].Value.ToString();
                         ZonaDetRes = DGResumenExp.Rows[e.RowIndex].Cells[1].Value.ToString();
                         ZonaLocalidad = DGResumenExp.Rows[e.RowIndex].Cells[2].Value.ToString();
+                        CantConex = DGResumenExp.Rows[e.RowIndex].Cells["Total"].Value.ToString();
+                        CantLeidas = DGResumenExp.Rows[e.RowIndex].Cells["LeidoNoImpresos"].Value.ToString();
+                        CantImpr = DGResumenExp.Rows[e.RowIndex].Cells["Impresos"].Value.ToString();
+                        CantSaldos = DGResumenExp.Rows[e.RowIndex].Cells["Saldo"].Value.ToString();
                     }             
 
                     //mostramos el menu
@@ -6715,9 +6767,14 @@ namespace gagFIS_Interfase
                     pantallaDetalle.RemesaDetResumen = RemesaDetRes;
                     pantallaDetalle.ResumenDetTeleLectura = LabelLeyenda.Text;
                     pantallaDetalle.zonaTeleLect = ZonaDetRes;
-                    pantallaDetalle.remTeleLect = RemesaDetRes;                  
-                    pantallaDetalle.detalle = $"INFORME DETALLE LECTURAS, LOCALIDAD: {ZonaLocalidad}  ";
-                    
+                    pantallaDetalle.remTeleLect = RemesaDetRes;
+                    pantallaDetalle.tituloInforme = $"INFORME DETALLE LECTURAS \n LOCALIDAD: {ZonaLocalidad} \n REMESA: {RemesaDetRes} ";
+                    pantallaDetalle.resumenInforme = $"Total conexiones = {CantConex} " +
+                                                     $"\nSolo Leidas = {CantLeidas} " +
+                                                     $"\nImpresos = {CantImpr}  " +
+                                                     $"\nSaldo = {CantSaldos}   ";
+
+
                     pantallaDetalle.Show();
                 }
                 //else if (e.ClickedItem.Name == "ItemAltasZona")

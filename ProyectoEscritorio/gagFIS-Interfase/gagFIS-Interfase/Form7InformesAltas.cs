@@ -1,10 +1,13 @@
 ﻿using DGV2Printer;
+using GMap.NET.MapProviders;
+using GMap.NET;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Microsoft.VisualBasic.Devices;
 using MySql.Data.MySqlClient;
 using System;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Data;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
@@ -12,8 +15,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
+using GMap.NET;
+using GMap.NET.MapProviders;
 
 //using Excel = Microsoft.Office.Interop.Excel;
 //using Microsoft.Office.Interop.Excel;
@@ -34,7 +40,13 @@ namespace gagFIS_Interfase
         public int rowIndex { get; set; }
         public static string PantallaSolicitud { get; set; }
         public static string RutaDesdeExportacion { get; set; }
-       
+
+        public static string FechaDesdeExportacion { get; set; }
+        public static string FechaHastaExportacion { get; set; }
+
+        private FormMaps formularioMapa;
+
+
 
         public Form7InformesAltas()
         {
@@ -73,6 +85,7 @@ namespace gagFIS_Interfase
         private void Form7InformesAltas_Load(object sender, EventArgs e)
         {
             var Form1 = new Form1Inicio();
+           
             DTPDesdeAltas.Format = DateTimePickerFormat.Custom;
             DTPDesdeAltas.CustomFormat = "dd/MM/yyyy";
             DTPHastaAltas.Format = DateTimePickerFormat.Custom;
@@ -83,6 +96,7 @@ namespace gagFIS_Interfase
             radioButtonPeriodo.Checked = false;
             radioButtonTipoAlta.Checked = false;
             this.Cursor = Cursors.WaitCursor;
+           
 
             if (DB.sDbUsu.ToUpper() == "OPERARIO")
             {
@@ -468,7 +482,7 @@ namespace gagFIS_Interfase
             {
                 //Lee la tabla ALTAS pertenecientes al periodo
                 txSQL = "SELECT Periodo, Ruta, Numero, Estado, Fecha, Hora, Domicilio, Observaciones, Operario, Latitud, Longitud FROM Altas" +
-                        " WHERE (Fecha BETWEEN '" + desde + "' AND '" + hasta + "') AND Numero like 'Cx%'";
+                        " WHERE (Fecha BETWEEN '" + desde + "' AND '" + hasta + "') AND Numero like 'Cx%' AND Ruta = " + RutaDesdeExportacion;
                 //" ORDER BY Fecha ASC";
 
                 TablaConexDirec = new DataTable();
@@ -3203,42 +3217,57 @@ namespace gagFIS_Interfase
                     }
                 }
             }
-            else
+            else if (this.DGConDir.RowCount == 0)
             {
 
-                if (radioButtonFecha.Checked == true)
-                {
-                    DTPDesdeAltas.Visible = true;
-                    DTPHastaAltas.Visible = true;
-                    CBPerDesdeAltas.Visible = false;
-                    CBPerHastaAltas.Visible = false;
-                    CBTipoAlta.Visible = false;
-                    label3.Visible = false;
-                    label1.Visible = true;
-                    label2.Visible = true;
-                    labelMotivo.Visible = false;
-                    if (CantidadConexDirec() > 0)
-                    {
-                        CargarConDirPorFechas(DTPDesdeAltas.Value.ToString("yyyy/MM/dd"), DTPHastaAltas.Value.ToString("yyyy/MM/dd"));
-                    }
+                CargarConDirPorFechas(CBPerDesdeConDir.Text, CBPerHastaConDir.Text);
 
-                }
-                else if (radioButtonPeriodo.Checked == true)
+            }
+            else
+            {
+                if (PantallaSolicitud == "Exportacion")
                 {
-                    DTPDesdeAltas.Visible = false;
-                    DTPHastaAltas.Visible = false;
-                    labelMotivo.Visible = false;
-                    CBTipoAlta.Visible = false;
-                    label1.Visible = true;
-                    label2.Visible = true;
-                    label3.Visible = false;
-                    CBPerDesdeConDir.Visible = true;
-                    CBPerHastaConDir.Visible = true;
-                    if (CantidadConexDirec() > 0)
+
+                    CargarConDirPorFechas(FechaDesdeExportacion, FechaHastaExportacion);
+                    if (radioButtonFecha.Checked == true)
                     {
-                        CargarConDirPorPeriodos(CBPerDesdeConDir.Text, CBPerHastaConDir.Text);
+                        DTPDesdeAltas.Visible = true;
+                        DTPHastaAltas.Visible = true;
+                        CBPerDesdeAltas.Visible = false;
+                        CBPerHastaAltas.Visible = false;
+                        CBTipoAlta.Visible = false;
+                        label3.Visible = false;
+                        label1.Visible = true;
+                        label2.Visible = true;
+                        labelMotivo.Visible = false;
+                        if (CantidadConexDirec() > 0)
+                        {
+
+                        }
+
+                    }
+                    else if (radioButtonPeriodo.Checked == true)
+                    {
+                        DTPDesdeAltas.Visible = false;
+                        DTPHastaAltas.Visible = false;
+                        labelMotivo.Visible = false;
+                        CBTipoAlta.Visible = false;
+                        label1.Visible = true;
+                        label2.Visible = true;
+                        label3.Visible = false;
+                        CBPerDesdeConDir.Visible = true;
+                        CBPerHastaConDir.Visible = true;
+                        if (CantidadConexDirec() > 0)
+                        {
+                            CargarConDirPorPeriodos(CBPerDesdeConDir.Text, CBPerHastaConDir.Text);
+                        }
                     }
                 }
+            }
+
+            if (this.TBBuscarRutaConexDirec.Text == "")
+            {
+                CargarConDirPorFechas(CBPerDesdeConDir.Text, CBPerHastaConDir.Text);
             }
         }
 
@@ -3570,7 +3599,94 @@ namespace gagFIS_Interfase
 
             // Iniciar el proceso al cargar el formulario
             PictureBoxOrd.Visible = true;
-            StartBackgroundProcess(bgwSelectOrdSinEstim);           
+            //StartBackgroundProcess(bgwSelectOrdSinEstim);
+            CargaDatos();
+        }
+
+        private async void CargaDatos()
+        {
+            try
+            {
+                PictureBoxOrd.Visible = true;
+                DGOrdenat.Visible = false;
+                await Task.Run(() => HeavyBackgroundWork());
+
+
+                LabelPeriodoOrden.Text = Vble.Periodo.ToString().Substring(4, 2) + "-" + Vble.Periodo.ToString().Substring(0, 4);
+                LabCanConexConOrd.Text = "Cantidad = " + DGOrdenat.RowCount.ToString();
+
+                LblRutaOrdenativos.Visible = true;
+                TBBuscarRutaOrdenativos.Visible = true;
+                lblCantOrd.Text = "Cantidad = " + DGOrdenat.RowCount.ToString();
+
+                // Ocultar el GIF y mostrar el DataGridView
+                PictureBoxOrd.Visible = false;
+                DGOrdenat.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
+        }
+
+        private void HeavyBackgroundWork()
+        {
+           
+            string txSQL = "SELECT C.Zona AS Localidad, C.Ruta, C.ConexionID as Instalacion, M.Numero as Medidor, " +
+             "M.ActualFecha AS Fecha_de_Lectura, M.ActualHora as Hora_de_Lectura, " +
+             "M.ActualEstado, " +
+             "N1.Codigo as Ord1, N2.Codigo as Ord2, N3.Codigo as Ord3, N4.Codigo as Ord4, N5.Codigo as Ord5, N6.Observ as Observaciones " +
+             "FROM Conexiones C " +
+             "JOIN Medidores M USING (ConexionID, Periodo) " +
+             //"JOIN NovedadesConex N USING (ConexionID, Periodo) " +
+             "left JOIN(SELECT ConexionID, Periodo, Codigo FROM NovedadesConex WHERE Orden = 1 and Periodo = " + Vble.Periodo + ") N1 " +
+             //"ON N1.ConexionID = C.ConexionID AND N1.Periodo = C.Periodo " +
+             "USING (ConexionID, Periodo) " +
+             "left JOIN(SELECT ConexionID, Periodo, Codigo FROM NovedadesConex WHERE Orden = 2 and Periodo = " + Vble.Periodo + ") N2 " +
+             "USING (ConexionID, Periodo) " +
+             "left JOIN(SELECT ConexionID, Periodo, Codigo FROM NovedadesConex WHERE Orden = 3 and Periodo = " + Vble.Periodo + ") N3 " +
+             "USING (ConexionID, Periodo) " +
+             "left JOIN(SELECT ConexionID, Periodo, Codigo FROM NovedadesConex WHERE Orden = 4 and Periodo = " + Vble.Periodo + ") N4 " +
+             "USING (ConexionID, Periodo) " +
+             "left JOIN(SELECT ConexionID, Periodo, Codigo FROM NovedadesConex WHERE Orden = 5 and Periodo = " + Vble.Periodo + ") N5 " +
+             "USING (ConexionID, Periodo) " +
+             "left JOIN (SELECT ConexionID, Periodo, Codigo, Observ FROM NovedadesConex WHERE (Orden = 0 OR Observ <> '') and Periodo = " + Vble.Periodo + ") N6 " +
+             "USING (ConexionID, Periodo) " +
+             "WHERE C.Periodo = " + Vble.Periodo + " AND (C.Zona = " + Vble.ArrayZona[0].ToString() + Vble.iteracionZona() + ") " /* AND C.Ruta = " + RutaDesdeExportacion + */ +
+             " AND (N1.Codigo < 98 and N1.Codigo > 0)" +
+             "ORDER BY C.Ruta, M.ActualFecha ASC, M.ActualHora ASC";
+            //" ORDER BY Fecha ASC";
+
+            TablaNovedades = new DataTable();
+
+           
+            
+            
+           
+            
+
+            ///se utiliza con using para llamarlo en un hilo secundario.
+            using (MySqlDataAdapter datosAdapter = new MySqlDataAdapter(txSQL, DB.conexBD))
+            {
+                datosAdapter.SelectCommand.CommandTimeout = 300;
+                MySqlCommandBuilder comandoSQL = new MySqlCommandBuilder(datosAdapter);
+                datosAdapter.Fill(TablaNovedades);
+                DGOrdenat.DataSource = TablaNovedades;          
+                datosAdapter.Dispose();
+                DGOrdenat.Columns["Observaciones"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+
+            //DGAlta.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; 
+            //DGOrdenat.Columns["Ruta"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            //DGOrdenat.Columns["Operario"].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+
+            //LabelPeriodoOrden.Text = Vble.Periodo.ToString().Substring(4, 2) + "-" + Vble.Periodo.ToString().Substring(0, 4);
+            //LabCanConexConOrd.Text = "Cantidad = " + DGOrdenat.RowCount.ToString();
+
+            //LblRutaOrdenativos.Visible = true;
+            //TBBuscarRutaOrdenativos.Visible = true;
+            //lblCantOrd.Text = "Cantidad = " + DGOrdenat.RowCount.ToString();
+            // }
         }
 
         private void StartBackgroundProcess(BackgroundWorker bgwOrdenativos)
@@ -3583,6 +3699,8 @@ namespace gagFIS_Interfase
             }
           
         }
+
+
 
 
         private void Form7InformesAltas_Shown(object sender, EventArgs e)
@@ -3620,13 +3738,13 @@ namespace gagFIS_Interfase
 
 
 
-            ///centro el label y textbox de la pestaña Conexiones Directas
-            // Centrar el Label
-            LblRutaConexDirc.Left = (this.ClientSize.Width - LblRutaConexDirc.Width) / 2;
-            LblRutaConexDirc.Top = (this.ClientSize.Height - LblRutaConexDirc.Height) / 4; // Ajusta la posición superior del Label si es necesario
-            // Centrar el TextBox debajo del Label
-            TBBuscarRutaConexDirec.Left = (this.ClientSize.Width - TBBuscarRutaConexDirec.Width) / 2;
-            TBBuscarRutaConexDirec.Top = LblRutaConexDirc.Bottom + 10; // Ajusta la distancia entre el Label y el TextBox
+            /////centro el label y textbox de la pestaña Conexiones Directas
+            //// Centrar el Label
+            //LblRutaConexDirc.Left = (this.ClientSize.Width - LblRutaConexDirc.Width) / 2;
+            //LblRutaConexDirc.Top = (this.ClientSize.Height - LblRutaConexDirc.Height) / 4; // Ajusta la posición superior del Label si es necesario
+            //// Centrar el TextBox debajo del Label
+            //TBBuscarRutaConexDirec.Left = (this.ClientSize.Width - TBBuscarRutaConexDirec.Width) / 2;
+            //TBBuscarRutaConexDirec.Top = LblRutaConexDirc.Bottom + 10; // Ajusta la distancia entre el Label y el TextBox
 
             ///centro el label y textbox de la pestaña Ordenativos
             // Centrar el Label
@@ -3973,6 +4091,36 @@ namespace gagFIS_Interfase
                 bgwSelectOrdSinEstim.CancelAsync();
             
             }
+        }
+
+        private void btnVerMapa_Click(object sender, EventArgs e)
+        {
+            DescargarMapa(-27.281739, -58.676624, -30.625364, -56.097480, 2, 18);
+        }
+
+        private void DescargarMapa(double latInicio, double lngInicio, double latFin, double lngFin, int zoomMin, int zoomMax)
+        {
+         
+        }
+
+        private void DGConDir_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ////SE COMENTA ÉSTE CODIGO YA QUE NO MUESTRA EL MAPA AL HACER CLICK (POSIBLEMENTE SE DEBA AL ACCESO LIMITADO A INTERNET QUE SE TIENE DENTRO DE LA RED DE DPEC.
+            //// Verifica si se seleccionó una fila válida
+            //if (e.RowIndex >= 0)
+            //{
+            //    formularioMapa = new FormMaps();
+            //    // Obtén la fila seleccionada
+            //    DataGridViewRow selectedRow = DGConDir.Rows[e.RowIndex];
+            //    // Obtén valores de las celdas de la fila seleccionada            
+            //    formularioMapa.latitud = selectedRow.Cells["Latitud"].Value.ToString(); // Latitud
+            //    formularioMapa.longitud = selectedRow.Cells["Longitud"].Value.ToString(); // Longitud
+            //    formularioMapa.domicilioCD = selectedRow.Cells["Domicilio"].Value.ToString(); // Domicilio de la conexDirecta
+
+            //    formularioMapa.Show();
+            //}
+         
+
         }
     }
 }

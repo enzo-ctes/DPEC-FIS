@@ -1669,3 +1669,6 @@ C:\Users\user\source\repos\MACRO INTELL\ProyectoEscritorio\gagFIS-Interfase\gagF
 C:\Users\user\source\repos\MACRO INTELL\ProyectoEscritorio\gagFIS-Interfase\gagFIS-Interfase\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
 C:\Users\user\source\repos\MACRO INTELL\ProyectoEscritorio\gagFIS-Interfase\gagFIS-Interfase\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
 C:\Users\user\source\repos\MACRO INTELL\ProyectoEscritorio\gagFIS-Interfase\gagFIS-Interfase\bin\Debug\es\Microsoft.VisualStudio.Modeling.Sdk.Integration.14.0.resources.dll
+C:\Users\user\source\repos\MACRO INTELL\ProyectoEscritorio\gagFIS-Interfase\gagFIS-Interfase\bin\Debug\GMap.NET.Core.dll
+C:\Users\user\source\repos\MACRO INTELL\ProyectoEscritorio\gagFIS-Interfase\gagFIS-Interfase\bin\Debug\GMap.NET.WindowsForms.dll
+C:\Users\user\source\repos\MACRO INTELL\ProyectoEscritorio\gagFIS-Interfase\gagFIS-Interfase\obj\Debug\gagFIS_Interfase.FormMaps.resources

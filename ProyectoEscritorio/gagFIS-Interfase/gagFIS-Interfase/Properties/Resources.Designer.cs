@@ -673,6 +673,16 @@ namespace gagFIS_Interfase.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap MapGPS {
+            get {
+                object obj = ResourceManager.GetObject("MapGPS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Nada {
             get {
                 object obj = ResourceManager.GetObject("Nada", resourceCulture);

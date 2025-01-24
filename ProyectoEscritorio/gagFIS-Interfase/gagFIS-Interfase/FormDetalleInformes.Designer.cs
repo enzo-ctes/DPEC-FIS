@@ -30,19 +30,38 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.GroupBoxResumenGral = new iTalk.iTalk_GroupBox();
             this.lblAvanceExportacion = new System.Windows.Forms.Label();
-            this.LblDatosInforme = new System.Windows.Forms.Label();
-            this.lpbexcelCircular = new System.Windows.Forms.Label();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.BtnExcel = new System.Windows.Forms.Button();
+            this.PBExcelCircular = new iTalk.iTalk_ProgressBar();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.LblTituloInforme = new System.Windows.Forms.Label();
+            this.LblResumenInforme = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportarAExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.iTalk_GroupBox3 = new iTalk.iTalk_GroupBox();
+            this.MiLoadingInformes2 = new System.Windows.Forms.PictureBox();
+            this.dgResumen2 = new System.Windows.Forms.DataGridView();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripTotalRegistros = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.iTalk_GroupBox1 = new iTalk.iTalk_GroupBox();
+            this.PBLLecDias2 = new System.Windows.Forms.PictureBox();
+            this.LVLectDias2 = new System.Windows.Forms.ListView();
+            this.Fecha2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CantTomados2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CantLeidos2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CantImpresos2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.iTalk_GroupBox2 = new iTalk.iTalk_GroupBox();
+            this.PBLOprs2 = new System.Windows.Forms.PictureBox();
+            this.LVLectOper2 = new System.Windows.Forms.ListView();
+            this.fechaLect2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.operario2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CantLect2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button9 = new System.Windows.Forms.Button();
             this.bgwDetalleExport = new System.ComponentModel.BackgroundWorker();
             this.BGWInfSuperv = new System.ComponentModel.BackgroundWorker();
@@ -75,35 +94,21 @@
             this.fechaLect = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.operario = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CantLect = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.GroupBoxResumenGral = new iTalk.iTalk_GroupBox();
-            this.PBExcelCircular = new iTalk.iTalk_ProgressBar();
-            this.iTalk_GroupBox3 = new iTalk.iTalk_GroupBox();
-            this.MiLoadingInformes2 = new System.Windows.Forms.PictureBox();
-            this.dgResumen2 = new System.Windows.Forms.DataGridView();
-            this.iTalk_GroupBox1 = new iTalk.iTalk_GroupBox();
-            this.PBLLecDias2 = new System.Windows.Forms.PictureBox();
-            this.LVLectDias2 = new System.Windows.Forms.ListView();
-            this.Fecha2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.CantTomados2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.CantLeidos2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.CantImpresos2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.iTalk_GroupBox2 = new iTalk.iTalk_GroupBox();
-            this.PBLOprs2 = new System.Windows.Forms.PictureBox();
-            this.LVLectOper2 = new System.Windows.Forms.ListView();
-            this.fechaLect2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.operario2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.CantLect2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.LabCargandoInformes = new iTalk.iTalk_Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            this.iTalk_GroupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MiLoadingInformes2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgResumen2)).BeginInit();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
@@ -113,17 +118,14 @@
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MiLoadingInformes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgResumen)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PBLLecDias)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PBLOprs)).BeginInit();
-            this.iTalk_GroupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MiLoadingInformes2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgResumen2)).BeginInit();
             this.iTalk_GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PBLLecDias2)).BeginInit();
             this.iTalk_GroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PBLOprs2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MiLoadingInformes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgResumen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PBLLecDias)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PBLOprs)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -143,7 +145,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(1385, 731);
-            this.splitContainer1.SplitterDistance = 197;
+            this.splitContainer1.SplitterDistance = 233;
             this.splitContainer1.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -151,24 +153,35 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.28992F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.71008F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 457F));
-            this.tableLayoutPanel1.Controls.Add(this.LblDatosInforme, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.GroupBoxResumenGral, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.progressBar, 0, 1);
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 473F));
             this.tableLayoutPanel1.Controls.Add(this.lblAvanceExportacion, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lpbexcelCircular, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.BtnExcel, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.PBExcelCircular, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.BtnExcel, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.progressBar, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.GroupBoxResumenGral, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.PBExcelCircular, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.71429F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1383, 171);
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 84.93976F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.06024F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1383, 207);
             this.tableLayoutPanel1.TabIndex = 53;
+            // 
+            // GroupBoxResumenGral
+            // 
+            this.GroupBoxResumenGral.BackColor = System.Drawing.Color.Transparent;
+            this.GroupBoxResumenGral.Location = new System.Drawing.Point(912, 169);
+            this.GroupBoxResumenGral.MinimumSize = new System.Drawing.Size(136, 50);
+            this.GroupBoxResumenGral.Name = "GroupBoxResumenGral";
+            this.GroupBoxResumenGral.Padding = new System.Windows.Forms.Padding(5, 28, 5, 5);
+            this.GroupBoxResumenGral.Size = new System.Drawing.Size(136, 50);
+            this.GroupBoxResumenGral.TabIndex = 4;
+            this.GroupBoxResumenGral.Text = "Detalle";
+            this.GroupBoxResumenGral.Visible = false;
+            this.GroupBoxResumenGral.Click += new System.EventHandler(this.GroupBoxResumenGral_Click);
             // 
             // lblAvanceExportacion
             // 
@@ -180,51 +193,86 @@
             this.lblAvanceExportacion.Text = "label1";
             this.lblAvanceExportacion.Visible = false;
             // 
-            // LblDatosInforme
-            // 
-            this.LblDatosInforme.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.LblDatosInforme.AutoSize = true;
-            this.LblDatosInforme.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblDatosInforme.Location = new System.Drawing.Point(602, 0);
-            this.LblDatosInforme.Name = "LblDatosInforme";
-            this.LblDatosInforme.Size = new System.Drawing.Size(65, 25);
-            this.LblDatosInforme.TabIndex = 50;
-            this.LblDatosInforme.Text = "Titulo";
-            this.LblDatosInforme.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lpbexcelCircular
-            // 
-            this.lpbexcelCircular.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lpbexcelCircular.AutoSize = true;
-            this.lpbexcelCircular.BackColor = System.Drawing.SystemColors.Control;
-            this.lpbexcelCircular.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lpbexcelCircular.Location = new System.Drawing.Point(564, 105);
-            this.lpbexcelCircular.Name = "lpbexcelCircular";
-            this.lpbexcelCircular.Size = new System.Drawing.Size(141, 16);
-            this.lpbexcelCircular.TabIndex = 52;
-            this.lpbexcelCircular.Text = "Exportando a Excel";
-            this.lpbexcelCircular.Visible = false;
-            // 
-            // progressBar
-            // 
-            this.progressBar.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.progressBar.Location = new System.Drawing.Point(46, 51);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(252, 23);
-            this.progressBar.TabIndex = 48;
-            this.progressBar.Visible = false;
-            // 
             // BtnExcel
             // 
             this.BtnExcel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BtnExcel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnExcel.Image = global::gagFIS_Interfase.Properties.Resources.iconoexcel;
-            this.BtnExcel.Location = new System.Drawing.Point(618, 134);
+            this.BtnExcel.Location = new System.Drawing.Point(607, 169);
             this.BtnExcel.Name = "BtnExcel";
             this.BtnExcel.Size = new System.Drawing.Size(33, 30);
             this.BtnExcel.TabIndex = 47;
             this.BtnExcel.UseVisualStyleBackColor = true;
             this.BtnExcel.Click += new System.EventHandler(this.BtnExcel_Click);
+            // 
+            // PBExcelCircular
+            // 
+            this.PBExcelCircular.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.PBExcelCircular.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.PBExcelCircular.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.PBExcelCircular.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.PBExcelCircular.Location = new System.Drawing.Point(912, 18);
+            this.PBExcelCircular.Maximum = ((long)(100));
+            this.PBExcelCircular.MinimumSize = new System.Drawing.Size(100, 100);
+            this.PBExcelCircular.Name = "PBExcelCircular";
+            this.PBExcelCircular.ProgressColor1 = System.Drawing.Color.Silver;
+            this.PBExcelCircular.ProgressColor2 = System.Drawing.Color.Silver;
+            this.PBExcelCircular.ProgressShape = iTalk.iTalk_ProgressBar._ProgressShape.Round;
+            this.PBExcelCircular.Size = new System.Drawing.Size(105, 105);
+            this.PBExcelCircular.TabIndex = 9;
+            this.PBExcelCircular.Text = "Exportando a Excel";
+            this.PBExcelCircular.Value = ((long)(0));
+            this.PBExcelCircular.Visible = false;
+            // 
+            // progressBar
+            // 
+            this.progressBar.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.progressBar.Location = new System.Drawing.Point(43, 169);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(252, 23);
+            this.progressBar.TabIndex = 48;
+            this.progressBar.Visible = false;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.LblTituloInforme, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.LblResumenInforme, 0, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(342, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.81482F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.18518F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(564, 135);
+            this.tableLayoutPanel2.TabIndex = 51;
+            // 
+            // LblTituloInforme
+            // 
+            this.LblTituloInforme.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.LblTituloInforme.AutoSize = true;
+            this.LblTituloInforme.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblTituloInforme.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.LblTituloInforme.Location = new System.Drawing.Point(246, 0);
+            this.LblTituloInforme.Name = "LblTituloInforme";
+            this.LblTituloInforme.Size = new System.Drawing.Size(71, 25);
+            this.LblTituloInforme.TabIndex = 50;
+            this.LblTituloInforme.Text = "Titulo";
+            this.LblTituloInforme.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // LblResumenInforme
+            // 
+            this.LblResumenInforme.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.LblResumenInforme.AutoSize = true;
+            this.LblResumenInforme.Font = new System.Drawing.Font("Mongolian Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblResumenInforme.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.LblResumenInforme.Location = new System.Drawing.Point(238, 74);
+            this.LblResumenInforme.Name = "LblResumenInforme";
+            this.LblResumenInforme.Size = new System.Drawing.Size(87, 20);
+            this.LblResumenInforme.TabIndex = 51;
+            this.LblResumenInforme.Text = "Resumen";
+            this.LblResumenInforme.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // menuStrip1
             // 
@@ -267,15 +315,52 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer4);
-            this.splitContainer2.Size = new System.Drawing.Size(1383, 528);
-            this.splitContainer2.SplitterDistance = 351;
+            this.splitContainer2.Size = new System.Drawing.Size(1383, 492);
+            this.splitContainer2.SplitterDistance = 362;
             this.splitContainer2.TabIndex = 5;
+            // 
+            // iTalk_GroupBox3
+            // 
+            this.iTalk_GroupBox3.BackColor = System.Drawing.Color.Transparent;
+            this.iTalk_GroupBox3.Controls.Add(this.MiLoadingInformes2);
+            this.iTalk_GroupBox3.Controls.Add(this.dgResumen2);
+            this.iTalk_GroupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.iTalk_GroupBox3.Location = new System.Drawing.Point(0, 0);
+            this.iTalk_GroupBox3.MinimumSize = new System.Drawing.Size(136, 50);
+            this.iTalk_GroupBox3.Name = "iTalk_GroupBox3";
+            this.iTalk_GroupBox3.Padding = new System.Windows.Forms.Padding(5, 28, 5, 5);
+            this.iTalk_GroupBox3.Size = new System.Drawing.Size(1383, 340);
+            this.iTalk_GroupBox3.TabIndex = 10;
+            this.iTalk_GroupBox3.Text = "Detalle Lecturas";
+            // 
+            // MiLoadingInformes2
+            // 
+            this.MiLoadingInformes2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MiLoadingInformes2.Image = global::gagFIS_Interfase.Properties.Resources.gifCargando;
+            this.MiLoadingInformes2.Location = new System.Drawing.Point(5, 28);
+            this.MiLoadingInformes2.Name = "MiLoadingInformes2";
+            this.MiLoadingInformes2.Size = new System.Drawing.Size(1373, 307);
+            this.MiLoadingInformes2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.MiLoadingInformes2.TabIndex = 1;
+            this.MiLoadingInformes2.TabStop = false;
+            // 
+            // dgResumen2
+            // 
+            this.dgResumen2.AllowUserToAddRows = false;
+            this.dgResumen2.AllowUserToDeleteRows = false;
+            this.dgResumen2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgResumen2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgResumen2.Location = new System.Drawing.Point(5, 28);
+            this.dgResumen2.Name = "dgResumen2";
+            this.dgResumen2.ReadOnly = true;
+            this.dgResumen2.Size = new System.Drawing.Size(1373, 307);
+            this.dgResumen2.TabIndex = 0;
             // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripTotalRegistros});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 329);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 340);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1383, 22);
             this.statusStrip1.TabIndex = 9;
@@ -303,8 +388,8 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.button9);
-            this.splitContainer4.Size = new System.Drawing.Size(1383, 173);
-            this.splitContainer4.SplitterDistance = 144;
+            this.splitContainer4.Size = new System.Drawing.Size(1383, 126);
+            this.splitContainer4.SplitterDistance = 97;
             this.splitContainer4.TabIndex = 1;
             // 
             // splitContainer3
@@ -320,9 +405,124 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.iTalk_GroupBox2);
-            this.splitContainer3.Size = new System.Drawing.Size(1383, 144);
+            this.splitContainer3.Size = new System.Drawing.Size(1383, 97);
             this.splitContainer3.SplitterDistance = 673;
             this.splitContainer3.TabIndex = 0;
+            // 
+            // iTalk_GroupBox1
+            // 
+            this.iTalk_GroupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.iTalk_GroupBox1.Controls.Add(this.PBLLecDias2);
+            this.iTalk_GroupBox1.Controls.Add(this.LVLectDias2);
+            this.iTalk_GroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.iTalk_GroupBox1.Location = new System.Drawing.Point(0, 0);
+            this.iTalk_GroupBox1.MinimumSize = new System.Drawing.Size(136, 50);
+            this.iTalk_GroupBox1.Name = "iTalk_GroupBox1";
+            this.iTalk_GroupBox1.Padding = new System.Windows.Forms.Padding(5, 28, 5, 5);
+            this.iTalk_GroupBox1.Size = new System.Drawing.Size(673, 97);
+            this.iTalk_GroupBox1.TabIndex = 0;
+            this.iTalk_GroupBox1.Text = "Lecturas por día";
+            // 
+            // PBLLecDias2
+            // 
+            this.PBLLecDias2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PBLLecDias2.Image = global::gagFIS_Interfase.Properties.Resources.gif_loading_circular_rayas;
+            this.PBLLecDias2.Location = new System.Drawing.Point(5, 28);
+            this.PBLLecDias2.Name = "PBLLecDias2";
+            this.PBLLecDias2.Size = new System.Drawing.Size(663, 64);
+            this.PBLLecDias2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PBLLecDias2.TabIndex = 0;
+            this.PBLLecDias2.TabStop = false;
+            // 
+            // LVLectDias2
+            // 
+            this.LVLectDias2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Fecha2,
+            this.CantTomados2,
+            this.CantLeidos2,
+            this.CantImpresos2});
+            this.LVLectDias2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LVLectDias2.HideSelection = false;
+            this.LVLectDias2.Location = new System.Drawing.Point(5, 28);
+            this.LVLectDias2.Name = "LVLectDias2";
+            this.LVLectDias2.Size = new System.Drawing.Size(663, 64);
+            this.LVLectDias2.TabIndex = 0;
+            this.LVLectDias2.UseCompatibleStateImageBehavior = false;
+            this.LVLectDias2.View = System.Windows.Forms.View.Details;
+            this.LVLectDias2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.LVLectDias2_MouseDoubleClick_1);
+            // 
+            // Fecha2
+            // 
+            this.Fecha2.Text = "Fecha";
+            this.Fecha2.Width = 102;
+            // 
+            // CantTomados2
+            // 
+            this.CantTomados2.Text = "Tomados";
+            // 
+            // CantLeidos2
+            // 
+            this.CantLeidos2.Text = "Solo Leidos";
+            this.CantLeidos2.Width = 122;
+            // 
+            // CantImpresos2
+            // 
+            this.CantImpresos2.Text = "Leidos e Impresos";
+            this.CantImpresos2.Width = 122;
+            // 
+            // iTalk_GroupBox2
+            // 
+            this.iTalk_GroupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.iTalk_GroupBox2.Controls.Add(this.PBLOprs2);
+            this.iTalk_GroupBox2.Controls.Add(this.LVLectOper2);
+            this.iTalk_GroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.iTalk_GroupBox2.Location = new System.Drawing.Point(0, 0);
+            this.iTalk_GroupBox2.MinimumSize = new System.Drawing.Size(136, 50);
+            this.iTalk_GroupBox2.Name = "iTalk_GroupBox2";
+            this.iTalk_GroupBox2.Padding = new System.Windows.Forms.Padding(5, 28, 5, 5);
+            this.iTalk_GroupBox2.Size = new System.Drawing.Size(706, 97);
+            this.iTalk_GroupBox2.TabIndex = 1;
+            this.iTalk_GroupBox2.Text = "Lecturas por Lecturista";
+            // 
+            // PBLOprs2
+            // 
+            this.PBLOprs2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PBLOprs2.Image = global::gagFIS_Interfase.Properties.Resources.gif_loading_circular_rayas;
+            this.PBLOprs2.Location = new System.Drawing.Point(5, 28);
+            this.PBLOprs2.Name = "PBLOprs2";
+            this.PBLOprs2.Size = new System.Drawing.Size(696, 64);
+            this.PBLOprs2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PBLOprs2.TabIndex = 3;
+            this.PBLOprs2.TabStop = false;
+            this.PBLOprs2.Visible = false;
+            // 
+            // LVLectOper2
+            // 
+            this.LVLectOper2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.fechaLect2,
+            this.operario2,
+            this.CantLect2});
+            this.LVLectOper2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LVLectOper2.HideSelection = false;
+            this.LVLectOper2.Location = new System.Drawing.Point(5, 28);
+            this.LVLectOper2.Name = "LVLectOper2";
+            this.LVLectOper2.Size = new System.Drawing.Size(696, 64);
+            this.LVLectOper2.TabIndex = 2;
+            this.LVLectOper2.UseCompatibleStateImageBehavior = false;
+            this.LVLectOper2.View = System.Windows.Forms.View.Details;
+            // 
+            // fechaLect2
+            // 
+            this.fechaLect2.Text = "Fecha";
+            this.fechaLect2.Width = 111;
+            // 
+            // operario2
+            // 
+            this.operario2.Text = "Operario";
+            // 
+            // CantLect2
+            // 
+            this.CantLect2.Text = "Tomados";
             // 
             // button9
             // 
@@ -592,190 +792,6 @@
             // 
             this.CantLect.Text = "Tomados";
             // 
-            // GroupBoxResumenGral
-            // 
-            this.GroupBoxResumenGral.BackColor = System.Drawing.Color.Transparent;
-            this.GroupBoxResumenGral.Location = new System.Drawing.Point(928, 3);
-            this.GroupBoxResumenGral.MinimumSize = new System.Drawing.Size(136, 50);
-            this.GroupBoxResumenGral.Name = "GroupBoxResumenGral";
-            this.GroupBoxResumenGral.Padding = new System.Windows.Forms.Padding(5, 28, 5, 5);
-            this.GroupBoxResumenGral.Size = new System.Drawing.Size(136, 50);
-            this.GroupBoxResumenGral.TabIndex = 4;
-            this.GroupBoxResumenGral.Text = "Detalle";
-            this.GroupBoxResumenGral.Visible = false;
-            this.GroupBoxResumenGral.Click += new System.EventHandler(this.GroupBoxResumenGral_Click);
-            // 
-            // PBExcelCircular
-            // 
-            this.PBExcelCircular.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.PBExcelCircular.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.PBExcelCircular.Font = new System.Drawing.Font("Segoe UI", 15F);
-            this.PBExcelCircular.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.PBExcelCircular.Location = new System.Drawing.Point(582, 51);
-            this.PBExcelCircular.Maximum = ((long)(100));
-            this.PBExcelCircular.MinimumSize = new System.Drawing.Size(100, 100);
-            this.PBExcelCircular.Name = "PBExcelCircular";
-            this.PBExcelCircular.ProgressColor1 = System.Drawing.Color.Silver;
-            this.PBExcelCircular.ProgressColor2 = System.Drawing.Color.Silver;
-            this.PBExcelCircular.ProgressShape = iTalk.iTalk_ProgressBar._ProgressShape.Round;
-            this.PBExcelCircular.Size = new System.Drawing.Size(105, 105);
-            this.PBExcelCircular.TabIndex = 9;
-            this.PBExcelCircular.Text = "Exportando a Excel";
-            this.PBExcelCircular.Value = ((long)(0));
-            this.PBExcelCircular.Visible = false;
-            // 
-            // iTalk_GroupBox3
-            // 
-            this.iTalk_GroupBox3.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_GroupBox3.Controls.Add(this.MiLoadingInformes2);
-            this.iTalk_GroupBox3.Controls.Add(this.dgResumen2);
-            this.iTalk_GroupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.iTalk_GroupBox3.Location = new System.Drawing.Point(0, 0);
-            this.iTalk_GroupBox3.MinimumSize = new System.Drawing.Size(136, 50);
-            this.iTalk_GroupBox3.Name = "iTalk_GroupBox3";
-            this.iTalk_GroupBox3.Padding = new System.Windows.Forms.Padding(5, 28, 5, 5);
-            this.iTalk_GroupBox3.Size = new System.Drawing.Size(1383, 329);
-            this.iTalk_GroupBox3.TabIndex = 10;
-            this.iTalk_GroupBox3.Text = "Detalle Lecturas";
-            // 
-            // MiLoadingInformes2
-            // 
-            this.MiLoadingInformes2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MiLoadingInformes2.Image = global::gagFIS_Interfase.Properties.Resources.gifCargando;
-            this.MiLoadingInformes2.Location = new System.Drawing.Point(5, 28);
-            this.MiLoadingInformes2.Name = "MiLoadingInformes2";
-            this.MiLoadingInformes2.Size = new System.Drawing.Size(1373, 296);
-            this.MiLoadingInformes2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.MiLoadingInformes2.TabIndex = 1;
-            this.MiLoadingInformes2.TabStop = false;
-            // 
-            // dgResumen2
-            // 
-            this.dgResumen2.AllowUserToAddRows = false;
-            this.dgResumen2.AllowUserToDeleteRows = false;
-            this.dgResumen2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgResumen2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgResumen2.Location = new System.Drawing.Point(5, 28);
-            this.dgResumen2.Name = "dgResumen2";
-            this.dgResumen2.ReadOnly = true;
-            this.dgResumen2.Size = new System.Drawing.Size(1373, 296);
-            this.dgResumen2.TabIndex = 0;
-            // 
-            // iTalk_GroupBox1
-            // 
-            this.iTalk_GroupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_GroupBox1.Controls.Add(this.PBLLecDias2);
-            this.iTalk_GroupBox1.Controls.Add(this.LVLectDias2);
-            this.iTalk_GroupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.iTalk_GroupBox1.Location = new System.Drawing.Point(0, 0);
-            this.iTalk_GroupBox1.MinimumSize = new System.Drawing.Size(136, 50);
-            this.iTalk_GroupBox1.Name = "iTalk_GroupBox1";
-            this.iTalk_GroupBox1.Padding = new System.Windows.Forms.Padding(5, 28, 5, 5);
-            this.iTalk_GroupBox1.Size = new System.Drawing.Size(673, 144);
-            this.iTalk_GroupBox1.TabIndex = 0;
-            this.iTalk_GroupBox1.Text = "Lecturas por día";
-            // 
-            // PBLLecDias2
-            // 
-            this.PBLLecDias2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PBLLecDias2.Image = global::gagFIS_Interfase.Properties.Resources.gif_loading_circular_rayas;
-            this.PBLLecDias2.Location = new System.Drawing.Point(5, 28);
-            this.PBLLecDias2.Name = "PBLLecDias2";
-            this.PBLLecDias2.Size = new System.Drawing.Size(663, 111);
-            this.PBLLecDias2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PBLLecDias2.TabIndex = 0;
-            this.PBLLecDias2.TabStop = false;
-            // 
-            // LVLectDias2
-            // 
-            this.LVLectDias2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.Fecha2,
-            this.CantTomados2,
-            this.CantLeidos2,
-            this.CantImpresos2});
-            this.LVLectDias2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LVLectDias2.HideSelection = false;
-            this.LVLectDias2.Location = new System.Drawing.Point(5, 28);
-            this.LVLectDias2.Name = "LVLectDias2";
-            this.LVLectDias2.Size = new System.Drawing.Size(663, 111);
-            this.LVLectDias2.TabIndex = 0;
-            this.LVLectDias2.UseCompatibleStateImageBehavior = false;
-            this.LVLectDias2.View = System.Windows.Forms.View.Details;
-            this.LVLectDias2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.LVLectDias2_MouseDoubleClick_1);
-            // 
-            // Fecha2
-            // 
-            this.Fecha2.Text = "Fecha";
-            this.Fecha2.Width = 102;
-            // 
-            // CantTomados2
-            // 
-            this.CantTomados2.Text = "Tomados";
-            // 
-            // CantLeidos2
-            // 
-            this.CantLeidos2.Text = "Solo Leidos";
-            this.CantLeidos2.Width = 122;
-            // 
-            // CantImpresos2
-            // 
-            this.CantImpresos2.Text = "Leidos e Impresos";
-            this.CantImpresos2.Width = 122;
-            // 
-            // iTalk_GroupBox2
-            // 
-            this.iTalk_GroupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.iTalk_GroupBox2.Controls.Add(this.PBLOprs2);
-            this.iTalk_GroupBox2.Controls.Add(this.LVLectOper2);
-            this.iTalk_GroupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.iTalk_GroupBox2.Location = new System.Drawing.Point(0, 0);
-            this.iTalk_GroupBox2.MinimumSize = new System.Drawing.Size(136, 50);
-            this.iTalk_GroupBox2.Name = "iTalk_GroupBox2";
-            this.iTalk_GroupBox2.Padding = new System.Windows.Forms.Padding(5, 28, 5, 5);
-            this.iTalk_GroupBox2.Size = new System.Drawing.Size(706, 144);
-            this.iTalk_GroupBox2.TabIndex = 1;
-            this.iTalk_GroupBox2.Text = "Lecturas por Lecturista";
-            // 
-            // PBLOprs2
-            // 
-            this.PBLOprs2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PBLOprs2.Image = global::gagFIS_Interfase.Properties.Resources.gif_loading_circular_rayas;
-            this.PBLOprs2.Location = new System.Drawing.Point(5, 28);
-            this.PBLOprs2.Name = "PBLOprs2";
-            this.PBLOprs2.Size = new System.Drawing.Size(696, 111);
-            this.PBLOprs2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PBLOprs2.TabIndex = 3;
-            this.PBLOprs2.TabStop = false;
-            this.PBLOprs2.Visible = false;
-            // 
-            // LVLectOper2
-            // 
-            this.LVLectOper2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.fechaLect2,
-            this.operario2,
-            this.CantLect2});
-            this.LVLectOper2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LVLectOper2.HideSelection = false;
-            this.LVLectOper2.Location = new System.Drawing.Point(5, 28);
-            this.LVLectOper2.Name = "LVLectOper2";
-            this.LVLectOper2.Size = new System.Drawing.Size(696, 111);
-            this.LVLectOper2.TabIndex = 2;
-            this.LVLectOper2.UseCompatibleStateImageBehavior = false;
-            this.LVLectOper2.View = System.Windows.Forms.View.Details;
-            // 
-            // fechaLect2
-            // 
-            this.fechaLect2.Text = "Fecha";
-            this.fechaLect2.Width = 111;
-            // 
-            // operario2
-            // 
-            this.operario2.Text = "Operario";
-            // 
-            // CantLect2
-            // 
-            this.CantLect2.Text = "Tomados";
-            // 
             // LabCargandoInformes
             // 
             this.LabCargandoInformes.AutoSize = true;
@@ -807,6 +823,8 @@
             this.splitContainer1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.splitContainer2.Panel1.ResumeLayout(false);
@@ -814,6 +832,9 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.iTalk_GroupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.MiLoadingInformes2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgResumen2)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.splitContainer4.Panel1.ResumeLayout(false);
@@ -824,17 +845,14 @@
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.MiLoadingInformes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgResumen)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PBLLecDias)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PBLOprs)).EndInit();
-            this.iTalk_GroupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.MiLoadingInformes2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgResumen2)).EndInit();
             this.iTalk_GroupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PBLLecDias2)).EndInit();
             this.iTalk_GroupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PBLOprs2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MiLoadingInformes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgResumen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PBLLecDias)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PBLOprs)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -863,7 +881,7 @@
         private System.Windows.Forms.ProgressBar progressBar;
         private System.ComponentModel.BackgroundWorker BGWInfSuperv;
         private System.Windows.Forms.Label lblAvanceExportacion;
-        private System.Windows.Forms.Label LblDatosInforme;
+        private System.Windows.Forms.Label LblTituloInforme;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private iTalk.iTalk_GroupBox iTalk_GroupBox1;
@@ -885,8 +903,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportarAExcelToolStripMenuItem;
-        private iTalk.iTalk_ProgressBar PBExcelCircular;
-        private System.Windows.Forms.Label lpbexcelCircular;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripTotalRegistros;
         private System.Windows.Forms.SplitContainer splitContainer4;
@@ -907,5 +923,8 @@
         private System.Windows.Forms.ColumnHeader fechaLect2;
         private System.Windows.Forms.ColumnHeader operario2;
         private System.Windows.Forms.ColumnHeader CantLect2;
+        private iTalk.iTalk_ProgressBar PBExcelCircular;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Label LblResumenInforme;
     }
 }

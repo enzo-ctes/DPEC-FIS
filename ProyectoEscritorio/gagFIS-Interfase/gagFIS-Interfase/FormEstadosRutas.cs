@@ -47,7 +47,7 @@ namespace gagFIS_Interfase
                 string PeriodoImportadas = Vble.Periodo.ToString().Replace("-", "");
 
                 string txSQL = "SELECT * FROM LogImportacion WHERE Periodo = " + Vble.Periodo +
-                                " AND (Zona = " + Vble.ArrayZona[0] + iteracionzona() + ") and Porcion LIKE '" + rem + "%'";
+                                " AND (Zona = " + Vble.ArrayZona[0] + iteracionzona() + ") AND Porcion LIKE '" + rem + "%'";
                 MySqlDataAdapter datosAdapter = new MySqlDataAdapter(txSQL, DB.conexBD);
                 MySqlCommandBuilder comandoSQL = new MySqlCommandBuilder(datosAdapter);
                 MySqlCommand comandCant = new MySqlCommand();
@@ -73,7 +73,7 @@ namespace gagFIS_Interfase
                         Zona = item["Porcion"].ToString().Substring(1, 3);
                         Ruta = item["Porcion"].ToString().Substring(5);
                         ResumenImportacion = new ListViewItem(Zona);
-                        ResumenImportacion.SubItems.Add(Remesa);
+                        ResumenImportacion.SubItems.Add(item["Porcion"].ToString().Substring(0,1));
                         ResumenImportacion.SubItems.Add(Ruta);
                         ResumenImportacion.SubItems.Add(item["CantUsuarios"].ToString());
                         ///Por cada Ruta:

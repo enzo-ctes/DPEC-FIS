@@ -32,7 +32,8 @@ namespace gagFIS_Interfase
         public string ResumenDetTeleLectura { get; set; }
         public string remTeleLect { get; set; }
         public string zonaTeleLect { get; set; }
-        public string detalle { get; set; }
+        public string tituloInforme { get; set; }
+        public string resumenInforme{ get; set; }
         public string Desde { get; set; }
         public string Hasta { get; set; }
         /// <summary>
@@ -75,8 +76,10 @@ namespace gagFIS_Interfase
         private void FormDetalleInformes_Load(object sender, EventArgs e)
         {
 
-            LblDatosInforme.Text = detalle;
-            LblDatosInforme.Visible = true;
+            LblTituloInforme.Text = tituloInforme;
+            LblResumenInforme.Text = resumenInforme;
+            LblResumenInforme.Visible = true;
+            LblTituloInforme.Visible = true;
             if (tipoResumen == "DZ")
             {
                 CargaDatos();
@@ -118,14 +121,12 @@ namespace gagFIS_Interfase
             else if (ResumenDetTeleLectura == "LabelTodosRem")
             {
                 CargaDetalleZonaSelec();
-                CargarResumenLectDias();
-                
+                CargarResumenLectDias();                
             }
             else
             {
                 CargaDetalle();
-                CargarResumenLectDias();                
-              
+                CargarResumenLectDias();                              
             }
         }
 
@@ -192,22 +193,18 @@ namespace gagFIS_Interfase
             //Microsoft.Office.Interop.Excel.Application aplicacion;
             //Microsoft.Office.Interop.Excel.Workbook libros_trabajo;
 
-
             // Crear una instancia única de Excel
             Microsoft.Office.Interop.Excel.Application aplicacion = new Microsoft.Office.Interop.Excel.Application();
             Microsoft.Office.Interop.Excel.Workbook libros_trabajo = aplicacion.Workbooks.Add();
             Microsoft.Office.Interop.Excel.Worksheet hoja_trabajo1 = (Microsoft.Office.Interop.Excel.Worksheet)libros_trabajo.ActiveSheet;
             hoja_trabajo1.Name = "Detalle Lecturas Loc - " + ZonaDetResumen;
 
-
-
             // Crear una nueva hoja para los datos del ListView
+            // aplicacion = new Microsoft.Office.Interop.Excel.Application();
+            // libros_trabajo = aplicacion.Workbooks.Add();
 
-            //aplicacion = new Microsoft.Office.Interop.Excel.Application();
-            //libros_trabajo = aplicacion.Workbooks.Add();
-
-            //Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
-            //excel.Application.Workbooks.Add(true);
+            // Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+            // excel.Application.Workbooks.Add(true);
 
             Microsoft.Office.Interop.Excel.Worksheet hoja_trabajo2 = (Microsoft.Office.Interop.Excel.Worksheet)libros_trabajo.Sheets.Add();
             hoja_trabajo2.Name = "# Lecturas x Día";
@@ -233,8 +230,6 @@ namespace gagFIS_Interfase
             // Escribir los datos en la nueva hoja
             hoja_trabajo1.Range[hoja_trabajo1.Cells[1, 1], hoja_trabajo1.Cells[datos.GetLength(0), datos.GetLength(1)]].Value = datos;
 
-
-
             if (LVLectDias2.Items.Count > 1)
             {
                 // Asignar datos del ListView Lecturas x Dia a un arreglo
@@ -258,8 +253,7 @@ namespace gagFIS_Interfase
                 }
                 // Escribir los datos en la nueva hoja
                 hoja_trabajo2.Range[hoja_trabajo2.Cells[1, 1], hoja_trabajo2.Cells[datosListView.GetLength(0), datosListView.GetLength(1)]].Value = datosListView;
-            }
-          
+            }          
 
             if (LVLectOper2.Items.Count > 1)
             {
@@ -306,9 +300,9 @@ namespace gagFIS_Interfase
 
             PBExcelCircular.Visible = true;
             PBExcelCircular.Value = ((e.ProgressPercentage * 100) / dgResumen2.Rows.Count);
-            lpbexcelCircular.Visible = true;
+            //lpbexcelCircular.Visible = true;
             // this.progressBar.Value = ((e.ProgressPercentage * 100) / dgResumen2.Rows.Count);
-            lpbexcelCircular.Text = "Exportando... " + ((e.ProgressPercentage * 100) / dgResumen2.Rows.Count) + " % completado";
+            //lpbexcelCircular.Text = "Exportando... " + ((e.ProgressPercentage * 100) / dgResumen2.Rows.Count) + " % completado";
             //this.lblAvanceExportacion.Text = "Exportando... " + ((e.ProgressPercentage * 100) / dgResumen2.Rows.Count) + " % completado";
             //this.progressBar.Value = e.ProgressPercentage;
             //this.lblAvanceExportacion.Text = "Exportando usuario " + e.ProgressPercentage + " ";
@@ -318,7 +312,7 @@ namespace gagFIS_Interfase
         {
             this.progressBar.Visible = false;
             PBExcelCircular.Visible = false;
-            lpbexcelCircular.Visible = false;
+            //lpbexcelCircular.Visible = false;
             PBExcelCircular.Value = 0;
             MiLoadingInformes2.Visible = false;
             lblAvanceExportacion.Visible = false;

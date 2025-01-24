@@ -127,7 +127,7 @@ seleccionadas a exportar. (sirve para facturado)</value>
   <data name="button7.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABUAAAAWCAYAAAAvg9c4AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wQAADsEBuJFr7QAAAAd0SU1FB9YFBQQHMncSRUsAAAMeSURBVEhLdZRnS3NBEIXf/w9+EfyixhLsRixY
+        wAAADsABataJCQAAAAd0SU1FB9YFBQQHMncSRUsAAAMeSURBVEhLdZRnS3NBEIXf/w9+EfyixhLsRixY
         Eo29ogbRREOw19jLNbFhMvIcmEXR98Kwe/funDlzZub+sz+eSqViHx8f9vr6as/Pz/b4+Gh3d3d2eXlp
         5+fn2vPtf49AcTw6OpIdHh7awcGBVt5PT08FdHV1pfPNzU3LZDK2vr5uuVxOgarVqsD8ESiOJycnYvT0
         9KQgpVIpGO9RFMlgSQB8dnd3FQRw7vgj0JubG10E8OHhIRhB3NwJVs4MCe7v7xUA4JeXF50LlA+kiCN7
@@ -3700,7 +3700,7 @@ seleccionadas a exportar. (sirve para facturado)</value>
   <data name="btnCerrar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEoAAAAfCAIAAADP8cxiAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAABBtJREFUWEftl9dOJDEQRflWJETOLBmWnJMIIogsREbEJcf1EiQQEn+0Z1zVxtPd
+        vwAADr8BOAVTJAAABBtJREFUWEftl9dOJDEQRflWJETOLBmWnJMIIogsREbEJcf1EiQQEn+0Z1zVxtPd
         A6804jyMqjwed19XsCfLfGt+5CWZT+T9Sefg4IBP/S4JZJRXX19fUVHxy6OqqqqgoODq6kpnJIF4ef39
         /bW1tb/Tqays3N7e1hkJIUbe8vIygVJNlpaWlpqamrGxMZ2RHMLyrq+viZLKCmhoaGhtbdUZiSIsjyg1
         NTWpLEtzc3N1dbV+nTTS5LW3t9NRVFYAwTw7O9MZltvb27u7O3UCbm5unp6e1DHm/v6eQt3a2iIddCjg
@@ -3747,7 +3747,7 @@ así como tambien el usuario que esta haciendo la modificacion.
   <data name="button11.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAAYBJREFUOE/VzU1LAlEUBuD5F9UPiFoGLoPaR4swWiQICRJFFIJGLkJMCiUmtBRC
+        vwAADr8BOAVTJAAAAYBJREFUOE/VzU1LAlEUBuD5F9UPiFoGLoPaR4swWiQICRJFFIJGLkJMCiUmtBRC
         py+KaNE+hIhIrIRcSO2CqIiKkFJnmnEcdU7nzpUh0jGwVS8vh3u55+Ey8IcQ7I/s+IKcdyVGuxDklsKb
         ke1DutEkBHuW1+lFTyh4hfNXT7B7MYSzqqq0eGbZFHn8zRPs8rI4lXKFFs8x7mRwxGq22D2BNbJlEIId
         836coqxIWoulchWvklxWFKy21jgET8/5cPJiSZBqlUuEMeNpvdryzxA84fTg/OClnFDESvi1Js1xVW9D
@@ -3759,7 +3759,7 @@ así como tambien el usuario que esta haciendo la modificacion.
   <data name="button10.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAAYBJREFUOE/VzU1LAlEUBuD5F9UPiFoGLoPaR4swWiQICRJFFIJGLkJMCiUmtBRC
+        vwAADr8BOAVTJAAAAYBJREFUOE/VzU1LAlEUBuD5F9UPiFoGLoPaR4swWiQICRJFFIJGLkJMCiUmtBRC
         py+KaNE+hIhIrIRcSO2CqIiKkFJnmnEcdU7nzpUh0jGwVS8vh3u55+Ey8IcQ7I/s+IKcdyVGuxDklsKb
         ke1DutEkBHuW1+lFTyh4hfNXT7B7MYSzqqq0eGbZFHn8zRPs8rI4lXKFFs8x7mRwxGq22D2BNbJlEIId
         836coqxIWoulchWvklxWFKy21jgET8/5cPJiSZBqlUuEMeNpvdryzxA84fTg/OClnFDESvi1Js1xVW9D
@@ -3771,7 +3771,7 @@ así como tambien el usuario que esta haciendo la modificacion.
   <data name="button9.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAAYBJREFUOE/VzU1LAlEUBuD5F9UPiFoGLoPaR4swWiQICRJFFIJGLkJMCiUmtBRC
+        vwAADr8BOAVTJAAAAYBJREFUOE/VzU1LAlEUBuD5F9UPiFoGLoPaR4swWiQICRJFFIJGLkJMCiUmtBRC
         py+KaNE+hIhIrIRcSO2CqIiKkFJnmnEcdU7nzpUh0jGwVS8vh3u55+Ey8IcQ7I/s+IKcdyVGuxDklsKb
         ke1DutEkBHuW1+lFTyh4hfNXT7B7MYSzqqq0eGbZFHn8zRPs8rI4lXKFFs8x7mRwxGq22D2BNbJlEIId
         836coqxIWoulchWvklxWFKy21jgET8/5cPJiSZBqlUuEMeNpvdryzxA84fTg/OClnFDESvi1Js1xVW9D
@@ -3783,7 +3783,7 @@ así como tambien el usuario que esta haciendo la modificacion.
   <data name="button8.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAAYBJREFUOE/VzU1LAlEUBuD5F9UPiFoGLoPaR4swWiQICRJFFIJGLkJMCiUmtBRC
+        vwAADr8BOAVTJAAAAYBJREFUOE/VzU1LAlEUBuD5F9UPiFoGLoPaR4swWiQICRJFFIJGLkJMCiUmtBRC
         py+KaNE+hIhIrIRcSO2CqIiKkFJnmnEcdU7nzpUh0jGwVS8vh3u55+Ey8IcQ7I/s+IKcdyVGuxDklsKb
         ke1DutEkBHuW1+lFTyh4hfNXT7B7MYSzqqq0eGbZFHn8zRPs8rI4lXKFFs8x7mRwxGq22D2BNbJlEIId
         836coqxIWoulchWvklxWFKy21jgET8/5cPJiSZBqlUuEMeNpvdryzxA84fTg/OClnFDESvi1Js1xVW9D
@@ -3795,7 +3795,7 @@ así como tambien el usuario que esta haciendo la modificacion.
   <data name="button6.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAAYBJREFUOE/VzU1LAlEUBuD5F9UPiFoGLoPaR4swWiQICRJFFIJGLkJMCiUmtBRC
+        vwAADr8BOAVTJAAAAYBJREFUOE/VzU1LAlEUBuD5F9UPiFoGLoPaR4swWiQICRJFFIJGLkJMCiUmtBRC
         py+KaNE+hIhIrIRcSO2CqIiKkFJnmnEcdU7nzpUh0jGwVS8vh3u55+Ey8IcQ7I/s+IKcdyVGuxDklsKb
         ke1DutEkBHuW1+lFTyh4hfNXT7B7MYSzqqq0eGbZFHn8zRPs8rI4lXKFFs8x7mRwxGq22D2BNbJlEIId
         836coqxIWoulchWvklxWFKy21jgET8/5cPJiSZBqlUuEMeNpvdryzxA84fTg/OClnFDESvi1Js1xVW9D
@@ -3807,7 +3807,7 @@ así como tambien el usuario que esta haciendo la modificacion.
   <data name="button5.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAAYBJREFUOE/VzU1LAlEUBuD5F9UPiFoGLoPaR4swWiQICRJFFIJGLkJMCiUmtBRC
+        vwAADr8BOAVTJAAAAYBJREFUOE/VzU1LAlEUBuD5F9UPiFoGLoPaR4swWiQICRJFFIJGLkJMCiUmtBRC
         py+KaNE+hIhIrIRcSO2CqIiKkFJnmnEcdU7nzpUh0jGwVS8vh3u55+Ey8IcQ7I/s+IKcdyVGuxDklsKb
         ke1DutEkBHuW1+lFTyh4hfNXT7B7MYSzqqq0eGbZFHn8zRPs8rI4lXKFFs8x7mRwxGq22D2BNbJlEIId
         836coqxIWoulchWvklxWFKy21jgET8/5cPJiSZBqlUuEMeNpvdryzxA84fTg/OClnFDESvi1Js1xVW9D
@@ -3819,7 +3819,7 @@ así como tambien el usuario que esta haciendo la modificacion.
   <data name="button4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAAYBJREFUOE/VzU1LAlEUBuD5F9UPiFoGLoPaR4swWiQICRJFFIJGLkJMCiUmtBRC
+        vwAADr8BOAVTJAAAAYBJREFUOE/VzU1LAlEUBuD5F9UPiFoGLoPaR4swWiQICRJFFIJGLkJMCiUmtBRC
         py+KaNE+hIhIrIRcSO2CqIiKkFJnmnEcdU7nzpUh0jGwVS8vh3u55+Ey8IcQ7I/s+IKcdyVGuxDklsKb
         ke1DutEkBHuW1+lFTyh4hfNXT7B7MYSzqqq0eGbZFHn8zRPs8rI4lXKFFs8x7mRwxGq22D2BNbJlEIId
         836coqxIWoulchWvklxWFKy21jgET8/5cPJiSZBqlUuEMeNpvdryzxA84fTg/OClnFDESvi1Js1xVW9D
@@ -3831,7 +3831,7 @@ así como tambien el usuario que esta haciendo la modificacion.
   <data name="button3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAAYBJREFUOE/VzU1LAlEUBuD5F9UPiFoGLoPaR4swWiQICRJFFIJGLkJMCiUmtBRC
+        vwAADr8BOAVTJAAAAYBJREFUOE/VzU1LAlEUBuD5F9UPiFoGLoPaR4swWiQICRJFFIJGLkJMCiUmtBRC
         py+KaNE+hIhIrIRcSO2CqIiKkFJnmnEcdU7nzpUh0jGwVS8vh3u55+Ey8IcQ7I/s+IKcdyVGuxDklsKb
         ke1DutEkBHuW1+lFTyh4hfNXT7B7MYSzqqq0eGbZFHn8zRPs8rI4lXKFFs8x7mRwxGq22D2BNbJlEIId
         836coqxIWoulchWvklxWFKy21jgET8/5cPJiSZBqlUuEMeNpvdryzxA84fTg/OClnFDESvi1Js1xVW9D
@@ -3843,7 +3843,7 @@ así como tambien el usuario que esta haciendo la modificacion.
   <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAIAAAAC64paAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAAYBJREFUOE/VzU1LAlEUBuD5F9UPiFoGLoPaR4swWiQICRJFFIJGLkJMCiUmtBRC
+        vwAADr8BOAVTJAAAAYBJREFUOE/VzU1LAlEUBuD5F9UPiFoGLoPaR4swWiQICRJFFIJGLkJMCiUmtBRC
         py+KaNE+hIhIrIRcSO2CqIiKkFJnmnEcdU7nzpUh0jGwVS8vh3u55+Ey8IcQ7I/s+IKcdyVGuxDklsKb
         ke1DutEkBHuW1+lFTyh4hfNXT7B7MYSzqqq0eGbZFHn8zRPs8rI4lXKFFs8x7mRwxGq22D2BNbJlEIId
         836coqxIWoulchWvklxWFKy21jgET8/5cPJiSZBqlUuEMeNpvdryzxA84fTg/OClnFDESvi1Js1xVW9D

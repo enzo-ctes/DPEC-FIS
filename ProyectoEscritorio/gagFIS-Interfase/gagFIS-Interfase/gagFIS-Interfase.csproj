@@ -82,6 +82,12 @@
     <Reference Include="gagLogs">
       <HintPath>..\..\..\..\_PROYECTOS\Visual Studio Projects\gagLogs\gagLogs\bin\Debug\gagLogs.dll</HintPath>
     </Reference>
+    <Reference Include="GMap.NET.Core, Version=1.7.5.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
+      <HintPath>..\packages\GMap.NET.WindowsForms.1.7.5\lib\net40\GMap.NET.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="GMap.NET.WindowsForms, Version=1.7.5.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
+      <HintPath>..\packages\GMap.NET.WindowsForms.1.7.5\lib\net40\GMap.NET.WindowsForms.dll</HintPath>
+    </Reference>
     <Reference Include="GongShell">
       <HintPath>C:\Users\usuario\Downloads\gong-shell-0.6.0\GongShell.dll</HintPath>
     </Reference>
@@ -329,6 +335,12 @@
     <Compile Include="FormLoading.Designer.cs">
       <DependentUpon>FormLoading.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormMaps.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMaps.Designer.cs">
+      <DependentUpon>FormMaps.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormResumenSup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -407,6 +419,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormLoading.resx">
       <DependentUpon>FormLoading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMaps.resx">
+      <DependentUpon>FormMaps.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormResumenSup.resx">
       <DependentUpon>FormResumenSup.cs</DependentUpon>
@@ -693,6 +708,7 @@
     <None Include="bin\Resources\ICONOS\Regular\gif loading puntos.gif" />
     <None Include="bin\Resources\ICONOS\Regular\gif loading circular rayas.gif" />
     <None Include="bin\Resources\gifCargando.gif" />
+    <None Include="bin\Resources\MapGPS.png" />
     <Content Include="MacroIntell Isologo.ico" />
     <None Include="Resources\bin_closed.png" />
     <Content Include="Resources\ICONOS\Regular\gif loading circular rayas.gif" />

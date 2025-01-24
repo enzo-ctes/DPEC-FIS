@@ -933,7 +933,7 @@ namespace gagFIS_Interfase
             this.TextBoxDesde.Name = "TextBoxDesde";
             this.TextBoxDesde.Size = new System.Drawing.Size(82, 23);
             this.TextBoxDesde.TabIndex = 39;
-            this.TextBoxDesde.Text = "dd/mm/yyyy";
+            this.TextBoxDesde.Text = "dd/MM/yyyy";
             this.TextBoxDesde.Visible = false;
             this.TextBoxDesde.Click += new System.EventHandler(this.TextBoxDesde_Click);
             this.TextBoxDesde.Enter += new System.EventHandler(this.textBox3_Enter);

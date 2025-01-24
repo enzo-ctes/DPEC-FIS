@@ -6033,8 +6033,22 @@ namespace gagFIS_Interfase
             var Form7Inf = new Form7InformesAltas();
             Form7Inf.MdiParent = this.MdiParent;
             Form7Inf.WindowState = FormWindowState.Maximized;
+            if (TextBoxDesde.Text == "dd/MM/yyyy")
+            {
+                TextBoxDesde.Text = DateTime.Today.ToString("dd/MM/yyyy");
+            }
+            if (TextBoxHasta.Text == "dd/MM/yyyy")
+            {
+                TextBoxHasta.Text = DateTime.Today.ToString("dd/MM/yyyy");
+            }
+            DateTime fechaDesde = Convert.ToDateTime(TextBoxDesde.Text);
+            DateTime fechaHasta = Convert.ToDateTime(TextBoxHasta.Text);
             Form7InformesAltas.PantallaSolicitud = "Exportacion";
             Form7InformesAltas.RutaDesdeExportacion = TextBoxRuta.Text;
+            Form7InformesAltas.FechaDesdeExportacion = fechaDesde.ToString("yyyy-MM-dd");
+            Form7InformesAltas.FechaHastaExportacion = fechaHasta.ToString("yyyy-MM-dd");
+
+
             Form7Inf.Show();
         }
 
