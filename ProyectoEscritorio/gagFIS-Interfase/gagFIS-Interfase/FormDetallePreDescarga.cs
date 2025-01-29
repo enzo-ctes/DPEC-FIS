@@ -303,7 +303,7 @@ namespace gagFIS_Interfase
                         ContarRelevM();
                         //IdentificarEstadoContMenorFact();
 
-                        if (LabelLeyenda.Text == "Todos")
+                        if (LabelLeyenda.Text == "Todos" || LabelLeyenda.Text == "DispSaldos")
                         {
                             if (stbResumen.ToString() == "1")
                             {
@@ -330,7 +330,7 @@ namespace gagFIS_Interfase
                                     TextFiltro.Enabled = true;
                                 }
                             }
-                        }
+                        }                       
                         BtnTxt.Visible = false;
                         //button4.Location = new Point(566, 126);
                         PanelTotOrd.Visible = false;

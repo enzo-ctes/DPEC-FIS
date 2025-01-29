@@ -8983,3 +8983,60 @@ incomplete input
      Error en el metodo CargarRegistrosConexion al momento en el que se estuvo
      procesando la carga del registros de conexiones. 
 
+2025-01-27 (08:20:17) 27/01/2025 08:20:17---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-28 (12:27:57) 28/01/2025 12:27:57---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-28 (13:49:00) 28/01/2025 01:49:00---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-28 (13:52:21) 28/01/2025 01:52:21---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-29 (09:21:35) 29/01/2025 09:21:35---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-29 (09:22:52) 29/01/2025 09:22:52---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-29 (09:24:29) 29/01/2025 09:24:29---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-29 (10:25:19) 29/01/2025 10:25:19---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-29 (10:33:31) 29/01/2025 10:33:31---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-29 (12:01:15) 29/01/2025 12:01:15---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-29 (12:51:47) 29/01/2025 12:51:47---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-29 (12:54:06) 29/01/2025 12:54:06---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-29 (13:14:10) 29/01/2025 01:14:10---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-29 (13:19:48) 29/01/2025 01:19:48---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-29 (13:27:36) 29/01/2025 01:27:36---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-29 (13:30:01) 29/01/2025 01:30:01---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-29 (13:33:48) 29/01/2025 01:33:48---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-29 (13:39:48) 29/01/2025 01:39:48---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD
+2025-01-29 (13:42:53) 29/01/2025 01:42:53---> There is already an open
+     DataReader associated with this Connection which must be closed first.
+     Error en el metodo que carga las tablas de la base Fija. Entorno: PRD

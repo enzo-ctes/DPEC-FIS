@@ -30,14 +30,14 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.GroupBoxResumenGral = new iTalk.iTalk_GroupBox();
             this.lblAvanceExportacion = new System.Windows.Forms.Label();
             this.BtnExcel = new System.Windows.Forms.Button();
-            this.PBExcelCircular = new iTalk.iTalk_ProgressBar();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.LblTituloInforme = new System.Windows.Forms.Label();
             this.LblResumenInforme = new System.Windows.Forms.Label();
+            this.GroupBoxResumenGral = new iTalk.iTalk_GroupBox();
+            this.PBExcelCircular = new iTalk.iTalk_ProgressBar();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportarAExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -153,7 +153,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.28992F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.71008F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 473F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 476F));
             this.tableLayoutPanel1.Controls.Add(this.lblAvanceExportacion, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.BtnExcel, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.progressBar, 0, 2);
@@ -170,19 +170,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1383, 207);
             this.tableLayoutPanel1.TabIndex = 53;
             // 
-            // GroupBoxResumenGral
-            // 
-            this.GroupBoxResumenGral.BackColor = System.Drawing.Color.Transparent;
-            this.GroupBoxResumenGral.Location = new System.Drawing.Point(912, 169);
-            this.GroupBoxResumenGral.MinimumSize = new System.Drawing.Size(136, 50);
-            this.GroupBoxResumenGral.Name = "GroupBoxResumenGral";
-            this.GroupBoxResumenGral.Padding = new System.Windows.Forms.Padding(5, 28, 5, 5);
-            this.GroupBoxResumenGral.Size = new System.Drawing.Size(136, 50);
-            this.GroupBoxResumenGral.TabIndex = 4;
-            this.GroupBoxResumenGral.Text = "Detalle";
-            this.GroupBoxResumenGral.Visible = false;
-            this.GroupBoxResumenGral.Click += new System.EventHandler(this.GroupBoxResumenGral_Click);
-            // 
             // lblAvanceExportacion
             // 
             this.lblAvanceExportacion.AutoSize = true;
@@ -198,31 +185,12 @@
             this.BtnExcel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BtnExcel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnExcel.Image = global::gagFIS_Interfase.Properties.Resources.iconoexcel;
-            this.BtnExcel.Location = new System.Drawing.Point(607, 169);
+            this.BtnExcel.Location = new System.Drawing.Point(605, 169);
             this.BtnExcel.Name = "BtnExcel";
             this.BtnExcel.Size = new System.Drawing.Size(33, 30);
             this.BtnExcel.TabIndex = 47;
             this.BtnExcel.UseVisualStyleBackColor = true;
             this.BtnExcel.Click += new System.EventHandler(this.BtnExcel_Click);
-            // 
-            // PBExcelCircular
-            // 
-            this.PBExcelCircular.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.PBExcelCircular.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.PBExcelCircular.Font = new System.Drawing.Font("Segoe UI", 15F);
-            this.PBExcelCircular.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.PBExcelCircular.Location = new System.Drawing.Point(912, 18);
-            this.PBExcelCircular.Maximum = ((long)(100));
-            this.PBExcelCircular.MinimumSize = new System.Drawing.Size(100, 100);
-            this.PBExcelCircular.Name = "PBExcelCircular";
-            this.PBExcelCircular.ProgressColor1 = System.Drawing.Color.Silver;
-            this.PBExcelCircular.ProgressColor2 = System.Drawing.Color.Silver;
-            this.PBExcelCircular.ProgressShape = iTalk.iTalk_ProgressBar._ProgressShape.Round;
-            this.PBExcelCircular.Size = new System.Drawing.Size(105, 105);
-            this.PBExcelCircular.TabIndex = 9;
-            this.PBExcelCircular.Text = "Exportando a Excel";
-            this.PBExcelCircular.Value = ((long)(0));
-            this.PBExcelCircular.Visible = false;
             // 
             // progressBar
             // 
@@ -240,12 +208,12 @@
             this.tableLayoutPanel2.Controls.Add(this.LblTituloInforme, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.LblResumenInforme, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(342, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(341, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 54.81482F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.18518F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(564, 135);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(562, 135);
             this.tableLayoutPanel2.TabIndex = 51;
             // 
             // LblTituloInforme
@@ -254,7 +222,7 @@
             this.LblTituloInforme.AutoSize = true;
             this.LblTituloInforme.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblTituloInforme.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.LblTituloInforme.Location = new System.Drawing.Point(246, 0);
+            this.LblTituloInforme.Location = new System.Drawing.Point(245, 0);
             this.LblTituloInforme.Name = "LblTituloInforme";
             this.LblTituloInforme.Size = new System.Drawing.Size(71, 25);
             this.LblTituloInforme.TabIndex = 50;
@@ -267,12 +235,44 @@
             this.LblResumenInforme.AutoSize = true;
             this.LblResumenInforme.Font = new System.Drawing.Font("Mongolian Baiti", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblResumenInforme.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.LblResumenInforme.Location = new System.Drawing.Point(238, 74);
+            this.LblResumenInforme.Location = new System.Drawing.Point(237, 74);
             this.LblResumenInforme.Name = "LblResumenInforme";
             this.LblResumenInforme.Size = new System.Drawing.Size(87, 20);
             this.LblResumenInforme.TabIndex = 51;
             this.LblResumenInforme.Text = "Resumen";
             this.LblResumenInforme.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // GroupBoxResumenGral
+            // 
+            this.GroupBoxResumenGral.BackColor = System.Drawing.Color.Transparent;
+            this.GroupBoxResumenGral.Location = new System.Drawing.Point(909, 169);
+            this.GroupBoxResumenGral.MinimumSize = new System.Drawing.Size(136, 50);
+            this.GroupBoxResumenGral.Name = "GroupBoxResumenGral";
+            this.GroupBoxResumenGral.Padding = new System.Windows.Forms.Padding(5, 28, 5, 5);
+            this.GroupBoxResumenGral.Size = new System.Drawing.Size(136, 50);
+            this.GroupBoxResumenGral.TabIndex = 4;
+            this.GroupBoxResumenGral.Text = "Detalle";
+            this.GroupBoxResumenGral.Visible = false;
+            this.GroupBoxResumenGral.Click += new System.EventHandler(this.GroupBoxResumenGral_Click);
+            // 
+            // PBExcelCircular
+            // 
+            this.PBExcelCircular.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.PBExcelCircular.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.PBExcelCircular.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.PBExcelCircular.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.PBExcelCircular.Location = new System.Drawing.Point(909, 18);
+            this.PBExcelCircular.Maximum = ((long)(100));
+            this.PBExcelCircular.MinimumSize = new System.Drawing.Size(100, 100);
+            this.PBExcelCircular.Name = "PBExcelCircular";
+            this.PBExcelCircular.ProgressColor1 = System.Drawing.Color.Silver;
+            this.PBExcelCircular.ProgressColor2 = System.Drawing.Color.Silver;
+            this.PBExcelCircular.ProgressShape = iTalk.iTalk_ProgressBar._ProgressShape.Round;
+            this.PBExcelCircular.Size = new System.Drawing.Size(105, 105);
+            this.PBExcelCircular.TabIndex = 9;
+            this.PBExcelCircular.Text = "Exportando a Excel";
+            this.PBExcelCircular.Value = ((long)(0));
+            this.PBExcelCircular.Visible = false;
             // 
             // menuStrip1
             // 

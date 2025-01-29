@@ -197,7 +197,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(1508, 672);
-            this.splitContainer1.SplitterDistance = 194;
+            this.splitContainer1.SplitterDistance = 240;
             this.splitContainer1.TabIndex = 2;
             // 
             // splitContainer3
@@ -214,7 +214,7 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.PanelHistorial);
-            this.splitContainer3.Size = new System.Drawing.Size(1508, 194);
+            this.splitContainer3.Size = new System.Drawing.Size(1508, 240);
             this.splitContainer3.SplitterDistance = 1468;
             this.splitContainer3.TabIndex = 8;
             // 
@@ -239,7 +239,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1468, 194);
+            this.groupBox1.Size = new System.Drawing.Size(1468, 240);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buscar por:";
@@ -250,7 +250,7 @@
             this.BtnExcel.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.BtnExcel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnExcel.Image = global::gagFIS_Interfase.Properties.Resources.iconoexcel;
-            this.BtnExcel.Location = new System.Drawing.Point(393, 159);
+            this.BtnExcel.Location = new System.Drawing.Point(393, 193);
             this.BtnExcel.Name = "BtnExcel";
             this.BtnExcel.Size = new System.Drawing.Size(33, 30);
             this.BtnExcel.TabIndex = 43;
@@ -272,7 +272,7 @@
             // 
             this.lblAvanceExportacion.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblAvanceExportacion.AutoSize = true;
-            this.lblAvanceExportacion.Location = new System.Drawing.Point(1377, 143);
+            this.lblAvanceExportacion.Location = new System.Drawing.Point(1377, 166);
             this.lblAvanceExportacion.Name = "lblAvanceExportacion";
             this.lblAvanceExportacion.Size = new System.Drawing.Size(13, 13);
             this.lblAvanceExportacion.TabIndex = 3;
@@ -297,7 +297,7 @@
             this.panelSuperior.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSuperior.Location = new System.Drawing.Point(3, 16);
             this.panelSuperior.Name = "panelSuperior";
-            this.panelSuperior.Size = new System.Drawing.Size(1462, 106);
+            this.panelSuperior.Size = new System.Drawing.Size(1462, 142);
             this.panelSuperior.TabIndex = 41;
             // 
             // CBTipoLect
@@ -308,7 +308,7 @@
             "TODOS",
             "FIS",
             "TELELECTURA"});
-            this.CBTipoLect.Location = new System.Drawing.Point(189, 74);
+            this.CBTipoLect.Location = new System.Drawing.Point(189, 89);
             this.CBTipoLect.Name = "CBTipoLect";
             this.CBTipoLect.Size = new System.Drawing.Size(136, 24);
             this.CBTipoLect.TabIndex = 46;
@@ -322,7 +322,7 @@
             this.iTalk_Label1.BackColor = System.Drawing.Color.Transparent;
             this.iTalk_Label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iTalk_Label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.iTalk_Label1.Location = new System.Drawing.Point(92, 74);
+            this.iTalk_Label1.Location = new System.Drawing.Point(92, 92);
             this.iTalk_Label1.Name = "iTalk_Label1";
             this.iTalk_Label1.Size = new System.Drawing.Size(83, 17);
             this.iTalk_Label1.TabIndex = 45;
@@ -540,7 +540,7 @@
             this.BtnTxt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.BtnTxt.Image = global::gagFIS_Interfase.Properties.Resources.doc1;
             this.BtnTxt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnTxt.Location = new System.Drawing.Point(502, 159);
+            this.BtnTxt.Location = new System.Drawing.Point(502, 193);
             this.BtnTxt.Name = "BtnTxt";
             this.BtnTxt.Size = new System.Drawing.Size(103, 33);
             this.BtnTxt.TabIndex = 40;
@@ -561,7 +561,7 @@
             // progressBar
             // 
             this.progressBar.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.progressBar.Location = new System.Drawing.Point(1123, 135);
+            this.progressBar.Location = new System.Drawing.Point(1123, 158);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(248, 23);
             this.progressBar.TabIndex = 2;
@@ -584,7 +584,7 @@
             this.BtnPDF.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.BtnPDF.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnPDF.Image = ((System.Drawing.Image)(resources.GetObject("BtnPDF.Image")));
-            this.BtnPDF.Location = new System.Drawing.Point(452, 159);
+            this.BtnPDF.Location = new System.Drawing.Point(452, 193);
             this.BtnPDF.Name = "BtnPDF";
             this.BtnPDF.Size = new System.Drawing.Size(33, 30);
             this.BtnPDF.TabIndex = 14;
@@ -610,7 +610,7 @@
             this.LblBuscar.BackColor = System.Drawing.Color.Transparent;
             this.LblBuscar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.LblBuscar.Location = new System.Drawing.Point(341, 136);
+            this.LblBuscar.Location = new System.Drawing.Point(341, 170);
             this.LblBuscar.Name = "LblBuscar";
             this.LblBuscar.Size = new System.Drawing.Size(43, 13);
             this.LblBuscar.TabIndex = 6;
@@ -623,7 +623,7 @@
             this.TextFiltro.Enabled = false;
             this.TextFiltro.Font = new System.Drawing.Font("Tahoma", 11F);
             this.TextFiltro.ForeColor = System.Drawing.Color.DimGray;
-            this.TextFiltro.Location = new System.Drawing.Point(393, 130);
+            this.TextFiltro.Location = new System.Drawing.Point(393, 164);
             this.TextFiltro.MaxLength = 32767;
             this.TextFiltro.Multiline = false;
             this.TextFiltro.Name = "TextFiltro";
@@ -639,7 +639,7 @@
             this.ButPrint.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ButPrint.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ButPrint.Image = ((System.Drawing.Image)(resources.GetObject("ButPrint.Image")));
-            this.ButPrint.Location = new System.Drawing.Point(626, 160);
+            this.ButPrint.Location = new System.Drawing.Point(626, 194);
             this.ButPrint.Name = "ButPrint";
             this.ButPrint.Size = new System.Drawing.Size(33, 30);
             this.ButPrint.TabIndex = 7;
@@ -651,7 +651,7 @@
             this.button3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(679, 159);
+            this.button3.Location = new System.Drawing.Point(679, 193);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(33, 30);
             this.button3.TabIndex = 8;
@@ -698,7 +698,7 @@
             this.PanelHistorial.Location = new System.Drawing.Point(0, 0);
             this.PanelHistorial.Name = "PanelHistorial";
             this.PanelHistorial.Padding = new System.Windows.Forms.Padding(5);
-            this.PanelHistorial.Size = new System.Drawing.Size(36, 194);
+            this.PanelHistorial.Size = new System.Drawing.Size(36, 240);
             this.PanelHistorial.TabIndex = 12;
             this.PanelHistorial.Text = "iTalk_Panel1";
             // 
@@ -727,7 +727,7 @@
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Location = new System.Drawing.Point(442, 140);
+            this.button2.Location = new System.Drawing.Point(442, 163);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(27, 24);
             this.button2.TabIndex = 9;
@@ -741,7 +741,7 @@
             this.iTalk_Label3.BackColor = System.Drawing.Color.Transparent;
             this.iTalk_Label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iTalk_Label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.iTalk_Label3.Location = new System.Drawing.Point(277, 145);
+            this.iTalk_Label3.Location = new System.Drawing.Point(277, 168);
             this.iTalk_Label3.Name = "iTalk_Label3";
             this.iTalk_Label3.Size = new System.Drawing.Size(34, 13);
             this.iTalk_Label3.TabIndex = 12;
@@ -785,7 +785,7 @@
             this.iTalk_Label2.BackColor = System.Drawing.Color.Transparent;
             this.iTalk_Label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iTalk_Label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(142)))), ((int)(((byte)(142)))));
-            this.iTalk_Label2.Location = new System.Drawing.Point(15, 89);
+            this.iTalk_Label2.Location = new System.Drawing.Point(15, 112);
             this.iTalk_Label2.Name = "iTalk_Label2";
             this.iTalk_Label2.Size = new System.Drawing.Size(50, 13);
             this.iTalk_Label2.TabIndex = 9;
@@ -807,8 +807,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.panel1);
-            this.splitContainer2.Size = new System.Drawing.Size(1508, 474);
-            this.splitContainer2.SplitterDistance = 294;
+            this.splitContainer2.Size = new System.Drawing.Size(1508, 428);
+            this.splitContainer2.SplitterDistance = 281;
             this.splitContainer2.TabIndex = 3;
             // 
             // MiLoadingInformes
@@ -817,7 +817,7 @@
             this.MiLoadingInformes.Image = global::gagFIS_Interfase.Properties.Resources.GIF_circular_loading1;
             this.MiLoadingInformes.Location = new System.Drawing.Point(0, 0);
             this.MiLoadingInformes.Name = "MiLoadingInformes";
-            this.MiLoadingInformes.Size = new System.Drawing.Size(1508, 294);
+            this.MiLoadingInformes.Size = new System.Drawing.Size(1508, 281);
             this.MiLoadingInformes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.MiLoadingInformes.TabIndex = 4;
             this.MiLoadingInformes.TabStop = false;
@@ -842,7 +842,7 @@
             this.DGResumenExp.Location = new System.Drawing.Point(0, 0);
             this.DGResumenExp.Name = "DGResumenExp";
             this.DGResumenExp.ReadOnly = true;
-            this.DGResumenExp.Size = new System.Drawing.Size(1508, 294);
+            this.DGResumenExp.Size = new System.Drawing.Size(1508, 281);
             this.DGResumenExp.TabIndex = 1;
             this.DGResumenExp.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.DGResumenExp_CellContextMenuStripNeeded);
             this.DGResumenExp.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGResumenExp_CellMouseClick);
@@ -882,7 +882,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1508, 176);
+            this.panel1.Size = new System.Drawing.Size(1508, 143);
             this.panel1.TabIndex = 2;
             // 
             // LblTotOrdenativos
@@ -968,7 +968,7 @@
             this.GroupBoxResumenGral.MinimumSize = new System.Drawing.Size(136, 50);
             this.GroupBoxResumenGral.Name = "GroupBoxResumenGral";
             this.GroupBoxResumenGral.Padding = new System.Windows.Forms.Padding(5, 28, 5, 5);
-            this.GroupBoxResumenGral.Size = new System.Drawing.Size(1093, 174);
+            this.GroupBoxResumenGral.Size = new System.Drawing.Size(1093, 141);
             this.GroupBoxResumenGral.TabIndex = 3;
             this.GroupBoxResumenGral.Text = "Resumen General";
             this.GroupBoxResumenGral.Visible = false;
@@ -980,7 +980,7 @@
             this.PanelChart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelChart.Location = new System.Drawing.Point(5, 28);
             this.PanelChart.Name = "PanelChart";
-            this.PanelChart.Size = new System.Drawing.Size(1083, 141);
+            this.PanelChart.Size = new System.Drawing.Size(1083, 108);
             this.PanelChart.TabIndex = 2;
             // 
             // TabCtrlGraficos
@@ -992,7 +992,7 @@
             this.TabCtrlGraficos.Location = new System.Drawing.Point(0, 0);
             this.TabCtrlGraficos.Name = "TabCtrlGraficos";
             this.TabCtrlGraficos.SelectedIndex = 0;
-            this.TabCtrlGraficos.Size = new System.Drawing.Size(1083, 141);
+            this.TabCtrlGraficos.Size = new System.Drawing.Size(1083, 108);
             this.TabCtrlGraficos.TabIndex = 0;
             // 
             // TabPagLeidos
@@ -1002,7 +1002,7 @@
             this.TabPagLeidos.Location = new System.Drawing.Point(4, 22);
             this.TabPagLeidos.Name = "TabPagLeidos";
             this.TabPagLeidos.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPagLeidos.Size = new System.Drawing.Size(1075, 115);
+            this.TabPagLeidos.Size = new System.Drawing.Size(1075, 82);
             this.TabPagLeidos.TabIndex = 1;
             this.TabPagLeidos.Text = "Leidos";
             this.TabPagLeidos.UseVisualStyleBackColor = true;
@@ -1082,7 +1082,7 @@
             series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Double;
             this.ChartLeidos.Series.Add(series1);
             this.ChartLeidos.Series.Add(series2);
-            this.ChartLeidos.Size = new System.Drawing.Size(1069, 109);
+            this.ChartLeidos.Size = new System.Drawing.Size(1069, 76);
             this.ChartLeidos.TabIndex = 1;
             this.ChartLeidos.Text = "chart2";
             // 
@@ -1092,7 +1092,7 @@
             this.TabPagImpresos.Location = new System.Drawing.Point(4, 22);
             this.TabPagImpresos.Name = "TabPagImpresos";
             this.TabPagImpresos.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPagImpresos.Size = new System.Drawing.Size(1075, 163);
+            this.TabPagImpresos.Size = new System.Drawing.Size(1075, 115);
             this.TabPagImpresos.TabIndex = 0;
             this.TabPagImpresos.Text = "Impresos";
             this.TabPagImpresos.UseVisualStyleBackColor = true;
@@ -1167,7 +1167,7 @@
             this.ChartImpresos.Series.Add(series3);
             this.ChartImpresos.Series.Add(series4);
             this.ChartImpresos.Series.Add(series5);
-            this.ChartImpresos.Size = new System.Drawing.Size(1069, 157);
+            this.ChartImpresos.Size = new System.Drawing.Size(1069, 109);
             this.ChartImpresos.TabIndex = 0;
             this.ChartImpresos.Text = "chart1";
             // 
@@ -1177,7 +1177,7 @@
             this.TabPagPeriodos.Location = new System.Drawing.Point(4, 22);
             this.TabPagPeriodos.Name = "TabPagPeriodos";
             this.TabPagPeriodos.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPagPeriodos.Size = new System.Drawing.Size(1075, 163);
+            this.TabPagPeriodos.Size = new System.Drawing.Size(1075, 115);
             this.TabPagPeriodos.TabIndex = 2;
             this.TabPagPeriodos.Text = "Comparación Periodos";
             this.TabPagPeriodos.UseVisualStyleBackColor = true;
@@ -1239,7 +1239,7 @@
             series6.Legend = "Legend1";
             series6.Name = "Impresos";
             this.ChartPeriodos.Series.Add(series6);
-            this.ChartPeriodos.Size = new System.Drawing.Size(1069, 157);
+            this.ChartPeriodos.Size = new System.Drawing.Size(1069, 109);
             this.ChartPeriodos.TabIndex = 2;
             this.ChartPeriodos.Text = "chart2";
             // 
@@ -1250,7 +1250,7 @@
             this.PLoadingResGral.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PLoadingResGral.Location = new System.Drawing.Point(5, 28);
             this.PLoadingResGral.Name = "PLoadingResGral";
-            this.PLoadingResGral.Size = new System.Drawing.Size(1083, 141);
+            this.PLoadingResGral.Size = new System.Drawing.Size(1083, 108);
             this.PLoadingResGral.TabIndex = 1;
             // 
             // PickBoxLoading
@@ -1261,7 +1261,7 @@
             this.PickBoxLoading.Image = global::gagFIS_Interfase.Properties.Resources.gif_loading_circular_rayas;
             this.PickBoxLoading.Location = new System.Drawing.Point(0, 0);
             this.PickBoxLoading.Name = "PickBoxLoading";
-            this.PickBoxLoading.Size = new System.Drawing.Size(1083, 141);
+            this.PickBoxLoading.Size = new System.Drawing.Size(1083, 108);
             this.PickBoxLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PickBoxLoading.TabIndex = 0;
             this.PickBoxLoading.TabStop = false;
@@ -1289,7 +1289,7 @@
             this.LVResumenGral.HideSelection = false;
             this.LVResumenGral.Location = new System.Drawing.Point(5, 28);
             this.LVResumenGral.Name = "LVResumenGral";
-            this.LVResumenGral.Size = new System.Drawing.Size(1083, 141);
+            this.LVResumenGral.Size = new System.Drawing.Size(1083, 108);
             this.LVResumenGral.TabIndex = 0;
             this.LVResumenGral.UseCompatibleStateImageBehavior = false;
             this.LVResumenGral.View = System.Windows.Forms.View.Details;
