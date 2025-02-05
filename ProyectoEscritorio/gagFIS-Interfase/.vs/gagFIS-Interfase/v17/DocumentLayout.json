@@ -3,7 +3,15 @@
   "WorkspaceRootPath": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|c:\\users\\user\\source\\repos\\macro intell\\proyectoescritorio\\gagfis-interfase\\gagfis-interfase\\formestadosrutas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|c:\\users\\user\\source\\repos\\macro intell\\proyectoescritorio\\gagfis-interfase\\gagfis-interfase\\formnuevoticket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|solutionrelative:gagfis-interfase\\formnuevoticket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagfis-interfase\\gagfis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|solutionrelative:gagfis-interfase\\gagfis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagfis-interfase\\formestadosrutas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|solutionrelative:gagfis-interfase\\formestadosrutas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -11,44 +19,28 @@
       "RelativeMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|solutionrelative:gagfis-interfase\\formestadosrutas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagfis-interfase\\formdetallepredescarga.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|solutionrelative:gagfis-interfase\\formdetallepredescarga.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagfis-interfase\\form4cargas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|solutionrelative:gagfis-interfase\\form4cargas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagfis-interfase\\formdetallepredescarga.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|solutionrelative:gagfis-interfase\\formdetallepredescarga.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagfis-interfase\\formdetalleinformes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|solutionrelative:gagfis-interfase\\formdetalleinformes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagfis-interfase\\form4cargas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|solutionrelative:gagfis-interfase\\form4cargas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagfis-interfase\\form4cargas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|solutionrelative:gagfis-interfase\\form4cargas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagfis-interfase\\formdetallepredescarga.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|solutionrelative:gagfis-interfase\\formdetallepredescarga.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagfis-interfase\\form3descargas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|solutionrelative:gagfis-interfase\\form3descargas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagfis-interfase\\gagfis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|solutionrelative:gagfis-interfase\\gagfis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagfis-interfase\\form3descargas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|solutionrelative:gagfis-interfase\\form3descargas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagfis-interfase\\form1inicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|solutionrelative:gagfis-interfase\\form1inicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagfis-interfase\\form1inicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|solutionrelative:gagfis-interfase\\form1inicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagfis-interfase\\form7informesaltas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -77,42 +69,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagfis-interfase\\form2exportar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|solutionrelative:gagfis-interfase\\form2exportar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagfis-interfase\\formmaps.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|solutionrelative:gagfis-interfase\\formmaps.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagfis-interfase\\formmaps.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|solutionrelative:gagfis-interfase\\formmaps.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagfis-interfase\\formstart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|solutionrelative:gagfis-interfase\\formstart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagfis-interfase\\formstart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|solutionrelative:gagfis-interfase\\formstart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagfis-interfase\\form7informesaltas.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|solutionrelative:gagfis-interfase\\form7informesaltas.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagfis-interfase\\form0.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|solutionrelative:gagfis-interfase\\form0.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagfis-interfase\\form6informes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|solutionrelative:gagfis-interfase\\form6informes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagfis-interfase\\pageeventhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|solutionrelative:gagfis-interfase\\pageeventhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagfis-interfase\\form0.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{3CB26017-CBFC-48DC-8ACB-70C38F7C6FC3}|gagFIS-Interfase\\gagFIS-Interfase.csproj|solutionrelative:gagfis-interfase\\form0.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -122,21 +78,8 @@
       "DocumentGroups": [
         {
           "DockedHeight": 357,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "FormDetalleInformes.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\FormDetalleInformes.cs",
-              "RelativeDocumentMoniker": "gagFIS-Interfase\\FormDetalleInformes.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\FormDetalleInformes.cs [Dise\u00F1o]",
-              "RelativeToolTip": "gagFIS-Interfase\\FormDetalleInformes.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-08T16:41:51.885Z",
-              "IsPinned": true,
-              "EditorCaption": " [Dise\u00F1o]"
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{f6c90d9a-1aa8-32e5-baac-467b7262213c}"
@@ -144,79 +87,99 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "FormEstadosRutas.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\FormEstadosRutas.cs",
-              "RelativeDocumentMoniker": "gagFIS-Interfase\\FormEstadosRutas.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\FormEstadosRutas.cs",
-              "RelativeToolTip": "gagFIS-Interfase\\FormEstadosRutas.cs",
-              "ViewState": "AQIAALcBAAAAAAAAAAAowMwBAAAIAAAA",
+              "Title": "FormNuevoTicket.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\FormNuevoTicket.cs",
+              "RelativeDocumentMoniker": "gagFIS-Interfase\\FormNuevoTicket.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\FormNuevoTicket.cs [Dise\u00F1o]",
+              "RelativeToolTip": "gagFIS-Interfase\\FormNuevoTicket.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-24T15:08:52.002Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-05T11:54:59.578Z",
+              "EditorCaption": " [Dise\u00F1o]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "gagFIS.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\gagFIS.cs",
+              "RelativeDocumentMoniker": "gagFIS-Interfase\\gagFIS.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\gagFIS.cs",
+              "RelativeToolTip": "gagFIS-Interfase\\gagFIS.cs",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-05T11:09:05.854Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "FormEstadosRutas.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\FormEstadosRutas.cs",
               "RelativeDocumentMoniker": "gagFIS-Interfase\\FormEstadosRutas.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\FormEstadosRutas.cs [Dise\u00F1o]",
               "RelativeToolTip": "gagFIS-Interfase\\FormEstadosRutas.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-24T15:08:50.583Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2025-02-03T12:33:54.866Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Form1Inicio.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\Form1Inicio.cs",
-              "RelativeDocumentMoniker": "gagFIS-Interfase\\Form1Inicio.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\Form1Inicio.cs [Dise\u00F1o]",
-              "RelativeToolTip": "gagFIS-Interfase\\Form1Inicio.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-27T16:15:56.451Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Form4Cargas.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\Form4Cargas.cs",
               "RelativeDocumentMoniker": "gagFIS-Interfase\\Form4Cargas.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\Form4Cargas.cs",
               "RelativeToolTip": "gagFIS-Interfase\\Form4Cargas.cs",
-              "ViewState": "AQIAAI8VAAAAAAAAAAAuwKAVAAAMAAAA",
+              "ViewState": "AQIAAIUWAAAAAAAAAAAAAIwWAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-08T16:10:09.068Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "FormDetallePreDescarga.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\FormDetallePreDescarga.cs",
               "RelativeDocumentMoniker": "gagFIS-Interfase\\FormDetallePreDescarga.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\FormDetallePreDescarga.cs [Dise\u00F1o]",
-              "RelativeToolTip": "gagFIS-Interfase\\FormDetallePreDescarga.cs [Dise\u00F1o]",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\FormDetallePreDescarga.cs [Dise\u00F1o]*",
+              "RelativeToolTip": "gagFIS-Interfase\\FormDetallePreDescarga.cs [Dise\u00F1o]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-16T16:55:29.629Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2025-01-16T16:55:29.629Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "FormDetallePreDescarga.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\FormDetallePreDescarga.cs",
               "RelativeDocumentMoniker": "gagFIS-Interfase\\FormDetallePreDescarga.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\FormDetallePreDescarga.cs",
-              "RelativeToolTip": "gagFIS-Interfase\\FormDetallePreDescarga.cs",
-              "ViewState": "AQIAAPoHAAAAAAAAAAAMwAYIAAAMAAAA",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\FormDetallePreDescarga.cs*",
+              "RelativeToolTip": "gagFIS-Interfase\\FormDetallePreDescarga.cs*",
+              "ViewState": "AQIAAPQHAAAAAAAAAAAgwP0HAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T11:28:41.794Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-11T11:28:41.794Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 4,
+              "Title": "Form4Cargas.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\Form4Cargas.cs",
+              "RelativeDocumentMoniker": "gagFIS-Interfase\\Form4Cargas.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\Form4Cargas.cs [Dise\u00F1o]",
+              "RelativeToolTip": "gagFIS-Interfase\\Form4Cargas.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-08T16:10:07.678Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FormEstadosRutas.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\FormEstadosRutas.cs",
+              "RelativeDocumentMoniker": "gagFIS-Interfase\\FormEstadosRutas.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\FormEstadosRutas.cs",
+              "RelativeToolTip": "gagFIS-Interfase\\FormEstadosRutas.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAABRwCcAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-24T15:08:52.002Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "Form7InformesAltas.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\Form7InformesAltas.cs",
               "RelativeDocumentMoniker": "gagFIS-Interfase\\Form7InformesAltas.cs",
@@ -224,24 +187,22 @@
               "RelativeToolTip": "gagFIS-Interfase\\Form7InformesAltas.cs",
               "ViewState": "AQIAAFoMAAAAAAAAAAAcwJYMAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-12T15:12:10.792Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-12T15:12:10.792Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 11,
               "Title": "Form7InformesAltas.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\Form7InformesAltas.cs",
               "RelativeDocumentMoniker": "gagFIS-Interfase\\Form7InformesAltas.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\Form7InformesAltas.cs [Dise\u00F1o]",
               "RelativeToolTip": "gagFIS-Interfase\\Form7InformesAltas.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-17T16:18:54.936Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2025-01-17T16:18:54.936Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Form3Descargas.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\Form3Descargas.cs",
               "RelativeDocumentMoniker": "gagFIS-Interfase\\Form3Descargas.cs",
@@ -253,30 +214,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Form4Cargas.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\Form4Cargas.cs",
-              "RelativeDocumentMoniker": "gagFIS-Interfase\\Form4Cargas.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\Form4Cargas.cs [Dise\u00F1o]",
-              "RelativeToolTip": "gagFIS-Interfase\\Form4Cargas.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-08T16:10:07.678Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "gagFIS.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\gagFIS.cs",
-              "RelativeDocumentMoniker": "gagFIS-Interfase\\gagFIS.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\gagFIS.cs",
-              "RelativeToolTip": "gagFIS-Interfase\\gagFIS.cs",
-              "ViewState": "AQIAAIYGAAAAAAAAAAAmwJYGAAA3AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-07T12:19:35.226Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 13,
               "Title": "FormResumenSup.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\FormResumenSup.cs",
               "RelativeDocumentMoniker": "gagFIS-Interfase\\FormResumenSup.cs",
@@ -299,19 +237,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Form1Inicio.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\Form1Inicio.cs",
-              "RelativeDocumentMoniker": "gagFIS-Interfase\\Form1Inicio.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\Form1Inicio.cs",
-              "RelativeToolTip": "gagFIS-Interfase\\Form1Inicio.cs",
-              "ViewState": "AQIAAKsKAAAAAAAAAIAwwNgKAAAYAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-30T15:04:52.081Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 12,
               "Title": "FormDetalleInformes.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\FormDetalleInformes.cs",
               "RelativeDocumentMoniker": "gagFIS-Interfase\\FormDetalleInformes.cs",
@@ -319,12 +245,11 @@
               "RelativeToolTip": "gagFIS-Interfase\\FormDetalleInformes.cs",
               "ViewState": "AQIAANMAAAAAAAAAAAAuwOYAAACGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T11:27:41.961Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-11T11:27:41.961Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 14,
               "Title": "FormResumenSup.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\FormResumenSup.cs",
               "RelativeDocumentMoniker": "gagFIS-Interfase\\FormResumenSup.cs",
@@ -335,7 +260,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 15,
               "Title": "FormDetallePreDescarga.Designer.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\FormDetallePreDescarga.Designer.cs",
               "RelativeDocumentMoniker": "gagFIS-Interfase\\FormDetallePreDescarga.Designer.cs",
@@ -343,12 +268,11 @@
               "RelativeToolTip": "gagFIS-Interfase\\FormDetallePreDescarga.Designer.cs",
               "ViewState": "AQIAAAwAAAAAAAAAAAAuwAYGAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-21T11:58:08.784Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-21T11:58:08.784Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 16,
               "Title": "Form2Exportar.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\Form2Exportar.cs",
               "RelativeDocumentMoniker": "gagFIS-Interfase\\Form2Exportar.cs",
@@ -357,112 +281,6 @@
               "ViewState": "AQIAAKEWAAAAAAAAAAAMwLMWAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-18T15:39:49.196Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "FormMaps.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\FormMaps.cs",
-              "RelativeDocumentMoniker": "gagFIS-Interfase\\FormMaps.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\FormMaps.cs",
-              "RelativeToolTip": "gagFIS-Interfase\\FormMaps.cs",
-              "ViewState": "AQIAAB0AAAAAAAAAAAAmwDIAAAALAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-17T15:10:57.418Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "FormMaps.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\FormMaps.cs",
-              "RelativeDocumentMoniker": "gagFIS-Interfase\\FormMaps.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\FormMaps.cs [Dise\u00F1o]",
-              "RelativeToolTip": "gagFIS-Interfase\\FormMaps.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-17T15:05:01.68Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "FormStart.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\FormStart.cs",
-              "RelativeDocumentMoniker": "gagFIS-Interfase\\FormStart.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\FormStart.cs [Dise\u00F1o]",
-              "RelativeToolTip": "gagFIS-Interfase\\FormStart.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T12:54:18.543Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "FormStart.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\FormStart.cs",
-              "RelativeDocumentMoniker": "gagFIS-Interfase\\FormStart.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\FormStart.cs",
-              "RelativeToolTip": "gagFIS-Interfase\\FormStart.cs",
-              "ViewState": "AQIAAIQAAAAAAAAAAAAlwJwAAAAeAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-10T14:22:43.364Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "Form6Informes.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\Form6Informes.cs",
-              "RelativeDocumentMoniker": "gagFIS-Interfase\\Form6Informes.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\Form6Informes.cs",
-              "RelativeToolTip": "gagFIS-Interfase\\Form6Informes.cs",
-              "ViewState": "AQIAABIAAAAAAAAAAAAEwCMAAAA7AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-06T15:53:08.849Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "Form7InformesAltas.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\Form7InformesAltas.Designer.cs",
-              "RelativeDocumentMoniker": "gagFIS-Interfase\\Form7InformesAltas.Designer.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\Form7InformesAltas.Designer.cs",
-              "RelativeToolTip": "gagFIS-Interfase\\Form7InformesAltas.Designer.cs",
-              "ViewState": "AQIAAJ4HAAAAAAAAAAAlwLEHAABLAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T14:49:45.796Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "Form0.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\Form0.cs",
-              "RelativeDocumentMoniker": "gagFIS-Interfase\\Form0.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\Form0.cs",
-              "RelativeToolTip": "gagFIS-Interfase\\Form0.cs",
-              "ViewState": "AQIAAGgAAAAAAAAAAAAlwHsAAAATAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-12T15:09:33.629Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "PageEventHelper.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\PageEventHelper.cs",
-              "RelativeDocumentMoniker": "gagFIS-Interfase\\PageEventHelper.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\PageEventHelper.cs",
-              "RelativeToolTip": "gagFIS-Interfase\\PageEventHelper.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAAlwDcAAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T13:09:22.036Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "Form0.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\Form0.cs",
-              "RelativeDocumentMoniker": "gagFIS-Interfase\\Form0.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\MACRO INTELL\\ProyectoEscritorio\\gagFIS-Interfase\\gagFIS-Interfase\\Form0.cs [Dise\u00F1o]",
-              "RelativeToolTip": "gagFIS-Interfase\\Form0.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-12T15:09:32.082Z"
             }
           ]
         }

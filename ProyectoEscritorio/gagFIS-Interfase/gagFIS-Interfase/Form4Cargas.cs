@@ -3143,7 +3143,7 @@ namespace gagFIS_Interfase
                         insertPersonas = "";
                         //contador = 0;
                         //contador++;
-                        insertPersonas = "INSERT INTO Personas ([personaID], [Periodo], [Apellido], [Nombre], [DocTipo], [DocNro], [CondIVA]," +
+                        insertPersonas = "INSERT OR IGNORE INTO Personas ([personaID], [Periodo], [Apellido], [Nombre], [DocTipo], [DocNro], [CondIVA]," +
                        " [Domicilio], [Barrio], [CodigoPostal]) " +
                        "VALUES ";
 
@@ -5149,7 +5149,7 @@ namespace gagFIS_Interfase
                     Directory.Delete(Vble.RutaCarpetaOrigen, true);
                     BotActPanPC_Click(sender, e);
 
-                        listarRutasDisponiblesTASK();
+                    listarRutasDisponiblesTASK();
 
                         //timer1_Tick(sender, e);
                     }
@@ -5728,6 +5728,122 @@ namespace gagFIS_Interfase
                     }
                 }
             }
-        }            
-      }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            StringBuilder stb = new StringBuilder();
+            int Carga = 0;
+            bool habilitado = false;
+            string dni = "";
+            string pass = "";
+      
+           
+            try
+            {
+                if (listViewCargasProcesadas.SelectedItems.Count > 0)
+                {
+                    if (MessageBox.Show("¿Está seguro que desea eliminar la ruta procesada?, " +
+                                     "\n tenga en cuenta que si la elimina y " +
+                                     "\n no fue cargada, quedará no Disponible", "Eiminar Ruta", MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+                    {
+                        int centerX = Screen.PrimaryScreen.Bounds.Width / 2;
+                        int centerY = Screen.PrimaryScreen.Bounds.Height / 2;
+                        dni = Interaction.InputBox("Por favor ingrese el DNI para autorizar el borrado de la ruta que se encuentra en la colectora", "DNI", "0", centerX, centerY);
+                        //pass = Interaction.InputBox("Por favor ingrese la CONTRASEÑA para autorizar el borrado de la ruta que se encuentra en la colectora", "CONTRASEÑA", "0", 550, 300);
+
+                        if (Vble.dniBorrado != "" && Vble.passBorrado != "")
+                        {
+                            try
+                            {
+                                if (dni != "0")
+                                {
+                                    string txSQL = "SELECT * FROM lecturistas WHERE Codigo = " + dni + " AND (Privilegio = 'RUTISTA' OR Privilegio = 'DESARROLLADOR')";
+
+                                    MySqlCommand da = new MySqlCommand(txSQL, DB.conexBD);
+
+                                    int count = Convert.ToInt32(da.ExecuteScalar());
+
+                                    if (count == 0)
+                                        habilitado = false;
+                                    //retorno = false;
+                                    else
+                                        habilitado = true;
+                                    //retorno = true;
+                                }
+
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.Message + " Erro al verificar Persona en consulta a la base de datos.");
+                            }
+
+                            if (habilitado == true)
+                            {
+
+                                DirectoryInfo RutaCargaEliminada = new DirectoryInfo(Vble.RutaCarpetaOrigen);
+                                string NombreCarpetaEliminada = RutaCargaEliminada.Name;
+                                //string Temporal = @"C:/Users/" + Environment.UserName + "/Documents/Temporal";
+                                string RespaldoBeforClear = @"" + Vble.CarpetaBorradoRutas + "\\" + DateTime.Today.Date.ToString("yyyyMMdd") + "\\" + NombreCarpetaEliminada + "\\";
+                                //string Temporal = @"C:\Users\Usuario\Documents\Informes PDF";
+                                if (!Directory.Exists(RespaldoBeforClear))
+                                {
+                                    Directory.CreateDirectory(RespaldoBeforClear);
+                                }
+
+
+                                DirectoryInfo ArchivosEnTemporal = new DirectoryInfo(RespaldoBeforClear);
+
+
+                                string direcColec = "";
+                                try
+                                {
+                                    foreach (FileInfo item in RutaCargaEliminada.GetFiles())
+                                    {
+                                        File.Copy(item.FullName, RespaldoBeforClear + item.Name);
+                                    }
+
+                                    ////Elimina la carpeta Generada y actualiza el listview de Rutas para Cargar ya que se devolvio las Cargas a Rutas Disponibles
+                                    Directory.Delete(Vble.RutaCarpetaOrigen, true);
+                                    BotActPanPC_Click(sender, e);
+                                    listarRutasDisponiblesTASK();
+                                    MessageBox.Show("Se borró la ruta disponible para cargar a colectora", "Borrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            Ctte.ArchivoLog.EscribirLog("Borrado de Ruta que se encontraba disponible para cargar a colectora; Ubicación del archivo: " +
+                                                Vble.RutaCarpetaOrigen + ", realizado por el DNI: " + dni);
+                                          
+                                      
+                                }
+                                catch (Exception r)
+                                {
+                                    MessageBox.Show(r.Message + " Error al seleccionar Colectora");
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("La crendencial introducida no es correcta", "AUTORIZACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+
+                      
+
+                    }
+                }
+                else
+                {
+                    LabRestDevArc.Text = "Debe Seleccionar el Archivo \n del panel 'Rutas para Cargar' \n que desea devolver al panel \n de 'Rutas Disponibles'";
+                    LabRestDevArc.ForeColor = Color.Red;
+                    LabRestDevArc.Visible = true;
+                    LabRestEnvArc.Visible = false;
+                }
+            }
+
+            catch (Exception r)
+            {
+                MessageBox.Show(r.Message);
+                Ctte.ArchivoLogEnzo.EscribirLog(DateTime.Now.ToString() + "---> " + r.Message +
+                                                " Error al devolver ruta procesada al panel de rutas disponibles \n");
+            }
+        }
+    }
     }

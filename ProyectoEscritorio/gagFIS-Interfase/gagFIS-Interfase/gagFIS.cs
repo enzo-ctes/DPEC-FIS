@@ -1242,11 +1242,8 @@ namespace gagFIS_Interfase {
             {
                 for (int i = 0; i < Vble.ArrayZona.Count; i++)
                 {
-
                     where += " OR C.Zona = " + Vble.ArrayZona[i];
-
                 }
-
             }
             catch (Exception r)
             {

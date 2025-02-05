@@ -292,6 +292,10 @@ namespace gagFIS_Interfase
             
         }
 
+
+
+
+
         /// <summary>
         /// Este Metodo, ejectura una consulta Mysql donde dejara disponible nuevamente la ruta que se encuentra con estado de ImpresionOBS = 300 (Procesado)
         /// para que se vuelva a generar la carga en caso de que se haya perdido.
@@ -299,13 +303,13 @@ namespace gagFIS_Interfase
         /// <param name="Zona"></param>
         /// <param name="Remesa"></param>
         /// <param name="Ruta"></param>
-        private void DejarDisponibleCerrados(string Zona, string remesa, string Ruta, int CantProcesados)
+        private void CerrarSaldos(string Zona, string remesa, string Ruta, int CantProcesados)
         {
 
             DataTable TableProcesados = new DataTable();
             string PeriodoImportadas = Vble.Periodo.ToString().Replace("-", "");
-            string txSQLCantProcesados = "";
-            string txSQLUpdateProcesados = "";
+            string txSQLCantDisSaldos = "";
+            string txSQLUpdateDisSaldos = "";
             Int32 CantProcesadosEnBase = 0;
             MySqlCommand comandCant = new MySqlCommand();
             MySqlCommand comandUpdateProcesados = new MySqlCommand();
@@ -313,10 +317,10 @@ namespace gagFIS_Interfase
             //txSQLCantProcesados = "SELECT Count(*) FROM Conexiones WHERE Periodo = " + PeriodoImportadas +
             //                    " AND Zona = " + Zona + iteracionzona() + " AND Remesa = " + Remesa + " AND Ruta = " + Ruta +
             //                    " AND ImpresionOBS = 300";
-            txSQLCantProcesados = "SELECT Count(*) FROM Conexiones WHERE Periodo = " + PeriodoImportadas +
+            txSQLCantDisSaldos = "SELECT Count(*) FROM Conexiones WHERE Periodo = " + PeriodoImportadas +
                                " AND Zona = " + Zona + " AND Remesa = " + Remesa + " AND Ruta = " + Ruta +
-                               " AND ImpresionOBS = 300";
-            comandCant = new MySqlCommand(txSQLCantProcesados, DB.conexBD);
+                               " AND (ImpresionOBS = 500 OR ImpresionOBS = 0)";
+            comandCant = new MySqlCommand(txSQLCantDisSaldos, DB.conexBD);
             CantProcesadosEnBase = Convert.ToInt32(comandCant.ExecuteScalar());
 
             comandCant.Dispose();
@@ -324,10 +328,10 @@ namespace gagFIS_Interfase
 
             if (CantProcesadosEnBase == CantProcesados)
             {
-                txSQLUpdateProcesados = "UPDATE Conexiones SET ImpresionOBS = 0 WHERE Periodo = " + PeriodoImportadas +
+                txSQLUpdateDisSaldos = "UPDATE Conexiones SET ImpresionOBS = 800 WHERE Periodo = " + PeriodoImportadas +
                                " AND Zona = " + Zona + " AND Remesa = " + Remesa + " AND Ruta = " + Ruta +
-                               " AND ImpresionOBS = 800";
-                comandUpdateProcesados = new MySqlCommand(txSQLUpdateProcesados, DB.conexBD);
+                               " AND (ImpresionOBS = 500 OR ImpresionOBS = 0)";
+                comandUpdateProcesados = new MySqlCommand(txSQLUpdateDisSaldos, DB.conexBD);
                 comandUpdateProcesados.ExecuteNonQuery();
                 comandUpdateProcesados.Dispose();
                 CargarEstadoRutas(remesa);
@@ -451,7 +455,7 @@ namespace gagFIS_Interfase
                 "INNER JOIN Personas P ON C.TitularID = P.PersonaID AND C.Periodo = P.Periodo " +
                 "INNER JOIN Errores E ON C.ImpresionOBS MOD 100 = E.Codigo " +
                 "INNER JOIN Medidores M ON C.ConexionID = M.ConexionID AND C.Periodo = M.Periodo " +
-                "WHERE((C.ImpresionOBS MOD 100 = 0 AND C.Impresion <> 800 )  and C.Periodo = " + Vble.Periodo +
+                "WHERE((C.ImpresionOBS MOD 100 = 0 AND C.ImpresionOBS <> 800 )  and C.Periodo = " + Vble.Periodo +
                 " AND C.Remesa = " + Remesa + " AND C.Ruta = " + Ruta + ")  and Zona = " + Zona +  
                 " GROUP BY C.ConexionID, M.ConexionID order by C.Secuencia ";
 
@@ -517,6 +521,7 @@ namespace gagFIS_Interfase
         {
             int CantidadProc = 0;
             int CantEnColectora = 0;
+            int DisSaldos = 0;
             string Zona = "0";
             string Remesa = "0";
             string Ruta = "0";
@@ -527,9 +532,17 @@ namespace gagFIS_Interfase
                 Zona = LVEstados.SelectedItems[0].SubItems[0].Text;
                 Remesa = LVEstados.SelectedItems[0].SubItems[1].Text;
                 Ruta = LVEstados.SelectedItems[0].SubItems[2].Text;
-                CantEnColectora = Convert.ToInt32(LVEstados.SelectedItems[0].SubItems[6].Text);
+                DisSaldos = Convert.ToInt32(LVEstados.SelectedItems[0].SubItems[4].Text);
                 CantidadProc = Convert.ToInt32(LVEstados.SelectedItems[0].SubItems[5].Text);
                 CantEnColectora = Convert.ToInt32(LVEstados.SelectedItems[0].SubItems[6].Text);
+
+                if (DisSaldos > 0)
+                {
+                    CerrarSaldos(Zona, Remesa, Ruta, DisSaldos);
+
+                    
+                }
+                
             }
         }
     }

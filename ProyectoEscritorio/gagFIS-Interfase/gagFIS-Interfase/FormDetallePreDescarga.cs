@@ -2032,9 +2032,7 @@ namespace gagFIS_Interfase
             MySqlCommandBuilder comandoSQL = new MySqlCommandBuilder();
             MySqlDataAdapter datosAdapterLecturistas = new MySqlDataAdapter();
             MySqlCommandBuilder comandoSQLLecturistas = new MySqlCommandBuilder();
-            decimal porcsaldo = 0;
-            
-
+            decimal porcsaldo = 0;        
 
             this.DGResumenExp.DataSource = "";
             this.DGResumenExp.Columns.Clear();
@@ -2043,11 +2041,9 @@ namespace gagFIS_Interfase
             Vble.lecturistas.Clear();
             Vble.lectOrd.Clear();
 
-
             Tabla.Clear();
             Tabla.Dispose();
 
-           
             Vble.TablaLecturistas.Dispose();
             Vble.TablaLecturistas.Clear();
             this.DGResumenExp.Refresh();

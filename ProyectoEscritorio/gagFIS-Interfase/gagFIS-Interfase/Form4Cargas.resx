@@ -117,11 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>305, 95</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnCerrar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEoAAAAfCAIAAADP8cxiAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAABBtJREFUWEftl9dOJDEQRflWJETOLBmWnJMIIogsREbEJcf1EiQQEn+0Z1zVxtPd
+        vAAADrwBlbxySQAABBtJREFUWEftl9dOJDEQRflWJETOLBmWnJMIIogsREbEJcf1EiQQEn+0Z1zVxtPd
         A6804jyMqjwed19XsCfLfGt+5CWZT+T9Sefg4IBP/S4JZJRXX19fUVHxy6OqqqqgoODq6kpnJIF4ef39
         /bW1tb/Tqays3N7e1hkJIUbe8vIygVJNlpaWlpqamrGxMZ2RHMLyrq+viZLKCmhoaGhtbdUZiSIsjyg1
         NTWpLEtzc3N1dbV+nTTS5LW3t9NRVFYAwTw7O9MZltvb27u7O3UCbm5unp6e1DHm/v6eQt3a2iIddCjg
@@ -142,20 +145,15 @@
         RK5CYII=
 </value>
   </data>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>305, 95</value>
-  </metadata>
   <metadata name="imgList1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>683, 95</value>
   </metadata>
-  <data name="LabelInfoPro.Text" xml:space="preserve">
-    <value>Depende del tipo de prorrateo que seleccione, al ejecutar el proceso de carga 
-se tendrá en cuenta dicha información por la que se optó,
-si no se elije ningun tipo de prorrateo quéda por defecto, la opcion "Sin Prorrateo".</value>
-  </data>
+  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>683, 95</value>
+  </metadata>
   <data name="BotDevCarga.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhGQAVAIcAAAAAAAAAMwAAZgAAmQAAzAAA/wArAAArMwArZgArmQArzAAr/wBVAABVMwBVZgBV
@@ -217,6 +215,11 @@ si no se elije ningun tipo de prorrateo quéda por defecto, la opcion "Sin Prorr
         Ow==
 </value>
   </data>
+  <data name="LabelInfoPro.Text" xml:space="preserve">
+    <value>Depende del tipo de prorrateo que seleccione, al ejecutar el proceso de carga 
+se tendrá en cuenta dicha información por la que se optó,
+si no se elije ningun tipo de prorrateo quéda por defecto, la opcion "Sin Prorrateo".</value>
+  </data>
   <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>114, 17</value>
   </metadata>
@@ -239,7 +242,7 @@ si no se elije ningun tipo de prorrateo quéda por defecto, la opcion "Sin Prorr
     <value>104, 56</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>120</value>
+    <value>97</value>
   </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1131,6 +1134,9 @@ si no se elije ningun tipo de prorrateo quéda por defecto, la opcion "Sin Prorr
   <data name="$this.Text" xml:space="preserve">
     <value>                                                                                                                                                                                                              </value>
   </data>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>305, 95</value>
+  </metadata>
   <metadata name="toolTip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>402, 95</value>
   </metadata>

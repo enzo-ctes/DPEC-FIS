@@ -44,44 +44,44 @@ namespace gagFIS_Interfase
         {          
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form4Cargas));
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Ruta 201-1170");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Remesa 1", new System.Windows.Forms.TreeNode[] {
-            treeNode1});
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Nodo19");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Nodo18", new System.Windows.Forms.TreeNode[] {
-            treeNode3});
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Nodo20");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Nodo12", new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode5});
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Nodo13");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Remesa 2", new System.Windows.Forms.TreeNode[] {
-            treeNode6,
-            treeNode7});
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("201-Capital", new System.Windows.Forms.TreeNode[] {
-            treeNode2,
-            treeNode8});
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Ruta 202-1200");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Nodo1-0-1");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Nodo1-0-2");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Remesa 1", new System.Windows.Forms.TreeNode[] {
-            treeNode10,
-            treeNode11,
-            treeNode12});
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Nodo1-1-0");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Ruta 202-1200", new System.Windows.Forms.TreeNode[] {
-            treeNode14});
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Remesa 3");
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("202 - Goya", new System.Windows.Forms.TreeNode[] {
-            treeNode13,
-            treeNode15,
-            treeNode16});
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Nodo9");
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Nodo2", new System.Windows.Forms.TreeNode[] {
-            treeNode18});
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Nodo10");
-            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Nodo3", new System.Windows.Forms.TreeNode[] {
-            treeNode20});
+            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Ruta 201-1170");
+            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Remesa 1", new System.Windows.Forms.TreeNode[] {
+            treeNode22});
+            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Nodo19");
+            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Nodo18", new System.Windows.Forms.TreeNode[] {
+            treeNode24});
+            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Nodo20");
+            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Nodo12", new System.Windows.Forms.TreeNode[] {
+            treeNode25,
+            treeNode26});
+            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Nodo13");
+            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("Remesa 2", new System.Windows.Forms.TreeNode[] {
+            treeNode27,
+            treeNode28});
+            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("201-Capital", new System.Windows.Forms.TreeNode[] {
+            treeNode23,
+            treeNode29});
+            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("Ruta 202-1200");
+            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("Nodo1-0-1");
+            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("Nodo1-0-2");
+            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("Remesa 1", new System.Windows.Forms.TreeNode[] {
+            treeNode31,
+            treeNode32,
+            treeNode33});
+            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("Nodo1-1-0");
+            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("Ruta 202-1200", new System.Windows.Forms.TreeNode[] {
+            treeNode35});
+            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("Remesa 3");
+            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("202 - Goya", new System.Windows.Forms.TreeNode[] {
+            treeNode34,
+            treeNode36,
+            treeNode37});
+            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("Nodo9");
+            System.Windows.Forms.TreeNode treeNode40 = new System.Windows.Forms.TreeNode("Nodo2", new System.Windows.Forms.TreeNode[] {
+            treeNode39});
+            System.Windows.Forms.TreeNode treeNode41 = new System.Windows.Forms.TreeNode("Nodo10");
+            System.Windows.Forms.TreeNode treeNode42 = new System.Windows.Forms.TreeNode("Nodo3", new System.Windows.Forms.TreeNode[] {
+            treeNode41});
             this.panel2 = new System.Windows.Forms.Panel();
             this.BotActPanPC = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -173,6 +173,7 @@ namespace gagFIS_Interfase
             this.shellViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.shellItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.windowsPortableDeviceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.button2 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -373,53 +374,53 @@ namespace gagFIS_Interfase
             this.tvwCargas.ImageList = this.imgList1;
             this.tvwCargas.Location = new System.Drawing.Point(0, 0);
             this.tvwCargas.Name = "tvwCargas";
-            treeNode1.Name = "Nodo11";
-            treeNode1.Text = "Ruta 201-1170";
-            treeNode2.Name = "Nodo4";
-            treeNode2.Text = "Remesa 1";
-            treeNode3.Name = "Nodo19";
-            treeNode3.Text = "Nodo19";
-            treeNode4.Name = "Nodo18";
-            treeNode4.Text = "Nodo18";
-            treeNode5.Name = "Nodo20";
-            treeNode5.Text = "Nodo20";
-            treeNode6.Name = "Nodo12";
-            treeNode6.Text = "Nodo12";
-            treeNode7.Name = "Nodo13";
-            treeNode7.Text = "Nodo13";
-            treeNode8.Name = "Nodo5";
-            treeNode8.Text = "Remesa 2";
-            treeNode9.Name = "Nodo0";
-            treeNode9.Text = "201-Capital";
-            treeNode10.Name = "Nodo14";
-            treeNode10.Text = "Ruta 202-1200";
-            treeNode11.Name = "Nodo15";
-            treeNode11.Text = "Nodo1-0-1";
-            treeNode12.Name = "Nodo16";
-            treeNode12.Text = "Nodo1-0-2";
-            treeNode13.Name = "Nodo6";
-            treeNode13.Text = "Remesa 1";
-            treeNode14.Name = "Nodo17";
-            treeNode14.Text = "Nodo1-1-0";
-            treeNode15.Name = "Nodo7";
-            treeNode15.Text = "Ruta 202-1200";
-            treeNode16.Name = "Nodo8";
-            treeNode16.Text = "Remesa 3";
-            treeNode17.Name = "Nodo1";
-            treeNode17.Text = "202 - Goya";
-            treeNode18.Name = "Nodo9";
-            treeNode18.Text = "Nodo9";
-            treeNode19.Name = "Nodo2";
-            treeNode19.Text = "Nodo2";
-            treeNode20.Name = "Nodo10";
-            treeNode20.Text = "Nodo10";
-            treeNode21.Name = "Nodo3";
-            treeNode21.Text = "Nodo3";
+            treeNode22.Name = "Nodo11";
+            treeNode22.Text = "Ruta 201-1170";
+            treeNode23.Name = "Nodo4";
+            treeNode23.Text = "Remesa 1";
+            treeNode24.Name = "Nodo19";
+            treeNode24.Text = "Nodo19";
+            treeNode25.Name = "Nodo18";
+            treeNode25.Text = "Nodo18";
+            treeNode26.Name = "Nodo20";
+            treeNode26.Text = "Nodo20";
+            treeNode27.Name = "Nodo12";
+            treeNode27.Text = "Nodo12";
+            treeNode28.Name = "Nodo13";
+            treeNode28.Text = "Nodo13";
+            treeNode29.Name = "Nodo5";
+            treeNode29.Text = "Remesa 2";
+            treeNode30.Name = "Nodo0";
+            treeNode30.Text = "201-Capital";
+            treeNode31.Name = "Nodo14";
+            treeNode31.Text = "Ruta 202-1200";
+            treeNode32.Name = "Nodo15";
+            treeNode32.Text = "Nodo1-0-1";
+            treeNode33.Name = "Nodo16";
+            treeNode33.Text = "Nodo1-0-2";
+            treeNode34.Name = "Nodo6";
+            treeNode34.Text = "Remesa 1";
+            treeNode35.Name = "Nodo17";
+            treeNode35.Text = "Nodo1-1-0";
+            treeNode36.Name = "Nodo7";
+            treeNode36.Text = "Ruta 202-1200";
+            treeNode37.Name = "Nodo8";
+            treeNode37.Text = "Remesa 3";
+            treeNode38.Name = "Nodo1";
+            treeNode38.Text = "202 - Goya";
+            treeNode39.Name = "Nodo9";
+            treeNode39.Text = "Nodo9";
+            treeNode40.Name = "Nodo2";
+            treeNode40.Text = "Nodo2";
+            treeNode41.Name = "Nodo10";
+            treeNode41.Text = "Nodo10";
+            treeNode42.Name = "Nodo3";
+            treeNode42.Text = "Nodo3";
             this.tvwCargas.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode9,
-            treeNode17,
-            treeNode19,
-            treeNode21});
+            treeNode30,
+            treeNode38,
+            treeNode40,
+            treeNode42});
             this.tvwCargas.SelectedImageIndex = 0;
             this.tvwCargas.ShowNodeToolTips = true;
             this.tvwCargas.Size = new System.Drawing.Size(480, 295);
@@ -906,6 +907,7 @@ namespace gagFIS_Interfase
             // 
             // splitContainer8.Panel1
             // 
+            this.splitContainer8.Panel1.Controls.Add(this.button2);
             this.splitContainer8.Panel1.Controls.Add(this.label4);
             this.splitContainer8.Panel1.Controls.Add(this.BotDevCarga);
             // 
@@ -1211,6 +1213,16 @@ namespace gagFIS_Interfase
             // 
             this.shellItemBindingSource.DataSource = typeof(GongSolutions.Shell.ShellItem);
             // 
+            // button2
+            // 
+            this.button2.Image = global::gagFIS_Interfase.Properties.Resources.bin_closed;
+            this.button2.Location = new System.Drawing.Point(49, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(29, 28);
+            this.button2.TabIndex = 53;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
             // Form4Cargas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1390,5 +1402,6 @@ namespace gagFIS_Interfase
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Label LabNomColect;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
